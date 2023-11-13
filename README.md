@@ -1,2 +1,2 @@
 # Tatib_2G
- Anggota kelompok : Rafsan, Arya Chandra, Hanifah, Sandi
+ Anggota kelompok : Rizky, Rafsan, Arya, Hanifah, Sandi
