@@ -204,11 +204,9 @@
         if (windowWidth <= 768) {
             sidebar.addClass("fixed_sidebar");
             $('.containerBarsMobile').removeClass("toggle_bars_mobile");
-            $('.containerBars_toggled').css('visibility', 'hidden');
         } else {
             sidebar.removeClass("fixed_sidebar");
             $('.containerBarsMobile').addClass("toggle_bars_mobile");
-            $('.containerBars_toggled').css('visibility', 'visible');
         }
     }
 

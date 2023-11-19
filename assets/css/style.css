@@ -39,7 +39,7 @@
   position: fixed;
 }
 
-.sidebar_toggled.fixed_sidebar{
+.sidebar_toggled.fixed_sidebar {
   visibility: hidden;
 }
 .sidebar_toggled {
@@ -51,6 +51,13 @@
 }
 .sidebar_toggled .containerBars {
   display: none;
+}
+
+.containerBars_toggled {
+  visibility: hidden !important;
+}
+.main_toggled .containerBars_toggled{
+  visibility: visible !important;
 }
 .sidebar_toggled .sidebar_text {
   display: none;
