@@ -37,6 +37,8 @@
 }
 .fixed_sidebar {
   position: fixed;
+  top: 0px;
+  height: 100vh;
 }
 
 .sidebar_toggled.fixed_sidebar {
@@ -52,11 +54,15 @@
 .sidebar_toggled .containerBars {
   display: none;
 }
-
+@media (max-width: 768px) {
+  .containerBars_toggled {
+    display: none !important;
+  }
+}
 .containerBars_toggled {
   visibility: hidden !important;
 }
-.main_toggled .containerBars_toggled{
+.main_toggled .containerBars_toggled {
   visibility: visible !important;
 }
 .sidebar_toggled .sidebar_text {

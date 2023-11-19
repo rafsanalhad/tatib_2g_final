@@ -33,7 +33,7 @@
       <div class="profil_db">
         <img src="assets/profil/profil.png" alt="" class="foto_profil">
         <h3 class="nama_profil">AdminRizky</h3>
-        <div class="containerBars">
+        <div class="containerBars containerBarsDefault">
           <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
         </div>
       </div>
@@ -204,9 +204,13 @@
         if (windowWidth <= 768) {
             sidebar.addClass("fixed_sidebar");
             $('.containerBarsMobile').removeClass("toggle_bars_mobile");
+            $('.containerBarsDefault').css('visibility', 'hidden');
+            $('.containerBars_toggled').css('visibility', 'hidden');
         } else {
             sidebar.removeClass("fixed_sidebar");
             $('.containerBarsMobile').addClass("toggle_bars_mobile");
+            $('.containerBarsDefault').css('visibility', 'visible');
+            $('.containerBars_toggled').css('visibility', 'visible');
         }
     }
 
