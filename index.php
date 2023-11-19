@@ -43,7 +43,7 @@
     </aside>
 
     <!-- Content -->
-    <div class="flex-1 p-8 shadow-sm">
+    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm">
       <div class="containerBars_toggled inline">
         <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
       </div>
