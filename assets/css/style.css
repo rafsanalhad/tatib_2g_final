@@ -26,10 +26,21 @@
   font-weight: 400;
   line-height: normal;
 }
+.toggle_bars_mobile {
+  display: none !important;
+}
 .sidebar {
   background: #fff;
   width: 250px;
   height: calc(100vh - 64px);
+  z-index: 20px;
+}
+.fixed_sidebar {
+  position: fixed;
+}
+
+.sidebar_toggled.fixed_sidebar{
+  visibility: hidden;
 }
 .sidebar_toggled {
   width: 82px;

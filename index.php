@@ -21,6 +21,9 @@
         <a href="#" class="text-white mr-4">About</a>
         <a href="#" class="text-white">Contact</a>
       </div> -->
+      <div class="containerBarsMobile toggle_bars_mobile">
+          <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
+        </div>
     </div>
   </nav>
 
@@ -44,16 +47,16 @@
 
     <!-- Content -->
     <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm">
-      <div class="containerBars_toggled inline">
-        <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
+      <div class="containerBars_toggled">
+        <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
-      <h1 class="text-2xl font-bold mb-4 inline">Dashboard</h1>
+      <h1 class="text-2xl font-bold mb-2">Dashboard</h1>
 
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
         <div class="flex-1 ml-4">Ringkasan System</div>
       </div>
       <hr class="hr_db">
-      <div class="flex bg-white flex-col lg:flex-row">
+      <div class="flex bg-white flex-col xl:flex-row">
         <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
           <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div>
           <div class="grid grid-cols-2 gap-4 mt-5">
@@ -194,11 +197,35 @@
     </div>
 
     <script>
-      $('.toggle_bars').on("click", function() {
-        $('.sidebar').toggleClass('sidebar_toggled');
-        $('.main').toggleClass('main_toggled');
-      })
-    </script>
+    const checkWidth = () => {
+        var windowWidth = $(window).width();
+        var sidebar = $(".sidebar");
+
+        if (windowWidth <= 768) {
+            sidebar.addClass("fixed_sidebar");
+            $('.containerBarsMobile').removeClass("toggle_bars_mobile");
+            $('.containerBars_toggled').css('visibility', 'hidden');
+        } else {
+            sidebar.removeClass("fixed_sidebar");
+            $('.containerBarsMobile').addClass("toggle_bars_mobile");
+            $('.containerBars_toggled').css('visibility', 'visible');
+        }
+    }
+
+    $(document).ready(function () {
+        checkWidth();
+
+        $('.toggle_bars').on("click", function () {
+            $('.sidebar').toggleClass('sidebar_toggled');
+            $('.main').toggleClass('main_toggled');
+        });
+
+        $(window).resize(function () {
+            checkWidth();
+        });
+    });
+</script>
+
 
 </body>
 
