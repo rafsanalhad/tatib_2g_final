@@ -53,7 +53,7 @@
         <div class="flex-1 ml-4">Ringkasan System</div>
       </div>
       <hr class="hr_db">
-      <div class="flex bg-white">
+      <div class="flex bg-white flex-col lg:flex-row">
         <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
           <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div>
           <div class="grid grid-cols-2 gap-4 mt-5">
