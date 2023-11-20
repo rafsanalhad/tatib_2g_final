@@ -104,7 +104,7 @@
         </div>
 
         <div class="flex-1 bg-white pelanggaran_terbaru shadow-lg">
-          <h3 class="pelanggaran_tbr_title">Pelanggaran Terbaru</h3>
+          <h3 class="pelanggaran_tbr_title">Laporan Terbaru</h3>
           <hr class="hr_pelanggaran">
           <hr class="hr_db">
           <div class="biodata_pelanggar">
