@@ -18,6 +18,8 @@
     }else if ($row['level'] == 2) {
         header('location: dosen.php');
     }else if ($row['level'] == 3) {
+        
+        $_SESSION['username'] =  $row['username'];
         header('location: mahasiswa.php');
      }else{
         echo "Salah";

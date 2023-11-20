@@ -1,3 +1,8 @@
+<?php
+if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +42,7 @@
         <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/data_dosen.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
         <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/data_mahasiswa.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
         <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Laporan Penggunaan</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="logout.php" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
+        <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
       </ul>
     </aside>
 
@@ -56,47 +61,57 @@
           <div class="flex-1 notif_db h-10 flex items-center pl-2">
           <p><b>Info! </b>Berikut adalah Biodata diri anda</p>
           </div>
-          <table class="w-full text-center">
+          <table class="items-center">
+          <?php
+              include "koneksi.php";
+              $nim = $_SESSION['username'];
+              $query = "SELECT * FROM mahasiswa where nim='$nim'";
+              $result = mysqli_query($koneksi, $query);          
+              while ($row = mysqli_fetch_assoc($result)){
+            ?>
             <tbody>
               <tr>
-                <td class="border-2 border-slate-700" rowspan="10"><img src="assets/profil/mhs1.png" class="m-auto" alt=""></td>
+                <td class="border-2 border-slate-700 p-auto" rowspan="10"><img src="assets/profil/mhs1.png" alt=""></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Nama</td>
-                <td class="border-2 border-slate-700">Rizky Arifiansyah</td>
+                <td class="border-2 border-slate-700"><?= $row['nama'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">NIM</td>
-                <td class="border-2 border-slate-700">2241720040</td>
+                <td class="border-2 border-slate-700"><?= $row['nim'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">TTL</td>
-                <td class="border-2 border-slate-700">Tangerang, 13 Feb 2006</td>
+                <td class="border-2 border-slate-700"><?= $row['TTL'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Jen. Kelamin</td>
-                <td class="border-2 border-slate-700">Perempuan</td>
+                <td class="border-2 border-slate-700"><?= $row['jenis_kelamin'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Jurusan</td>
-                <td class="border-2 border-slate-700">Teknik Informatika</td>
+                <td class="border-2 border-slate-700"><?= $row['jurusan'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Alamat</td>
-                <td class="border-2 border-slate-700">Jl. Soehat No. 8 Malang</td>
+                <td class="border-2 border-slate-700"><?= $row['alamat'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Email</td>
-                <td class="border-2 border-slate-700">Nasyifa@gmail.com</td>
+                <td class="border-2 border-slate-700"><?= $row['email'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Phone</td>
-                <td class="border-2 border-slate-700">081234567890</td>
+                <td class="border-2 border-slate-700"><?= $row['phone_ortu'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Phone Ortu</td>
-                <td class="border-2 border-slate-700">081234567890</td>
+                <td class="border-2 border-slate-700"><?= $row['phone_ortu'];  ?></td>
               </tr>
+              <?php
+              }
+              ?>
             </tbody>
           </table>
         </div>
