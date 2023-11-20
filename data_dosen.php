@@ -17,32 +17,47 @@
             <!-- Tambahkan header tabel di sini -->
             <thead>
               <tr class="border-b">
-                <th class="py-2 px-4 border-r">Nama Mahasiswa</th>
-                <th class="py-2 px-4 border-r">NIM</th>
+                <th class="py-2 px-4 border-r">Nama Dosen</th>
+                <th class="py-2 px-4 border-r">NIP</th>
                 <th class="py-2 px-4 border-r">TTL</th>
                 <th class="py-2 px-4 border-r">Jen. Kelamin</th>
                 <th class="py-2 px-4 border-r">No. Telp</th>
-                <th class="py-2 px-4 border-r">Jurusan</th>
+                <th class="py-2 px-4 border-r">Alamat</th>
                 <th class="py-2 px-4 border-r">Aksi</th>
                 <!-- Tambahkan header lainnya sesuai kebutuhan -->
               </tr>
             </thead>
+            <?php
+              include "koneksi.php";
+              $query = "SELECT * FROM dosen";
+              $result = mysqli_query($koneksi, $query);
+              while ($row = mysqli_fetch_assoc($result)){
+            ?>
             <tbody>
               <!-- Tambahkan baris-baris data di sini -->
               <tr class="border-b">
                 <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
-                  <p class="nama_dosen_table inline">Rizky Arifiansyah</p>
+                  <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                 </td>
-                <td class="py-2 px-4 border-r">12345678908</td>
-                <td class="py-2 px-4 border-r">Sorong, 12 April 1989</td>
+                <td class="py-2 px-4 border-r"><?= $row['nip']; ?></td>
+                <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
                 <td class="py-2 px-4 border-r">
-                  <div class="containerJenkel">Laki-laki</div>
+                  <div class="containerJenkel"><?php 
+                  if ($row['jenis_kelamin'] == 'L') {
+                    echo 'Laki-laki';
+                  }else{
+                    echo 'Perempuan';
+                  }
+                  ?></div>
                 </td>
-                <td class="py-2 px-4 border-r">Data 2</td>
-                <td class="py-2 px-4 border-r">Data 2</td>
+                <td class="py-2 px-4 border-r"><?= $row['no_phone'];?></td>
+                <td class="py-2 px-4 border-r"><?= $row['alamat'];?></td>
                 <td class="py-2 px-4 border-r">Data 2</td>
                 <!-- Tambahkan data lainnya sesuai kebutuhan -->
               </tr>
+              <?php
+              }
+              ?>
             </tbody>
           </table>
         </div>
