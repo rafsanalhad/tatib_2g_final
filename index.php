@@ -1,3 +1,11 @@
+<?php
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
+if(!empty($_SESSION['level'])){
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -227,8 +235,11 @@
         });
     });
 </script>
-
-
 </body>
-
 </html>
+
+<?php
+  } else {
+    header("location: login.php");
+}
+?>
