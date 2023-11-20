@@ -249,6 +249,7 @@ if(!empty($_SESSION['level'])){
 
         $(window).resize(function() {
           checkWidth();
+          // anjay 
         });
       });
     </script>
