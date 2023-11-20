@@ -32,8 +32,14 @@
 .sidebar {
   background: #fff;
   width: 250px;
-  height: calc(100vh - 64px);
+  height: 100vh;
   z-index: 20px;
+  position: fixed;
+  margin-top: 64px;
+}
+.main_content{
+  margin-left: 250px;
+  margin-top: 64px;
 }
 .fixed_sidebar {
   position: fixed;

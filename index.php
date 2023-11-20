@@ -13,19 +13,19 @@
 
 <body class="font-sans main">
   <!-- Navbar -->
-  <nav class="navbar p-4 h-16">
+  <nav class="navbar p-4 h-16 fixed top-0 w-full bg-gray-800">
     <div class="container-fluid mx-auto flex justify-between items-center">
-      <div class="text-white font-bold text-xl">Sistem Tata Tertib</div>
-      <!-- <div>
-        <a href="#" class="text-white mr-4">Home</a>
-        <a href="#" class="text-white mr-4">About</a>
-        <a href="#" class="text-white">Contact</a>
-      </div> -->
-      <div class="containerBarsMobile toggle_bars_mobile">
-          <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
+        <div class="text-white font-bold text-xl">Sistem Tata Tertib</div>
+        <!-- <div>
+            <a href="#" class="text-white mr-4">Home</a>
+            <a href="#" class="text-white mr-4">About</a>
+            <a href="#" class="text-white">Contact</a>
+        </div> -->
+        <div class="containerBarsMobile toggle_bars_mobile">
+            <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
         </div>
     </div>
-  </nav>
+</nav>
 
   <!-- Sidebar -->
   <div class="flex">
@@ -46,7 +46,7 @@
     </aside>
 
     <!-- Content -->
-    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm">
+    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content">
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
