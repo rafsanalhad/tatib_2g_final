@@ -1,25 +1,29 @@
 <?php
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+
     include "koneksi.php";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = isset($_POST['username']) ? $_POST['username'] : "";
-        $password = isset($_POST['password']) ? $_POST['password'] : "";
+    $username = $_POST['username'];
+    $password = md5($_POST ['password']);
+
+    $query="SELECT * FROM user WHERE username='$username' and password='$password'";
+    $result=mysqli_query ($koneksi, $query);
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['level'] = $row['level'];
+
+    if ($row['level'] == 1) {
+        header('location: index.php');
+    }else if ($row['level'] == 2) {
+        header('location: dosen.php');
+    }else if ($row['level'] == 3) {
+        header('location: mahasiswa.php');
+     }else{
+        echo "Salah";
+        header('location: index.php');
+        echo mysqli_error ($koneksi) ;
     }
 
-    $query = "SELECT * FROM admin WHERE username='$username' and password='$password'";
-    $result = mysqli_query($koneksi, $query);
-    $cek = mysqli_num_rows($result);
-
-    if ($cek) {
-        
-        header("location:index.php");
-    
-    }else{
-        
-        header("location:login.php");
-        
-        // echo mysqli_error($koneksi); 
-    }
-
-    ?>
+?>
     
