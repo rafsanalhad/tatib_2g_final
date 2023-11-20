@@ -18,7 +18,7 @@
         
         header("location:login.php");
         
-        echo mysqli_error($koneksi); 
+        // echo mysqli_error($koneksi); 
     }
 
     ?>
