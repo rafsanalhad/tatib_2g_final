@@ -71,8 +71,6 @@ if(session_status() === PHP_SESSION_NONE){
             ?>
             <tbody>
               <tr>
-                <td class="border-2 border-slate-700 p-auto" rowspan="10"><img src="assets/profil/mhs1.png" alt=""></td>
-
                 <td class="border-2 border-slate-700" rowspan="10"><img src="assets/profil/mhs1.png" class="m-auto" alt="profil"></td>
               </tr>
               <tr>
@@ -89,7 +87,11 @@ if(session_status() === PHP_SESSION_NONE){
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Jen. Kelamin</td>
-                <td class="border-2 border-slate-700"><?= $row['jenis_kelamin'];  ?></td>
+                <td class="border-2 border-slate-700"><?php if ($row['jenis_kelamin'] == 'L') {
+                    echo 'Laki-laki';
+                  }else{
+                    echo 'Perempuan';
+                  }  ?> </td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Jurusan</td>
