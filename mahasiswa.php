@@ -56,10 +56,10 @@
           <div class="flex-1 notif_db h-10 flex items-center pl-2">
           <p><b>Info! </b>Berikut adalah Biodata diri anda</p>
           </div>
-          <table class="items-center">
+          <table class="w-full text-center">
             <tbody>
               <tr>
-                <td class="border-2 border-slate-700 p-auto" rowspan="10"><img src="assets/profil/mhs1.png" alt=""></td>
+                <td class="border-2 border-slate-700" rowspan="10"><img src="assets/profil/mhs1.png" class="m-auto" alt=""></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Nama</td>

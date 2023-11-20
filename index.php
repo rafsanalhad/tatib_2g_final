@@ -74,7 +74,7 @@ if(!empty($_SESSION['level'])){
         <div class="flex bg-white flex-col xl:flex-row">
           <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
             <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div>
-            <div class="grid grid-cols-2 gap-4 mt-5">
+            <div class="grid grid-cols-2 gap-4 mt-5"> 
               <div class="bg-white p-4 shadow-lg">
                 <div class="inline-flex">
                   <img src="assets/img/dosen.png" alt="">
