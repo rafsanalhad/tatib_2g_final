@@ -37,7 +37,11 @@
   position: fixed;
   margin-top: 64px;
 }
-.main_content{
+
+.main_toggled .main_content {
+  margin-left: 82px !important;
+}
+.main_content {
   margin-left: 250px;
   margin-top: 64px;
 }
