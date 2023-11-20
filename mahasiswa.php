@@ -59,7 +59,7 @@
           <table class="w-full text-center">
             <tbody>
               <tr>
-                <td class="border-2 border-slate-700" rowspan="10"><img src="assets/profil/mhs1.png" class="m-auto" alt=""></td>
+                <td class="border-2 border-slate-700" rowspan="10"><img src="assets/profil/mhs1.png" class="m-auto" alt="profil"></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Nama</td>
@@ -101,9 +101,11 @@
           </table>
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
-          <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
-          <hr class="hr_pelanggaran">
-          <hr class="hr_db">
+          <h3 class="pelanggaran_tbr_title mb-3">Jumlah Pelanggaran</h3>
+          <hr class="hr_db mb-3">
+          <div class="h-36 w-34 bg-black">
+            
+          </div>
         </div>
     </div>
 
