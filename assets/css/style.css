@@ -38,8 +38,20 @@
   margin-top: 64px;
 }
 
+@media (max-width: 768px) {
+  .containerBars_toggled {
+    display: none !important;
+  }
+  .main_toggled .main_content {
+    margin-left: 0px !important;
+  }
+  .main_content{
+    margin-left: 0px !important;
+  }
+}
+
 .main_toggled .main_content {
-  margin-left: 82px !important;
+  margin-left: 82px;
 }
 .main_content {
   margin-left: 250px;
@@ -63,11 +75,6 @@
 }
 .sidebar_toggled .containerBars {
   display: none;
-}
-@media (max-width: 768px) {
-  .containerBars_toggled {
-    display: none !important;
-  }
 }
 .containerBars_toggled {
   visibility: hidden !important;
