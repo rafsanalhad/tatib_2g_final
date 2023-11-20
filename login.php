@@ -17,7 +17,7 @@
                     <label for="password" class="text-neutral-400 text-2xl font-normal font-['Inter'] m-auto mt-[10px]">Password:</label>
                     <input type="password" id="password" class="w-[250px] h-[40px] border border-neutral-400 rounded-[10px]"/>
                     <button class="w-[180px] h-[50px] items-center bg-sky-600 rounded-[31px] text-white text-2xl font-normal font-['Inter'] m-auto mt-5 act:bg-sky-600">Login</button>
-                    <p class="m-auto text-lg text-gray-600">create account</p>
+                    <a href="signUp.php" class="m-auto text-lg text-gray-600">create account</a>
                 </div>
             </div>
         </form>
