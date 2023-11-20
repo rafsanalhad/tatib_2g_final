@@ -33,7 +33,7 @@
   background: #fff;
   width: 250px;
   height: 100vh;
-  z-index: 20px;
+  z-index: 100;
   position: fixed;
   margin-top: 64px;
 }
@@ -45,7 +45,7 @@
   .main_toggled .main_content {
     margin-left: 0px !important;
   }
-  .main_content{
+  .main_content {
     margin-left: 0px !important;
   }
 }
@@ -61,6 +61,19 @@
   position: fixed;
   top: 0px;
   height: 100vh;
+}
+
+.dataTables_filter {
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#buttonTambahDosen {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .sidebar_toggled.fixed_sidebar {
@@ -144,6 +157,15 @@
   border-color: lightgray;
   width: 53.2px;
   height: 54.133px;
+  flex-shrink: 0;
+  margin-right: 5px;
+}
+.foto_profil_dosen_table {
+  border-radius: 50px;
+  border: solid;
+  border-color: lightgray;
+  width: 34.533px;
+  height: 34.533px;
   flex-shrink: 0;
   margin-right: 5px;
 }
@@ -231,4 +253,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.containerTableDosen{
+  overflow-x: scroll;
+
 }
