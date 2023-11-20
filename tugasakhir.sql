@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2023 pada 04.29
+-- Waktu pembuatan: 20 Nov 2023 pada 05.34
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -127,6 +127,25 @@ CREATE TABLE `riwayat` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `staff`
+--
+
+CREATE TABLE `staff` (
+  `staff_id` int(11) NOT NULL,
+  `nama_staff` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `staff`
+--
+
+INSERT INTO `staff` (`staff_id`, `nama_staff`, `user_id`) VALUES
+(1, 'jojo', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `user`
 --
 
@@ -142,7 +161,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `level`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+(1, 'jojo', '7510d498f23f5815d3376ea7bad64e29', 1),
 (2, '12345', '827ccb0eea8a706c4c34a16891f84e7b', 2),
 (3, '2241720228', 'f4b21949fdeb4f38355f36d0536e903c', 3);
 
@@ -187,6 +206,13 @@ ALTER TABLE `riwayat`
   ADD UNIQUE KEY `f_pengaduan` (`pengaduan_id`);
 
 --
+-- Indeks untuk tabel `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`staff_id`),
+  ADD UNIQUE KEY `f_user` (`user_id`);
+
+--
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
@@ -213,6 +239,12 @@ ALTER TABLE `pengaduan`
 --
 ALTER TABLE `riwayat`
   MODIFY `riwayat_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -249,6 +281,12 @@ ALTER TABLE `pengaduan`
 ALTER TABLE `riwayat`
   ADD CONSTRAINT `riwayat_ibfk_2` FOREIGN KEY (`pengaduan_id`) REFERENCES `pengaduan` (`pengaduan_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `riwayat_ibfk_3` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `staff`
+--
+ALTER TABLE `staff`
+  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
