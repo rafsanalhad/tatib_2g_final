@@ -39,9 +39,8 @@ if(session_status() === PHP_SESSION_NONE){
       </div>
       <ul>
         <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/data_dosen.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/data_mahasiswa.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Laporan Penggunaan</span></a></li>
+        <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Riwayat Pelanggaran</span></a></li>
+        <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
         <li class="mb-2 sidebar_item"><a href="logout.php" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
       </ul>
     </aside>
@@ -122,8 +121,14 @@ if(session_status() === PHP_SESSION_NONE){
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
           <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
           <hr class="hr_db mt-3">
-            <div class="mt-3 h-16 w-60 bg-white shadow-lg ml-3">
-              <div class="w-16 h-10 bg-red-600 rounded-lg"></div>
+            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4">
+              <div class="flex-none">
+                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">1</p></div>
+              </div>
+              <div class="flex-auto ml-2">
+                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="font-bold">2</p>
+              </div>
             </div>
         </div>
     </div>
