@@ -120,11 +120,11 @@ if(session_status() === PHP_SESSION_NONE){
           </table>
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
-          <h3 class="pelanggaran_tbr_title mb-3">Jumlah Pelanggaran</h3>
-          <hr class="hr_db mb-3">
-          <div class="h-36 w-34 bg-black">
-            
-          </div>
+          <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
+          <hr class="hr_db mt-3">
+            <div class="mt-3 h-16 w-60 bg-white shadow-lg ml-3">
+              <div class="w-16 h-10 bg-red-600 rounded-lg"></div>
+            </div>
         </div>
     </div>
 
