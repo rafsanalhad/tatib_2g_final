@@ -120,10 +120,46 @@ if(session_status() === PHP_SESSION_NONE){
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
           <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
-          <hr class="hr_db mt-3">
-            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4">
+          <hr class="hr_db">
+            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">1</p></div>
+                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
+              </div>
+              <div class="flex-auto ml-2">
+                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="font-bold">2</p>
+              </div>
+            </div>
+            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
+              <div class="flex-none">
+                <div class="w-16 h-10 bg-orange-500 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">II</p></div>
+              </div>
+              <div class="flex-auto ml-2">
+                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="font-bold">2</p>
+              </div>
+            </div>
+            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
+              <div class="flex-none">
+                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
+              </div>
+              <div class="flex-auto ml-2">
+                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="font-bold">2</p>
+              </div>
+            </div>
+            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
+              <div class="flex-none">
+                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
+              </div>
+              <div class="flex-auto ml-2">
+                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="font-bold">2</p>
+              </div>
+            </div>
+            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
+              <div class="flex-none">
+                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pelanggaran Tingkat 1</p>
