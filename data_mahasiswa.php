@@ -1,4 +1,4 @@
-<div id="data_dosen">
+<div id="data_mahasiswa">
   <div class="containerBars_toggled">
     <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
   </div>
@@ -13,12 +13,12 @@
       <!-- <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div> -->
       <div class="grid grid-cols-1 gap-4 mt-5">
         <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
-          <table id="tableDosen" class="min-w-full border ">
+          <table id="tableMahasiswa" class="min-w-full border ">
             <!-- Tambahkan header tabel di sini -->
             <thead>
               <tr class="border-b">
-                <th class="py-2 px-4 border-r">Nama Dosen</th>
-                <th class="py-2 px-4 border-r">NIP</th>
+                <th class="py-2 px-4 border-r">Nama Mahasiswa</th>
+                <th class="py-2 px-4 border-r">NIM</th>
                 <th class="py-2 px-4 border-r">TTL</th>
                 <th class="py-2 px-4 border-r">Jen. Kelamin</th>
                 <th class="py-2 px-4 border-r">No. Telp</th>
@@ -76,7 +76,7 @@
   $(document).ready(function() {
 
 
-    $('#tableDosen').DataTable({
+    $('#tableMahasiswa').DataTable({
       rowReorder: {
         selector: 'td:nth-child(2)'
       },
@@ -121,6 +121,6 @@
         ]
       }
     });
-    $('#tableDosen_filter').append('<div id="buttonTambahDosen"><a href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+    $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
   });
 </script>

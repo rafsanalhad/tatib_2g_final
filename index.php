@@ -50,9 +50,9 @@ if(!empty($_SESSION['level'])){
         </div>
       </div>
       <ul>
-        <li class="mb-2 sidebar_item"><a href="#" id="dashboard_nav" class="text_sidebar"><img src="assets/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="#" id="data_dosen_nav" class="text_sidebar"><img src="assets/icon/data_dosen.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/data_mahasiswa.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
+        <li class="mb-2 sidebar_item" id="dashboard_nav"><a href="#" class="text_sidebar"><img src="assets/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
+        <li class="mb-2 sidebar_item" id="data_dosen_nav"><a href="#" class="text_sidebar"><img src="assets/icon/data_dosen.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
+        <li class="mb-2 sidebar_item" id="data_mahasiswa_nav"><a href="#" class="text_sidebar"><img src="assets/icon/data_mahasiswa.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
         <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Laporan Penggunaan</span></a></li>
         <li class="mb-2 sidebar_item"><a href="logout.php" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
       </ul>
@@ -213,6 +213,7 @@ if(!empty($_SESSION['level'])){
       <!-- end dashboard -->
       <!-- mulai data dosen  -->
       <?php include 'data_dosen.php' ?>
+      <?php include 'data_mahasiswa.php' ?>
       <!-- end data dosen  -->
     </div>
 
@@ -236,10 +237,17 @@ if(!empty($_SESSION['level'])){
       $('#data_dosen_nav').on("click", function() {
         $('#dashboard').hide();
         $('#data_dosen').show();
+        $('#data_mahasiswa').hide();
       });
       $('#dashboard_nav').on("click", function() {
         $('#dashboard').show();
         $('#data_dosen').hide();
+        $('#data_mahasiswa').hide();
+      });
+      $('#data_mahasiswa_nav').on("click", function() {
+        $('#dashboard').hide();
+        $('#data_dosen').hide();
+        $('#data_mahasiswa').show();
       });
       $(document).ready(function() {
         checkWidth();
