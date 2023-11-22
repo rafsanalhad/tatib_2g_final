@@ -1,8 +1,8 @@
-<div id="laporan_pelanggaran">
+<div id="laporan_kompen">
   <div class="containerBars_toggled">
     <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
   </div>
-  <h1 class="text-2xl font-bold mb-2">Laporan Pelanggaran</h1>
+  <h1 class="text-2xl font-bold mb-2">Laporan Kompen</h1>
 
   <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
     <div class="flex-1 ml-4">Kelola Data Mahasiswa</div>
@@ -13,7 +13,7 @@
       <!-- <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div> -->
       <div class="grid grid-cols-1 gap-4 mt-5">
         <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
-          <table id="tableLaporan" class="min-w-full border ">
+          <table id="tableKompen" class="min-w-full border ">
             <!-- Tambahkan header tabel di sini -->
             <thead>
               <tr class="border-b">
@@ -75,7 +75,7 @@
   $(document).ready(function() {
 
 
-    $('#tableLaporan').DataTable({
+    $('#tableKompen').DataTable({
       rowReorder: {
         selector: 'td:nth-child(2)'
       },

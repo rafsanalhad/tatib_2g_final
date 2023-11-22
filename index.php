@@ -61,7 +61,7 @@ if (!empty($_SESSION['level'])) {
             </a>
             <ul class="left-0 top-full hidden mt-2 bg-white">
               <li id="laporan_pelanggaran_nav"><a href="#" class="text_sidebar ml-2"><img src="assets/icon/warning.png" class="inline icon_sidebar" alt="">Laporan Pelanggaran</a></li>
-              <li><a href="#" class="text_sidebar ml-2"><img src="assets/icon/centangKotak.png" class="inline icon_sidebar" alt="">Laporan Kompen</a></li>
+              <li id="laporan_kompen_nav"><a href="#" class="text_sidebar ml-2"><img src="assets/icon/centangKotak.png" class="inline icon_sidebar" alt="">Laporan Kompen</a></li>
             </ul>
           </li>
 
@@ -250,6 +250,7 @@ if (!empty($_SESSION['level'])) {
         <?php include 'data_dosen.php' ?>
         <?php include 'data_mahasiswa.php' ?>
         <?php include 'laporan_pelanggaran.php' ?>
+        <?php include 'laporan_kompen.php' ?>
         <!-- end data dosen  -->
       </div>
 
@@ -257,6 +258,7 @@ if (!empty($_SESSION['level'])) {
         $('#data_dosen').hide();
         $('#data_mahasiswa').hide();
         $('#laporan_pelanggaran').hide();
+        $('#laporan_kompen').hide();
         const checkWidth = () => {
           var windowWidth = $(window).width();
           var sidebar = $(".sidebar");
@@ -278,24 +280,35 @@ if (!empty($_SESSION['level'])) {
           $('#data_dosen').show();
           $('#data_mahasiswa').hide();
           $('#laporan_pelanggaran').hide();
+          $('#laporan_kompen').hide();
         });
         $('#dashboard_nav').on("click", function() {
           $('#dashboard').show();
           $('#data_dosen').hide();
           $('#data_mahasiswa').hide();
           $('#laporan_pelanggaran').hide();
+          $('#laporan_kompen').hide();
         });
         $('#data_mahasiswa_nav').on("click", function() {
           $('#dashboard').hide();
           $('#data_dosen').hide();
           $('#data_mahasiswa').show();
           $('#laporan_pelanggaran').hide();
+          $('#laporan_kompen').hide();
         });
         $('#laporan_pelanggaran_nav').on("click", function() {
           $('#dashboard').hide();
           $('#data_dosen').hide();
           $('#data_mahasiswa').hide();
           $('#laporan_pelanggaran').show();
+          $('#laporan_kompen').hide();
+        });
+        $('#laporan_kompen_nav').on("click", function() {
+          $('#dashboard').hide();
+          $('#data_dosen').hide();
+          $('#data_mahasiswa').hide();
+          $('#laporan_pelanggaran').hide();
+          $('#laporan_kompen').show();
         });
         $(document).ready(function() {
           checkWidth();
