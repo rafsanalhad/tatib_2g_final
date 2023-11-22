@@ -59,7 +59,7 @@ if (!empty($_SESSION['level'])) {
               <span class="sidebar_text">Laporan</span>
             </a>
             <ul class="left-0 top-full hidden mt-2 bg-white">
-              <li><a href="#" class="text_sidebar ml-2"><img src="assets/icon/warning.png" class="inline icon_sidebar" alt="">Laporan Pelanggaran</a></li>
+              <li id="laporan_pelanggaran_nav"><a href="#" class="text_sidebar ml-2"><img src="assets/icon/warning.png" class="inline icon_sidebar" alt="">Laporan Pelanggaran</a></li>
               <li><a href="#" class="text_sidebar ml-2"><img src="assets/icon/centangKotak.png" class="inline icon_sidebar" alt="">Laporan Kompen</a></li>
             </ul>
           </li>
@@ -73,7 +73,9 @@ if (!empty($_SESSION['level'])) {
           var dropdown = laporanNav.querySelector('ul');
 
           laporanNav.addEventListener('click', function() {
-            dropdown.classList.toggle('hidden');
+            laporanNav.classList.add('active_dropdown_laporan');
+            // dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+            dropdown.style.display = 'block';
           });
         });
       </script>
@@ -238,6 +240,9 @@ if (!empty($_SESSION['level'])) {
       </div>
 
       <script>
+        $('#data_dosen').hide();
+        $('#data_mahasiswa').hide();
+        $('#laporan_pelanggaran').hide();
         const checkWidth = () => {
           var windowWidth = $(window).width();
           var sidebar = $(".sidebar");
@@ -272,7 +277,7 @@ if (!empty($_SESSION['level'])) {
           $('#data_mahasiswa').show();
           $('#laporan_pelanggaran').hide();
         });
-        $('#lapoaran_pelanggaran_nav').on("click", function() {
+        $('#laporan_pelanggaran_nav').on("click", function() {
           $('#dashboard').hide();
           $('#data_dosen').hide();
           $('#data_mahasiswa').hide();
@@ -280,7 +285,6 @@ if (!empty($_SESSION['level'])) {
         });
         $(document).ready(function() {
           checkWidth();
-          $('#data_dosen').hide();
           $('.toggle_bars').on("click", function() {
             $('.sidebar').toggleClass('sidebar_toggled');
             $('.main').toggleClass('main_toggled');
