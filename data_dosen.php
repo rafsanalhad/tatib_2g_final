@@ -76,8 +76,8 @@
 
 <div id="static-modal" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
   <!-- Backdrop -->
-  <div class="fixed inset-0 bg-black opacity-50">
-    
+  <div class="fixed inset-0 bg-black opacity-50 ">
+
   </div>
 
   <div class="flex items-center justify-center min-h-screen p-4">
@@ -179,6 +179,7 @@
   // Dapatkan elemen tombol dan modal
   const showModal = () => {
     const modal = document.getElementById('static-modal');
+    $('.sidebar').addClass('sidebar-backdrop');
     modal.classList.remove('hidden');
   }
 
@@ -191,9 +192,11 @@
 
 
   tutupModal.addEventListener('click', function() {
+    $('.sidebar').removeClass('sidebar-backdrop');
     staticModal.classList.add('hidden');
   });
   tutupModal2.addEventListener('click', function() {
+    $('.sidebar').removeClass('sidebar-backdrop');
     staticModal.classList.add('hidden');
   });
 </script>

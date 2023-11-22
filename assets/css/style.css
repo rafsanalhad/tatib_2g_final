@@ -33,7 +33,7 @@
   background: #fff;
   width: 250px;
   height: 100vh;
-  z-index: 100;
+  z-index: 30;
   position: fixed;
   margin-top: 64px;
 }
@@ -75,7 +75,9 @@
   margin-left: 20px;
   margin-right: -20px;
 }
-
+.sidebar-backdrop {
+  pointer-events: none !important;
+}
 .sidebar_toggled.fixed_sidebar {
   visibility: hidden;
 }
