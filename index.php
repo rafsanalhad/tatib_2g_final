@@ -21,6 +21,7 @@ if (!empty($_SESSION['level'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body class="font-sans main">
@@ -64,18 +65,31 @@ if (!empty($_SESSION['level'])) {
             </ul>
           </li>
 
-          <li class="mb-2 sidebar_item"><a href="logout.php" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
+          <li class="mb-2 sidebar_item"><a href="#" onclick="confirmLogin()" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
         </ul>
       </aside>
       <script>
+        const confirmLogin = () => {
+          Swal.fire({
+            title: 'Apakah anda yakin ingin keluar?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: `Keluar`,
+            denyButtonText: `Batal`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              window.location.href = "logout.php";
+            }
+          })
+        }
         document.addEventListener('DOMContentLoaded', function() {
           var laporanNav = document.getElementById('laporan_nav');
           var dropdown = laporanNav.querySelector('ul');
 
           laporanNav.addEventListener('click', function() {
             laporanNav.classList.add('active_dropdown_laporan');
-            // dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-            dropdown.style.display = 'block';
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
           });
         });
       </script>
