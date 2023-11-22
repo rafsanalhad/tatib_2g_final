@@ -60,7 +60,7 @@ if(session_status() === PHP_SESSION_NONE){
           <div class="flex-1 notif_db h-10 flex items-center pl-2">
           <p><b>Info! </b>Berikut adalah Biodata diri anda</p>
           </div>
-          <table class="items-center">
+          <table class="items-center w-full  mt-3">
           <?php
               include "koneksi.php";
               $nim = $_SESSION['username'];
@@ -132,37 +132,37 @@ if(session_status() === PHP_SESSION_NONE){
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-orange-500 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">II</p></div>
+                <div class="w-16 h-10 bg-yellow-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">II</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="text-xs">Pelanggaran Tingkat 2</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
+                <div class="w-16 h-10 bg-yellow-500 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">III</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="text-xs">Pelanggaran Tingkat 3</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
+                <div class="w-16 h-10 bg-yellow-200 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">IV</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="text-xs">Pelanggaran Tingkat 4</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
+                <div class="w-16 h-10 bg-green-500 rounded-lg grid justify-center items-center box5"><p class="text-lg font-bold">V</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="text-xs">Pelanggaran Tingkat 5</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
@@ -198,7 +198,6 @@ if(session_status() === PHP_SESSION_NONE){
         });
     });
 </script>
-
 
 </body>
 
