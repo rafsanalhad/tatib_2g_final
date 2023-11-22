@@ -21,11 +21,9 @@
         
         $_SESSION['username'] =  $row['username'];
         header('location: mahasiswa.php');
-     }else{
+    }else{
         echo "Salah";
         header('location: index.php');
         echo mysqli_error ($koneksi) ;
     }
-
 ?>
-    
