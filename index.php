@@ -125,7 +125,7 @@ if (!empty($_SESSION['level'])) {
                   <div class="inline-flex">
                     <img src="assets/img/jurusan.png" alt="">
                     <div class="block ml-2">
-                      <div class="text-2xl inline">Dosen</div>
+                      <div class="text-2xl inline">Mahasiswa</div>
                       <div class="text-xl block">8</div>
                     </div>
                   </div>
@@ -134,7 +134,7 @@ if (!empty($_SESSION['level'])) {
                   <div class="inline-flex">
                     <img src="assets/img/pelanggaran.png" alt="">
                     <div class="block ml-2">
-                      <div class="text-2xl inline">Dosen</div>
+                      <div class="text-2xl inline">Prodi</div>
                       <div class="text-xl block">8</div>
                     </div>
                   </div>
@@ -143,7 +143,7 @@ if (!empty($_SESSION['level'])) {
                   <div class="inline-flex">
                     <img src="assets/img/user.png" alt="">
                     <div class="block ml-2">
-                      <div class="text-2xl inline">Dosen</div>
+                      <div class="text-2xl inline">Pelanggaran</div>
                       <div class="text-xl block">8</div>
                     </div>
                   </div>
