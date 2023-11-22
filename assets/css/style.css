@@ -35,7 +35,9 @@
   height: 100vh;
   z-index: 100;
   position: fixed;
+  transition: all ease 0.5s;
   margin-top: 64px;
+  
 }
 
 @media (max-width: 768px) {
