@@ -33,11 +33,9 @@
   background: #fff;
   width: 250px;
   height: 100vh;
-  z-index: 100;
+  z-index: 30;
   position: fixed;
-  transition: all ease 0.5s;
   margin-top: 64px;
-  
 }
 
 @media (max-width: 768px) {
@@ -65,19 +63,21 @@
   height: 100vh;
 }
 
-.dataTables_filter {
+.dataTables_filter {  
   display: flex;
-  justify-content: space-between !important;
   align-items: center;
   margin-bottom: 10px;
   width: 100%;
+  right: -100px;
 }
 
 #buttonTambahDosen {
-  margin-left: auto;
-  margin-right: 0;
+  margin-left: 20px;
+  margin-right: -20px;
 }
-
+.sidebar-backdrop {
+  pointer-events: none !important;
+}
 .sidebar_toggled.fixed_sidebar {
   visibility: hidden;
 }
@@ -190,6 +190,13 @@
   height: 382px;
   overflow-y: scroll;
 }
+.containerJenkel{
+  background-color: #92A9F9;
+  border-radius: 10.5px;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
 .jumlah_pelanggaran {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -268,7 +275,4 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
-.containerTableDosen {
-  overflow-x: scroll;
 }
