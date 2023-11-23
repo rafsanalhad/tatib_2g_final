@@ -16,8 +16,7 @@
                     <input type="text" id="username" name="username" class="w-[250px] h-[40px] border border-neutral-400 rounded-[10px] pl-1"/>
                     <label for="password" class="text-neutral-400 text-2xl font-normal font-['Inter'] m-auto mt-[10px]">Password:</label>
                     <input type="password" id="password" name="password" class="w-[250px] h-[40px] border border-neutral-400 rounded-[10px] pl-1"/>
-                    <input type="submit" class="w-[180px] h-[50px] items-center bg-sky-600 rounded-[31px] text-white text-2xl font-normal font-['Inter'] m-auto mt-5 act:bg-sky-600" value="Login" />
-                    <a href="signUp.php" class="m-auto text-lg text-gray-600">create account</a>
+                    <input type="submit" class="w-[180px] h-[50px] items-center bg-sky-600 rounded-[31px] text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Login" />
                 </div>
             </div>
         </form>
