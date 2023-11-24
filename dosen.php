@@ -63,8 +63,8 @@ if(session_status() === PHP_SESSION_NONE){
           <table class="items-center w-full  mt-3">
           <?php
               include "koneksi.php";
-              $nim = $_SESSION['username'];
-              $query = "SELECT * FROM mahasiswa where nim='$nim'";
+              $nip = $_SESSION['username'];
+              $query = "SELECT * FROM dosen where nip='$nip'";
               $result = mysqli_query($koneksi, $query);          
               while ($row = mysqli_fetch_assoc($result)){
             ?>
@@ -78,7 +78,7 @@ if(session_status() === PHP_SESSION_NONE){
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">NIP</td>
-                <td class="border-2 border-slate-700"><?= $row['nim'];  ?></td>
+                <td class="border-2 border-slate-700"><?= $row['nip'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">TTL</td>
@@ -93,12 +93,12 @@ if(session_status() === PHP_SESSION_NONE){
                   }  ?> </td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Jurusan</td>
-                <td class="border-2 border-slate-700"><?= $row['jurusan'];  ?></td>
+                <td class="border-2 border-slate-700">Pendidikan</td>
+                <td class="border-2 border-slate-700"><?= $row['pendidikan'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Alamat</td>
-                <td class="border-2 border-slate-700"><?= $row['alamat'];  ?></td>
+                <td class="border-2 border-slate-700">Jabatan</td>
+                <td class="border-2 border-slate-700"><?= $row['jabatan'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Email</td>
@@ -106,11 +106,11 @@ if(session_status() === PHP_SESSION_NONE){
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Phone</td>
-                <td class="border-2 border-slate-700"><?= $row['phone_ortu'];  ?></td>
+                <td class="border-2 border-slate-700"><?= $row['no_phone'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Phone Ortu</td>
-                <td class="border-2 border-slate-700"><?= $row['phone_ortu'];  ?></td>
+                <td class="border-2 border-slate-700">Alamat</td>
+                <td class="border-2 border-slate-700"><?= $row['alamat'];  ?></td>
               </tr>
               <?php
               }

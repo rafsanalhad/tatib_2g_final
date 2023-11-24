@@ -76,30 +76,36 @@ if(session_status() === PHP_SESSION_NONE){
             </thead>
             <?php
             include "koneksi.php";
-            $query = "SELECT * FROM dosen";
+            $query = "SELECT * FROM pelanggaran";
             $result = mysqli_query($koneksi, $query);
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
+                  <td class="py-2 px-4 border-r"><?= $row['tanggal']; ?></td>
+                  <td class="py-2 px-4 border-r" alt="" class="foto_profil_dosen_table inline ">
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
-                  <td class="py-2 px-4 border-r"><?= $row['nip']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
                   <td class="py-2 px-4 border-r">
-                    <div class="containerJenkel"><?php
-                                                  if ($row['jenis_kelamin'] == 'L') {
-                                                    echo 'Laki-laki';
-                                                  } else {
-                                                    echo 'Perempuan';
+                    <div class="containerTingkatPelanggaran"><?php
+                                                  if ($row['tingkat'] == '1') {
+                                                    echo 'Sangat Berat';
+                                                  } elseif ($row['tingkat'] == '2') {
+                                                    echo 'Berat';
+                                                  }elseif ($row['tingkat'] == '3'){
+                                                    echo 'Cukup Berat';
+                                                  }elseif ($row['tingkat'] == '4'){
+                                                    echo 'Sedang';
+                                                  }elseif ($row['tingkat'] == '5'){
+                                                    echo 'Ringan';
                                                   }
                                                   ?></div>
                   </td>
-                  <td class="py-2 px-4 border-r"><?= $row['no_phone']; ?></td>
-                  <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
-                  <td class="py-2 px-4 border-r">
+                  <td class="py-2 px-4 border-r"><?= $row['sanksi_pelanggaran']; ?></td>
+                  <td class="py-2 px-4 border-r flex space-x-1.5">
                     <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
                   </td>
