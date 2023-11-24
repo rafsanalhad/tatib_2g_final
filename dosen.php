@@ -9,7 +9,7 @@ if(session_status() === PHP_SESSION_NONE){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahasiswa</title>
+  <title>Dosen</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -39,8 +39,8 @@ if(session_status() === PHP_SESSION_NONE){
       </div>
       <ul>
         <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="riwayat_pelanggaran.php" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Riwayat Pelanggaran</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="ubah_password.php" class="text_sidebar"><img src="assets/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
+        <li class="mb-2 sidebar_item"><a href="riwayat_pengaduan.php" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Riwayat Pengaduan</span></a></li>
+        <li class="mb-2 sidebar_item"><a href="ubah_password_dosen.php" class="text_sidebar"><img src="assets/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
         <li class="mb-2 sidebar_item"><a href="logout.php" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
       </ul>
     </aside>
@@ -63,8 +63,8 @@ if(session_status() === PHP_SESSION_NONE){
           <table class="items-center w-full  mt-3">
           <?php
               include "koneksi.php";
-              $nim = $_SESSION['username'];
-              $query = "SELECT * FROM mahasiswa where nim='$nim'";
+              $nip = $_SESSION['username'];
+              $query = "SELECT * FROM dosen where nip='$nip'";
               $result = mysqli_query($koneksi, $query);          
               while ($row = mysqli_fetch_assoc($result)){
             ?>
@@ -77,8 +77,8 @@ if(session_status() === PHP_SESSION_NONE){
                 <td class="border-2 border-slate-700"><?= $row['nama'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">NIM</td>
-                <td class="border-2 border-slate-700"><?= $row['nim'];  ?></td>
+                <td class="border-2 border-slate-700">NIP</td>
+                <td class="border-2 border-slate-700"><?= $row['nip'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">TTL</td>
@@ -93,12 +93,12 @@ if(session_status() === PHP_SESSION_NONE){
                   }  ?> </td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Jurusan</td>
-                <td class="border-2 border-slate-700"><?= $row['jurusan'];  ?></td>
+                <td class="border-2 border-slate-700">Pendidikan</td>
+                <td class="border-2 border-slate-700"><?= $row['pendidikan'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Alamat</td>
-                <td class="border-2 border-slate-700"><?= $row['alamat'];  ?></td>
+                <td class="border-2 border-slate-700">Jabatan</td>
+                <td class="border-2 border-slate-700"><?= $row['jabatan'];  ?></td>
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Email</td>
@@ -106,11 +106,11 @@ if(session_status() === PHP_SESSION_NONE){
               </tr>
               <tr>
                 <td class="border-2 border-slate-700">Phone</td>
-                <td class="border-2 border-slate-700"><?= $row['phone_ortu'];  ?></td>
+                <td class="border-2 border-slate-700"><?= $row['no_phone'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Phone Ortu</td>
-                <td class="border-2 border-slate-700"><?= $row['phone_ortu'];  ?></td>
+                <td class="border-2 border-slate-700">Alamat</td>
+                <td class="border-2 border-slate-700"><?= $row['alamat'];  ?></td>
               </tr>
               <?php
               }
@@ -119,14 +119,14 @@ if(session_status() === PHP_SESSION_NONE){
           </table>
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
-          <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
+          <h3 class="pelanggaran_tbr_title">Jumlah Pengaduan</h3>
           <hr class="hr_db">
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
                 <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 1</p>
+                <p class="text-xs">Pengaduan Tingkat 1</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
@@ -135,7 +135,7 @@ if(session_status() === PHP_SESSION_NONE){
                 <div class="w-16 h-10 bg-yellow-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">II</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 2</p>
+                <p class="text-xs">Pengaduan Tingkat 2</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
@@ -144,7 +144,7 @@ if(session_status() === PHP_SESSION_NONE){
                 <div class="w-16 h-10 bg-yellow-500 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">III</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 3</p>
+                <p class="text-xs">Pengaduan Tingkat 3</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
@@ -153,7 +153,7 @@ if(session_status() === PHP_SESSION_NONE){
                 <div class="w-16 h-10 bg-yellow-200 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">IV</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 4</p>
+                <p class="text-xs">Pengaduan Tingkat 4</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
@@ -162,7 +162,7 @@ if(session_status() === PHP_SESSION_NONE){
                 <div class="w-16 h-10 bg-green-500 rounded-lg grid justify-center items-center box5"><p class="text-lg font-bold">V</p></div>
               </div>
               <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 5</p>
+                <p class="text-xs">Pengaduan Tingkat 5</p>
                 <p class="font-bold">2</p>
               </div>
             </div>

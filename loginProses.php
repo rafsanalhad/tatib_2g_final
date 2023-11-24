@@ -16,6 +16,7 @@
     if ($row['level'] == 1) {
         header('location: index.php');
     }else if ($row['level'] == 2) {
+        $_SESSION['username'] =  $row['username'];
         header('location: dosen.php');
     }else if ($row['level'] == 3) {
         
