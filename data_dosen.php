@@ -72,57 +72,7 @@
     <!-- Tambahkan elemen sesuai kebutuhan Anda -->
   </div>
 </div>
-
-
-<div id="static-modal" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
-  <!-- Backdrop -->
-  <div class="fixed inset-0 bg-black opacity-50 ">
-
-  </div>
-
-  <div class="flex items-center justify-center min-h-screen p-4">
-    <div class="bg-white w-full max-w-md p-8 rounded-lg shadow-md relative">
-      <!-- Tombol untuk menutup modal -->
-      <button id="tutupModal" class="absolute top-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-        <i class="fa-solid fa-times"></i>
-      </button>
-
-      <!-- Konten Modal -->
-      <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1>
-      <form class="mb-6">
-        <div class="mb-4">
-          <label for="name" class="block text-sm font-medium text-gray-900">Nama Produk</label>
-          <input type="text" name="name" id="name" class="mt-1 p-2 w-full border rounded-md">
-        </div>
-        <div class="mb-4">
-          <label for="price" class="block text-sm font-medium text-gray-900">Harga</label>
-          <input type="number" name="price" id="price" class="mt-1 p-2 w-full border rounded-md">
-        </div>
-        <div class="mb-4">
-          <label for="category" class="block text-sm font-medium text-gray-900">Kategori</label>
-          <select id="category" class="mt-1 p-2 w-full border rounded-md">
-            <option value="TV">TV/Monitors</option>
-            <option value="PC">PC</option>
-            <option value="GA">Gaming/Console</option>
-            <option value="PH">Phones</option>
-          </select>
-        </div>
-        <div class="mb-4">
-          <label for="description" class="block text-sm font-medium text-gray-900">Deskripsi Produk</label>
-          <textarea id="description" rows="4" class="mt-1 p-2 w-full border rounded-md"></textarea>
-        </div>
-      </form>
-
-      <!-- Tombol untuk menutup modal -->
-      <button id="tutupModal2" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-        Tutup Modal
-      </button>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Tambah Produk
-      </button>
-    </div>
-  </div>
-</div>
+<?php include 'modalTambahEdit.php'?>
 <script>
   $(document).ready(function() {
 
@@ -172,7 +122,7 @@
         ]
       }
     });
-    $('#tableDosen_filter').append('<div id="buttonTambahDosen"><a data-modal-target="static-modal" onclick="showModal();"data-modal-toggle="static-modal" href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+    $('#tableDosen_filter').append('<div id="buttonTambahDosen"><a onclick="showModal();"data-modal-toggle="static-modal" href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
   });
 </script>
 <script>
