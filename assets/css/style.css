@@ -88,6 +88,9 @@
 .sidebar_toggled .nama_profil {
   display: none;
 }
+.sidebar_toggled .submenu_laporan {
+  display: none !important;
+}
 .sidebar_toggled .containerBars {
   display: none;
 }

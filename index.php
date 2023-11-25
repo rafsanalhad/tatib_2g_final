@@ -59,7 +59,7 @@ if (!empty($_SESSION['level'])) {
               <img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt="">
               <span class="sidebar_text">Laporan</span>
             </a>
-            <ul class="left-0 top-full hidden mt-2 bg-white">
+            <ul class="left-0 top-full hidden mt-2 bg-white submenu_laporan">
               <li id="laporan_pelanggaran_nav"><a href="#" class="text_sidebar ml-2"><img src="assets/icon/warning.png" class="inline icon_sidebar" alt="">Laporan Pelanggaran</a></li>
               <li id="laporan_kompen_nav"><a href="#" class="text_sidebar ml-2"><img src="assets/icon/centangKotak.png" class="inline icon_sidebar" alt="">Laporan Kompen</a></li>
             </ul>
