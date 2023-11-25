@@ -236,6 +236,9 @@
 .sidebar_item:hover {
   background: #c0d2ff;
 }
+.sidebar_item_aktif {
+  background-color: #c0d2ff;
+}
 .bobot_cukup_berat {
   border-radius: 6px;
   background: #ffdf6c;

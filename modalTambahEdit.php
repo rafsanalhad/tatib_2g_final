@@ -13,17 +13,17 @@
 
       <!-- Konten Modal -->
       <!-- <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1> -->
-
+      <h3 class="text-2xl mb-7 font-bold">Tambah Data Mahasiswa</h3>
       <div class="flex flex-col md:flex-row">
         <div class="containerGroupImg md:w-1/4">
           <img src="assets/icon/Group.png" alt="" style="padding: 50px;">
         </div>
         <div class="containerFormModal md:w-3/4 ml-3">
           <form class="mb-3">
-            <div class="mb-4 mt-8">
+            <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" class="block text-sm font-medium text-gray-900">Nama Produk</label>
+                  <label for="name" class="block text-sm font-medium text-gray-900">Nama</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
@@ -31,10 +31,10 @@
                 </div>
               </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" class="block text-sm font-medium text-gray-900">Nama Produk</label>
+                  <label for="name" class="block text-sm font-medium text-gray-900">NIM</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
@@ -42,10 +42,10 @@
                 </div>
               </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" class="block text-sm font-medium text-gray-900">Nama Produk</label>
+                  <label for="name" class="block text-sm font-medium text-gray-900">TTL</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
@@ -53,10 +53,10 @@
                 </div>
               </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" class="block text-sm font-medium text-gray-900">Nama Produk</label>
+                  <label for="name" class="block text-sm font-medium text-gray-900">Jenis Kelamin
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
@@ -64,10 +64,32 @@
                 </div>
               </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" class="block text-sm font-medium text-gray-900">Nama Produk</label>
+                  <label for="name" class="block text-sm font-medium text-gray-900">No Telp</label>
+                </div>
+                <div class="w-3/4 inline-flex items-center">
+                  <div class="mr-2">: </div>
+                  <input type="text" name="name" id="name" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <div class="flex items-center">
+                <div class="w-2/4">
+                  <label for="name" class="block text-sm font-medium text-gray-900">Jurusan</label>
+                </div>
+                <div class="w-3/4 inline-flex items-center">
+                  <div class="mr-2">: </div>
+                  <input type="text" name="name" id="name" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <div class="flex items-center">
+                <div class="w-2/4">
+                  <label for="name" class="block text-sm font-medium text-gray-900">No Telp Ortu</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
@@ -80,11 +102,11 @@
       </div>
       <div class="flex w-full">
         <div class="ml-auto">
-          <button id="tutupModal2" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-            Tutup Modal
+          <button id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Tutup
           </button>
-          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Tambah Produk
+          <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            Simpan
           </button>
         </div>
       </div>

@@ -69,6 +69,19 @@ if (!empty($_SESSION['level'])) {
         </ul>
       </aside>
       <script>
+        // Script untuk menangani keadaan aktif pada elemen
+        document.addEventListener('DOMContentLoaded', function() {
+          const sidebarItems = document.querySelectorAll('.sidebar_item');
+
+          sidebarItems.forEach(item => {
+            item.addEventListener('click', function() {
+              sidebarItems.forEach(item => item.classList.remove('sidebar_item_aktif'));
+              this.classList.add('sidebar_item_aktif');
+            });
+          });
+        });
+      </script>
+      <script>
         const confirmLogin = () => {
           Swal.fire({
             title: 'Apakah anda yakin ingin keluar?',
