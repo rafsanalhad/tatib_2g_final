@@ -322,6 +322,46 @@ if (!empty($_SESSION['level'])) {
             // anjay 
           });
         });
+        const modalKompen = document.getElementById('static-modal-kompen');
+        const showModalKompen = () => {
+          $('.sidebar').addClass('sidebar-backdrop');
+          modalKompen.classList.remove('hidden');
+        }
+        const tutupModalKompen = document.getElementById('tutupModalKompen');
+        const tutupModalKompen2 = document.getElementById('tutupModalKompen2');
+
+
+        tutupModalKompen.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          modalKompen.classList.add('hidden');
+        });
+        tutupModalKompen2.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          modalKompen.classList.add('hidden');
+        });
+
+        const showModal = () => {
+          const modal = document.getElementById('static-modal');
+          $('.sidebar').addClass('sidebar-backdrop');
+          modal.classList.remove('hidden');
+        }
+
+
+        const buttonTambahDosen = document.getElementById('buttonTambahDosen');
+        const staticModal = document.getElementById('static-modal');
+        const tutupModal = document.getElementById('tutupModal');
+        const tutupModa2 = document.getElementById('tutupModal2');
+
+
+
+        tutupModal.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          staticModal.classList.add('hidden');
+        });
+        tutupModal2.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          staticModal.classList.add('hidden');
+        });
       </script>
   </body>
 

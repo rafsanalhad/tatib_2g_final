@@ -52,7 +52,7 @@
                   <td class="py-2 px-4 border-r"><?= $row['no_phone']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                   <td class="py-2 px-4 border-r ">
-                    <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline" onclick="showModal();"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline" onclick="showModalKompen();"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-trash"></i></a>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
@@ -72,31 +72,6 @@
   </div>
 </div>
 <?php include 'modal_kompen.php' ?>
-<script>
-  // Dapatkan elemen tombol dan modal
-  const showModal = () => {
-    const modal = document.getElementById('static-modal');
-    $('.sidebar').addClass('sidebar-backdrop');
-    modal.classList.remove('hidden');
-  }
-
-
-  const buttonTambahDosen = document.getElementById('buttonTambahDosen');
-  const staticModal = document.getElementById('static-modal');
-  const tutupModal = document.getElementById('tutupModal');
-  const tutupModa2 = document.getElementById('tutupModal2');
-
-
-
-  tutupModal.addEventListener('click', function() {
-    $('.sidebar').removeClass('sidebar-backdrop');
-    staticModal.classList.add('hidden');
-  });
-  tutupModal2.addEventListener('click', function() {
-    $('.sidebar').removeClass('sidebar-backdrop');
-    staticModal.classList.add('hidden');
-  });
-</script>
 <script>
   $(document).ready(function() {
 
