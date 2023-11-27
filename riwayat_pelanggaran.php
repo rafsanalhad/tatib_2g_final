@@ -53,7 +53,7 @@ if(session_status() === PHP_SESSION_NONE){
       </div>
       <h1 class="text-2xl font-bold mb-2">Riwayat Pelanggaran</h1>
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-        <div class="flex-1 ml-4">Riwayat Pelanggaran</div>
+        <div class="flex-1 ml-4"><?php ?></div>
       </div>
       <hr class="hr_db">
       <div class="flex bg-white flex-col xl:flex-row">
@@ -77,10 +77,10 @@ if(session_status() === PHP_SESSION_NONE){
             <?php
             include "koneksi.php";
             $nim = $_SESSION['username'];
-            $query = "SELECT m.nim, m.nama, m.TTL, p.tanggal_pengaduan, pe.tingkat, pe.sanksi_pelanggaran
+            $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.sanksi_pelanggaran
               FROM mahasiswa m 
               join pengaduan p on m.nim = p.nim
-              join pelanggaran pe on p.pelanggaran_id = p.pelanggaran_id
+              join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
               WHERE m.nim = '$nim'";
             $result = mysqli_query($koneksi, $query);
             while ($row = mysqli_fetch_assoc($result)) {
@@ -93,7 +93,7 @@ if(session_status() === PHP_SESSION_NONE){
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
-                  <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['tingkat']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <div class="containerTingkatPelanggaran"><?php
                                                   if ($row['tingkat'] == '1') {
