@@ -39,7 +39,7 @@ if(session_status() === PHP_SESSION_NONE){
         </div>
       </div>
       <ul>
-        <li class="mb-2 sidebar_item"><a href="mahasiswa.php" class="text_sidebar"><img src="assets/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
+        <li class="mb-2 sidebar_item"><a href="index.php" class="text_sidebar"><img src="assets/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
         <li class="mb-2 sidebar_item"><a href="riwayat_pelanggaran.php" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Riwayat Pelanggaran</span></a></li>
         <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
         <li class="mb-2 sidebar_item"><a href="logout.php" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>

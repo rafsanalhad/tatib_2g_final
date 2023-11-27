@@ -15,11 +15,13 @@ if(session_status() === PHP_SESSION_NONE){
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 </head>
 
 <body class="font-sans main">
   <!-- Navbar -->
-  <nav class="navbar p-4 h-16 fixed top-0 w-full bg-gray-800">
+  <nav class="navbar p-4 h-16 fixed top-0 w-full bg-gray-800 z-50">
     <div class="container-fluid mx-auto flex justify-between items-center">
         <div class="text-white font-bold text-xl">Sistem Tata Tertib</div>
         <div class="containerBarsMobile toggle_bars_mobile">
@@ -53,7 +55,7 @@ if(session_status() === PHP_SESSION_NONE){
       </div>
       <h1 class="text-2xl font-bold mb-2">Riwayat Pelanggaran</h1>
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-        <div class="flex-1 ml-4">Riwayat Pelanggaran</div>
+        <div class="flex-1 ml-4"><?php ?></div>
       </div>
       <hr class="hr_db">
       <div class="flex bg-white flex-col xl:flex-row">
@@ -65,8 +67,7 @@ if(session_status() === PHP_SESSION_NONE){
             <thead>
               <tr class="border-b">
                 <th class="py-2 px-4 border-r">Tanggal</th>
-                <th class="py-2 px-4 border-r">Nama Mahasiswa</th>
-                <th class="py-2 px-4 border-r">NIM</th>
+                <th class="py-2 px-4 border-r">Pelanggaran</th>
                 <th class="py-2 px-4 border-r">Tingkat</th>
                 <th class="py-2 px-4 border-r">Jen. Pelanggaran</th>
                 <th class="py-2 px-4 border-r">Kompen</th>
@@ -76,19 +77,22 @@ if(session_status() === PHP_SESSION_NONE){
             </thead>
             <?php
             include "koneksi.php";
-            $query = "SELECT * FROM pelanggaran";
+            $nim = $_SESSION['username'];
+            $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.sanksi_pelanggaran, pe.pelanggaran
+              FROM mahasiswa m 
+              join pengaduan p on m.nim = p.nim
+              join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
+              WHERE m.nim = '$nim'";
             $result = mysqli_query($koneksi, $query);
-            while ($row = mysqli_fetch_assoc($result)) {
+            
             ?>
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
+                <?php while ($row = mysqli_fetch_assoc($result)) {?>
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"><?= $row['tanggal']; ?></td>
-                  <td class="py-2 px-4 border-r" alt="" class="foto_profil_dosen_table inline ">
-                    <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
-                  </td>
-                  <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
-                  <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['tingkat']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <div class="containerTingkatPelanggaran"><?php
                                                   if ($row['tingkat'] == '1') {
@@ -121,8 +125,55 @@ if(session_status() === PHP_SESSION_NONE){
       </div>
       </div>
     </div>
-
     <script>
+      $(document).ready(function() {
+$('#tableMahasiswa').DataTable({
+  rowReorder: {
+    selector: 'td:nth-child(2)'
+  },
+  lengthChange: false,
+  responsive: {
+    breakpoints: [{
+        name: 'bigdesktop',
+        width: Infinity
+      },
+      {
+        name: 'meddesktop',
+        width: 1480
+      },
+      {
+        name: 'smalldesktop',
+        width: 1280
+      },
+      {
+        name: 'medium',
+        width: 1188
+      },
+      {
+        name: 'tabletl',
+        width: 1024
+      },
+      {
+        name: 'btwtabllandp',
+        width: 848
+      },
+      {
+        name: 'tabletp',
+        width: 768
+      },
+      {
+        name: 'mobilel',
+        width: 480
+      },
+      {
+        name: 'mobilep',
+        width: 320
+      }
+    ]
+  }
+});
+$('#tableDosen_filter').append('<div id="buttonTambahDosen"><a onclick="showModal();"data-modal-toggle="static-modal" href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+});
     const checkWidth = () => {
         var windowWidth = $(window).width();
         var sidebar = $(".sidebar");

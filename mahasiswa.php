@@ -10,6 +10,7 @@ if(session_status() === PHP_SESSION_NONE){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mahasiswa</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -41,7 +42,7 @@ if(session_status() === PHP_SESSION_NONE){
         <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
         <li class="mb-2 sidebar_item"><a href="riwayat_pelanggaran.php" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Riwayat Pelanggaran</span></a></li>
         <li class="mb-2 sidebar_item"><a href="ubah_password.php" class="text_sidebar"><img src="assets/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="logout.php" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
+        <li class="mb-2 sidebar_item"><a onclick="confirmLogin()" href="#" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
       </ul>
     </aside>
 
@@ -170,6 +171,20 @@ if(session_status() === PHP_SESSION_NONE){
     </div>
 
     <script>
+      const confirmLogin = () => {
+          Swal.fire({
+            title: 'Apakah anda yakin ingin keluar?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: `Keluar`,
+            denyButtonText: `Batal`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              window.location.href = "logout.php";
+            }
+          })
+        }
     const checkWidth = () => {
         var windowWidth = $(window).width();
         var sidebar = $(".sidebar");
@@ -192,7 +207,6 @@ if(session_status() === PHP_SESSION_NONE){
             $('.sidebar').toggleClass('sidebar_toggled');
             $('.main').toggleClass('main_toggled');
         });
-
         $(window).resize(function () {
             checkWidth();
         });
