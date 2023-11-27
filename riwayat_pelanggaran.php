@@ -76,7 +76,7 @@ if(session_status() === PHP_SESSION_NONE){
             </thead>
             <?php
             include "koneksi.php";
-            $nim = $_SESSION('username');
+            $nim = $_SESSION['username'];
             $query = "SELECT m.nim, m.nama, m.TTL, p.tanggal_pengaduan, pe.tingkat 
               FROM mahasiswa m 
               join pengaduan p on m.nim = p.nim
