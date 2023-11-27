@@ -76,10 +76,10 @@ if(session_status() === PHP_SESSION_NONE){
             <?php
             include "koneksi.php";
             $nip = $_SESSION['username'];
-            $query = "SELECT m.nim, m.nama, m.TTL, p.tanggal_pengaduan, pe.tingkat
-            FROM mahasiswa m
+            $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat
+            FROM mahasiswa m 
             join pengaduan p on m.nim = p.nim
-            join pelanggaran pe on p.pelanggaran_id = p.pelanggaran_id
+            join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
             JOIN dosen d on p.nip = d.nip
             WHERE d.nip = '$nip'";
             $result = mysqli_query($koneksi, $query);
@@ -93,7 +93,7 @@ if(session_status() === PHP_SESSION_NONE){
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
-                  <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['tingkat']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <div class="containerTingkatPelanggaran"><?php
                                                   if ($row['tingkat'] == '1') {
