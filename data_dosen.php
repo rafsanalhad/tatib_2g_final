@@ -36,8 +36,11 @@
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
-                    <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
+                  <td class="py-2 px-4 border-r"> 
+                    <div class="flex items-center">
+                      <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
+                      <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
+                    </div>
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['nip']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
@@ -53,8 +56,10 @@
                   <td class="py-2 px-4 border-r"><?= $row['no_phone']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                   <td class="py-2 px-4 border-r">
-                    <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                    <div class="inline`">
+                      <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
+                      <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                    </div>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
@@ -72,7 +77,7 @@
     <!-- Tambahkan elemen sesuai kebutuhan Anda -->
   </div>
 </div>
-<?php include 'modalTambahEdit.php'?>
+<?php include 'modalTambahEdit.php' ?>
 <script>
   $(document).ready(function() {
 
@@ -122,7 +127,7 @@
         ]
       }
     });
-    $('#tableDosen_filter').append('<div id="buttonTambahDosen"><a onclick="showModal();"data-modal-toggle="static-modal" href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+    $('#tableDosen_filter').append('<div id="buttonTambahDosen"><a onclick="showModal();"data-modal-toggle="static-modal" href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
   });
 </script>
 <script>

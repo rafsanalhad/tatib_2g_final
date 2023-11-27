@@ -36,6 +36,9 @@
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
+                  <div class="flex items-center">
+                    
+                  </div>
                   <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
@@ -121,6 +124,6 @@
         ]
       }
     });
-    $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" onclick="showModal();" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+    $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" onclick="showModal();" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
   });
 </script>
