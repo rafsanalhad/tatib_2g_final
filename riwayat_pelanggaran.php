@@ -76,7 +76,12 @@ if(session_status() === PHP_SESSION_NONE){
             </thead>
             <?php
             include "koneksi.php";
-            $query = "SELECT * FROM pelanggaran";
+            $nim = $_SESSION('username');
+            $query = "SELECT m.nim, m.nama, m.TTL, p.tanggal_pengaduan, pe.tingkat 
+              FROM mahasiswa m 
+              join pengaduan p on m.nim = p.nim
+              join pelanggaran pe on p.pelanggaran_id = p.pelanggaran_id
+              WHERE m.nim = '$nim'";
             $result = mysqli_query($koneksi, $query);
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
