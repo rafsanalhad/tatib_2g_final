@@ -66,7 +66,7 @@ if(session_status() === PHP_SESSION_NONE){
           <br>
           <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="password" name="newPass" id="newPass">
       </div>
-      <input type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Simpan"/>
+      <button type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700">Simpan</button>
     </div>
 
     <script>
