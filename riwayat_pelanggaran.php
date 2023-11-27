@@ -77,7 +77,7 @@ if(session_status() === PHP_SESSION_NONE){
             <?php
             include "koneksi.php";
             $nim = $_SESSION['username'];
-            $query = "SELECT m.nim, m.nama, m.TTL, p.tanggal_pengaduan, pe.tingkat 
+            $query = "SELECT m.nim, m.nama, m.TTL, p.tanggal_pengaduan, pe.tingkat, pe.sanksi_pelanggaran
               FROM mahasiswa m 
               join pengaduan p on m.nim = p.nim
               join pelanggaran pe on p.pelanggaran_id = p.pelanggaran_id
@@ -88,7 +88,7 @@ if(session_status() === PHP_SESSION_NONE){
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"><?= $row['tanggal']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
                   <td class="py-2 px-4 border-r" alt="" class="foto_profil_dosen_table inline ">
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
