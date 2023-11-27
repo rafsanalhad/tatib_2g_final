@@ -14,6 +14,7 @@ if(session_status() === PHP_SESSION_NONE){
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="font-sans main">
@@ -50,7 +51,7 @@ if(session_status() === PHP_SESSION_NONE){
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
-      <h1 class="text-2xl font-bold mb-2">Dashboard</h1>
+      <h1 class="text-2xl font-bold mb-2">Dashboard Dosen</h1>
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
         <div class="flex-1 ml-4">Ringkasan System</div>
       </div>
@@ -70,47 +71,47 @@ if(session_status() === PHP_SESSION_NONE){
             ?>
             <tbody>
               <tr>
-                <td class="border-2 border-slate-700" rowspan="10"><img src="assets/profil/mhs1.png" class="m-auto" alt="profil"></td>
+                <td rowspan="10"><img src="assets/profil/mhs1.png" class="m-auto" alt="profil"></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Nama</td>
-                <td class="border-2 border-slate-700"><?= $row['nama'];  ?></td>
+                <td>Nama</td>
+                <td><?= $row['nama'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">NIP</td>
-                <td class="border-2 border-slate-700"><?= $row['nip'];  ?></td>
+                <td>NIP</td>
+                <td><?= $row['nip'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">TTL</td>
-                <td class="border-2 border-slate-700"><?= $row['TTL'];  ?></td>
+                <td>TTL</td>
+                <td><?= $row['TTL'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Jen. Kelamin</td>
-                <td class="border-2 border-slate-700"><?php if ($row['jenis_kelamin'] == 'L') {
+                <td>Jen. Kelamin</td>
+                <td><?php if ($row['jenis_kelamin'] == 'L') {
                     echo 'Laki-laki';
                   }else{
                     echo 'Perempuan';
                   }  ?> </td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Pendidikan</td>
-                <td class="border-2 border-slate-700"><?= $row['pendidikan'];  ?></td>
+                <td>Pendidikan</td>
+                <td><?= $row['pendidikan'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Jabatan</td>
-                <td class="border-2 border-slate-700"><?= $row['jabatan'];  ?></td>
+                <td>Jabatan</td>
+                <td><?= $row['jabatan'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Email</td>
-                <td class="border-2 border-slate-700"><?= $row['email'];  ?></td>
+                <td>Email</td>
+                <td><?= $row['email'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Phone</td>
-                <td class="border-2 border-slate-700"><?= $row['no_phone'];  ?></td>
+                <td>Phone</td>
+                <td><?= $row['no_phone'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Alamat</td>
-                <td class="border-2 border-slate-700"><?= $row['alamat'];  ?></td>
+                <td>Alamat</td>
+                <td><?= $row['alamat'];  ?></td>
               </tr>
               <?php
               }
@@ -167,8 +168,11 @@ if(session_status() === PHP_SESSION_NONE){
               </div>
             </div>
         </div>
-    </div>
-
+      </div>
+      <div class="text-center">
+        <input type="submit" class="w-[200px] h-[60px] mt-5 items-center align-center justify-center bg-red-600 rounded-xl text-white text-xl font-normal font-['Inter'] m-auto hover:bg-red-800" value="Ajukan Pengaduan"/>
+      </div>
+        
     <script>
     const checkWidth = () => {
         var windowWidth = $(window).width();
