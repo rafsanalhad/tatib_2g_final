@@ -170,7 +170,9 @@ if(session_status() === PHP_SESSION_NONE){
         </div>
       </div>
       <div class="text-center mt-5">
-        <a href="form_pengaduan.php" class="text-white bg-red-600 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5">Ajukan Pengaduan</a>
+        <button class="w-[180px] h-[50px] bg-red-600 hover:bg-red-800 font-medium rounded-lg">
+          <a href="form_pengaduan.php" class="text-white text-lg font-serif text-center">Ajukan Pengaduan</a>
+        </button>
       </div>
     <script>
     const checkWidth = () => {

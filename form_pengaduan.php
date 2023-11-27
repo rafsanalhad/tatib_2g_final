@@ -53,30 +53,49 @@ if(session_status() === PHP_SESSION_NONE){
       </div>
       <h1 class="text-2xl font-bold mb-2">Ajukan Pengaduan</h1>
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-        <div class="flex-1 ml-4">Ajukan Pengaduan</div>
+        <div class="flex-1 ml-4">Ajukan Pengaduan Mahasiswa</div>
       </div>
       <hr class="hr_db">
-      <div class="flex-1 bg-white p-4">
+      <div class="flex-1 bg-white pt-2 pl-5">
           <label for="nimPengaduan">NIM:</label>
           <br>
-          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="text" name="nimPengaduan" id="nimPengaduan">
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="nimPengaduan" id="nimPengaduan">
       </div>
-      <div class="flex-1 bg-white p-4">
+      <div class="flex-1 bg-white pt-2 pl-5">
           <label for="namaMhsPengaduan">Nama Mahasiswa:</label>
           <br>
-          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="text" name="namaMhsPengaduan" id="namaMhsPengaduan">
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaMhsPengaduan" id="namaMhsPengaduan">
       </div>
-      <div class="flex-1 bg-white p-4">
+      <div class="flex-1 bg-white pt-2 pl-5">
           <label for="namaDsnPengaduan">Nama Dosen Pelapor:</label>
           <br>
-          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="text" name="namaDsnPengaduan" id="namaDsnPengaduan">
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaDsnPengaduan" id="namaDsnPengaduan">
       </div>
-      <div class="flex-1 bg-white p-4">
+      <div class="flex-1 bg-white pt-2 pl-5">
           <label for="noHpMhsPengaduan">Nomor Hp Mahasiswa:</label>
           <br>
-          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="text" name="noHpMhsPengaduan" id="noHpMhsPengaduan">
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="noHpMhsPengaduan">
       </div>
-      
+      <div class="flex-1 bg-white pt-2 pl-5">
+          <label for="jenisPelanggaran">Jenis Pelanggaran:</label>
+          <br>
+          <select name="pl-2 jenisPelanggaran" id="jenisPelanggaran" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
+              <option value="volvo">1</option>
+              <option value="saab">2</option>
+              <option value="opel">3</option>
+              <option value="audi">4</option>    
+            </select>
+        </div>
+        <div class="flex-1 bg-white pt-2 pl-5">
+            <label for="fotoPengaduan">Upload Foto:</label>
+            <br>
+            <input class="pl-2 w-[250px] h-[40px] mt-1" type="file" name="fotoPengaduan" id="fotoPengaduan">
+        </div>
+        <div class="flex-1 bg-white pt-2 pl-5 pb-3">
+            <label for="tglPengaduan">Tanggal Pengaduan:</label>
+            <br>
+            <input class="pl-2 mt-1 border border-neutral-400 w-[250px] h-[40px] rounded-lg " type="date" name="tglPengaduan" id="tglPengaduan">
+        </div>
       <input type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Simpan"/>
     </div>
 
