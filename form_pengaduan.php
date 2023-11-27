@@ -47,16 +47,13 @@ if(session_status() === PHP_SESSION_NONE){
     </aside>
 
     <!-- Content -->
-    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content">
+    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content text-center">
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
       <h1 class="text-2xl font-bold mb-2">Ajukan Pengaduan</h1>
-      <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-        <div class="flex-1 ml-4">Ajukan Pengaduan Mahasiswa</div>
-      </div>
-      <hr class="hr_db">
-      <div class="flex-1 bg-white pt-2 pl-5">
+      <div class="flex-col bg-white items-center shadow-sm subtitle_dashboard text-center mx-80">
+        <div class="flex-1 bg-white pt-2 pl-5">
           <label for="nimPengaduan">NIM:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="nimPengaduan" id="nimPengaduan">
@@ -96,7 +93,10 @@ if(session_status() === PHP_SESSION_NONE){
             <br>
             <input class="pl-2 mt-1 border border-neutral-400 w-[250px] h-[40px] rounded-lg " type="date" name="tglPengaduan" id="tglPengaduan">
         </div>
-      <input type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Simpan"/>
+    </div>
+    <div class="text-center">
+        <input type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Simpan"/>
+    </div>
     </div>
 
     <script>
