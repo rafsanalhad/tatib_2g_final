@@ -169,10 +169,9 @@ if(session_status() === PHP_SESSION_NONE){
             </div>
         </div>
       </div>
-      <div class="text-center">
-        <input type="submit" class="w-[200px] h-[60px] mt-5 items-center align-center justify-center bg-red-600 rounded-xl text-white text-xl font-normal font-['Inter'] m-auto hover:bg-red-800" value="Ajukan Pengaduan"/>
+      <div class="text-center mt-5">
+        <a href="form_pengaduan.php" class="text-white bg-red-600 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5">Ajukan Pengaduan</a>
       </div>
-        
     <script>
     const checkWidth = () => {
         var windowWidth = $(window).width();

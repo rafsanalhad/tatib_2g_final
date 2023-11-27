@@ -41,7 +41,7 @@ if(session_status() === PHP_SESSION_NONE){
       <ul>
         <li class="mb-2 sidebar_item"><a href="dosen.php" class="text_sidebar"><img src="assets/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
         <li class="mb-2 sidebar_item"><a href="riwayat_pengaduan.php" class="text_sidebar"><img src="assets/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Riwayat Pelanggaran</span></a></li>
-        <li class="mb-2 sidebar_item"><a href="#" class="text_sidebar"><img src="assets/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
+        <li class="mb-2 sidebar_item"><a href="ubah_password_dosen.php" class="text_sidebar"><img src="assets/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
         <li class="mb-2 sidebar_item"><a href="logout.php" class="text_sidebar"><img src="assets/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
       </ul>
     </aside>
@@ -51,22 +51,33 @@ if(session_status() === PHP_SESSION_NONE){
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
-      <h1 class="text-2xl font-bold mb-2">Ubah Password</h1>
+      <h1 class="text-2xl font-bold mb-2">Ajukan Pengaduan</h1>
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-        <div class="flex-1 ml-4">Ubah Password</div>
+        <div class="flex-1 ml-4">Ajukan Pengaduan</div>
       </div>
       <hr class="hr_db">
       <div class="flex-1 bg-white p-4">
-          <label for="newPass">Password Baru:</label>
+          <label for="nimPengaduan">NIM:</label>
           <br>
-          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="password" name="newPass" id="newPass">
+          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="text" name="nimPengaduan" id="nimPengaduan">
       </div>
       <div class="flex-1 bg-white p-4">
-          <label for="newPass">Konfirmasi Password Baru:</label>
+          <label for="namaMhsPengaduan">Nama Mahasiswa:</label>
           <br>
-          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="password" name="newPass" id="newPass">
+          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="text" name="namaMhsPengaduan" id="namaMhsPengaduan">
       </div>
-      <button type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700">Simpan</button>
+      <div class="flex-1 bg-white p-4">
+          <label for="namaDsnPengaduan">Nama Dosen Pelapor:</label>
+          <br>
+          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="text" name="namaDsnPengaduan" id="namaDsnPengaduan">
+      </div>
+      <div class="flex-1 bg-white p-4">
+          <label for="noHpMhsPengaduan">Nomor Hp Mahasiswa:</label>
+          <br>
+          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="text" name="noHpMhsPengaduan" id="noHpMhsPengaduan">
+      </div>
+      
+      <input type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Simpan"/>
     </div>
 
     <script>

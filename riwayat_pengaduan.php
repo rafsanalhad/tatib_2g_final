@@ -81,7 +81,7 @@ if(session_status() === PHP_SESSION_NONE){
             join pengaduan p on m.nim = p.nim
             join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
             JOIN dosen d on p.nip = d.nip
-            WHERE p.nip = '$nip'";
+            WHERE d.nip = '$nip'";
             $result = mysqli_query($koneksi, $query);
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
