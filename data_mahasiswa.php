@@ -29,7 +29,7 @@
             </thead>
             <?php
             include "koneksi.php";
-            $query = "SELECT * FROM dosen";
+            $query = "SELECT * FROM mahasiswa";
             $result = mysqli_query($koneksi, $query);
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
@@ -39,7 +39,7 @@
                   <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
-                  <td class="py-2 px-4 border-r"><?= $row['nip']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <div class="containerJenkel"><?php
@@ -50,7 +50,7 @@
                                                   }
                                                   ?></div>
                   </td>
-                  <td class="py-2 px-4 border-r"><?= $row['no_phone']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['phone_ortu']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
