@@ -127,4 +127,11 @@
 </script>
 <script>
   // Dapatkan elemen tombol dan modal
+  $(document).ready(function(){
+    $("#buttonTambahDosen").click(function(){
+      $("h3").html("Tambah Data Dosen");
+      $("label#nim").html("NIP");
+      $("input#nim").attr("name", "nip");
+    });
+  });
 </script>
