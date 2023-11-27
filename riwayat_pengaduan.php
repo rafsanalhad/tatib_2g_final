@@ -15,6 +15,8 @@ if(session_status() === PHP_SESSION_NONE){
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 </head>
 
 <body class="font-sans main">
@@ -60,7 +62,7 @@ if(session_status() === PHP_SESSION_NONE){
         <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
         <div class="grid grid-cols-1 gap-4 mt-5">
         <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
-          <table id="tableMahasiswa" class="min-w-full border ">
+          <table id="riwayatPengaduan" class="min-w-full border ">
             <!-- Tambahkan header tabel di sini -->
             <thead>
               <tr class="border-b">
@@ -83,9 +85,9 @@ if(session_status() === PHP_SESSION_NONE){
             JOIN dosen d on p.nip = d.nip
             WHERE d.nip = '$nip'";
             $result = mysqli_query($koneksi, $query);
-            while ($row = mysqli_fetch_assoc($result)) {
             ?>
               <tbody>
+              <?php while ($row = mysqli_fetch_assoc($result)) {?>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
                   <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
@@ -109,7 +111,7 @@ if(session_status() === PHP_SESSION_NONE){
                                                   }
                                                   ?></div>
                   </td>
-                  <td class="py-2 px-4 border-r flex space-x-1.5">
+                  <td class="py-2 px-4 flex space-x-1.5">
                     <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
                   </td>
@@ -127,6 +129,54 @@ if(session_status() === PHP_SESSION_NONE){
     </div>
 
     <script>
+      $(document).ready(function() {
+$('#riwayatPengaduan').DataTable({
+  rowReorder: {
+    selector: 'td:nth-child(2)'
+  },
+  lengthChange: false,
+  responsive: {
+    breakpoints: [{
+        name: 'bigdesktop',
+        width: Infinity
+      },
+      {
+        name: 'meddesktop',
+        width: 1480
+      },
+      {
+        name: 'smalldesktop',
+        width: 1280
+      },
+      {
+        name: 'medium',
+        width: 1188
+      },
+      {
+        name: 'tabletl',
+        width: 1024
+      },
+      {
+        name: 'btwtabllandp',
+        width: 848
+      },
+      {
+        name: 'tabletp',
+        width: 768
+      },
+      {
+        name: 'mobilel',
+        width: 480
+      },
+      {
+        name: 'mobilep',
+        width: 320
+      }
+    ]
+  }
+});
+$('#tableDosen_filter').append('<div id="buttonTambahDosen"><a onclick="showModal();"data-modal-toggle="static-modal" href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+});
     const checkWidth = () => {
         var windowWidth = $(window).width();
         var sidebar = $(".sidebar");

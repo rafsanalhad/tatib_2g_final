@@ -11,7 +11,7 @@
   <div class="flex bg-white">
     <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
       <!-- <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div> -->
-      <div class="grid grid-cols-1 gap-4 mt-5">
+      <div class="grid grid-cols-1 gap-4">
         <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
           <table id="tableDosen" class="min-w-full border ">
             <!-- Tambahkan header tabel di sini -->
@@ -31,9 +31,9 @@
             include "koneksi.php";
             $query = "SELECT * FROM dosen";
             $result = mysqli_query($koneksi, $query);
-            while ($row = mysqli_fetch_assoc($result)) {
             ?>
               <tbody>
+              <?php while ($row = mysqli_fetch_assoc($result)) {?>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
                   <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
@@ -53,8 +53,10 @@
                   <td class="py-2 px-4 border-r"><?= $row['no_phone']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                   <td class="py-2 px-4 border-r">
-                    <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                    <div class="py-2 px-4 flex space-x-1.5">
+                      <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
+                      <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                    </div>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>

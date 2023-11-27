@@ -264,6 +264,7 @@ if (!empty($_SESSION['level'])) {
         <?php include 'data_mahasiswa.php' ?>
         <?php include 'laporan_pelanggaran.php' ?>
         <?php include 'laporan_kompen.php' ?>
+        
         <!-- end data dosen  -->
       </div>
 

@@ -31,10 +31,11 @@
             include "koneksi.php";
             $query = "SELECT * FROM mahasiswa";
             $result = mysqli_query($koneksi, $query);
-            while ($row = mysqli_fetch_assoc($result)) {
             ?>
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
+                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+
                 <tr class="border-b">
                   <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
