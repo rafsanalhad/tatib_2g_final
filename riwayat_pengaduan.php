@@ -21,7 +21,7 @@ if(session_status() === PHP_SESSION_NONE){
 
 <body class="font-sans main">
   <!-- Navbar -->
-  <nav class="navbar p-4 h-16 fixed top-0 w-full bg-gray-800">
+  <nav class="navbar p-4 h-16 fixed top-0 w-full bg-gray-800 z-50">
     <div class="container-fluid mx-auto flex justify-between items-center">
         <div class="text-white font-bold text-xl">Sistem Tata Tertib</div>
         <div class="containerBarsMobile toggle_bars_mobile">
@@ -60,9 +60,9 @@ if(session_status() === PHP_SESSION_NONE){
       <hr class="hr_db">
       <div class="flex bg-white flex-col xl:flex-row">
         <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
-        <div class="grid grid-cols-1 gap-4 mt-5">
+        <div class="grid grid-cols-1 gap-4">
         <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
-          <table id="riwayatPengaduan" class="min-w-full border ">
+          <table id="riwayatPengaduan" class="min-w-full border">
             <!-- Tambahkan header tabel di sini -->
             <thead>
               <tr class="border-b">
@@ -78,7 +78,7 @@ if(session_status() === PHP_SESSION_NONE){
             <?php
             include "koneksi.php";
             $nip = $_SESSION['username'];
-            $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat
+            $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.pelanggaran
             FROM mahasiswa m 
             join pengaduan p on m.nim = p.nim
             join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
@@ -91,29 +91,26 @@ if(session_status() === PHP_SESSION_NONE){
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
                   <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
-                  <td class="py-2 px-4 border-r" alt="" class="foto_profil_dosen_table inline ">
-                    <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
-                  </td>
+                  <td class="py-2 px-4 border-r"><?= $row['nama']; ?></p></td>
                   <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
-                  <td class="py-2 px-4 border-r"><?= $row['tingkat']; ?></td>
-                  <td class="py-2 px-4 border-r">
+                  <td class="py-2 px-4 border-r text-center">
                     <?php
                       if ($row['tingkat'] == '1') {
-                        echo '<div class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10">Sangat Berat</div>';
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
                       } elseif ($row['tingkat'] == '2') {
-                        echo 'Berat';
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
                       }elseif ($row['tingkat'] == '3'){
-                        echo 'Cukup Berat';
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
                       }elseif ($row['tingkat'] == '4'){
-                        echo 'Sedang';
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
                       }elseif ($row['tingkat'] == '5'){
-                        echo 'Ringan';
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
                       }
                       ?>
                   </td>
-                  <td class="py-2 px-4 flex space-x-1.5">
-                    <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                  <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
+                  <td class="py-2 px-4 border-r text-center">
+                      <div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white hover:bg-yellow-700">Proses</div>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>

@@ -53,50 +53,49 @@ if(session_status() === PHP_SESSION_NONE){
       </div>
       <h1 class="text-4xl font-bold mb-5">Ajukan Pengaduan</h1>
       <div class="flex-col bg-white items-center shadow-lg subtitle_dashboard text-center mx-80 shadow-neutral-800">
-        <div class="flex-1 bg-white pt-2 pl-5">
+        <div class="flex-1 bg-white mt-3">
           <label for="nimPengaduan">NIM:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="nimPengaduan" id="nimPengaduan">
-      </div>
-      <div class="flex-1 bg-white pt-2 pl-5">
+          <br>
           <label for="namaMhsPengaduan">Nama Mahasiswa:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaMhsPengaduan" id="namaMhsPengaduan">
-      </div>
-      <div class="flex-1 bg-white pt-2 pl-5">
-          <label for="namaDsnPengaduan">Nama Dosen Pelapor:</label>
           <br>
-          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaDsnPengaduan" id="namaDsnPengaduan">
-      </div>
-      <div class="flex-1 bg-white pt-2 pl-5">
           <label for="noHpMhsPengaduan">Nomor Hp Mahasiswa:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="noHpMhsPengaduan">
-      </div>
-      <div class="flex-1 bg-white pt-2 pl-5">
+          <br>
           <label for="jenisPelanggaran">Jenis Pelanggaran:</label>
           <br>
-          <select name="pl-2 jenisPelanggaran" id="jenisPelanggaran" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
-              <option value="volvo">1</option>
-              <option value="saab">2</option>
-              <option value="opel">3</option>
-              <option value="audi">4</option>    
-            </select>
-        </div>
-        <div class="flex-1 bg-white pt-2 pl-5">
-            <label for="fotoPengaduan">Upload Foto:</label>
-            <br>
-            <input class="pl-2 w-[250px] h-[40px] mt-1" type="file" name="fotoPengaduan" id="fotoPengaduan">
-        </div>
-        <div class="flex-1 bg-white pt-2 pl-5 pb-3">
-            <label for="tglPengaduan">Tanggal Pengaduan:</label>
-            <br>
-            <input class="pl-2 mt-1 border border-neutral-400 w-[250px] h-[40px] rounded-lg " type="date" name="tglPengaduan" id="tglPengaduan">
-        </div>
-    </div>
-    <div class="text-center">
-        <input type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Simpan"/>
-    </div>
+          <select name="jenisPelanggaran" id="jenisPelanggaran" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
+          <?php
+            include "koneksi.php";
+            $nip = $_SESSION['username'];
+            $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.pelanggaran
+            FROM mahasiswa m 
+            join pengaduan p on m.nim = p.nim
+            join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
+            JOIN dosen d on p.nip = d.nip
+            WHERE d.nip = '$nip'";
+            $result = mysqli_query($koneksi, $query);
+            $row = mysqli_fetch_assoc($result)
+            ?>
+            <?php while ($row = mysqli_fetch_assoc($result)) {?>
+          <option value="<?=$row['pelanggaran'];?>"><?php echo $row['pelanggaran'];?></option>  
+            <?php }?>
+          </select>
+          <br>
+          <label for="fotoPengaduan">Upload Foto:</label>
+          <br>
+          <input class="pl-2 w-[250px] h-[40px] mt-1" type="file" name="fotoPengaduan" id="fotoPengaduan">
+          <br>
+          <label for="tglPengaduan">Tanggal Pengaduan:</label>
+          <br>
+          <input class="pl-2 mt-1 border border-neutral-400 w-[250px] h-[40px] rounded-lg " type="date" name="tglPengaduan" id="tglPengaduan">
+          <div class="text-center">
+            <input type="submit" class="w-[130px] h-[40px] items-center align-center bg-sky-600 rounded-3xl text-white text-2xl font-normal font-['Inter'] mt-3 mb-3  hover:bg-sky-700" value="Simpan"/>
+          </div>
     </div>
 
     <script>
