@@ -47,12 +47,12 @@ if(session_status() === PHP_SESSION_NONE){
     </aside>
 
     <!-- Content -->
-    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content text-center">
+    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content text-center ">
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
       <h1 class="text-2xl font-bold mb-2">Ajukan Pengaduan</h1>
-      <div class="flex-col bg-white items-center shadow-sm subtitle_dashboard text-center mx-80">
+      <div class="flex-col bg-white items-center shadow-lg subtitle_dashboard text-center mx-80 shadow-neutral-800">
         <div class="flex-1 bg-white pt-2 pl-5">
           <label for="nimPengaduan">NIM:</label>
           <br>

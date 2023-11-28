@@ -59,12 +59,12 @@ if(session_status() === PHP_SESSION_NONE){
       <div class="flex-1 bg-white p-4">
           <label for="newPass">Password Baru:</label>
           <br>
-          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="password" name="newPass" id="newPass">
+          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3 pl-2" type="password" name="newPass" id="newPass">
       </div>
       <div class="flex-1 bg-white p-4">
           <label for="newPass">Konfirmasi Password Baru:</label>
           <br>
-          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3" type="password" name="newPass" id="newPass">
+          <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3 pl-2" type="password" name="newPass" id="newPass">
       </div>
       <input type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Simpan"/>
     </div>

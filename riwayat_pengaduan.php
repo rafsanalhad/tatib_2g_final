@@ -97,19 +97,21 @@ if(session_status() === PHP_SESSION_NONE){
                   <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['tingkat']; ?></td>
                   <td class="py-2 px-4 border-r">
-                    <div class="containerTingkatPelanggaran"><?php
-                                                  if ($row['tingkat'] == '1') {
-                                                    echo 'Sangat Berat';
-                                                  } elseif ($row['tingkat'] == '2') {
-                                                    echo 'Berat';
-                                                  }elseif ($row['tingkat'] == '3'){
-                                                    echo 'Cukup Berat';
-                                                  }elseif ($row['tingkat'] == '4'){
-                                                    echo 'Sedang';
-                                                  }elseif ($row['tingkat'] == '5'){
-                                                    echo 'Ringan';
-                                                  }
-                                                  ?></div>
+                    <?php
+                      if ($row['tingkat'] == '1') {
+                        ?> 
+                        <div class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10">Sangat Berat</div>
+                        <?php
+                      } elseif ($row['tingkat'] == '2') {
+                        echo 'Berat';
+                      }elseif ($row['tingkat'] == '3'){
+                        echo 'Cukup Berat';
+                      }elseif ($row['tingkat'] == '4'){
+                        echo 'Sedang';
+                      }elseif ($row['tingkat'] == '5'){
+                        echo 'Ringan';
+                      }
+                      ?>
                   </td>
                   <td class="py-2 px-4 flex space-x-1.5">
                     <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
