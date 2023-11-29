@@ -193,13 +193,6 @@
   height: 382px;
   overflow-y: scroll;
 }
-.containerJenkel {
-  background-color: #92a9f9;
-  border-radius: 10.5px;
-  display: flex;
-  justify-content: center;
-  width: 100px;
-}
 
 .jumlah_pelanggaran {
   margin-top: 20px;

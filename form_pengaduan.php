@@ -9,7 +9,7 @@ if(session_status() === PHP_SESSION_NONE){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ubah Password</title>
+  <title>Form Pengaduan</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -58,13 +58,16 @@ if(session_status() === PHP_SESSION_NONE){
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="nimPengaduan" id="nimPengaduan">
           <br>
+          <br>
           <label for="namaMhsPengaduan">Nama Mahasiswa:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaMhsPengaduan" id="namaMhsPengaduan">
           <br>
+          <br>
           <label for="noHpMhsPengaduan">Nomor Hp Mahasiswa:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="noHpMhsPengaduan">
+          <br>
           <br>
           <label for="jenisPelanggaran">Jenis Pelanggaran:</label>
           <br>
@@ -86,16 +89,17 @@ if(session_status() === PHP_SESSION_NONE){
             <?php }?>
           </select>
           <br>
+          <br>
           <label for="fotoPengaduan">Upload Foto:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] mt-1" type="file" name="fotoPengaduan" id="fotoPengaduan">
           <br>
+          <br>
           <label for="tglPengaduan">Tanggal Pengaduan:</label>
           <br>
-          <input class="pl-2 mt-1 border border-neutral-400 w-[250px] h-[40px] rounded-lg " type="date" name="tglPengaduan" id="tglPengaduan">
-          <div class="text-center">
-            <input type="submit" class="w-[130px] h-[40px] items-center align-center bg-sky-600 rounded-3xl text-white text-2xl font-normal font-['Inter'] mt-3 mb-3  hover:bg-sky-700" value="Simpan"/>
-          </div>
+          <input class="pl-2 mt-1 border border-neutral-400 w-[250px] h-[40px] rounded-lg " type="date" name="tglPengaduan" id="tglPengaduan" value="<?php echo date('Y-m-d'); ?>" required>
+          <br>
+          <input type="submit" class="w-[130px] h-[40px] items-center align-center bg-sky-600 rounded-3xl text-white text-2xl font-normal font-['Inter'] mt-3 mb-3 text-center hover:bg-sky-700" value="Simpan"/>
     </div>
 
     <script>

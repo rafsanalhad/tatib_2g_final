@@ -47,21 +47,21 @@ if(session_status() === PHP_SESSION_NONE){
     </aside>
 
     <!-- Content -->
-    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content">
+    <div class="pl-8 pb-8 pt-6 pr-8 main_content">
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
       <h1 class="text-2xl font-bold mb-2">Ubah Password</h1>
-      <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-        <div class="flex-1 ml-4">Ubah Password</div>
+      <div class=" bg-white h-10 items-center subtitle_dashboard">
+        <div class="ml-4 mt-1">Masukkan Password Baru</div>
       </div>
       <hr class="hr_db">
-      <div class="flex-1 bg-white p-4">
+      <div class=" bg-white p-4">
           <label for="newPass">Password Baru:</label>
           <br>
           <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3 pl-2" type="password" name="newPass" id="newPass">
       </div>
-      <div class="flex-1 bg-white p-4">
+      <div class=" bg-white p-4 rounded-lg">
           <label for="newPass">Konfirmasi Password Baru:</label>
           <br>
           <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3 pl-2" type="password" name="newPass" id="newPass">
