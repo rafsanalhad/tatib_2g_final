@@ -109,8 +109,17 @@ if(session_status() === PHP_SESSION_NONE){
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
+                  <!-- proses aksi -->
+                  <!-- <td class="py-2 px-4 border-r text-center">
+                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-yellow-500 text-lg font-medium text-white hover:bg-yellow-700">Proses</button></a>
+                  </td> -->
+                  <!-- proses diterima -->
+                  <!-- <td class="py-2 px-4 border-r text-center">
+                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-green-400 text-lg font-medium text-white hover:bg-green-800">Diterima</button></a>
+                  </td> -->
+                  <!-- proses ditolak -->
                   <td class="py-2 px-4 border-r text-center">
-                      <div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white hover:bg-yellow-700">Proses</div>
+                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-red-500 text-lg font-medium text-white hover:bg-red-700">Ditolak</button></a>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
