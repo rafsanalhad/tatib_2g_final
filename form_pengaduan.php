@@ -9,7 +9,7 @@ if(session_status() === PHP_SESSION_NONE){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ubah Password</title>
+  <title>Form Pengaduan</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -47,56 +47,59 @@ if(session_status() === PHP_SESSION_NONE){
     </aside>
 
     <!-- Content -->
-    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content text-center">
+    <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content text-center ">
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
-      <h1 class="text-2xl font-bold mb-2">Ajukan Pengaduan</h1>
-      <div class="flex-col bg-white items-center shadow-sm subtitle_dashboard text-center mx-80">
-        <div class="flex-1 bg-white pt-2 pl-5">
+      <h1 class="text-4xl font-bold mb-5">Ajukan Pengaduan</h1>
+      <div class="flex-col bg-white items-center shadow-lg subtitle_dashboard text-center mx-80 shadow-neutral-800">
+        <div class="flex-1 bg-white mt-3">
           <label for="nimPengaduan">NIM:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="nimPengaduan" id="nimPengaduan">
-      </div>
-      <div class="flex-1 bg-white pt-2 pl-5">
+          <br>
+          <br>
           <label for="namaMhsPengaduan">Nama Mahasiswa:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaMhsPengaduan" id="namaMhsPengaduan">
-      </div>
-      <div class="flex-1 bg-white pt-2 pl-5">
-          <label for="namaDsnPengaduan">Nama Dosen Pelapor:</label>
           <br>
-          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaDsnPengaduan" id="namaDsnPengaduan">
-      </div>
-      <div class="flex-1 bg-white pt-2 pl-5">
+          <br>
           <label for="noHpMhsPengaduan">Nomor Hp Mahasiswa:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="noHpMhsPengaduan">
-      </div>
-      <div class="flex-1 bg-white pt-2 pl-5">
+          <br>
+          <br>
           <label for="jenisPelanggaran">Jenis Pelanggaran:</label>
           <br>
-          <select name="pl-2 jenisPelanggaran" id="jenisPelanggaran" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
-              <option value="volvo">1</option>
-              <option value="saab">2</option>
-              <option value="opel">3</option>
-              <option value="audi">4</option>    
-            </select>
-        </div>
-        <div class="flex-1 bg-white pt-2 pl-5">
-            <label for="fotoPengaduan">Upload Foto:</label>
-            <br>
-            <input class="pl-2 w-[250px] h-[40px] mt-1" type="file" name="fotoPengaduan" id="fotoPengaduan">
-        </div>
-        <div class="flex-1 bg-white pt-2 pl-5 pb-3">
-            <label for="tglPengaduan">Tanggal Pengaduan:</label>
-            <br>
-            <input class="pl-2 mt-1 border border-neutral-400 w-[250px] h-[40px] rounded-lg " type="date" name="tglPengaduan" id="tglPengaduan">
-        </div>
-    </div>
-    <div class="text-center">
-        <input type="submit" class="w-[180px] h-[50px] items-center align-center bg-sky-600 rounded-xl text-white text-2xl font-normal font-['Inter'] m-auto mt-5 hover:bg-sky-700" value="Simpan"/>
-    </div>
+          <select name="jenisPelanggaran" id="jenisPelanggaran" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
+          <?php
+            include "koneksi.php";
+            $nip = $_SESSION['username'];
+            $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.pelanggaran
+            FROM mahasiswa m 
+            join pengaduan p on m.nim = p.nim
+            join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
+            JOIN dosen d on p.nip = d.nip
+            WHERE d.nip = '$nip'";
+            $result = mysqli_query($koneksi, $query);
+            $row = mysqli_fetch_assoc($result)
+            ?>
+            <?php while ($row = mysqli_fetch_assoc($result)) {?>
+          <option value="<?=$row['pelanggaran'];?>"><?php echo $row['pelanggaran'];?></option>  
+            <?php }?>
+          </select>
+          <br>
+          <br>
+          <label for="fotoPengaduan">Upload Foto:</label>
+          <br>
+          <input class="pl-2 w-[250px] h-[40px] mt-1" type="file" name="fotoPengaduan" id="fotoPengaduan">
+          <br>
+          <br>
+          <label for="tglPengaduan">Tanggal Pengaduan:</label>
+          <br>
+          <input class="pl-2 mt-1 border border-neutral-400 w-[250px] h-[40px] rounded-lg " type="date" name="tglPengaduan" id="tglPengaduan" value="<?php echo date('Y-m-d'); ?>" required>
+          <br>
+          <input type="submit" class="w-[130px] h-[40px] items-center align-center bg-sky-600 rounded-3xl text-white text-2xl font-normal font-['Inter'] mt-3 mb-3 text-center hover:bg-sky-700" value="Simpan"/>
     </div>
 
     <script>

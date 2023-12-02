@@ -69,7 +69,6 @@ if(session_status() === PHP_SESSION_NONE){
                 <th class="py-2 px-4 border-r">Tanggal</th>
                 <th class="py-2 px-4 border-r">Pelanggaran</th>
                 <th class="py-2 px-4 border-r">Tingkat</th>
-                <th class="py-2 px-4 border-r">Jen. Pelanggaran</th>
                 <th class="py-2 px-4 border-r">Kompen</th>
                 <th class="py-2 px-4 border-r">Aksi</th>
                 <!-- Tambahkan header lainnya sesuai kebutuhan -->
@@ -92,21 +91,20 @@ if(session_status() === PHP_SESSION_NONE){
                 <tr class="border-b">
                   <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
-                  <td class="py-2 px-4 border-r"><?= $row['tingkat']; ?></td>
-                  <td class="py-2 px-4 border-r">
-                    <div class="containerTingkatPelanggaran"><?php
-                                                  if ($row['tingkat'] == '1') {
-                                                    echo 'Sangat Berat';
-                                                  } elseif ($row['tingkat'] == '2') {
-                                                    echo 'Berat';
-                                                  }elseif ($row['tingkat'] == '3'){
-                                                    echo 'Cukup Berat';
-                                                  }elseif ($row['tingkat'] == '4'){
-                                                    echo 'Sedang';
-                                                  }elseif ($row['tingkat'] == '5'){
-                                                    echo 'Ringan';
-                                                  }
-                                                  ?></div>
+                  <td class="py-2 px-4 border-r text-center">
+                    <?php
+                      if ($row['tingkat'] == '1') {
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
+                      } elseif ($row['tingkat'] == '2') {
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
+                      }elseif ($row['tingkat'] == '3'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
+                      }elseif ($row['tingkat'] == '4'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
+                      }elseif ($row['tingkat'] == '5'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
+                      }
+                      ?>
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['sanksi_pelanggaran']; ?></td>
                   <td class="py-2 px-4 border-r flex space-x-1.5">

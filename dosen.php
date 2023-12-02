@@ -113,19 +113,23 @@ if(session_status() === PHP_SESSION_NONE){
               <tr>
                 <td>Alamat</td>
                 <td><?= $row['alamat'];  ?></td>
-              </tr>
+              </tr>   
               <?php
               }
               ?>
             </tbody>
           </table>
+          <div class="text-center mt-10">
+            <a href="form_pengaduan.php" class="text-white text-lg font-sans text-center"><button class="w-[180px] h-[50px] bg-sky-600 hover:bg-sky-700 rounded-xl">
+            Ajukan Pengaduan</button></a>
+          </div>
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
           <h3 class="pelanggaran_tbr_title">Jumlah Pengaduan</h3>
           <hr class="hr_db">
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
+                <div class="w-16 h-10 bg-red-700 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">I</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pengaduan Tingkat 1</p>
@@ -134,7 +138,7 @@ if(session_status() === PHP_SESSION_NONE){
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-yellow-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">II</p></div>
+                <div class="w-16 h-10 bg-orange-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">II</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pengaduan Tingkat 2</p>
@@ -143,7 +147,7 @@ if(session_status() === PHP_SESSION_NONE){
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-yellow-500 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">III</p></div>
+                <div class="w-16 h-10 bg-yellow-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">III</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pengaduan Tingkat 3</p>
@@ -152,7 +156,7 @@ if(session_status() === PHP_SESSION_NONE){
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-yellow-200 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">IV</p></div>
+                <div class="w-16 h-10 bg-yellow-200 rounded-lg grid justify-center items-center text-yellow-600"><p class="text-lg font-bold">IV</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pengaduan Tingkat 4</p>
@@ -161,18 +165,17 @@ if(session_status() === PHP_SESSION_NONE){
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-green-500 rounded-lg grid justify-center items-center box5"><p class="text-lg font-bold">V</p></div>
+                <div class="w-16 h-10 bg-green-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">V</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pengaduan Tingkat 5</p>
                 <p class="font-bold">2</p>
               </div>
             </div>
-        </div>
-      </div>
-      <div class="text-center mt-5">
-      <a href="form_pengaduan.php" class="text-white text-lg font-serif text-center"><button class="w-[180px] h-[50px] bg-red-600 hover:bg-red-800 font-medium rounded-lg">
-      Ajukan Pengaduan</button></a>
+            <div class="bg-red-700 w-[30px] h-[30] rounded-full flex">
+              Sangat Berat
+            </div>
+          </div>
       </div>
     <script>
       const confirmLogin = () => {

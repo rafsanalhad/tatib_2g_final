@@ -35,7 +35,8 @@
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
+                  <td class="py-2 px-4 border-r"><?= $row['tanggal']; ?></td>
+                  <td class="py-2 px-4 border-r">
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['nip']; ?></td>
