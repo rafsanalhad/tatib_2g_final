@@ -20,7 +20,6 @@
                 <th class="py-2 px-4 border-r">Pelanggaran</th>
                 <th class="py-2 px-4 border-r">Tingkat</th>
                 <th class="py-2 px-4 border-r">Kompen</th>
-                <th class="py-2 px-4 border-r">Aksi</th>
                 <!-- Tambahkan header lainnya sesuai kebutuhan -->
               </tr>
             </thead>
@@ -57,9 +56,10 @@
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r"><?//= $row['sanksi_pelanggaran']; ?></td>
-                  <td class="py-2 px-4 border-r flex space-x-1.5">
-                    <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                  <td class="py-2 px-4 border-r">
+                    <img src="<?= BASEURL; ?>/img/icon/loading.png" alt="prosesKompen" class="bg-orange-400 hover:bg-orange-700 py-2 px-4 rounded align-center">
+                    <img src="<?= BASEURL; ?>/img/icon/tolak.png" alt="tolakKompen" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] py-2 px-4 rounded">
+                    <img src="<?= BASEURL; ?>/img/icon/terima.png" alt="terimaKompen" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] py-2 px-3 rounded">
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
