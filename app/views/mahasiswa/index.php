@@ -75,6 +75,10 @@
               ?>
             </tbody>
           </table>
+          <div class="text-center mt-10">
+            <a href="<?= BASEURL;?>/mahasiswa/uploadBuktiKompen.php" class="text-white text-lg font-sans text-center"><button class="w-[180px] h-[50px] bg-sky-600 hover:bg-sky-700 rounded-xl">
+            Upload Bukti Kompen</button></a>
+          </div>
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
           <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
