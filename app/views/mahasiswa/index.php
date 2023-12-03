@@ -25,23 +25,23 @@
             ?>
             <tbody>
               <tr>
-                <td class="border-2 border-slate-700" rowspan="10"><img src="<?= BASEURL; ?>/img/profil/mhs1.png" class="m-auto" alt="profil"></td>
+                <td rowspan="10"><img src="<?= BASEURL; ?>/img/profil/mhs1.png" class="m-auto" alt="profil"></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Nama</td>
-                <td class="border-2 border-slate-700"><?//= $row['nama'];  ?></td>
+                <td>Nama</td>
+                <td><?//= $row['nama'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">NIM</td>
-                <td class="border-2 border-slate-700"><?//= $row['nim'];  ?></td>
+                <td>NIM</td>
+                <td><?//= $row['nim'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">TTL</td>
-                <td class="border-2 border-slate-700"><?//= $row['TTL'];  ?></td>
+                <td>TTL</td>
+                <td><?//= $row['TTL'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Jen. Kelamin</td>
-                <td class="border-2 border-slate-700"><?php 
+                <td>Jen. Kelamin</td>
+                <td><?php 
                 // if ($row['jenis_kelamin'] == 'L') {
                 //     echo 'Laki-laki';
                 //   }else{
@@ -51,24 +51,24 @@
                   </td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Jurusan</td>
-                <td class="border-2 border-slate-700"><?//= $row['jurusan'];  ?></td>
+                <td>Jurusan</td>
+                <td><?//= $row['jurusan'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Alamat</td>
-                <td class="border-2 border-slate-700"><?//= $row['alamat'];  ?></td>
+                <td>Alamat</td>
+                <td><?//= $row['alamat'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Email</td>
-                <td class="border-2 border-slate-700"><?//= $row['email'];  ?></td>
+                <td>Email</td>
+                <td><?//= $row['email'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Phone</td>
-                <td class="border-2 border-slate-700"><?//= $row['phone_ortu'];  ?></td>
+                <td>Phone</td>
+                <td><?//= $row['phone_ortu'];  ?></td>
               </tr>
               <tr>
-                <td class="border-2 border-slate-700">Phone Ortu</td>
-                <td class="border-2 border-slate-700"><?//  = $row['phone_ortu'];  ?></td>
+                <td>Phone Ortu</td>
+                <td><?//  = $row['phone_ortu'];  ?></td>
               </tr>
               <?php
               // }
