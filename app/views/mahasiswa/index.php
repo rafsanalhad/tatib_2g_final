@@ -79,9 +79,9 @@
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
           <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
           <hr class="hr_db">
-            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
+          <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-red-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">I</p></div>
+                <div class="w-16 h-10 bg-red-700 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">I</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pelanggaran Tingkat 1</p>
@@ -90,7 +90,7 @@
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-yellow-600 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">II</p></div>
+                <div class="w-16 h-10 bg-orange-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">II</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pelanggaran Tingkat 2</p>
@@ -99,7 +99,7 @@
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-yellow-500 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">III</p></div>
+                <div class="w-16 h-10 bg-yellow-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">III</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pelanggaran Tingkat 3</p>
@@ -108,7 +108,7 @@
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-yellow-200 rounded-lg grid justify-center items-center"><p class="text-lg font-bold">IV</p></div>
+                <div class="w-16 h-10 bg-yellow-200 rounded-lg grid justify-center items-center text-yellow-600"><p class="text-lg font-bold">IV</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pelanggaran Tingkat 4</p>
@@ -117,12 +117,15 @@
             </div>
             <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
               <div class="flex-none">
-                <div class="w-16 h-10 bg-green-500 rounded-lg grid justify-center items-center box5"><p class="text-lg font-bold">V</p></div>
+                <div class="w-16 h-10 bg-green-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">V</p></div>
               </div>
               <div class="flex-auto ml-2">
                 <p class="text-xs">Pelanggaran Tingkat 5</p>
                 <p class="font-bold">2</p>
               </div>
+            </div>
+            <div class="bg-red-700 w-[30px] h-[30] rounded-full flex">
+              Sangat Berat
             </div>
         </div>
     </div>
