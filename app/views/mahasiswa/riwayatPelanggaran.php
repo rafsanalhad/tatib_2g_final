@@ -20,7 +20,6 @@
                 <th class="py-2 px-4 border-r">Pelanggaran</th>
                 <th class="py-2 px-4 border-r">Tingkat</th>
                 <th class="py-2 px-4 border-r">Kompen</th>
-                <th class="py-2 px-4 border-r">Aksi</th>
                 <!-- Tambahkan header lainnya sesuai kebutuhan -->
               </tr>
             </thead>

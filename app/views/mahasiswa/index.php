@@ -1,5 +1,4 @@
 
-
     <!-- Content -->
     <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content">
       <div class="containerBars_toggled">
