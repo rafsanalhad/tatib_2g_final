@@ -34,7 +34,7 @@
                 <tr class="border-b">
                   <td class="py-2 px-4 border-r"> 
                     <div class="flex items-center">
-                      <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
+                      <img src="<?= BASEURL;?>/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
                       <p class="nama_dosen_table inline"><?//= $row['nama']; ?></p>
                     </div>
                   </td>
