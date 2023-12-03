@@ -27,6 +27,17 @@ class Admin extends Controller{
         $this->view('admin/mahasiswa', $data);
         $this->view('templates/admin/footer');
     }
+    public function tambahMahasiswa(){
+        if ($this->model('Mahasiswa_model')->tambahDataMahasiswa($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/admin/mahasiswa');
+            exit;
+        }else{
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/admin/mahasiswa');
+            exit;
+        }
+    }
     public function laporanPelanggaran(){
         $data['judul'] = 'Admin Page';
         $data['laporanPelanggaran'] = $this->model('Admin_model')->getLaporanPelanggaran();
