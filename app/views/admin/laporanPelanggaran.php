@@ -28,10 +28,7 @@
               </tr>
             </thead>
             <?php
-            // include "koneksi.php";
-            // $query = "SELECT * FROM dosen";
-            // $result = mysqli_query($koneksi, $query);
-            // while ($row = mysqli_fetch_assoc($result)) {
+            //foreach ($data['laporanPelanggaran'] as $row) {
             ?>
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->

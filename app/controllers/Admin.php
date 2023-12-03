@@ -28,11 +28,15 @@ class Admin extends Controller{
         $this->view('templates/admin/footer');
     }
     public function laporanPelanggaran(){
+        $data['judul'] = 'Admin Page';
+        $data['laporanPelanggaran'] = $this->model('Admin_model')->getLaporanPelanggaran();
         $this->view('templates/admin/header');
         $this->view('admin/laporanPelanggaran');
         $this->view('templates/admin/footer');
     }
     public function laporanKompen(){
+        $data['judul'] = 'Admin Page';
+        $data['laporanKompen'] = $this->model('Admin_model')->getLaporanKompen();
         $this->view('templates/admin/header');
         $this->view('admin/laporanKompen');
         $this->view('templates/admin/footer');

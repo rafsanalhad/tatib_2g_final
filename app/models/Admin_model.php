@@ -22,4 +22,14 @@ class Admin_model
         $this->db->query('SELECT * FROM ' . $this->table2);
         return $this->db->resultSet();
     }
+    public function getLaporanPelanggaran()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table2);
+        return $this->db->resultSet();
+    }
+    public function getLaporanKompen()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table2);
+        return $this->db->resultSet();
+    }
 }
