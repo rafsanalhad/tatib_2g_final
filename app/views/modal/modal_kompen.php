@@ -115,7 +115,23 @@
             <label for="sanksi">
               <h3 class="font-bold text-base">Sanksi</h3>
             </label>
-            <textarea class="w-full h-14 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"></textarea>
+            <select name="jenisSanksi" id="jenisSanksi" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
+          <?php
+            // include "koneksi.php";
+            // $nip = $_SESSION['username'];
+            // $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.pelanggaran
+            // FROM mahasiswa m 
+            // join pengaduan p on m.nim = p.nim
+            // join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
+            // JOIN dosen d on p.nip = d.nip
+            // WHERE d.nip = '$nip'";
+            // $result = mysqli_query($koneksi, $query);
+            // $row = mysqli_fetch_assoc($result)
+            ?>
+            <?//php while ($row = mysqli_fetch_assoc($result)) {?>
+          <option value="<?//=$row['pelanggaran'];?>"><?//php echo $row['pelanggaran'];?></option>  
+            <?//php }?>
+          </select>
 
           </div>
           <div class="block ml-5">
