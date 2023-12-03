@@ -29,28 +29,28 @@
               </tr>
             </thead>
               <tbody>
-              <?//php while ($row = mysqli_fetch_assoc($result)) {?>
+              <?php foreach ($data['dosen'] as $row) { ?>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
                   <td class="py-2 px-4 border-r"> 
                     <div class="flex items-center">
                       <img src="<?= BASEURL;?>/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
-                      <p class="nama_dosen_table inline"><?//= $row['nama']; ?></p>
+                      <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                     </div>
                   </td>
-                  <td class="py-2 px-4 border-r"><?//= $row['nip']; ?></td>
-                  <td class="py-2 px-4 border-r"><?//= $row['TTL']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['nip']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <?php
-                    //   if ($row['jenis_kelamin'] == 'L') {
-                    //   echo '<div class="w-[120px] h-[30px] rounded-full px-1 text-lg font-medium text-blue-800 text-center" style="background-color: #92a9f9;">Laki-Laki</div>';
-                    // } else {
-                    //   echo '<div class="w-[120px] h-[30px] rounded-full px-1 text-lg font-medium text-rose-600 text-center" style="background-color: #FFB5B5;">Perempuan</div>';
-                    // }
+                       if ($row['jenis_kelamin'] == 'L') {
+                       echo '<div class="w-[120px] h-[30px] rounded-full px-1 text-lg font-medium text-blue-800 text-center" style="background-color: #92a9f9;">Laki-Laki</div>';
+                     } else {
+                       echo '<div class="w-[120px] h-[30px] rounded-full px-1 text-lg font-medium text-rose-600 text-center" style="background-color: #FFB5B5;">Perempuan</div>';
+                     }
                     ?>
                   </td>
-                  <td class="py-2 px-4 border-r"><?//= $row['no_phone']; ?></td>
-                  <td class="py-2 px-4 border-r"><?//= $row['alamat']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['no_phone']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <div class="inline`">
                       <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -60,7 +60,7 @@
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
               <?php
-            // }
+            }
               ?>
               </tbody>
           </table>
