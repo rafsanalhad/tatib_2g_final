@@ -9,7 +9,7 @@
 <body>
     <div class="flex flex-col justify-center items-center h-screen">
         <img src="assets/login/profil.png" alt="profil" class="scale-75">
-        <form action="<?= BASEURL; ?>/auth/prosesLogin" method="post">
+        <form action="<?= BASEURL; ?>/login/prosesLogin" method="post">
             <div class="max-w-screen-sm bg-white rounded-[62px] border-4 border-sky-600 flex justify-center items-center">
                 <div class="flex flex-col p-10">
                     <label for="username" class="text-neutral-400 text-2xl font-normal font-['Inter'] m-auto">Username:</label>

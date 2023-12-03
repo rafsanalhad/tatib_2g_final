@@ -1,6 +1,6 @@
 <?php
 
-class Auth_model
+class Login_model
 {
     private $table = 'user';
     private $db;

@@ -84,7 +84,7 @@
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              window.location.href = "logout.php";
+              window.location.href = "<?= BASEURL; ?>/logout";
             }
           })
         }
