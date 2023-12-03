@@ -7,7 +7,9 @@
     <div class="flex-col bg-white items-center shadow-lg subtitle_dashboard text-center mx-80 shadow-neutral-800">
         <div class="flex-1 bg-white mt-3">
         <label for="downloadTemplate">Download Template Kompen Dibawah</label>
-        <a href="<?= BASEURL; ?>/doc/templateKompen.docx" download>
-        <img src="<?= BASEURL; ?>/img/icon/logoTemplate.png" alt="" class="foto_profil">
-        </a>
+        <div class="flex justify-center">
+            <a href="<?= BASEURL; ?>/doc/templateKompen.docx" download="templateKompen.docx">
+            <img src="<?= BASEURL; ?>/img/icon/logoTemplate.png" alt="" class="foto_profil">
+            </a>
+        </div>
     </div>

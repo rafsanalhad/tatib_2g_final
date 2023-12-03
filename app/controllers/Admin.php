@@ -7,18 +7,24 @@ class Admin extends Controller{
         }
     }
     public function index(){
-        $this->view('templates/admin/header');
-        $this->view('admin/index');
+        $data['judul'] = 'Admin Page';
+        // $data['dosen'] = $this->model('Admin_model')->getDosen();
+        $this->view('templates/admin/header', $data);
+        $this->view('admin/index', $data);
         $this->view('templates/admin/footer');
     }
     public function dosen(){
-        $this->view('templates/admin/header');
-        $this->view('admin/dosen');
+        $data['judul'] = 'Admin Page';
+        $data['dosen'] = $this->model('Admin_model')->getDosen();
+        $this->view('templates/admin/header', $data);
+        $this->view('admin/dosen', $data);
         $this->view('templates/admin/footer');
     }
     public function mahasiswa(){
-        $this->view('templates/admin/header');
-        $this->view('admin/mahasiswa');
+        $data['judul'] = 'Admin Page';
+        $data['mahasiswa'] = $this->model('Admin_model')->getMahasiswa();
+        $this->view('templates/admin/header', $data);
+        $this->view('admin/mahasiswa', $data);
         $this->view('templates/admin/footer');
     }
     public function laporanPelanggaran(){

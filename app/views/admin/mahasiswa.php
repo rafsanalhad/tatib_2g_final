@@ -28,35 +28,29 @@
                 <!-- Tambahkan header lainnya sesuai kebutuhan -->
               </tr>
             </thead>
-            <?php
-            // include "koneksi.php";
-            // $query = "SELECT * FROM mahasiswa";
-            // $result = mysqli_query($koneksi, $query);
-            ?>
               <tbody>
-                <!-- Tambahkan baris-baris data di sini -->
-                <?//php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <?php foreach ($data['mahasiswa'] as $row) { ?>
 
                 <tr class="border-b">
                   <!-- <div class="flex items-center">
                     
                   </div> -->
                   <td class="py-2 px-4 border-r"> <img src="<?= BASEURL;?>/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
-                    <p class="nama_dosen_table inline"><?//= $row['nama']; ?>Tes</p>
+                    <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
-                  <td class="py-2 px-4 border-r"><?//= $row['nim']; ?>Tes</td>
-                  <td class="py-2 px-4 border-r"><?//= $row['TTL']; ?>Tes</td>
-                  <td class="py-2 px-4 border-r">Tes
+                  <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
+                  <td class="py-2 px-4 border-r">
                     <?php
-                      // if ($row['jenis_kelamin'] == 'L') {
-                      //   echo '<div class="w-[120px] h-[30px] rounded-full px-1 text-lg font-medium text-blue-800 text-center" style="background-color: #92a9f9;">Laki-Laki</div>';
-                      // } else {
-                      //   echo '<div class="w-[120px] h-[30px] rounded-full px-1 text-lg font-medium text-rose-600 text-center" style="background-color: #FFB5B5;">Perempuan</div>';
-                      // }
+                      if ($row['jenis_kelamin'] == 'L') {
+                        echo '<div class="w-[120px] h-[30px] rounded-full px-1 text-lg font-medium text-blue-800 text-center" style="background-color: #92a9f9;">Laki-Laki</div>';
+                      } else {
+                        echo '<div class="w-[120px] h-[30px] rounded-full px-1 text-lg font-medium text-rose-600 text-center" style="background-color: #FFB5B5;">Perempuan</div>';
+                      }
                     ?>
                   </td>
-                  <td class="py-2 px-4 border-r"><?//= $row['phone_ortu']; ?>Tes</td>
-                  <td class="py-2 px-4 border-r"><?//= $row['alamat']; ?>Tes</td>
+                  <td class="py-2 px-4 border-r"><?= $row['phone_ortu']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
@@ -64,7 +58,7 @@
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
               <?php
-            // }
+            }
               ?>
               </tbody>
           </table>
