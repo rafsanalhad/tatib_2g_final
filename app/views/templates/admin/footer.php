@@ -58,7 +58,6 @@
         const tutupModa2 = document.getElementById('tutupModal2');
 
 
-
         tutupModal.addEventListener('click', function() {
           $('.sidebar').removeClass('sidebar-backdrop');
           staticModal.classList.add('hidden');

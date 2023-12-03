@@ -1,8 +1,6 @@
 <div id="static-modal" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
   <!-- Backdrop -->
-  <div class="fixed inset-0 bg-black opacity-50 ">
-
-  </div>
+  <div class="fixed inset-0 bg-black opacity-50 "></div>
 
   <div class="flex items-center justify-center min-h-screen p-4">
     <div class="bg-white w-full max-w-3xl p-8 rounded-lg shadow-md relative">
