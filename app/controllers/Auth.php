@@ -2,34 +2,45 @@
 
 class Auth extends Controller
 {
+    public function __construct()
+    {
+        if (isset($_SESSION['level'])) {
+            if ($_SESSION['level'] == 1) {
+                header('location: ' . BASEURL . '/admin');
+            } else if ($_SESSION['level'] == 2) {
+                header('location: ' . BASEURL . '/dosen');
+            } else if ($_SESSION['level'] == 3) {
+                header('location: ' . BASEURL . '/mahasiswa');
+            }
+        }
+    }
     public function index()
     {
         $this->view('auth/login/index');
     }
-    public function loginProses()
+    public function prosesLogin()
     {
-        // $username = $_POST['username'];
-        // $password = md5($_POST['password']);
+        $username = $_POST['username'];
+        $password = md5($_POST['password']);
 
-        // $query = "SELECT * FROM user WHERE username='$username' and password='$password'";
-        // $result = mysqli_query($koneksi, $query);
-        // $row = mysqli_fetch_assoc($result);
-        // $_SESSION['level'] = $row['level'];
+        $row = $this->model('Auth_model')->getUser($username, $password);
+        var_dump($row);
 
-        // if ($row['level'] == 1) {
-        //     header('location: index.php');
-        // } else if ($row['level'] == 2) {
-        //     $_SESSION['username'] =  $row['username'];
-        //     header('location: dosen.php');
-        // } else if ($row['level'] == 3) {
+        $_SESSION['level'] = $row['level'];
 
-        //     $_SESSION['username'] =  $row['username'];
-        //     header('location: mahasiswa.php');
-        // } else {
-        //     echo "Salah";
-        //     header('location: index.php');
-        //     echo mysqli_error($koneksi);
-        // }
+        if ($row['level'] == 1) {
+            header('location: '. BASEURL .'/admin');
+        } else if ($row['level'] == 2) {
+            $_SESSION['username'] =  $row['username'];
+            header('location: '. BASEURL .'/dosen');
+        } else if ($row['level'] == 3) {
+
+            $_SESSION['username'] =  $row['username'];
+            header('location: '. BASEURL .'/mahasiswa');
+        } else {
+            echo "Salah";
+            header('location: '. BASEURL .'/auth');
+        }
     }
     public function logout()
     {

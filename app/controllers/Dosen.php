@@ -1,6 +1,11 @@
 <?php
 
 class Dosen extends Controller{
+    public function __construct(){
+        if($_SESSION['level'] != 2){
+            header('location: '. BASEURL .'/auth');
+        }
+    }
     public function index(){
         $this->view('templates/dosen/header');
         $this->view('dosen/index');

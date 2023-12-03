@@ -1,6 +1,11 @@
 <?php
 
 class Mahasiswa extends Controller{
+    public function __construct(){
+        if($_SESSION['level'] != 3){
+            header('location: '. BASEURL .'/auth');
+        }
+    }
     public function index(){
         $this->view('templates/mahasiswa/header');
         $this->view('mahasiswa/index');

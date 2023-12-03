@@ -1,6 +1,11 @@
 <?php
 
 class Admin extends Controller{
+    public function __construct(){
+        if($_SESSION['level'] != 1){
+            header('location: '. BASEURL .'/auth');
+        }
+    }
     public function index(){
         $this->view('templates/admin/header');
         $this->view('admin/index');
