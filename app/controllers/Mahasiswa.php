@@ -3,7 +3,7 @@
 class Mahasiswa extends Controller{
     public function __construct(){
         if($_SESSION['level'] != 3){
-            header('location: '. BASEURL .'/auth');
+            header('location: '. BASEURL .'/login');
         }
     }
     public function index(){

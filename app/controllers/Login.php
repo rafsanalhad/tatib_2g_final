@@ -1,6 +1,6 @@
 <?php
 
-class Auth extends Controller
+class Login extends Controller
 {
     public function __construct()
     {
@@ -23,8 +23,7 @@ class Auth extends Controller
         $username = $_POST['username'];
         $password = md5($_POST['password']);
 
-        $row = $this->model('Auth_model')->getUser($username, $password);
-        var_dump($row);
+        $row = $this->model('Login_model')->getUser($username, $password);
 
         $_SESSION['level'] = $row['level'];
 

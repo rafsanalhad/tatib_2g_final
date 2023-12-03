@@ -3,7 +3,7 @@
 class Admin extends Controller{
     public function __construct(){
         if($_SESSION['level'] != 1){
-            header('location: '. BASEURL .'/auth');
+            header('location: '. BASEURL .'/login');
         }
     }
     public function index(){
