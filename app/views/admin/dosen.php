@@ -34,7 +34,14 @@
                   <tr class="border-b">
                     <td class="py-2 px-4 border-r">
                       <div class="flex items-center">
-                        <img src="<?= BASEURL; ?>/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
+                        <?php
+                          if ($row['jenis_kelamin'] == 'L') {
+                            echo '<img src="' . BASEURL . '/img/profil/rizky_arifiansyah.jpeg" alt="" class="foto_profil_dosen_table inline ">';
+                          } else {
+                            echo '<img src="' . BASEURL . '/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">';
+                          }
+                        ?>
+                        <!-- <img src="<?= BASEURL; ?>/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline "> -->
                         <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                       </div>
                     </td>
@@ -92,7 +99,7 @@
 
       <!-- Konten Modal -->
       <!-- <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1> -->
-      <h3 class="text-2xl mb-7 font-bold">Tambah Data Mahasiswa</h3>
+      <h3 class="text-2xl mb-7 font-bold">Tambah Data Dosen</h3>
       <div class="flex flex-col md:flex-row">
         <div class="containerGroupImg md:w-1/4">
           <img src="<?= BASEURL;?>/img/icon/Group.png" alt="" style="padding: 50px;">
