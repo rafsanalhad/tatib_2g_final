@@ -76,7 +76,7 @@
             </tbody>
           </table>
           <div class="text-center mt-10">
-            <a href="<?= BASEURL;?>/mahasiswa/uploadBuktiKompen.php" class="text-white text-lg font-sans text-center"><button class="w-[180px] h-[50px] bg-sky-600 hover:bg-sky-700 rounded-xl">
+            <a href="<?= BASEURL;?>/mahasiswa/uploadBuktiKompen" class="text-white text-lg font-sans text-center"><button class="w-[180px] h-[50px] bg-sky-600 hover:bg-sky-700 rounded-xl">
             Upload Bukti Kompen</button></a>
           </div>
         </div>
