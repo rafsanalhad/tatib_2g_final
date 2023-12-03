@@ -233,8 +233,24 @@
   </div>
 </div>
 <script>
-  $(document).ready(function() {
+  const modalKompen = document.getElementById('static-modal-kompen');
+        const showModalKompen = () => {
+          $('.sidebar').addClass('sidebar-backdrop');
+          modalKompen.classList.remove('hidden');
+        }
+        const tutupModalKompen = document.getElementById('tutupModalKompen');
+        const tutupModalKompen2 = document.getElementById('tutupModalKompen2');
 
+
+        tutupModalKompen.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          modalKompen.classList.add('hidden');
+        });
+        tutupModalKompen2.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          modalKompen.classList.add('hidden');
+        });
+  $(document).ready(function() {
 
     $('#tableKompen').DataTable({
       rowReorder: {
