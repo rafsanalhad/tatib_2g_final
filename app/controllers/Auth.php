@@ -1,12 +1,10 @@
 <?php
 
-class Admin extends Controller
+class Auth extends Controller
 {
     public function index()
     {
-        $this->view('templates/admin/header');
-        $this->view('admin/index');
-        $this->view('templates/admin/footer');
+        $this->view('auth/login/index');
     }
     public function loginProses()
     {
