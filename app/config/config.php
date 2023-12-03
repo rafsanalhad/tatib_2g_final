@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL', 'http://localhost/tatib_2g_clone/public');
+define('BASEURL', 'http://localhost/tatib_2g/public');
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
