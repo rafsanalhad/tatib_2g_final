@@ -59,15 +59,17 @@
               </div>
 
             </div>
-
+            <?php 
+              foreach ($data['laporanTerbaru'] as $row):
+            ?>
             <div class="flex-1 bg-white pelanggaran_terbaru shadow-lg">
               <h3 class="pelanggaran_tbr_title">Laporan Terbaru</h3>
               <hr class="hr_pelanggaran">
               <hr class="hr_db">
               <div class="biodata_pelanggar">
                 <div class="profil_pelanggar flex">
-                  <p class="nama_pelanggar">Arya Chandra Kusuma</p>
-                  <p class="nim_pelanggar">NIM (2241720040)</p>
+                  <p class="nama_pelanggar"><?php echo $data['laporanTerbaru'][0]['nama']; ?></p>
+                  <p class="nim_pelanggar">NIM (<?php echo $data['laporanTerbaru'][0]['nim'] ?>)</p>
                 </div>
                 <div class="tanggal_pelanggaran_container flex">
                   <p class="tanggal_pelanggaran">16 November 2023</p>
@@ -146,6 +148,9 @@
                   <p class="penyebab_pelanggaran">Tidak menjaga kebersihan di seluruh area Polinema - Tingkat III</p>
                   <p class="bobot_cukup_berat">Cukup Berat</p>
                 </div>
+                <?php
+                  endforeach;
+                ?>
                 <hr class="hr_db">
               </div>
             </div>

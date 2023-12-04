@@ -64,4 +64,15 @@ class Admin_model
         $this->db->query('SELECT COUNT(prodi_id) as jumlah_prodi FROM prodi');
         return $this->db->single();
     }
+    public function laporanTerbaru()
+    {
+        $this->db->query('SELECT
+            m.nama, m.nim, p.tanggal_pengaduan, pe.pelanggaran, pe.tingkat
+        FROM ' . $this->table2 . ' AS m 
+        JOIN ' . $this->table3 . ' AS p ON m.nim = p.nim 
+        JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id
+        ORDER BY p.pengaduan_id DESC
+        LIMIT 10');
+        return $this->db->resultSet();
+    }
 }

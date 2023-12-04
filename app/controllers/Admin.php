@@ -12,6 +12,7 @@ class Admin extends Controller{
         $data['mahasiswa'] = $this->model('Admin_model')->hitungMahasiswa();
         $data['pelanggaran'] = $this->model('Admin_model')->hitungPelanggaran();
         $data['prodi'] = $this->model('Admin_model')->hitungProdi();
+        $data['laporanTerbaru'] = $this->model('Admin_model')->laporanTerbaru();
         
         $this->view('templates/admin/header', $data);
         $this->view('admin/index', $data);
