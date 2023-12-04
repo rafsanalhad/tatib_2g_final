@@ -55,7 +55,6 @@
                       // }
                       ?>
                   </td>
-                  <td class="py-2 px-4 border-r"><?//= $row['sanksi_pelanggaran']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <img src="<?= BASEURL; ?>/img/icon/loading.png" alt="prosesKompen" class="bg-orange-400 hover:bg-orange-700 py-2 px-4 rounded align-center">
                     <img src="<?= BASEURL; ?>/img/icon/tolak.png" alt="tolakKompen" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] py-2 px-4 rounded">
