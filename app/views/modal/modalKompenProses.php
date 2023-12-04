@@ -8,7 +8,6 @@
       <button id="tutupModal" class="absolute top-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
         <i class="fa-solid fa-times"></i>
       </button>
-
       <!-- Konten Modal -->
       <!-- <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1> -->
       <h3 class="text-2xl mb-7 font-bold">Sanksi</h3>
