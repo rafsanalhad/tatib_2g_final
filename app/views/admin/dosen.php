@@ -187,19 +187,19 @@
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
-      <div class="flex w-full">
-        <div class="ml-auto">
-          <button id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Tutup
-          </button>
-          <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            Simpan
-          </button>
+        <div class="flex w-full">
+          <div class="ml-auto">
+            <button id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              Tutup
+            </button>
+            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              Simpan
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

@@ -127,8 +127,5 @@
                 <p class="font-bold">2</p>
               </div>
             </div>
-            <div class="bg-red-700 w-[30px] h-[30] rounded-full">
-            Sangat Berat
-            </div>
         </div>
     </div>

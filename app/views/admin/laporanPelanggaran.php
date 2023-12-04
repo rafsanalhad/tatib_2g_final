@@ -228,7 +228,7 @@
   </div>
 </div>
 <script>
-   const modalKompen = document.getElementById('static-modal-kompen');
+  const modalKompen = document.getElementById('static-modal-kompen');
         const showModalKompen = () => {
           $('.sidebar').addClass('sidebar-backdrop');
           modalKompen.classList.remove('hidden');

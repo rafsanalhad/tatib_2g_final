@@ -188,12 +188,11 @@
                   <label for="name" id="notelp_ortu" class="block text-sm font-medium text-gray-900">Alamat</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
+                  <div class="mr-2">:</div>
                   <textarea name="alamat" id="alamat" class="mt-1 p-2 w-full border rounded-md"></textarea>
                 </div>
               </div>
             </div>
-          
         </div>
       </div>
       <div class="flex w-full">

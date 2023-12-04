@@ -58,7 +58,7 @@
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r"><?//= $row['pelanggaran']; ?></td>
-                  <!-- proses aksi -->
+                  <!-- proses -->
                   <!-- <td class="py-2 px-4 border-r text-center">
                     <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-yellow-500 text-lg font-medium text-white hover:bg-yellow-700">Proses</button></a>
                   </td> -->
