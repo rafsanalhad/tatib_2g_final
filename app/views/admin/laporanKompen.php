@@ -39,6 +39,7 @@
                 ?>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
+                  <td class="py-2 px-4 border-r">
                     <p class="nama_dosen_table inline"><?= $row['tanggal_pengaduan']; ?></p>
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['nama']; ?></td>
