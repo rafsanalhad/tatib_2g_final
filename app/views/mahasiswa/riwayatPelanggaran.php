@@ -56,11 +56,10 @@
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r">
-                    <img src="<?= BASEURL; ?>/img/icon/loading.png" alt="prosesKompen" class="bg-orange-400 hover:bg-orange-700 py-2 px-4 rounded align-center">
-                    <img src="<?= BASEURL; ?>/img/icon/tolak.png" alt="tolakKompen" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] py-2 px-4 rounded">
+                    <a href="#" onclick="showModalProses()"><img src="<?= BASEURL; ?>/img/icon/loading.png" class="bg-orange-400 hover:bg-orange-700 py-2 px-4 rounded align-center"></a>
+                    <a href="#" onclick="showModalDitolak()"><img src="<?= BASEURL; ?>/img/icon/tolak.png" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] py-2 px-4 rounded"></a>
                     <img src="<?= BASEURL; ?>/img/icon/terima.png" alt="terimaKompen" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] py-2 px-3 rounded">
                   </td>
-                  <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
               <?php
             // }
@@ -72,7 +71,66 @@
       </div>
       </div>
     </div>
+    <div id="modalProses" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black opacity-50 "></div>
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white w-full max-w-3xl p-8 rounded-lg shadow-md relative">
+        <!-- Tombol untuk menutup modal -->
+        <button id="tutupModal" class="absolute top-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+          <i class="fa-solid fa-times"></i>
+        </button>
+        <h3 class="text-2xl mb-7 font-bold">Sanksi</h3>
+        <div class="flex flex-col md:flex-row">
+        </div>
+      </div>
+    </div>
+  </div>
+    <div id="modalTolak" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black opacity-50 "></div>
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white w-full max-w-3xl p-8 rounded-lg shadow-md relative">
+        <!-- Tombol untuk menutup modal -->
+        <button id="tutupModal1" class="absolute top-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+          <i class="fa-solid fa-times"></i>
+        </button>
+        <h3 class="text-2xl mb-7 font-bold">Tolak</h3>
+        <div class="text-right">
+        <button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+          Kerjakan Ulang
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <script>
+
+const modalKompen = document.getElementById('modalProses');
+        const showModalProses = () => {
+          $('.sidebar').addClass('sidebar-backdrop');
+          modalKompen.classList.remove('hidden');
+        }
+        const tutupModalKompen = document.getElementById('tutupModal');
+
+        tutupModalKompen.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          modalKompen.classList.add('hidden');
+        });
+
+const modalKompen1 = document.getElementById('modalTolak');
+        const showModalDitolak = () => {
+          $('.sidebar').addClass('sidebar-backdrop');
+          modalKompen1.classList.remove('hidden');
+        }
+        const tutupModalKompen1 = document.getElementById('tutupModal1');
+
+        tutupModalKompen1.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          modalKompen1.classList.add('hidden');
+        });
+
       $(document).ready(function() {
 $('#tableMahasiswa').DataTable({
   rowReorder: {

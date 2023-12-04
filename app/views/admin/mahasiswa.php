@@ -188,25 +188,24 @@
                   <label for="name" id="notelp_ortu" class="block text-sm font-medium text-gray-900">Alamat</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
+                  <div class="mr-2">:</div>
                   <textarea name="alamat" id="alamat" class="mt-1 p-2 w-full border rounded-md"></textarea>
                 </div>
               </div>
             </div>
-          
         </div>
       </div>
       <div class="flex w-full">
         <div class="ml-auto">
-          <button id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button type="button" id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Tutup
           </button>
           <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             Simpan
           </button>
         </div>
-        </form>
       </div>
+        </form>
     </div>
   </div>
 </div>

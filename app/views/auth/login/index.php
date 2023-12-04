@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="flex flex-col justify-center items-center h-screen">
-        <img src="<?= BASEURL;?>/img/profil/profil.png" alt="profil" class="scale-75">
+        <img src="<?= BASEURL;?>/img/login/profil.png" alt="profil" class="scale-75">
         <form action="<?= BASEURL; ?>/login/prosesLogin" method="post">
             <div class="max-w-screen-sm bg-white rounded-[62px] border-4 border-sky-600 flex justify-center items-center">
                 <div class="flex flex-col p-10">
