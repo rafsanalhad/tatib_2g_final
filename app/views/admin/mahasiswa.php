@@ -96,10 +96,10 @@
       <!-- <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1> -->
       <h3 class="text-2xl mb-7 font-bold">Tambah Data Mahasiswa</h3>
       <div class="flex flex-col md:flex-row">
-        <div class="containerGroupImg md:w-2/6">
+        <div class="containerGroupImg md:w-1/4">
           <img src="<?= BASEURL;?>/img/icon/Group.png" alt="" style="padding: 50px;">
         </div>
-        <div class="containerFormModal md:w-4/6 ml-3">
+        <div class="containerFormModal md:w-3/4 ml-3">
           <form class="mb-3" action="<?= BASEURL;?>/Admin/tambahMahasiswa" method="POST">
             <div class="mb-2">
               <div class="flex items-center">
@@ -188,24 +188,25 @@
                   <label for="name" id="notelp_ortu" class="block text-sm font-medium text-gray-900">Alamat</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">:</div>
+                  <div class="mr-2">: </div>
                   <textarea name="alamat" id="alamat" class="mt-1 p-2 w-full border rounded-md"></textarea>
                 </div>
               </div>
             </div>
+          
         </div>
       </div>
       <div class="flex w-full">
         <div class="ml-auto">
-          <button type="button" id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Tutup
           </button>
           <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             Simpan
           </button>
         </div>
-      </div>
         </form>
+      </div>
     </div>
   </div>
 </div>

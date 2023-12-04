@@ -26,7 +26,11 @@ class Admin_model
     }
     public function getLaporanPelanggaran()
     {
-        $this->db->query('SELECT * FROM ' . $this->table2);
+        $this->db->query('SELECT p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
+        FROM ' . $this->table3 . ' AS p 
+        JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
+        JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
+        JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id');
         return $this->db->resultSet();
     }
     public function getLaporanKompen()
@@ -38,6 +42,7 @@ class Admin_model
 
 
         return $this->db->resultSet();
-
     }
+
+    
 }
