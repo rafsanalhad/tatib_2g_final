@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2023 pada 05.34
+-- Waktu pembuatan: 04 Des 2023 pada 09.54
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -32,7 +32,6 @@ CREATE TABLE `dosen` (
   `nama` varchar(50) NOT NULL,
   `TTL` varchar(50) NOT NULL,
   `jenis_kelamin` enum('L','P') NOT NULL,
-  `pendidikan` varchar(50) NOT NULL,
   `jabatan` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_phone` int(11) NOT NULL,
@@ -44,8 +43,12 @@ CREATE TABLE `dosen` (
 -- Dumping data untuk tabel `dosen`
 --
 
-INSERT INTO `dosen` (`nip`, `nama`, `TTL`, `jenis_kelamin`, `pendidikan`, `jabatan`, `email`, `no_phone`, `alamat`, `user_id`) VALUES
-('12345', 'Unggul Pamenang', 'Malang, 12 desember 1980', 'L', 'S2', 'Dosen TI', 'unggul@gmail.com', 821212121, 'Jl. Soehat no 1 Malang', 2);
+INSERT INTO `dosen` (`nip`, `nama`, `TTL`, `jenis_kelamin`, `jabatan`, `email`, `no_phone`, `alamat`, `user_id`) VALUES
+('12345', 'Unggul Pamenang', 'Malang, 12 desember 1980', 'L', 'Dosen TI', 'unggul@gmail.com', 821212121, 'Jl. Soehat no 1 Malang', 2),
+('12346', 'Imam ', 'Malang, 12 desember 1980', 'L', 'Dosen TI', 'email@gmail.com', 821212121, 'Jl. Semanggi Barat', 28),
+('12347', 'Dodit', 'Malang, 19 Desember 1976', 'L', 'Dosen TI', 'email@email.com', 812121212, 'Jl. Soehat, Malang', 29),
+('12348', 'Khairy', 'Malang, 13 Mei 1990', 'L', 'Dosen TI', 'email@email.com', 812121212, 'Jl. Soehat, Malang', 30),
+('12349', 'Annisa Puspa', 'Malang, 30 Agustus 1988', 'P', 'Dosen SIB', 'email@email.com', 812121212, 'Jl. Soehat, Malang', 31);
 
 -- --------------------------------------------------------
 
@@ -55,13 +58,14 @@ INSERT INTO `dosen` (`nip`, `nama`, `TTL`, `jenis_kelamin`, `pendidikan`, `jabat
 
 CREATE TABLE `mahasiswa` (
   `nim` varchar(20) NOT NULL,
+  `prodi_id` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `TTL` varchar(50) NOT NULL,
   `jenis_kelamin` enum('L','P') NOT NULL,
-  `jurusan` varchar(50) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone_ortu` int(11) NOT NULL,
+  `no_phone` varchar(11) NOT NULL,
+  `phone_ortu` varchar(20) NOT NULL,
   `jumlah_pelanggaran` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -70,8 +74,12 @@ CREATE TABLE `mahasiswa` (
 -- Dumping data untuk tabel `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`nim`, `nama`, `TTL`, `jenis_kelamin`, `jurusan`, `alamat`, `email`, `phone_ortu`, `jumlah_pelanggaran`, `user_id`) VALUES
-('2241720228', 'arya', 'sorong, 30 juni 2004', 'L', 'Teknologi Informasi', 'Jl. kumis kucing no 42A Malang', 'arya@gmail.com', 812345678, 0, 3);
+INSERT INTO `mahasiswa` (`nim`, `prodi_id`, `nama`, `TTL`, `jenis_kelamin`, `alamat`, `email`, `no_phone`, `phone_ortu`, `jumlah_pelanggaran`, `user_id`) VALUES
+('2241720040', 1, 'Rizky Arifiansyah', 'Jombang, 12 April 2003', 'L', 'Jl. Kembang Turi, Malang', 'email@email.com', '0812121212', '0812121212', 0, 24),
+('2241720058', 1, 'Harafsan Alhad', 'Malang, 30 Mei 2004', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, 25),
+('2241720127', 1, 'Hanifah Amany', 'Malang, 30 Agustus 2004', 'P', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, 26),
+('2241720148', 1, 'Irshandy Aditya', 'Malang, 02 Januari 2003', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, 27),
+('2241720228', 1, 'Arya Chandra', 'sorong, 30 juni 2004', 'L', 'Jl. Semanggi Barat, Malang', 'email@gmail.com', '0821212121', '0812345678', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -104,12 +112,40 @@ INSERT INTO `pelanggaran` (`pelanggaran_id`, `pelanggaran`, `tingkat`, `sanksi_p
 
 CREATE TABLE `pengaduan` (
   `pengaduan_id` int(11) NOT NULL,
+  `nip` varchar(20) NOT NULL,
   `nim` varchar(20) NOT NULL,
   `pelanggaran_id` int(11) NOT NULL,
-  `bukti_pelanggaran` blob NOT NULL,
+  `bukti_pelanggaran` varchar(200) NOT NULL,
   `tanggal_pengaduan` date NOT NULL,
   `status_pengaduan` enum('valid','tidak valid') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `pengaduan`
+--
+
+INSERT INTO `pengaduan` (`pengaduan_id`, `nip`, `nim`, `pelanggaran_id`, `bukti_pelanggaran`, `tanggal_pengaduan`, `status_pengaduan`) VALUES
+(2, '12345', '2241720058', 3, '', '2023-12-04', 'valid'),
+(3, '12345', '2241720148', 4, '', '2023-12-04', 'valid');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `prodi`
+--
+
+CREATE TABLE `prodi` (
+  `prodi_id` int(11) NOT NULL,
+  `prodi_nama` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `prodi`
+--
+
+INSERT INTO `prodi` (`prodi_id`, `prodi_nama`) VALUES
+(1, 'Teknik Informatika'),
+(2, 'Sistem Informasi Bisnis');
 
 -- --------------------------------------------------------
 
@@ -163,7 +199,15 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `username`, `password`, `level`) VALUES
 (1, 'jojo', '7510d498f23f5815d3376ea7bad64e29', 1),
 (2, '12345', '827ccb0eea8a706c4c34a16891f84e7b', 2),
-(3, '2241720228', 'f4b21949fdeb4f38355f36d0536e903c', 3);
+(3, '2241720228', 'f4b21949fdeb4f38355f36d0536e903c', 3),
+(24, '2241720040', 'fe729d1ba6c8d534f4c26eb90752066b', 3),
+(25, '2241720058', 'd9203392b9db5681d1a7111085bc8843', 3),
+(26, '2241720127', '78a79fcce51625ece4270bda329eed77', 3),
+(27, '2241720148', '1937f9832b38ea2b59e97d3391b6bc20', 3),
+(28, '12346', '12346', 2),
+(29, '12347', '12347', 2),
+(30, '12348', '12348', 2),
+(31, '12349', '12349', 2);
 
 --
 -- Indexes for dumped tables
@@ -181,7 +225,8 @@ ALTER TABLE `dosen`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`nim`),
-  ADD UNIQUE KEY `f_user` (`user_id`);
+  ADD UNIQUE KEY `f_user` (`user_id`),
+  ADD KEY `f_prodi` (`prodi_id`);
 
 --
 -- Indeks untuk tabel `pelanggaran`
@@ -194,8 +239,15 @@ ALTER TABLE `pelanggaran`
 --
 ALTER TABLE `pengaduan`
   ADD PRIMARY KEY (`pengaduan_id`),
-  ADD UNIQUE KEY `f_mahasiswa` (`nim`),
-  ADD UNIQUE KEY `f_pelanggaran` (`pelanggaran_id`);
+  ADD KEY `f_mahasiswa` (`nim`) USING BTREE,
+  ADD KEY `f_pelanggaran` (`pelanggaran_id`) USING BTREE,
+  ADD KEY `f_dosen` (`nip`);
+
+--
+-- Indeks untuk tabel `prodi`
+--
+ALTER TABLE `prodi`
+  ADD PRIMARY KEY (`prodi_id`);
 
 --
 -- Indeks untuk tabel `riwayat`
@@ -232,7 +284,13 @@ ALTER TABLE `pelanggaran`
 -- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `pengaduan_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pengaduan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `prodi`
+--
+ALTER TABLE `prodi`
+  MODIFY `prodi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `riwayat`
@@ -250,7 +308,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -266,14 +324,16 @@ ALTER TABLE `dosen`
 -- Ketidakleluasaan untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`prodi_id`) REFERENCES `prodi` (`prodi_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
   ADD CONSTRAINT `pengaduan_ibfk_1` FOREIGN KEY (`pelanggaran_id`) REFERENCES `pelanggaran` (`pelanggaran_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pengaduan_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pengaduan_ibfk_2` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pengaduan_ibfk_3` FOREIGN KEY (`nip`) REFERENCES `dosen` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `riwayat`
