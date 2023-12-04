@@ -34,24 +34,17 @@
             // while ($row = mysqli_fetch_assoc($result)) {
             ?>
               <tbody>
+                <?php             
+                  foreach($data['laporanKompen'] as $row):
+                ?>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"> <img src="assets/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">
-                    <p class="nama_dosen_table inline"><?//= $row['nama']; ?></p>
+                    <p class="nama_dosen_table inline"><?= $row['tanggal_pengaduan']; ?></p>
                   </td>
-                  <td class="py-2 px-4 border-r"><?//= $row['nip']; ?></td>
-                  <td class="py-2 px-4 border-r"><?//= $row['TTL']; ?></td>
-                  <!-- <td class="py-2 px-4 border-r">
-                    <div class="containerJenkel"><?php
-                                                  // if ($row['jenis_kelamin'] == 'L') {
-                                                  //   echo 'Laki-laki';
-                                                  // } else {
-                                                  //   echo 'Perempuan';
-                                                  // }
-                                                  ?></div>
-                  </td> -->
-                  <td class="py-2 px-4 border-r"><?//= $row['no_phone']; ?></td>
-                  <td class="py-2 px-4 border-r"><?//= $row['alamat']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['nama']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>                
+                  <td class="py-2 px-4 border-r"><?= $row['tingkat']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
                   <td class="py-2 px-4 border-r ">
                     <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline" onclick="showModalKompen();"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
@@ -59,7 +52,7 @@
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
               <?php
-            // }
+              endforeach;
               ?>
               </tbody>
           </table>

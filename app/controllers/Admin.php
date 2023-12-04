@@ -59,8 +59,8 @@ class Admin extends Controller{
     public function laporanKompen(){
         $data['judul'] = 'Admin Page';
         $data['laporanKompen'] = $this->model('Admin_model')->getLaporanKompen();
-        $this->view('templates/admin/header');
-        $this->view('admin/laporanKompen');
+        $this->view('templates/admin/header', $data);
+        $this->view('admin/laporanKompen', $data);
         $this->view('templates/admin/footer');
     }
     public function logout(){

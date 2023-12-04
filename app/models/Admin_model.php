@@ -4,6 +4,8 @@ class Admin_model
 {
     private $table1 = 'dosen';
     private $table2 = 'mahasiswa';
+    private $table3 = 'pengaduan';
+    private $table4 = 'pelanggaran';
     private $db;
 
 
@@ -29,7 +31,13 @@ class Admin_model
     }
     public function getLaporanKompen()
     {
-        $this->db->query('SELECT * FROM ' . $this->table2);
+        $this->db->query('SELECT p.tanggal_pengaduan, m.nama, m.nim, pe.tingkat, pe.pelanggaran
+        FROM ' . $this->table3 . ' AS p
+        JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim 
+        JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id');
+
+
         return $this->db->resultSet();
+
     }
 }
