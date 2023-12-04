@@ -8,7 +8,11 @@ class Admin extends Controller{
     }
     public function index(){
         $data['judul'] = 'Admin Page';
-        // $data['dosen'] = $this->model('Admin_model')->getDosen();
+        $data['dosen'] = $this->model('Admin_model')->hitungDosen();  
+        $data['mahasiswa'] = $this->model('Admin_model')->hitungMahasiswa();
+        $data['pelanggaran'] = $this->model('Admin_model')->hitungPelanggaran();
+        $data['prodi'] = $this->model('Admin_model')->hitungProdi();
+        
         $this->view('templates/admin/header', $data);
         $this->view('admin/index', $data);
         $this->view('templates/admin/footer');

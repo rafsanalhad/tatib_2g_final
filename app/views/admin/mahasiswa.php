@@ -20,6 +20,7 @@
               <tr class="border-b">
                 <th class="py-2 px-4 border-r">Nama Mahasiswa</th>
                 <th class="py-2 px-4 border-r">NIM</th>
+                <th class="py-2 px-4 border-r">Prodi</th>                
                 <th class="py-2 px-4 border-r">TTL</th>
                 <th class="py-2 px-4 border-r">Jen. Kelamin</th>
                 <th class="py-2 px-4 border-r">No. Telp</th>
@@ -36,16 +37,13 @@
                     
                   </div> -->
                   <td class="py-2 px-4 border-r"> 
-                    <?php
-                      if ($row['jenis_kelamin'] == 'L') {
-                        echo '<img src="' . BASEURL . '/img/profil/rizky_arifiansyah.jpeg" alt="" class="foto_profil_dosen_table inline ">';
-                      } else {
-                        echo '<img src="' . BASEURL . '/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">';
-                      }
+                    <?php                
+                        echo '<img src="' . BASEURL . '/img/profil/rizky_arifiansyah.jpeg" alt="" class="foto_profil_dosen_table inline ">';                  
                     ?>
                     <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['prodi_nama']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['TTL']; ?></td>
                   <td class="py-2 px-4 border-r">
                     <?php

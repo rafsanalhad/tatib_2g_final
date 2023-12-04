@@ -42,17 +42,19 @@
                   <td class="py-2 px-4 border-r">
                     <p class="nama_dosen_table inline"><?= $row['nim']; ?></p>
                   </td>
-                  <td class="py-2 px-4 border-r"><?php if ($row['tingkat'] = 1) {
-                    echo "Sangat Berat";
-                  } elseif ($row['tingkat'] = 2) {
-                    echo "Berat";
-                  } elseif ($row['tingkat'] = 3) {
-                    echo "Cukup Berat";
-                  } elseif ($row['tingkat'] = 4) {
-                    echo "Sedang";
-                  } elseif ($row['tingkat'] = 5) {
-                    echo "Ringan";
-                  } ?></td>
+                  <td class="py-2 px-4 border-r"><?php
+                      if ($row['tingkat'] == '1') {
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
+                      } elseif ($row['tingkat'] == '2') {
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
+                      }elseif ($row['tingkat'] == '3'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
+                      }elseif ($row['tingkat'] == '4'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
+                      }elseif ($row['tingkat'] == '5'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
+                      }
+                      ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>                                    
                   <td class="py-2 px-4 border-r ">
                     <a href="#" onclick="showModalKompen();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-pen-to-square"></i></a>

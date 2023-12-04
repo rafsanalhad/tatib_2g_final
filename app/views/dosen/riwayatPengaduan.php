@@ -18,6 +18,7 @@
                 <th class="py-2 px-4 border-r">Tanggal</th>
                 <th class="py-2 px-4 border-r">Nama Mahasiswa</th>
                 <th class="py-2 px-4 border-r">NIM</th>
+                <th class="py-2 px-4 border-r">Prodi</th>
                 <th class="py-2 px-4 border-r">Tingkat</th>
                 <th class="py-2 px-4 border-r">Jen. Pelanggaran</th>
                 <th class="py-2 px-4 border-r">Status</th>
