@@ -105,7 +105,7 @@
           <img src="<?= BASEURL;?>/img/icon/Group.png" alt="" style="padding: 50px;">
         </div>
         <div class="containerFormModal md:w-3/4 ml-3">
-          <form class="mb-3">
+          <form class="mb-3" action="<?= BASEURL;?>/Admin/tambahDosen" method="POST">
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
@@ -113,18 +113,18 @@
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
-                  <input type="text" name="name" id="nama" class="mt-1 p-2 w-full border rounded-md">
+                  <input type="text" name="nama" id="nama" class="mt-1 p-2 w-full border rounded-md">
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="nim" id="nim" class="block text-sm font-medium text-gray-900">NIM</label>
+                  <label for="nip" id="nip" class="block text-sm font-medium text-gray-900">NIP</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
-                  <input type="text" name="nim" id="nim" class="mt-1 p-2 w-full border rounded-md">
+                  <input type="text" name="nip" id="nip" class="mt-1 p-2 w-full border rounded-md">
                 </div>
               </div>
             </div>
@@ -146,9 +146,9 @@
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
-                  <select name="pl-2 jenisPelanggaran" id="jenisPelanggaran" class="mt-1 p-2 w-full border rounded-md">  
-                    <option value="L">Laki-laki</option>
-                    <option value="P">Perempuan</option>
+                  <select name="jenkel" id="jenisPelanggaran" class="mt-1 p-2 w-full border rounded-md">  
+                    <option name="jenkel" value="L">Laki-laki</option>
+                    <option name="jenkel" value="P">Perempuan</option>
                     <option value="L" selected>Pilih Jenis Kelamin Anda</option>
                   </select>
                 </div>
@@ -157,49 +157,61 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="notelp" class="block text-sm font-medium text-gray-900">No Telp</label>
+                  <label for="name" id="jabatan" class="block text-sm font-medium text-gray-900">Jabatan</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
-                  <input type="text" name="notelp" id="notelp" class="mt-1 p-2 w-full border rounded-md">
+                  <input type="text" name="jabatan" id="jabatan" class="mt-1 p-2 w-full border rounded-md">
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="jurusan" class="block text-sm font-medium text-gray-900">Jurusan</label>
+                  <label for="name" id="email" class="block text-sm font-medium text-gray-900">email</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
-                  <input type="text" name="jurusan" id="jurusan" class="mt-1 p-2 w-full border rounded-md">
+                  <input type="email" name="email" id="email" class="mt-1 p-2 w-full border rounded-md">
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="notelp_ortu" class="block text-sm font-medium text-gray-900">No Telp Ortu</label>
+                  <label for="name" id="no_phone" class="block text-sm font-medium text-gray-900">No Telp</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
-                  <input type="text" name="notelp_ortu" id="notelp_ortu" class="mt-1 p-2 w-full border rounded-md">
+                  <input type="text" name="no_phone" id="no_phone" class="mt-1 p-2 w-full border rounded-md">
                 </div>
               </div>
             </div>
+            <div class="mb-2">
+              <div class="flex items-center">
+                <div class="w-2/4">
+                  <label for="name" id="alamat" class="block text-sm font-medium text-gray-900">Alamat</label>
+                </div>
+                <div class="w-3/4 inline-flex items-center">
+                  <div class="mr-2">: </div>
+                  <textarea name="alamat" id="alamat" class="mt-1 p-2 w-full border rounded-md"></textarea>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
         <div class="flex w-full">
           <div class="ml-auto">
-            <button id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-              Tutup
+            <button type="button" id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Tutup
             </button>
             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
               Simpan
             </button>
-          </div>
-        </div>
-      </form>
+            </div>
+          </form>
+      </div>
     </div>
   </div>
 </div>
