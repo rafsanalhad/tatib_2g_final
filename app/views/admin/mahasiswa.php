@@ -161,7 +161,7 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="jurusan" class="block text-sm font-medium text-gray-900">Jurusan</label>
+                  <label for="name" id="jurusan" class="block text-sm font-medium text-gray-900">Prodi</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
