@@ -4,6 +4,7 @@
             title: 'Apakah anda yakin ingin keluar?',
             showDenyButton: true,
             showCancelButton: false,
+            confirmButtonColor: '28a745',
             confirmButtonText: `Keluar`,
             denyButtonText: `Batal`,
           }).then((result) => {

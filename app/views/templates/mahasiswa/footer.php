@@ -5,6 +5,7 @@
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: `Keluar`,
+            confirmButtonColor: '#28a745',
             denyButtonText: `Batal`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
