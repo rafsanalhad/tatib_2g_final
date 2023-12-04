@@ -97,7 +97,7 @@
 
       <div class="flex flex-col md:flex-row">
         <div class="w-1/4">
-          <img src="assets/profil/freya.png" alt="" style="border: none; height: 230px !important;">
+        <img src="<?= BASEURL; ?>/img/profil/freya.png" alt="" style="border: none; height: 230px !important;">
         </div>
         <div class="containerFormModal w-3/4 ml-3">
           <div class="">
