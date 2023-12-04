@@ -44,7 +44,17 @@
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['nama']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>                
-                  <td class="py-2 px-4 border-r"><?= $row['tingkat']; ?></td>
+                  <td class="py-2 px-4 border-r"><?php if ($row['tingkat'] = 1) {
+                    echo "Sangat Berat";
+                  } elseif ($row['tingkat'] = 2) {
+                    echo "Berat";
+                  } elseif ($row['tingkat'] = 3) {
+                    echo "Cukup Berat";
+                  } elseif ($row['tingkat'] = 4) {
+                    echo "Sedang";
+                  } elseif ($row['tingkat'] = 5) {
+                    echo "Ringan";
+                  } ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
                   <td class="py-2 px-4 border-r ">
                     <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline" onclick="showModalKompen();"><i class="fa-solid fa-pen-to-square"></i></a>

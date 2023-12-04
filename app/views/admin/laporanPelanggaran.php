@@ -19,6 +19,7 @@
             <thead>
               <tr class="border-b">
               <th class="py-2 px-4 border-r">Tanggal</th>
+              <th class="py-2 px-4 border-r">Pelapor</th>
                 <th class="py-2 px-4 border-r">Nama Mahasiswa</th>
                 <th class="py-2 px-4 border-r">NIM</th>
                 <th class="py-2 px-4 border-r">Tingkat</th>
@@ -28,26 +29,31 @@
               </tr>
             </thead>
             <?php
-            //foreach ($data['laporanPelanggaran'] as $row) {
+            foreach ($data['Pelanggaran'] as $row):
             ?>
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"><?//= $row['tanggal']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['nama_dosen']; ?></td>              
                   <td class="py-2 px-4 border-r">
-                    <p class="nama_dosen_table inline"><?//= $row['nama']; ?></p>
+                    <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
                   </td>
-                  <td class="py-2 px-4 border-r"><?//= $row['nip']; ?></td>
-                  <td class="py-2 px-4 border-r"><?//= $row['TTL']; ?></td>
                   <td class="py-2 px-4 border-r">
-                    <div class="containerJenkel"><?php
-                                                  // if ($row['jenis_kelamin'] == 'L') {
-                                                  //   echo 'Laki-laki';
-                                                  // } else {
-                                                  //   echo 'Perempuan';
-                                                  // }
-                                                  ?></div>
+                    <p class="nama_dosen_table inline"><?= $row['nim']; ?></p>
                   </td>
+                  <td class="py-2 px-4 border-r"><?php if ($row['tingkat'] = 1) {
+                    echo "Sangat Berat";
+                  } elseif ($row['tingkat'] = 2) {
+                    echo "Berat";
+                  } elseif ($row['tingkat'] = 3) {
+                    echo "Cukup Berat";
+                  } elseif ($row['tingkat'] = 4) {
+                    echo "Sedang";
+                  } elseif ($row['tingkat'] = 5) {
+                    echo "Ringan";
+                  } ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>                                    
                   <td class="py-2 px-4 border-r ">
                     <a href="#" onclick="showModalKompen();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
@@ -55,7 +61,7 @@
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
               <?php
-            // }
+                endforeach;
               ?>
               </tbody>
           </table>
