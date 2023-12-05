@@ -40,6 +40,13 @@
           <option value="<?//=$row['pelanggaran'];?>"><?//php echo $row['pelanggaran'];?></option>  
             <?//php }?>
           </select>
+          <br><br>
+          <label for="prodi">Prodi:</label>
+          <br>
+          <select name="jenisPelanggaran" id="jenisPelanggaran" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
+            <option value="prodiTI">Teknik Informatika</option>
+            <option value="prodiSIB">Sistem Informasi Bisnis</option>
+          </select>
           <br>
           <br>
           <label for="fotoPengaduan">Upload Foto:</label>
