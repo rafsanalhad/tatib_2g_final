@@ -44,7 +44,7 @@
                   </td>
                   <td class="py-2 px-4 border-r"><?= $row['nama']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['nim']; ?></td>                
-                  <td class="py-2 px-4 border-r"><?php
+                  <td class="py-2 px-4 border-r text-center"><?php
                       if ($row['tingkat'] == '1') {
                         echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
                       } elseif ($row['tingkat'] == '2') {

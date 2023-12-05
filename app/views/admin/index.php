@@ -15,7 +15,9 @@
           
           <div class="flex bg-white flex-col xl:flex-row">
             <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
-              <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div>
+              <div class="flex-1 notif_db h-10 flex items-center pl-2">
+              <p><b>Info! </b>Berikut adalah ringkasan sistem</p>
+              </div>
               <div class="grid grid-cols-2 gap-4 mt-5">
                 <div class="bg-white p-4 shadow-lg">
                   <div class="inline-flex">
@@ -25,8 +27,6 @@
                       <div class="text-xl block"><?php echo $data['dosen']['jumlah_dosen'] ?></div>
                     </div>
                   </div>
-
-
                 </div>
                 <div class="bg-white p-4 shadow-lg">
                   <div class="inline-flex">
