@@ -13,7 +13,8 @@ class Admin extends Controller{
         $data['pelanggaran'] = $this->model('Admin_model')->hitungPelanggaran();
         $data['prodi'] = $this->model('Admin_model')->hitungProdi();
         $data['laporanTerbaru'] = $this->model('Admin_model')->laporanTerbaru();
-
+        var_dump($data['laporanTerbaru']);
+        
         $this->view('templates/admin/header', $data);
         $this->view('admin/index', $data);
         $this->view('templates/admin/footer');
