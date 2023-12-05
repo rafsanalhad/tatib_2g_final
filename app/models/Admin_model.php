@@ -67,7 +67,7 @@ class Admin_model
     public function laporanTerbaru()
     {
         $this->db->query('SELECT
-            m.nama, m.nim, p.tanggal_pengaduan, pe.pelanggaran, pe.tingkat
+            m.nama, m.nim, date_format(p.tanggal_pengaduan, "%d %M %Y") as tanggal_pengaduan, pe.pelanggaran, pe.tingkat
         FROM ' . $this->table2 . ' AS m 
         JOIN ' . $this->table3 . ' AS p ON m.nim = p.nim 
         JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id

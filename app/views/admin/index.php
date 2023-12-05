@@ -72,11 +72,24 @@
                   <p class="nim_pelanggar">NIM (<?php echo $data['laporanTerbaru'][0]['nim'] ?>)</p>
                 </div>
                 <div class="tanggal_pelanggaran_container flex">
-                  <p class="tanggal_pelanggaran">16 November 2023</p>
+                  <p class="tanggal_pelanggaran"><?php echo $data['laporanTerbaru'][0]['tanggal_pengaduan']?></p>
                 </div>
                 <div class="penyebab_pelanggaran_container flex">
-                  <p class="penyebab_pelanggaran">Tidak menjaga kebersihan di seluruh area Polinema - Tingkat III</p>
-                  <p class="bobot_cukup_berat">Cukup Berat</p>
+                  <p class="penyebab_pelanggaran"><?php echo $data['laporanTerbaru'][0]['pelanggaran'] . " Tingkat-" . $data['laporanTerbaru'][0]['tingkat']; ?></p>
+                  <p><?php
+                      $row['tingkat'] = $data['laporanTerbaru'][0]['tingkat'];
+                      if ($row['tingkat'] == '1') {
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
+                      } elseif ($row['tingkat'] == '2') {
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
+                      }elseif ($row['tingkat'] == '3'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
+                      }elseif ($row['tingkat'] == '4'){
+                        echo '<div class="bobot_cukup_berat">Sedang</div>';
+                      }elseif ($row['tingkat'] == '5'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
+                      }
+                      ?></p>
                 </div>
                 <hr class="hr_db">
               </div>
