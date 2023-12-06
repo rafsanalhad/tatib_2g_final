@@ -106,7 +106,6 @@
   </div>
 
     <script>
-
 const modalKompen = document.getElementById('modalProses');
         const showModalProses = () => {
           $('.sidebar').addClass('sidebar-backdrop');
