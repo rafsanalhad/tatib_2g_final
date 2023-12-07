@@ -58,9 +58,9 @@
                   <td class="py-2 px-4 border-r">
                   <a href="#"><button id="baru" class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" onclick="showModalProses()">Baru</button></a>
                   
-                  <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center hidden">Upload</button></a>
+                  <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center">Upload</button></a>
                   
-                  <a href="#"><button id="proses" class="bg-orange-400 py-2 px-5 rounded text-white text-center hidden">Proses</button></a>
+                  <a href="#"><button id="proses" class="bg-orange-400 py-2 px-5 rounded text-white text-center">Proses</button></a>
                   
                   <a href="#"><button id="diTolak" class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak()">Ditolak</button></a>
                   
@@ -116,12 +116,12 @@
   </div>
 
     <script>
-        function hideElement() {
-            document.getElementById('baru').classList.add('hidden');
-        }
-        function showElement() {
-            document.getElementById('upload').classList.remove('hidden');
-        }
+        // function hideElement() {
+        //     document.getElementById('baru').classList.add('hidden');
+        // }
+        // function showElement() {
+        //     document.getElementById('upload').classList.remove('hidden');
+        // }
 
 const modalKompen = document.getElementById('modalProses');
         const showModalProses = () => {
