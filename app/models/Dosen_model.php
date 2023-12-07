@@ -65,11 +65,11 @@ class Dosen_model
 
     private function handleFileUpload()
     {
-        $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/doc/';
+        $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/profil/';
         $uploadedFile = $_FILES['imgDosen']; // Nama input file pada formulir
 
         // Menggunakan timestamp detik UNIX untuk membuat nama file unik
-        $uniqueFileName = time() . '_' . basename($uploadedFile['name']);
+        $uniqueFileName = time() . '_' . pathinfo($uploadedFile['name'], PATHINFO_FILENAME) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
         $targetFilePath = $targetDir . $uniqueFileName;
         $fileType = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
 
@@ -86,6 +86,9 @@ class Dosen_model
             echo "File yang diunggah bukan gambar atau format file tidak diizinkan.";
         }
     }
+
+
+
 
     public function hapusDataDosen($nip)
     {

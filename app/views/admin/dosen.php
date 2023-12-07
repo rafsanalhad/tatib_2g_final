@@ -35,11 +35,12 @@
                     <td class="py-2 px-4 border-r">
                       <div class="flex items-center">
                         <?php
-                          if ($row['jenis_kelamin'] == 'L') {
-                            echo '<img src="' . BASEURL . '/img/profil/rizky_arifiansyah.jpeg" alt="" class="foto_profil_dosen_table inline ">';
-                          } else {
-                            echo '<img src="' . BASEURL . '/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">';
-                          }
+                        echo '<img src="' . BASEURL . '/img/profil/' . $row['dosen_img'] . '" alt="" class="foto_profil_dosen_table inline ">';
+                          // if ($row['jenis_kelamin'] == 'L') {
+                          //   echo '<img src="' . BASEURL . '/img/profil/rizky_arifiansyah.jpeg" alt="" class="foto_profil_dosen_table inline ">';
+                          // } else {
+                          //   echo '<img src="' . BASEURL . '/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">';
+                          // }
                         ?>
                         <!-- <img src="<?= BASEURL; ?>/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline "> -->
                         <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
