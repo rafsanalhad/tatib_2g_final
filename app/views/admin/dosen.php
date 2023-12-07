@@ -61,7 +61,7 @@
                     <td class="py-2 px-4 border-r">
                       <div class="inline`">
                         <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="#" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                        <a href="<?= BASEURL; ?>/Admin/hapusDosen/<?= $row['nip']; ?>" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
                       </div>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->

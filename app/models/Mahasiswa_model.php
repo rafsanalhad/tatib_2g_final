@@ -55,10 +55,10 @@ class Mahasiswa_model
         $this->db->execute();
         return $this->db->rowCount();
     }
-    public function hapusDataMahasiswa($id){
-        $query = "DELETE FROM tb_mahasiswa WHERE id = :id";
+    public function hapusDataMahasiswa($nim){
+        $query = "DELETE FROM mahasiswa WHERE nim = :nim";
         $this->db->query($query);
-        $this->db->bind('id',$id);
+        $this->db->bind('nim',$nim);
         $this->db->execute();
         return $this->db->rowCount();
     }

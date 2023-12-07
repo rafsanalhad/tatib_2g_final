@@ -54,10 +54,10 @@ class Dosen_model
         $this->db->execute();
         return $this->db->rowCount();
     }
-    public function hapusDataDosen($id){
-        $query = "DELETE FROM dosen WHERE id = :id";
+    public function hapusDataDosen($nip){
+        $query = "DELETE FROM dosen WHERE nip = :nip";
         $this->db->query($query);
-        $this->db->bind('id',$id);
+        $this->db->bind('nip',$nip);
         $this->db->execute();
         return $this->db->rowCount();
     }
