@@ -36,7 +36,6 @@ class Admin extends Controller{
             exit;
         }
     }
-
     public function hapusDosen($nip){
         if ($this->model('Dosen_model')->hapusDataDosen($nip) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
@@ -58,6 +57,17 @@ class Admin extends Controller{
     }
     public function tambahMahasiswa(){
         if ($this->model('Mahasiswa_model')->tambahDataMahasiswa($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/admin/mahasiswa');
+            exit;
+        }else{
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/admin/mahasiswa');
+            exit;
+        }
+    }
+    public function hapusMahasiswa($id){
+        if ($this->model('Mahasiswa_model')->hapusDataMahasiswa($id) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit;
