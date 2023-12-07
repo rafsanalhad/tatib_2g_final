@@ -56,8 +56,8 @@
                       }
                       ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>                                    
-                  <td class="py-2 px-4 border-r flex">
-                    <a href="#" onclick="showModalKompen();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <td class="py-2 px-4 border-r ">
+                    <a href="#" onclick="showModalKompen();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
@@ -94,7 +94,7 @@
 
       <div class="flex flex-col md:flex-row">
         <div class="w-1/4">
-          <img src="assets/profil/freya.png" alt="" style="border: none; height: 230px !important;">
+          <img src="<?= BASEURL; ?>/img/profil/freya.png" alt="" style="border: none; height: 230px !important;">
         </div>
         <div class="containerFormModal w-3/4 ml-3">
           <div class="">
@@ -235,7 +235,31 @@
     </div>
   </div>
 </div>
+<div id="modalTolak" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black opacity-50 "></div>
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white w-full max-w-3xl p-8 rounded-lg shadow-md relative">
+        <!-- Tombol untuk menutup modal -->
+        <button id="tutupModal" class="absolute top-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+          <i class="fa-solid fa-times"></i>
+        </button>
+        <h3 class="text-2xl mb-7 font-bold text center">Alasan</h3>
+      </div>
+    </div>
+  </div>
 <script>
+  const modalKompen1 = document.getElementById('modalTolak');
+        const showModalDitolak = () => {
+          $('.sidebar').addClass('sidebar-backdrop');
+          modalKompen1.classList.remove('hidden');
+        }
+        const tutupModalKompen1 = document.getElementById('tutupModal');
+
+        tutupModalKompen1.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          modalKompen1.classList.add('hidden');
+        });
   const modalKompen = document.getElementById('static-modal-kompen');
         const showModalKompen = () => {
           $('.sidebar').addClass('sidebar-backdrop');
