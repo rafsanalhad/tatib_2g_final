@@ -29,10 +29,12 @@ class Admin extends Controller{
         if ($this->model('Dosen_model')->tambahDataDosen($_POST) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/admin/dosen');
+            echo "dosen berhasil ditambah";
             exit;
         }else{
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/admin/dosen');
+            echo "dosen gagal ditambah";
             exit;
         }
     }

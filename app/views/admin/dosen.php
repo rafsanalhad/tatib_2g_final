@@ -36,11 +36,11 @@
                       <div class="flex items-center">
                         <?php
                         echo '<img src="' . BASEURL . '/img/profil/' . $row['dosen_img'] . '" alt="" class="foto_profil_dosen_table inline ">';
-                          // if ($row['jenis_kelamin'] == 'L') {
-                          //   echo '<img src="' . BASEURL . '/img/profil/rizky_arifiansyah.jpeg" alt="" class="foto_profil_dosen_table inline ">';
-                          // } else {
-                          //   echo '<img src="' . BASEURL . '/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">';
-                          // }
+                        // if ($row['jenis_kelamin'] == 'L') {
+                        //   echo '<img src="' . BASEURL . '/img/profil/rizky_arifiansyah.jpeg" alt="" class="foto_profil_dosen_table inline ">';
+                        // } else {
+                        //   echo '<img src="' . BASEURL . '/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline ">';
+                        // }
                         ?>
                         <!-- <img src="<?= BASEURL; ?>/img/profil/profil.png" alt="" class="foto_profil_dosen_table inline "> -->
                         <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
@@ -101,55 +101,70 @@
       <!-- Konten Modal -->
       <!-- <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1> -->
       <h3 class="text-2xl mb-7 font-bold">Tambah Data Dosen</h3>
-      <form class="mb-3" action="<?= BASEURL;?>/Admin/tambahDosen" method="POST" enctype="multipart/form-data">
-      <div class="flex flex-col md:flex-row">
-        <div class="containerGroupImg md:w-2/6" id="dropAreaImgDosen">
-          <img src="<?= BASEURL;?>/img/icon/Group.png" alt="" style="padding: 50px;" id="noImgDosen">
-          <input type="file" id="imgInputDosen" name="imgDosen" style="display:none">
-          <div id="preview"></div>
-        </div>
-        <div class="containerFormModal md:w-4/6 ml-3">
+      <form class="mb-3" id="formTambahDosen" action="<?= BASEURL; ?>/Admin/tambahDosen" method="POST" enctype="multipart/form-data">
+        <div class="flex flex-col md:flex-row">
+          <div class="containerGroupImg md:w-2/6" id="dropAreaImgDosen">
+            <img src="<?= BASEURL; ?>/img/icon/Group.png" alt="" style="padding: 50px;" id="noImgDosen">
+            <input type="file" id="imgInputDosen" name="imgDosen" style="display:none">
+            <div id="preview"></div>
+          </div>
+          <div class="containerFormModal md:w-4/6 ml-3">
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="nama" id="nama" class="block text-sm font-medium text-gray-900">Nama</label>
+                  <label for="nama" id="namaLabel" class="block text-sm font-medium text-gray-900">Nama</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <input type="text" name="nama" id="nama" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="mr-2 flex-shrink-0 titikDuaNama">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="nama" id="nama" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_nama hidden">
+                      <p class="text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> Nama tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="nip" id="nip" class="block text-sm font-medium text-gray-900">NIP</label>
+                  <label for="nip" id="nipLabel" class="block text-sm font-medium text-gray-900">NIP</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <input type="text" name="nip" id="nip" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="mr-2 flex-shrink-0 flex titikDuaNip">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="nip" id="nip" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_nip hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> Nip tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="ttl" id="ttl" class="block text-sm font-medium text-gray-900">TTL</label>
+                  <label for="ttl" id="ttlLabel" class="block text-sm font-medium text-gray-900">TTL</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <input type="text" name="ttl" id="ttl" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="mr-2 flex-shrink-0 flex titikDuaTtl">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="ttl" id="ttl" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_ttl hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf, </span> Ttl tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="jenkel" id="jenkel" class="block text-sm font-medium text-gray-900">Jenis Kelamin
+                  <label for="jenkel" id="jenkelLabel" class="block text-sm font-medium text-gray-900">Jenis Kelamin
                 </div>
-                <div class="w-3/4 inline-flex items-center">
+                <div class="w-3/4 inline-flex titikDua">
                   <div class="mr-2">: </div>
-                  <select name="jenkel" id="jenisPelanggaran" class="mt-1 p-2 w-full border rounded-md">  
+                  <select name="jenkel" id="jenisPelanggaran" class="mt-1 p-2 w-full border rounded-md">
                     <option name="jenkel" value="L">Laki-laki</option>
                     <option name="jenkel" value="P">Perempuan</option>
                     <option value="L" selected>Pilih Jenis Kelamin Anda</option>
@@ -160,44 +175,64 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="jabatan" class="block text-sm font-medium text-gray-900">Jabatan</label>
+                  <label for="name" id="jabatanLabel" class="block text-sm font-medium text-gray-900">Jabatan</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <input type="text" name="jabatan" id="jabatan" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="mr-2 flex-shrink-0 flex titikDua">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="jabatan" id="jabatan" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_jabatan hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> Jabatan tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="email" class="block text-sm font-medium text-gray-900">email</label>
+                  <label for="name" id="emailLabel" class="block text-sm font-medium text-gray-900">email</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <input type="email" name="email" id="email" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="mr-2 flex-shrink-0 flex titikDua">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="email" id="email" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_email hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf!</span> Email tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="no_phone" class="block text-sm font-medium text-gray-900">No Telp</label>
+                  <label for="name" id="no_phoneLabel" class="block text-sm font-medium text-gray-900">No Telp</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <input type="text" name="no_phone" id="no_phone" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="mr-2 flex-shrink-0 flex titikDua">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="no_phone" id="no_phone" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_no_phone hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> No hp tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="alamat" class="block text-sm font-medium text-gray-900">Alamat</label>
+                  <label for="name" id="alamatLabel" class="block text-sm font-medium text-gray-900">Alamat</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <textarea name="alamat" id="alamat" class="mt-1 p-2 w-full border rounded-md"></textarea>
+                  <div class="mr-2 flex-shrink-0 flex titikDua">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="alamat" id="alamat" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_alamat hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> Alamat tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -206,62 +241,113 @@
         <div class="flex w-full">
           <div class="ml-auto">
             <button type="button" id="tutupModal2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Tutup
+              Tutup
             </button>
             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
               Simpan
             </button>
-            </div>
-          </form>
-      </div>
+          </div>
+      </form>
     </div>
   </div>
 </div>
+</div>
 <script>
-  const dropArea = $('#dropAreaImgDosen');
-      const fileInput = $('#imgInputDosen');
-      const preview = $('#preview');
+  $(document).ready(function() {
+    $('#formTambahDosen').on("submit", function(e) {
+      e.preventDefault();
+      var semuaKondisiTerpenuhi = true;
 
-      dropArea.on('dragover', function(event) {
-        event.preventDefault();
-        dropArea.addClass('bg-gray-200');
-      });
-
-      dropArea.on('dragleave', function() {
-        dropArea.removeClass('bg-gray-200');
-      });
-
-      dropArea.on('drop', function(event) {
-        event.preventDefault();
-        dropArea.removeClass('bg-gray-200');
-
-        const files = event.originalEvent.dataTransfer.files;
-
-        if (files.length > 0) {
-          fileInput[0].files = files;
-          showImagePreview();
-        }
-      });
-
-      fileInput.on('change', function() {
-        showImagePreview();
-      });
-
-      function showImagePreview() {
-        const file = fileInput[0].files[0];
-        $('#noImgDosen').addClass('hidden');
-
-        if (file) {
-          const reader = new FileReader();
-
-          reader.onload = function(e) {
-            const img = $('<img>').attr('src', e.target.result);
-            preview.empty().append(img);
-          };
-
-          reader.readAsDataURL(file);
+      // Fungsi untuk mengecek dan menangani setiap kondisi
+      function handleCondition(inputSelector, errorSelector, titikDuaSelector) {
+        if ($(inputSelector).val() == "") {
+          $(errorSelector).removeClass('hidden');
+          $(titikDuaSelector).addClass('mb-3');
+          semuaKondisiTerpenuhi = false;
+        } else {
+          $(errorSelector).addClass('hidden');
+          $(titikDuaSelector).removeClass('mb-3');
         }
       }
+
+      // Memanggil fungsi handleCondition untuk setiap kondisi
+      handleCondition('#nama', '.error_msg_nama', '.titikDuaNama');
+      handleCondition('#nip', '.error_msg_nip', '.titikDuaNip');
+      handleCondition('#ttl', '.error_msg_ttl', '.titikDuaTtl');
+      handleCondition('#jabatan', '.error_msg_jabatan', '.titikDuaJabatan');
+      handleCondition('#email', '.error_msg_email', '.titikDuaEmail');
+      handleCondition('#no_phone', '.error_msg_no_phone', '.titikDuaNoPhone');
+      handleCondition('#alamat', '.error_msg_alamat', '.titikDuaAlamat');
+
+      // Memeriksa apakah semua kondisi terpenuhi sebelum menjalankan ajax
+      if (semuaKondisiTerpenuhi) {
+        // Jalankan ajax di sini
+        let formData = new FormData($('#formTambahDosen')[0]);
+        $.ajax({
+          url: '<?= BASEURL; ?>/Admin/tambahDosen', // Ganti dengan URL tujuan yang sesuai
+          type: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function(response) {
+            console.log(response);
+            // Handle response dari server jika diperlukan
+          },
+          error: function(error) {
+            console.error(error);
+            // Handle error jika diperlukan
+          }
+        });
+      } else {
+        // Tidak memenuhi semua kondisi, tidak menjalankan ajax
+      }
+
+    })
+  })
+  const dropArea = $('#dropAreaImgDosen');
+  const fileInput = $('#imgInputDosen');
+  const preview = $('#preview');
+
+  dropArea.on('dragover', function(event) {
+    event.preventDefault();
+    dropArea.addClass('bg-gray-200');
+  });
+
+  dropArea.on('dragleave', function() {
+    dropArea.removeClass('bg-gray-200');
+  });
+
+  dropArea.on('drop', function(event) {
+    event.preventDefault();
+    dropArea.removeClass('bg-gray-200');
+
+    const files = event.originalEvent.dataTransfer.files;
+
+    if (files.length > 0) {
+      fileInput[0].files = files;
+      showImagePreview();
+    }
+  });
+
+  fileInput.on('change', function() {
+    showImagePreview();
+  });
+
+  function showImagePreview() {
+    const file = fileInput[0].files[0];
+    $('#noImgDosen').addClass('hidden');
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const img = $('<img>').attr('src', e.target.result);
+        preview.empty().append(img);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
   const showModal = () => {
     const modal = document.getElementById('static-modal');
     $('.sidebar').addClass('sidebar-backdrop');
@@ -272,34 +358,34 @@
   //     $('.sidebar').addClass('sidebar-backdrop');
   //     modalKompen.classList.remove('hidden');
   //   }
-    // const tutupModalKompen = document.getElementById('tutupModalKompen');
-    // const tutupModalKompen2 = document.getElementById('tutupModalKompen2');
+  // const tutupModalKompen = document.getElementById('tutupModalKompen');
+  // const tutupModalKompen2 = document.getElementById('tutupModalKompen2');
 
 
-    // tutupModalKompen.addEventListener('click', function() {
-    //   $('.sidebar').removeClass('sidebar-backdrop');
-    //   modalKompen.classList.add('hidden');
-    // });
-    // tutupModalKompen2.addEventListener('click', function() {
-    //   $('.sidebar').removeClass('sidebar-backdrop');
-    //   modalKompen.classList.add('hidden');
-    // });
+  // tutupModalKompen.addEventListener('click', function() {
+  //   $('.sidebar').removeClass('sidebar-backdrop');
+  //   modalKompen.classList.add('hidden');
+  // });
+  // tutupModalKompen2.addEventListener('click', function() {
+  //   $('.sidebar').removeClass('sidebar-backdrop');
+  //   modalKompen.classList.add('hidden');
+  // });
 
-    const buttonTambahDosen = document.getElementById('buttonTambahDosen');
-    const staticModal = document.getElementById('static-modal');
-    const tutupModal = document.getElementById('tutupModal');
-    const tutupModa2 = document.getElementById('tutupModal2');
+  const buttonTambahDosen = document.getElementById('buttonTambahDosen');
+  const staticModal = document.getElementById('static-modal');
+  const tutupModal = document.getElementById('tutupModal');
+  const tutupModa2 = document.getElementById('tutupModal2');
 
 
 
-    tutupModal.addEventListener('click', function() {
-      $('.sidebar').removeClass('sidebar-backdrop');
-      staticModal.classList.add('hidden');
-    });
-    tutupModa2.addEventListener('click', function() {
-      $('.sidebar').removeClass('sidebar-backdrop');
-      staticModal.classList.add('hidden');
-    });
+  tutupModal.addEventListener('click', function() {
+    $('.sidebar').removeClass('sidebar-backdrop');
+    staticModal.classList.add('hidden');
+  });
+  tutupModa2.addEventListener('click', function() {
+    $('.sidebar').removeClass('sidebar-backdrop');
+    staticModal.classList.add('hidden');
+  });
   $(document).ready(function() {
 
     $('#tableDosen').DataTable({
@@ -348,6 +434,6 @@
       }
     });
     $('#tableDosen_filter').append('<div id="buttonTambahDosen"><a onclick="showModal();"data-modal-toggle="static-modal" href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
-   
+
   });
 </script>
