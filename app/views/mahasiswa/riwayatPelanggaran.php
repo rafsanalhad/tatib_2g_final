@@ -56,9 +56,12 @@
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r">
-                    <a href="#" onclick="showModalProses()"><img src="<?= BASEURL; ?>/img/icon/loading.png" class="bg-orange-400 hover:bg-orange-700 py-2 px-4 rounded align-center"></a>
-                    <a href="#" onclick="showModalDitolak()"><img src="<?= BASEURL; ?>/img/icon/tolak.png" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] py-2 px-4 rounded"></a>
-                    <img src="<?= BASEURL; ?>/img/icon/terima.png" alt="terimaKompen" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] py-2 px-3 rounded">
+                    <a class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" href="#" onclick="showModalProses()">Baru</a>
+
+                    <a class="bg-orange-400 hover:bg-orange-700 py-2 px-5 rounded text-white text-center" href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen">Upload</a>
+
+                    <a class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak()">Di Tolak</a>
+                    <a class="bg-green-500 hover:bg-green-700 py-2 px-4 rounded text-white text-center" href="#">Selesai</a>
                   </td>
                 </tr>
               <?php
@@ -81,7 +84,10 @@
           <i class="fa-solid fa-times"></i>
         </button>
         <h3 class="text-2xl mb-7 font-bold">Sanksi</h3>
-        <div class="flex flex-col md:flex-row">
+        <div class="text-right">
+        <button class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+          kerjakan
+        </button>
         </div>
       </div>
     </div>
@@ -97,9 +103,10 @@
         </button>
         <h3 class="text-2xl mb-7 font-bold">Tolak</h3>
         <div class="text-right">
-        <button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-          Kerjakan Ulang
-        </button>
+        <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen"><button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+          Upload Ulang
+        </button></a>
+        
         </div>
       </div>
     </div>

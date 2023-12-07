@@ -82,57 +82,93 @@
         </tbody>
       </table>
       <div class="text-center mt-10">
-        <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen" class="text-white text-lg font-sans text-center"><button class="w-[220px] h-[50px] bg-sky-600 hover:bg-sky-700 rounded-xl px-2">
-            Upload Bukti Kompen</button></a>
           </div>
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
-          <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
-          <hr class="hr_db">
-          <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
-              <div class="flex-none">
-                <div class="w-16 h-10 bg-red-700 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">I</p></div>
-              </div>
-              <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 1</p>
-                <p class="font-bold">2</p>
-              </div>
+        <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
+        <hr class="hr_db">
+        <div class="flex gap-3">
+            <div class="flex-col p-3">
+                <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
+                    <div class="flex-none">
+                        <div class="w-16 h-10 bg-red-700 rounded-lg grid justify-center items-center text-white">
+                            <p class="text-lg font-bold">I</p>
+                        </div>
+                    </div>
+                    <div class="flex-auto ml-2">
+                        <p class="text-xs">Pelanggaran Tingkat 1</p>
+                        <p class="font-bold">2</p>
+                    </div>
+                </div>
+                <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
+                    <div class="flex-none">
+                        <div class="w-16 h-10 bg-orange-500 rounded-lg grid justify-center items-center text-white">
+                            <p class="text-lg font-bold">II</p>
+                        </div>
+                    </div>
+                    <div class="flex-auto ml-2">
+                        <p class="text-xs">Pelanggaran Tingkat 2</p>
+                        <p class="font-bold">2</p>
+                    </div>
+                </div>
+                <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
+                    <div class="flex-none">
+                        <div class="w-16 h-10 bg-yellow-500 rounded-lg grid justify-center items-center text-white">
+                            <p class="text-lg font-bold">III</p>
+                        </div>
+                    </div>
+                    <div class="flex-auto ml-2">
+                        <p class="text-xs">Pelanggaran Tingkat 3</p>
+                        <p class="font-bold">2</p>
+                    </div>
+                </div>
+                <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
+                    <div class="flex-none">
+                        <div
+                            class="w-16 h-10 bg-yellow-200 rounded-lg grid justify-center items-center text-yellow-600">
+                            <p class="text-lg font-bold">IV</p>
+                        </div>
+                    </div>
+                    <div class="flex-auto ml-2">
+                        <p class="text-xs">Pelanggaran Tingkat 4</p>
+                        <p class="font-bold">2</p>
+                    </div>
+                </div>
+                <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
+                    <div class="flex-none">
+                        <div class="w-16 h-10 bg-green-500 rounded-lg grid justify-center items-center text-white">
+                            <p class="text-lg font-bold">V</p>
+                        </div>
+                    </div>
+                    <div class="flex-auto ml-2">
+                        <p class="text-xs">Pelanggaran Tingkat 5</p>
+                        <p class="font-bold">2</p>
+                    </div>
+                </div>
             </div>
-            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
-              <div class="flex-none">
-                <div class="w-16 h-10 bg-orange-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">II</p></div>
+            <div class="gap-3 flex flex-col p-3">
+              <h1 class="font-['Inter'] text-sm text-gray-800">Keterangan warna :</h1>
+                <div class="flex w-24 h-7 bg-rose-100 rounded-lg items-center border border-red-700">
+                <div class="w-2 h-2 my-2 ml-2 bg-red-600 rounded-full"></div>
+                <p class="text-red-700 text-xs font-['Inter'] pl-2">Sangat Berat</p>
               </div>
-              <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 2</p>
-                <p class="font-bold">2</p>
+              <div class="flex w-24 h-7 bg-orange-100 rounded-lg items-center border border-orange-500">
+                <div class="w-2 h-2 my-2 ml-2 bg-orange-500 rounded-full"></div>
+                <p class="text-orange-800 text-xs font-['Inter'] pl-2">Cukup Berat</p>
               </div>
-            </div>
-            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
-              <div class="flex-none">
-                <div class="w-16 h-10 bg-yellow-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">III</p></div>
+              <div class="flex w-24 h-7 bg-yellow-100 rounded-lg items-center border border-yellow-500">
+                <div class="w-2 h-2 my-2 ml-2 bg-yellow-500 rounded-full"></div>
+                <p class="text-yellow-800 text-xs font-['Inter'] pl-2">Berat</p>
               </div>
-              <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 3</p>
-                <p class="font-bold">2</p>
+              <div class="flex w-24 h-7 bg-yellow-50 rounded-lg items-center border border-yellow-200">
+                <div class="w-2 h-2 my-2 ml-2 bg-yellow-200 rounded-full"></div>
+                <p class="text-yellow-700 text-xs font-['Inter'] pl-2">Sedang</p>
               </div>
-            </div>
-            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
-              <div class="flex-none">
-                <div class="w-16 h-10 bg-yellow-200 rounded-lg grid justify-center items-center text-yellow-600"><p class="text-lg font-bold">IV</p></div>
-              </div>
-              <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 4</p>
-                <p class="font-bold">2</p>
-              </div>
-            </div>
-            <div class="flex w-60 h-16 bg-white shadow-lg ml-3 p-4 mb-1">
-              <div class="flex-none">
-                <div class="w-16 h-10 bg-green-500 rounded-lg grid justify-center items-center text-white"><p class="text-lg font-bold">V</p></div>
-              </div>
-              <div class="flex-auto ml-2">
-                <p class="text-xs">Pelanggaran Tingkat 5</p>
-                <p class="font-bold">2</p>
+              <div class="flex w-24 h-7 bg-green-100 rounded-lg items-center border border-green-500">
+                <div class="w-2 h-2 my-2 ml-2 bg-green-500 rounded-full"></div>
+                <p class="text-green-500 text-xs font-['Inter'] pl-2">Ringan</p>
               </div>
             </div>
         </div>
+    </div>
     </div>
