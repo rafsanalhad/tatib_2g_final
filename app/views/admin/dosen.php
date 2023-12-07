@@ -198,7 +198,7 @@
                   <div class="flex-grow flex_error_msg">
                     <input type="text" name="email" id="email" class="mt-1 p-2 w-full border rounded-md">
                     <div class="error_msg_email hidden">
-                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf!</span> Email tidak boleh kosong!</p>
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block email_err_msg"><span class="font-medium">Maaf!</span> Email tidak boleh kosong!</p>
                     </div>
                   </div>
                 </div>
@@ -260,14 +260,31 @@
 
       // Fungsi untuk mengecek dan menangani setiap kondisi
       function handleCondition(inputSelector, errorSelector, titikDuaSelector) {
-        if ($(inputSelector).val() == "") {
+        var inputValue = $(inputSelector).val().trim();
+
+        if (inputValue === "") {
           $(errorSelector).removeClass('hidden');
           $(titikDuaSelector).addClass('mb-3');
           semuaKondisiTerpenuhi = false;
         } else {
-          $(errorSelector).addClass('hidden');
-          $(titikDuaSelector).removeClass('mb-3');
+          // Validasi email
+          if (inputSelector === '#email' && !isValidEmail(inputValue)) {
+            $(errorSelector).removeClass('hidden');
+            $(titikDuaSelector).addClass('mb-3');
+            semuaKondisiTerpenuhi = false;
+          } else {
+            $('.email_err_msg').html('<span class="font-medium">Maaf!</span> Email tidak valid!');
+            $(errorSelector).addClass('hidden');
+            $(titikDuaSelector).removeClass('mb-3');
+          }
         }
+      }
+
+      // Fungsi untuk validasi email
+      function isValidEmail(email) {
+        // Gunakan ekspresi reguler untuk validasi email
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
       }
 
       // Memanggil fungsi handleCondition untuk setiap kondisi
@@ -275,9 +292,10 @@
       handleCondition('#nip', '.error_msg_nip', '.titikDuaNip');
       handleCondition('#ttl', '.error_msg_ttl', '.titikDuaTtl');
       handleCondition('#jabatan', '.error_msg_jabatan', '.titikDuaJabatan');
-      handleCondition('#email', '.error_msg_email', '.titikDuaEmail');
       handleCondition('#no_phone', '.error_msg_no_phone', '.titikDuaNoPhone');
       handleCondition('#alamat', '.error_msg_alamat', '.titikDuaAlamat');
+      handleCondition('#email', '.error_msg_email', '.titikDuaEmail');
+
 
       // Memeriksa apakah semua kondisi terpenuhi sebelum menjalankan ajax
       if (semuaKondisiTerpenuhi) {
