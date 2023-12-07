@@ -36,6 +36,19 @@ class Admin extends Controller{
             exit;
         }
     }
+
+    public function hapusDosen($nip){
+        if ($this->model('Dosen_model')->hapusDataDosen($nip) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/admin/dosen');
+            exit;
+        }else{
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/admin/dosen');
+            exit;
+        }
+    }
+
     public function mahasiswa(){
         $data['judul'] = 'Admin Page';
         $data['mahasiswa'] = $this->model('Admin_model')->getMahasiswa();
