@@ -58,13 +58,9 @@
                       }
                       ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
-                  <td class="py-2 px-4 border-r text-center">
-                    <!-- proses -->
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-yellow-500 text-lg font-medium text-white">Proses</button></a>
-                    <!-- proses diterima -->
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-green-400 text-lg font-medium text-white">Diterima</button></a>
-                    <!-- proses ditolak -->
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-red-500 text-lg font-medium text-white hover:bg-red-700" onclick="showModalDitolak()">Ditolak</button></a>
+                  <td class="py-2 px-4 border-r ">
+                    <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline" onclick="showModalKompen();"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
