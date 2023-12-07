@@ -143,25 +143,25 @@
             </div>
             <div class="gap-3 flex flex-col p-3">
               <h1 class="font-['Inter'] text-sm text-gray-800">Keterangan warna :</h1>
-                <div class="flex w-24 h-7 bg-rose-100 rounded-lg items-center border border-red-700">
+                <div class="flex w-25 h-7 bg-rose-100 rounded-lg items-center border border-red-700">
                 <div class="w-2 h-2 my-2 ml-2 bg-red-600 rounded-full"></div>
-                <p class="text-red-700 text-xs font-['Inter'] pl-2">Sangat Berat</p>
+                <p class="text-red-700 text-xs pl-2">Sangat Berat</p>
               </div>
-              <div class="flex w-24 h-7 bg-orange-100 rounded-lg items-center border border-orange-500">
+              <div class="flex w-25 h-7 bg-orange-100 rounded-lg items-center border border-orange-500">
                 <div class="w-2 h-2 my-2 ml-2 bg-orange-500 rounded-full"></div>
-                <p class="text-orange-800 text-xs font-['Inter'] pl-2">Cukup Berat</p>
+                <p class="text-orange-800 text-xs pl-2">Cukup Berat</p>
               </div>
-              <div class="flex w-24 h-7 bg-yellow-100 rounded-lg items-center border border-yellow-500">
+              <div class="flex w-25 h-7 bg-yellow-100 rounded-lg items-center border border-yellow-500">
                 <div class="w-2 h-2 my-2 ml-2 bg-yellow-500 rounded-full"></div>
-                <p class="text-yellow-800 text-xs font-['Inter'] pl-2">Berat</p>
+                <p class="text-yellow-800 text-xs pl-2">Berat</p>
               </div>
-              <div class="flex w-24 h-7 bg-yellow-50 rounded-lg items-center border border-yellow-200">
+              <div class="flex w-25 h-7 bg-yellow-50 rounded-lg items-center border border-yellow-200">
                 <div class="w-2 h-2 my-2 ml-2 bg-yellow-200 rounded-full"></div>
-                <p class="text-yellow-700 text-xs font-['Inter'] pl-2">Sedang</p>
+                <p class="text-yellow-700 text-xs pl-2">Sedang</p>
               </div>
-              <div class="flex w-24 h-7 bg-green-100 rounded-lg items-center border border-green-500">
+              <div class="flex w-25 h-7 bg-green-100 rounded-lg items-center border border-green-500">
                 <div class="w-2 h-2 my-2 ml-2 bg-green-500 rounded-full"></div>
-                <p class="text-green-500 text-xs font-['Inter'] pl-2">Ringan</p>
+                <p class="text-green-500 text-xs pl-2">Ringan</p>
               </div>
             </div>
         </div>
