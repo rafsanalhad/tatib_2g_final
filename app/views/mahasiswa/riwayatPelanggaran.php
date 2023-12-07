@@ -56,12 +56,15 @@
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r">
-                    <a class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" href="#" onclick="showModalProses()">Baru</a>
-
-                    <a class="bg-orange-400 hover:bg-orange-700 py-2 px-5 rounded text-white text-center" href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen">Upload</a>
-
-                    <a class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak()">Di Tolak</a>
-                    <a class="bg-green-500 hover:bg-green-700 py-2 px-4 rounded text-white text-center" href="#">Selesai</a>
+                  <a href="#"><button id="baru" class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" onclick="showModalProses()">Baru</button></a>
+                  
+                  <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center hidden">Upload</button></a>
+                  
+                  <a href="#"><button id="proses" class="bg-orange-400 py-2 px-5 rounded text-white text-center hidden">Proses</button></a>
+                  
+                  <a href="#"><button id="diTolak" class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak()">Ditolak</button></a>
+                  
+                  <a href="#"><button class="bg-green-500 py-2 px-4 rounded text-white text-center">Selesai</button></a>
                   </td>
                 </tr>
               <?php
@@ -85,7 +88,7 @@
         </button>
         <h3 class="text-2xl mb-7 font-bold">Sanksi</h3>
         <div class="text-right">
-        <button class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+        <button class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="kerjakan" onclick="showElement()">
           kerjakan
         </button>
         </div>
@@ -113,6 +116,13 @@
   </div>
 
     <script>
+        function hideElement() {
+            document.getElementById('baru').classList.add('hidden');
+        }
+        function showElement() {
+            document.getElementById('upload').classList.remove('hidden');
+        }
+
 const modalKompen = document.getElementById('modalProses');
         const showModalProses = () => {
           $('.sidebar').addClass('sidebar-backdrop');

@@ -59,18 +59,14 @@
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r"><?//= $row['pelanggaran']; ?></td>
-                  <!-- proses -->
-                  <!-- <td class="py-2 px-4 border-r text-center">
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-yellow-500 text-lg font-medium text-white hover:bg-yellow-700">Proses</button></a>
-                  </td> -->
-                  <!-- proses diterima -->
                   <td class="py-2 px-4 border-r text-center">
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-green-400 text-lg font-medium text-white hover:bg-green-800">Diterima</button></a>
+                    <!-- proses -->
+                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-yellow-500 text-lg font-medium text-white">Proses</button></a>
+                    <!-- proses diterima -->
+                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-green-400 text-lg font-medium text-white">Diterima</button></a>
+                    <!-- proses ditolak -->
+                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-red-500 text-lg font-medium text-white hover:bg-red-700" onclick="showModalDitolak()">Ditolak</button></a>
                   </td>
-                  <!-- proses ditolak -->
-                  <!-- <td class="py-2 px-4 border-r text-center">
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-red-500 text-lg font-medium text-white hover:bg-red-700">Ditolak</button></a>
-                  </td> -->
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
               <?php
@@ -83,8 +79,32 @@
       </div>
       </div>
     </div>
+    <div id="modalTolakLapor" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black opacity-50 "></div>
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white w-full max-w-3xl p-8 rounded-lg shadow-md relative">
+        <!-- Tombol untuk menutup modal -->
+        <button id="tutupModal" class="absolute top-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+          <i class="fa-solid fa-times"></i>
+        </button>
+        <h3 class="text-2xl mb-7 font-bold text center">Alasan</h3>
+      </div>
+    </div>
+  </div>
 
     <script>
+      const modalKompen = document.getElementById('modalTolakLapor');
+        const showModalDitolak = () => {
+          $('.sidebar').addClass('sidebar-backdrop');
+          modalKompen.classList.remove('hidden');
+        }
+        const tutupModalKompen = document.getElementById('tutupModal');
+
+        tutupModalKompen.addEventListener('click', function() {
+          $('.sidebar').removeClass('sidebar-backdrop');
+          modalKompen.classList.add('hidden');
+        });
       $(document).ready(function() {
 $('#riwayatPengaduan').DataTable({
   rowReorder: {
