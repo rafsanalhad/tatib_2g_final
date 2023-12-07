@@ -100,12 +100,14 @@
       <!-- Konten Modal -->
       <!-- <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1> -->
       <h3 class="text-2xl mb-7 font-bold">Tambah Data Dosen</h3>
+      <form class="mb-3" action="<?= BASEURL;?>/Admin/tambahDosen" method="POST" enctype="multipart/form-data">
       <div class="flex flex-col md:flex-row">
-        <div class="containerGroupImg md:w-2/6">
-          <img src="<?= BASEURL;?>/img/icon/Group.png" alt="" style="padding: 50px;">
+        <div class="containerGroupImg md:w-2/6" id="dropAreaImgDosen">
+          <img src="<?= BASEURL;?>/img/icon/Group.png" alt="" style="padding: 50px;" id="noImgDosen">
+          <input type="file" id="imgInputDosen" name="imgDosen" style="display:none">
+          <div id="preview"></div>
         </div>
         <div class="containerFormModal md:w-4/6 ml-3">
-          <form class="mb-3" action="<?= BASEURL;?>/Admin/tambahDosen" method="POST">
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
@@ -215,6 +217,50 @@
   </div>
 </div>
 <script>
+  const dropArea = $('#dropAreaImgDosen');
+      const fileInput = $('#imgInputDosen');
+      const preview = $('#preview');
+
+      dropArea.on('dragover', function(event) {
+        event.preventDefault();
+        dropArea.addClass('bg-gray-200');
+      });
+
+      dropArea.on('dragleave', function() {
+        dropArea.removeClass('bg-gray-200');
+      });
+
+      dropArea.on('drop', function(event) {
+        event.preventDefault();
+        dropArea.removeClass('bg-gray-200');
+
+        const files = event.originalEvent.dataTransfer.files;
+
+        if (files.length > 0) {
+          fileInput[0].files = files;
+          showImagePreview();
+        }
+      });
+
+      fileInput.on('change', function() {
+        showImagePreview();
+      });
+
+      function showImagePreview() {
+        const file = fileInput[0].files[0];
+        $('#noImgDosen').addClass('hidden');
+
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function(e) {
+            const img = $('<img>').attr('src', e.target.result);
+            preview.empty().append(img);
+          };
+
+          reader.readAsDataURL(file);
+        }
+      }
   const showModal = () => {
     const modal = document.getElementById('static-modal');
     $('.sidebar').addClass('sidebar-backdrop');
