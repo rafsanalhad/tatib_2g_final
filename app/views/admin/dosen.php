@@ -103,9 +103,9 @@
       <h3 class="text-2xl mb-7 font-bold">Tambah Data Dosen</h3>
       <form class="mb-3" id="formTambahDosen" action="<?= BASEURL; ?>/Admin/tambahDosen" method="POST" enctype="multipart/form-data">
         <div class="flex flex-col md:flex-row">
-          <div class="containerGroupImg md:w-2/6" id="dropAreaImgDosen">
+          <div class="containerGroupImg md:w-2/6" id="dropAreaImgDosen" class="drop-area">
             <img src="<?= BASEURL; ?>/img/icon/Group.png" alt="" style="padding: 50px;" id="noImgDosen">
-            <input type="file" id="imgInputDosen" name="imgDosen" style="display:none">
+            <input type="file" id="imgInputDosen" name="imgDosen" accept="image/*" style="display: none;">
             <div id="preview"></div>
           </div>
           <div class="containerFormModal md:w-4/6 ml-3">
@@ -258,7 +258,6 @@
       e.preventDefault();
       var semuaKondisiTerpenuhi = true;
 
-      // Fungsi untuk mengecek dan menangani setiap kondisi
       function handleCondition(inputSelector, errorSelector, titikDuaSelector) {
         var inputValue = $(inputSelector).val().trim();
 
@@ -267,7 +266,6 @@
           $(titikDuaSelector).addClass('mb-3');
           semuaKondisiTerpenuhi = false;
         } else {
-          // Validasi email
           if (inputSelector === '#email' && !isValidEmail(inputValue)) {
             $(errorSelector).removeClass('hidden');
             $(titikDuaSelector).addClass('mb-3');
@@ -280,14 +278,11 @@
         }
       }
 
-      // Fungsi untuk validasi email
       function isValidEmail(email) {
-        // Gunakan ekspresi reguler untuk validasi email
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
       }
 
-      // Memanggil fungsi handleCondition untuk setiap kondisi
       handleCondition('#nama', '.error_msg_nama', '.titikDuaNama');
       handleCondition('#nip', '.error_msg_nip', '.titikDuaNip');
       handleCondition('#ttl', '.error_msg_ttl', '.titikDuaTtl');
@@ -296,28 +291,35 @@
       handleCondition('#alamat', '.error_msg_alamat', '.titikDuaAlamat');
       handleCondition('#email', '.error_msg_email', '.titikDuaEmail');
 
-
-      // Memeriksa apakah semua kondisi terpenuhi sebelum menjalankan ajax
       if (semuaKondisiTerpenuhi) {
-        // Jalankan ajax di sini
         let formData = new FormData($('#formTambahDosen')[0]);
         $.ajax({
-          url: '<?= BASEURL; ?>/Admin/tambahDosen', // Ganti dengan URL tujuan yang sesuai
+          url: '<?= BASEURL; ?>/Admin/tambahDosen',
           type: 'POST',
           data: formData,
           processData: false,
           contentType: false,
           success: function(response) {
-            console.log(response);
-            // Handle response dari server jika diperlukan
+            Swal.fire({
+              title: "Berhasil!",
+              text: "Data dosen berhasil ditambahkan!",
+              icon: "success"
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
           },
           error: function(error) {
-            console.error(error);
-            // Handle error jika diperlukan
+            alert("Error: " + xhr.status + "\n" + xhr.responseText);
           }
         });
       } else {
-        // Tidak memenuhi semua kondisi, tidak menjalankan ajax
+        Swal.fire({
+          title: "Gagal!",
+          text: "Data dosen gagal ditambahkan!",
+          icon: "error"
+        });
       }
 
     })
@@ -325,37 +327,49 @@
   const dropArea = $('#dropAreaImgDosen');
   const fileInput = $('#imgInputDosen');
   const preview = $('#preview');
+  const noImgDosen = $('#noImgDosen');
 
   dropArea.on('dragover', function(event) {
     event.preventDefault();
-    dropArea.addClass('bg-gray-200');
+    dropArea.addClass('hover');
   });
 
   dropArea.on('dragleave', function() {
-    dropArea.removeClass('bg-gray-200');
+    dropArea.removeClass('hover');
   });
 
   dropArea.on('drop', function(event) {
     event.preventDefault();
-    dropArea.removeClass('bg-gray-200');
+    dropArea.removeClass('hover');
 
     const files = event.originalEvent.dataTransfer.files;
 
     if (files.length > 0) {
-      fileInput[0].files = files;
-      showImagePreview();
+      handleFiles(files);
+    }
+  });
+
+  dropArea.on('click', function() {
+    // Pengecekan agar tidak terjadi pemanggilan berulang
+    if (!fileInput.data('clickTriggered')) {
+      fileInput.data('clickTriggered', true);
+      fileInput.click();
+    } else {
+      fileInput.data('clickTriggered', false);
     }
   });
 
   fileInput.on('change', function() {
-    showImagePreview();
+    const files = fileInput[0].files;
+    handleFiles(files);
+    fileInput.data('clickTriggered', false); // Reset nilai setelah perubahan
   });
 
-  function showImagePreview() {
-    const file = fileInput[0].files[0];
-    $('#noImgDosen').addClass('hidden');
+  function handleFiles(files) {
+    if (files.length > 0) {
+      const file = files[0];
+      noImgDosen.addClass('hidden');
 
-    if (file) {
       const reader = new FileReader();
 
       reader.onload = function(e) {
@@ -366,6 +380,7 @@
       reader.readAsDataURL(file);
     }
   }
+
   const showModal = () => {
     const modal = document.getElementById('static-modal');
     $('.sidebar').addClass('sidebar-backdrop');
