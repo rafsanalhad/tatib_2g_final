@@ -51,14 +51,15 @@ class Dosen_model
         $this->db->bind('email', $data['email']);
         $this->db->bind('no_phone', $data['no_phone']);
         $this->db->bind('alamat', $data['alamat']);
-        $this->db->bind('user_id', $res['user_id']);
-
+        
         // Handling file upload
         $uploadedFileName = $this->handleFileUpload();
-
-
-        // Bind the uploaded file name to the query
+        echo $uploadedFileName;
+        
+        
+        //Bind the uploaded file name to the query
         $this->db->bind('dosen_img', $uploadedFileName);
+        $this->db->bind('user_id', $res['user_id']);
         $this->db->execute();
         return $this->db->rowCount();
     }
@@ -69,7 +70,7 @@ class Dosen_model
         $uploadedFile = $_FILES['imgDosen']; // Nama input file pada formulir
 
         // Menggunakan timestamp detik UNIX untuk membuat nama file unik
-        $uniqueFileName = time() . '_' . pathinfo($uploadedFile['name'], PATHINFO_FILENAME) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+        $uniqueFileName = time() . '_' . substr(pathinfo($uploadedFile['name'], PATHINFO_FILENAME), 0, 3) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
         $targetFilePath = $targetDir . $uniqueFileName;
         $fileType = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
 
