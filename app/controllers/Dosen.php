@@ -12,8 +12,9 @@ class Dosen extends Controller{
         $this->view('templates/dosen/footer');
     }
     public function riwayatPengaduan(){
+        $data['pengaduan'] = $this->model('Pengaduan_model')->getPengaduan();
         $this->view('templates/dosen/header');
-        $this->view('dosen/riwayatPengaduan');
+        $this->view('dosen/riwayatPengaduan', $data);
         $this->view('templates/dosen/footer');
     }
     public function formPengaduan(){

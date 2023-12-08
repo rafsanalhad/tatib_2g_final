@@ -37,10 +37,11 @@
             // $result = mysqli_query($koneksi, $query);
             ?>
               <tbody>
-              <?//php while ($row = mysqli_fetch_assoc($result)) {?>
+              <?php foreach ($data['pengaduan'] as $row) {
+              ?>
                 <!-- Tambahkan baris-baris data di sini -->
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"><?//= $row['tanggal_pengaduan']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
                   <td class="py-2 px-4 border-r"><?//= $row['nama']; ?></p></td>
                   <td class="py-2 px-4 border-r"><?//= $row['nim']; ?></td>
                   <td class="py-2 px-4 border-r text-center">
@@ -59,18 +60,22 @@
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r"><?//= $row['pelanggaran']; ?></td>
+                  <td class="py-2 px-4 border-r"></td>
                   <td class="py-2 px-4 border-r text-center">
-                    <!-- proses -->
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-yellow-500 text-lg font-medium text-white">Proses</button></a>
-                    <!-- proses diterima -->
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-green-400 text-lg font-medium text-white">Diterima</button></a>
-                    <!-- proses ditolak -->
-                    <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-red-500 text-lg font-medium text-white hover:bg-red-700" onclick="showModalDitolak()">Ditolak</button></a>
+                    <?php 
+                    if ($row['status_pengaduan'] == 'proses') {
+                      echo '<a href="#"><button class="w-[130px] h-[30px] rounded-md bg-yellow-500 text-lg font-medium text-white">Proses</button></a>';
+                    }elseif ($row['status_pengaduan'] == 'valid') {
+                      echo '<a href="#"><button class="w-[130px] h-[30px] rounded-md bg-green-400 text-lg font-medium text-white">Diterima</button></a>';
+                    }else{
+                      echo '  <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-red-500 text-lg font-medium text-white hover:bg-red-700" onclick="showModalDitolak()">Ditolak</button></a>';
+                    }
+                    ?>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
               <?php
-            // }
+            }
               ?>
               </tbody>
           </table>
