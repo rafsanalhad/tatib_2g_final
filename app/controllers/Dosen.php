@@ -7,8 +7,9 @@ class Dosen extends Controller{
         }
     }
     public function index(){
+        $data['biodata'] = $this->model('Dosen_model')->getDosenBySessionLogin($_SESSION['username']);
         $this->view('templates/dosen/header');
-        $this->view('dosen/index');
+        $this->view('dosen/index', $data);
         $this->view('templates/dosen/footer');
     }
     public function riwayatPengaduan(){

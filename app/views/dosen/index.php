@@ -15,63 +15,48 @@
           <p><b>Info! </b>Berikut adalah Biodata diri anda</p>
           </div>
           <table class="items-center w-full  mt-3">
-          <?php
-              // include "koneksi.php";
-              // $nip = $_SESSION['username'];
-              // $query = "SELECT * FROM dosen where nip='$nip'";
-              // $result = mysqli_query($koneksi, $query);          
-              // while ($row = mysqli_fetch_assoc($result)){
-            ?>
             <tbody>
               <tr>
-                <td rowspan="10"><img src="<?= BASEURL; ?>/img/profil/mhs1.png" class="m-auto" alt="profil"></td>
+                <td rowspan="9"><img src="<?= BASEURL; ?>/img/profil/mhs1.png" class="m-auto" alt="profil"></td>
               </tr>
               <tr>
                 <td>Nama</td>
-                <td><?//= $row['nama'];  ?>Tes</td>
+                <td><?= $data['biodata']['nama'];  ?></td>
               </tr>
               <tr>
                 <td>NIP</td>
-                <td><?//= $row['nip'];  ?>Tes</td>
+                <td><?= $data['biodata']['nip'];  ?></td>
               </tr>
               <tr>
                 <td>TTL</td>
-                <td><?//= $row['TTL'];  ?>Tes</td>
+                <td><?= $data['biodata']['TTL'];  ?></td>
               </tr>
               <tr>
                 <td>Jen. Kelamin</td>
-                <td>Tes<?php 
-                // if ($row['jenis_kelamin'] == 'L') {
-                //     echo 'Laki-laki';
-                //   }else{
-                //     echo 'Perempuan';
-                //   }  
-                  
+                <td>  <?php 
+                if ($data['biodata']['jenis_kelamin'] == 'L') {
+                    echo 'Laki-laki';
+                  }else{
+                    echo 'Perempuan';
+                  }  
                   ?> </td>
               </tr>
               <tr>
-                <td>Pendidikan</td>
-                <td><?//= $row['pendidikan'];  ?>Texdfajlafdadfa</td>
-              </tr>
-              <tr>
                 <td>Jabatan</td>
-                <td><?//= $row['jabatan'];  ?>Tex</td>
+                <td><?= $data['biodata']['jabatan'];  ?></td>
               </tr>
               <tr>
                 <td>Email</td>
-                <td><?//= $row['email'];  ?>Tex</td>
+                <td><?= $data['biodata']['email'];  ?></td>
               </tr>
               <tr>
                 <td>Phone</td>
-                <td><?//= $row['no_phone'];  ?>Tex</td>
+                <td><?= $data['biodata']['no_phone'];  ?></td>
               </tr>
               <tr>
                 <td>Alamat</td>
-                <td><?//= $row['alamat'];  ?>Tex</td>
-              </tr>   
-              <?php
-              // }
-              ?>
+                <td><?= $data['biodata']['alamat'];  ?></td>
+              </tr>
             </tbody>
           </table>
           <div class="text-center mt-10">

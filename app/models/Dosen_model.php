@@ -23,6 +23,12 @@ class Dosen_model
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+    public function getDosenBySessionLogin($username)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nip=:nip');
+        $this->db->bind('nip', $username);
+        return $this->db->single();
+    }
     public function tambahDataDosen($data)
     {
         $query1 = "INSERT INTO " . $this->table2 . "
