@@ -69,7 +69,7 @@ class Dosen_model
         $uploadedFile = $_FILES['imgDosen']; // Nama input file pada formulir
 
         // Menggunakan timestamp detik UNIX untuk membuat nama file unik
-        $uniqueFileName = time() . '_' . pathinfo($uploadedFile['name'], PATHINFO_FILENAME) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+        $uniqueFileName = time() . '_' . substr(pathinfo($uploadedFile['name'], PATHINFO_FILENAME), 0, 3) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
         $targetFilePath = $targetDir . $uniqueFileName;
         $fileType = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
 
