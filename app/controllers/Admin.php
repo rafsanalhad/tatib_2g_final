@@ -52,6 +52,7 @@ class Admin extends Controller{
 
     public function mahasiswa(){
         $data['judul'] = 'Admin Page';
+        $data['prodi'] = $this->model('Prodi_model')->getAllProdi();
         $data['mahasiswa'] = $this->model('Admin_model')->getMahasiswa();
         $this->view('templates/admin/header', $data);
         $this->view('admin/mahasiswa', $data);

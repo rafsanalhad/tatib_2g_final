@@ -161,11 +161,29 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="jurusan" class="block text-sm font-medium text-gray-900">Prodi</label>
+                  <label for="prodi" id="prodi" class="block text-sm font-medium text-gray-900">Prodi</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2">: </div>
-                  <input type="text" name="jurusan" id="jurusan" class="mt-1 p-2 w-full border rounded-md">
+                  <select name="prodi_id" id="prodi" class="mt-1 p-2 w-full border rounded-md">
+                    <?php
+                    foreach ($data['prodi'] as $dt) {
+                      echo '<option value="' . $dt["prodi_id"] .'">'. $dt["prodi_nama"] .'</option>';
+                    }
+                    ?>
+                    <option value="" selected>Pilih Prodi</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <div class="flex items-center">
+                <div class="w-2/4">
+                  <label for="name" id="notelp" class="block text-sm font-medium text-gray-900">No Telp</label>
+                </div>
+                <div class="w-3/4 inline-flex items-center">
+                  <div class="mr-2">: </div>
+                  <input type="text" name="notelp" id="notelp" class="mt-1 p-2 w-full border rounded-md">
                 </div>
               </div>
             </div>
