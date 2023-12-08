@@ -51,14 +51,15 @@ class Dosen_model
         $this->db->bind('email', $data['email']);
         $this->db->bind('no_phone', $data['no_phone']);
         $this->db->bind('alamat', $data['alamat']);
-        $this->db->bind('user_id', $res['user_id']);
-
+        
         // Handling file upload
         $uploadedFileName = $this->handleFileUpload();
-
-
-        // Bind the uploaded file name to the query
+        echo $uploadedFileName;
+        
+        
+        //Bind the uploaded file name to the query
         $this->db->bind('dosen_img', $uploadedFileName);
+        $this->db->bind('user_id', $res['user_id']);
         $this->db->execute();
         return $this->db->rowCount();
     }
