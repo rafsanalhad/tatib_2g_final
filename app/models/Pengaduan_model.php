@@ -17,9 +17,14 @@ class Pengaduan_model
 
     public function getPengaduan()
     {
-        $this->db->query('SELECT * FROM ' . $this->table3);
+        $this->db->query('SELECT 
+                            a.tanggal_pengaduan, b.nama, a.nim, c.prodi_nama, d.tingkat, d.pelanggaran, a.status_pengaduan 
+                        FROM '. $this->table3 .' a INNER JOIN '. $this->table2 .' b ON a.nim = b.nim INNER JOIN 
+                        '. $this->table5 .' c ON b.prodi_id = c.prodi_id INNER JOIN '. $this->table4 .' d 
+                        ON a.pelanggaran_id = d.pelanggaran_id');
         return $this->db->resultSet();
     }
+
     // public function getMahasiswa()
     // {
     //     $this->db->query('SELECT  m.nama, m.nim, p.prodi_nama, m.TTL, m.jenis_kelamin, m.phone_ortu, m.alamat 
