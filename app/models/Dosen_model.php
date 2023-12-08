@@ -34,9 +34,10 @@ class Dosen_model
         $query1 = "INSERT INTO " . $this->table2 . "
                     VALUES
                     ('', :username, :password, :level)";
+        $pass = (md5($data["nip"]));
         $this->db->query($query1);
         $this->db->bind('username', $data['nip']);
-        $this->db->bind('password', $data['nip']);
+        $this->db->bind('password', $pass);
         $this->db->bind('level', 2);
         $this->db->execute();
 

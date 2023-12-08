@@ -27,9 +27,10 @@ class Mahasiswa_model
         $query1 = "INSERT INTO " . $this->table2 . "
                     VALUES
                     ('', :username, :password, :level)";
+        $pass = (md5($data["nim"]));
         $this->db->query($query1);
         $this->db->bind('username',$data['nim']);
-        $this->db->bind('password',$data['nim']);
+        $this->db->bind('password',$pass);
         $this->db->bind('level',3);
         $this->db->execute();
 
