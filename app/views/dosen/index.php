@@ -66,6 +66,13 @@
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
         <h3 class="pelanggaran_tbr_title">Jumlah Pengaduan</h3>
+        <?php
+        //Menghitung jumlah pengaduan yang keluar
+          $tingkat = [0,0,0,0,0];
+          foreach ($data['pengaduan'] as $dt) {
+            $tingkat[$dt['tingkat']-1] += 1;
+          }
+        ?>
         <hr class="hr_db">
         <div class="flex gap-3">
             <div class="flex-col p-3">
@@ -77,7 +84,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pengaduan Tingkat 1</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?php echo $tingkat[0];?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -88,7 +95,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pengaduan Tingkat 2</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?php echo $tingkat[1];?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -99,7 +106,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pengaduan Tingkat 3</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?php echo $tingkat[2];?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -111,7 +118,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pengaduan Tingkat 4</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?php echo $tingkat[3];?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -122,7 +129,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pengaduan Tingkat 5</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?php echo $tingkat[4];?></p>
                     </div>
                 </div>
             </div>

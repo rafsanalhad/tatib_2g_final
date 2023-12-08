@@ -24,7 +24,13 @@ class Pengaduan_model
                         ON a.pelanggaran_id = d.pelanggaran_id');
         return $this->db->resultSet();
     }
-
+    public function getPengaduanByNip($username)
+    {
+        $this->db->query('SELECT * FROM '. $this->table3 .' a INNER JOIN '. $this->table4 .' b
+                        ON a.pelanggaran_id = b.pelanggaran_id WHERE a.nip = :nip');
+        $this->db->bind('nip',$username);
+        return $this->db->resultSet();
+    }
     // public function getMahasiswa()
     // {
     //     $this->db->query('SELECT  m.nama, m.nim, p.prodi_nama, m.TTL, m.jenis_kelamin, m.phone_ortu, m.alamat 
