@@ -4,6 +4,7 @@ class Mahasiswa_model
 {
     private $table = 'mahasiswa';
     private $table2 = 'user';
+    private $table3 = 'prodi';
     private $db;
 
 
@@ -19,7 +20,9 @@ class Mahasiswa_model
     }
     public function getMahasiswaByNim($nim)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nim=:nim');
+        $this->db->query('SELECT * FROM ' . $this->table . ' a
+                        INNER JOIN '. $this->table3 .' b
+                        ON a.prodi_id = b.prodi_id WHERE nim=:nim');
         $this->db->bind('nim', $nim);
         return $this->db->single();
     }

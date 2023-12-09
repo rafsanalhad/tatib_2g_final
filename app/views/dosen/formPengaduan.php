@@ -47,14 +47,7 @@
           <br><br>
           <label for="prodi">Prodi:</label>
           <br>
-          <select name="jenisPelanggaran" id="jenisPelanggaran" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
-            <option value="" selected>Pilih Prodi</option>
-            <?php
-            foreach ($data['prodi'] as $dt) {
-              echo '<option value="'. $dt["prodi_id"] .'">'. $dt["prodi_nama"] .'</option>';
-            }  
-            ?>
-          </select>
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="prodi" disabled>  
           <br>
           <br>
           <label for="fotoPengaduan">Upload Foto:</label>
@@ -91,6 +84,7 @@
               
               $('#namaMhsPengaduan').val(response.nama);
               $('#noHpMhsPengaduan').val(response.no_phone);
+              $('#prodi').val(response.prodi_nama);
             }
           })
         })
