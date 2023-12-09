@@ -21,15 +21,27 @@ class Dosen extends Controller{
     }
     public function formPengaduan(){
         $data['mahasiswa'] = $this->model('Mahasiswa_model')->getAllMahasiswa();
+        $data['pelanggaran'] = $this->model('Pelanggaran_model')->getAllPelanggaran();
         $data['prodi'] = $this->model('Prodi_model')->getAllProdi();
         $this->view('templates/dosen/header');
         $this->view('dosen/formPengaduan', $data);
         $this->view('templates/dosen/footer');
     }
-    public function getMahasiswa($nim){
+    public function getMahasiswaByNim($nim){
         $data['mahasiswa'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($nim);
         $data['prodi'] = $this->model('Prodi_model')->getAllProdi();
         echo json_encode($data['mahasiswa']);
+    }
+    public function ajukanPengaduan(){
+        if ($this->model('Pengaduan_model')->setPengaduan($_POST) > 0) {
+            Flasher::setFlash('Pengaduan berhasil', 'dilakukan', 'success');
+            header('Location: ' . BASEURL . '/dosen/riwayatPengaduan');
+            exit;
+        }else{
+            Flasher::setFlash('Pengaduan gagal', 'dilakukan', 'danger');
+            header('Location: ' . BASEURL . '/dosen/formPengaduan');
+            exit;
+        }
     }
     public function ubahPassword(){
         $this->view('templates/dosen/header');

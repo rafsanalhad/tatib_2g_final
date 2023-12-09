@@ -31,59 +31,51 @@ class Pengaduan_model
         $this->db->bind('nip',$username);
         return $this->db->resultSet();
     }
-    // public function getMahasiswa()
-    // {
-    //     $this->db->query('SELECT  m.nama, m.nim, p.prodi_nama, m.TTL, m.jenis_kelamin, m.phone_ortu, m.alamat 
-    //     FROM ' . $this->table2 . ' as m
-    //     JOIN ' . $this->table5 . ' as p ON m.prodi_id = p.prodi_id');
-    //     return $this->db->resultSet();
-    // }
-    // public function getLaporanPelanggaran()
-    // {
-    //     $this->db->query('SELECT p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
-    //     FROM ' . $this->table3 . ' AS p 
-    //     JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
-    //     JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
-    //     JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id');
-    //     return $this->db->resultSet();
-    // }
-    // public function getLaporanKompen()
-    // {
-    //     $this->db->query('SELECT p.tanggal_pengaduan, m.nama, m.nim, pe.tingkat, pe.pelanggaran
-    //     FROM ' . $this->table3 . ' AS p
-    //     JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim 
-    //     JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id');
-    //     return $this->db->resultSet();
-    // }
-    // public function hitungDosen()
-    // {
-    //     $this->db->query('SELECT COUNT(nip) as jumlah_dosen FROM dosen');
-    //     return $this->db->single();
-    // }
-    // public function hitungMahasiswa()
-    // {
-    //     $this->db->query('SELECT COUNT(nim) as jumlah_mahasiswa FROM mahasiswa');
-    //     return $this->db->single();
-    // }
-    // public function hitungPelanggaran()
-    // {
-    //     $this->db->query('SELECT COUNT(pelanggaran_id) as jumlah_pelanggaran FROM pelanggaran');
-    //     return $this->db->single();
-    // }
-    // public function hitungProdi()
-    // {
-    //     $this->db->query('SELECT COUNT(prodi_id) as jumlah_prodi FROM prodi');
-    //     return $this->db->single();
-    // }
-    // public function laporanTerbaru()
-    // {
-    //     $this->db->query('SELECT
-    //         m.nama, m.nim, date_format(p.tanggal_pengaduan, "%d %M %Y") as tanggal_pengaduan, pe.pelanggaran, pe.tingkat
-    //     FROM ' . $this->table2 . ' AS m 
-    //     JOIN ' . $this->table3 . ' AS p ON m.nim = p.nim 
-    //     JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id
-    //     ORDER BY p.pengaduan_id DESC
-    //     LIMIT 10');
-    //     return $this->db->resultSet();
-    // }
+    public function setPengaduan($data)
+    {
+        // Handling file upload
+        $uploadedFileName = $this->handleFileUpload();
+        echo $uploadedFileName;
+        $query = "INSERT INTO " . $this->table3 . "
+        (nip, nim, pelanggaran_id, bukti_pelanggaran, tanggal_pengaduan, status_pengaduan)
+        VALUES
+        (:nip, :nim, :pelanggaran_id, :bukti_pelanggaran, :tanggal_pengaduan, :status_pengaduan)";
+
+        $this->db->query($query);
+        $this->db->bind('nip', $_SESSION['username']);
+        $this->db->bind('nim', $data['nimPengaduan']);
+        $this->db->bind('pelanggaran_id', $data['jenisPelanggaran']);
+
+
+        //Bind the uploaded file name to the query
+        $this->db->bind('bukti_pelanggaran', $uploadedFileName);
+        $this->db->bind('tanggal_pengaduan', $data['tglPengaduan']);
+        $this->db->bind('status_pengaduan', 'proses');
+        
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+    private function handleFileUpload()
+    {
+        $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/bukti_pengaduan/';
+        $uploadedFile = $_FILES['fotoPengaduan']; // Nama input file pada formulir
+
+        // Menggunakan timestamp detik UNIX untuk membuat nama file unik
+        $uniqueFileName = time() . '_' . substr(pathinfo($uploadedFile['name'], PATHINFO_FILENAME), 0, 3) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+        $targetFilePath = $targetDir . $uniqueFileName;
+        $fileType = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+
+        // Memeriksa apakah file tersebut adalah file gambar
+        $allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
+
+        if (in_array(strtolower($fileType), $allowedTypes)) {
+            if (move_uploaded_file($uploadedFile['tmp_name'], $targetFilePath)) {
+                return $uniqueFileName;
+            } else {
+                echo "Maaf, terjadi kesalahan saat mengunggah file.";
+            }
+        } else {
+            echo "File yang diunggah bukan gambar atau format file tidak diizinkan.";
+        }
+    }
 }
