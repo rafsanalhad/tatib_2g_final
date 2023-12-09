@@ -17,10 +17,10 @@ class Mahasiswa_model
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultSet();
     }
-    public function getMahasiswaById($id)
+    public function getMahasiswaByNim($nim)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nim=:nim');
+        $this->db->bind('nim', $nim);
         return $this->db->single();
     }
     public function tambahDataMahasiswa($data){

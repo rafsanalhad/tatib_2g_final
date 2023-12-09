@@ -8,17 +8,29 @@
         <div class=" flex-1 bg-white mt-3">
           <label for="nimPengaduan">NIM:</label>
           <br>
-          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="nimPengaduan" id="nimPengaduan">
+          <select name="nimPengaduan" id="nimPengaduan" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
+            <option value="" selected>Pilih Mahasiswa</option>
+            <?php
+            $mhs = [];
+            $ct = 0;
+            foreach ($data['mahasiswa'] as $dt) {
+              $mhs[$ct] = $dt;
+              echo '<option value="'. $dt['nim'] .'">'. $dt['nim'] .'</option>';
+              // echo '<option value="'. $dt['nim'] .'">'. $dt['nim'] .' - '. $mhs[$ct]['nama'] .'</option>';
+              $ct++;
+            }
+            ?>
+          </select>
           <br>
           <br>
           <label for="namaMhsPengaduan">Nama Mahasiswa:</label>
           <br>
-          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaMhsPengaduan" id="namaMhsPengaduan">
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="namaMhsPengaduan" id="namaMhsPengaduan" disabled>
           <br>
           <br>
           <label for="noHpMhsPengaduan">Nomor Hp Mahasiswa:</label>
           <br>
-          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="noHpMhsPengaduan">
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="noHpMhsPengaduan" disabled>
           <br>
           <br>
           <label for="jenisPelanggaran">Jenis Pelanggaran:</label>
@@ -61,3 +73,29 @@
           <input type="submit" class="w-[130px] h-[40px] items-center align-center bg-sky-600 rounded-3xl text-white text-2xl font-normal font-['Inter'] mt-3 mb-3 text-center hover:bg-sky-700" value="Simpan"/>
     </div>
     </div>
+    
+    <script>
+      $(document).ready(function() {
+        console.log('a');
+        $('#nimPengaduan').on("click", function(e) {
+          let nim = $('#nimPengaduan').val();
+          console.log(nim);
+          let nama;
+
+          $.ajax({
+            url: '<?= BASEURL; ?>/Dosen/getMahasiswa/' + nim,
+            type: 'POST',
+            data: nim,
+            processData: false,
+            contentType: false, //harusnya contentType: "application/json",
+            dataType: "json",
+            success: function(response) {
+              console.log(response.nama);
+              
+              $('#namaMhsPengaduan').val(response.nama);
+              $('#noHpMhsPengaduan').val(response.no_phone);
+            }
+          })
+        })
+      })
+    </script>

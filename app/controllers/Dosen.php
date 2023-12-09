@@ -20,9 +20,16 @@ class Dosen extends Controller{
         $this->view('templates/dosen/footer');
     }
     public function formPengaduan(){
+        $data['mahasiswa'] = $this->model('Mahasiswa_model')->getAllMahasiswa();
+        $data['prodi'] = $this->model('Prodi_model')->getAllProdi();
         $this->view('templates/dosen/header');
-        $this->view('dosen/formPengaduan');
+        $this->view('dosen/formPengaduan', $data);
         $this->view('templates/dosen/footer');
+    }
+    public function getMahasiswa($nim){
+        $data['mahasiswa'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($nim);
+        $data['prodi'] = $this->model('Prodi_model')->getAllProdi();
+        echo json_encode($data['mahasiswa']);
     }
     public function ubahPassword(){
         $this->view('templates/dosen/header');
