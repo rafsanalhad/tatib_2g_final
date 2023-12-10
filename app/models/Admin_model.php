@@ -29,7 +29,7 @@ class Admin_model
     }
     public function getLaporanPelanggaran()
     {
-        $this->db->query('SELECT p.pengaduan_id, p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
+        $this->db->query('SELECT p.pengaduan_id, p.status_pengaduan, p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
         FROM ' . $this->table3 . ' AS p 
         JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
         JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
@@ -38,7 +38,7 @@ class Admin_model
     }
     public function getLaporanPelanggaranById($id)
     {
-        $this->db->query('SELECT p.pengaduan_id, p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, m.jenis_kelamin, m.no_phone, pr.prodi_nama, m.phone_ortu, pe.tingkat, pe.pelanggaran
+        $this->db->query('SELECT p.pengaduan_id, p.tanggal_pengaduan, p.bukti_pelanggaran, d.nama as nama_dosen, m.nama, m.nim, m.jenis_kelamin, m.no_phone, pr.prodi_nama, m.phone_ortu, pe.tingkat, pe.pelanggaran
         FROM ' . $this->table3 . ' AS p 
         JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
         JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
@@ -47,6 +47,22 @@ class Admin_model
         WHERE p.pengaduan_id = :id');
         $this->db->bind('id', $id);
         return $this->db->single();
+    }
+    public function hasilLaporanPelanggaran($param, $data)
+    {
+        if($param == 'terima'){
+            $paramResult = 'valid';
+        }else if($param == 'tolak'){
+            $paramResult = 'tidak valid';
+        }
+        $query = "UPDATE pengaduan SET status_pengaduan = :status_pengaduan, catatan = :catatan WHERE pengaduan_id = :pengaduan_id";
+        $this->db->query($query);
+        $this->db->bind('catatan', $data['catatan']);
+        $this->db->bind('status_pengaduan', $paramResult);
+        $this->db->bind('pengaduan_id', $data['pengaduan_id']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
     }
     public function getLaporanKompen()
     {

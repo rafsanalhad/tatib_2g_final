@@ -19,16 +19,16 @@ class Pengaduan_model
     {
         $this->db->query('SELECT 
                             a.tanggal_pengaduan, b.nama, a.nim, c.prodi_nama, d.tingkat, d.pelanggaran, a.status_pengaduan 
-                        FROM '. $this->table3 .' a INNER JOIN '. $this->table2 .' b ON a.nim = b.nim INNER JOIN 
-                        '. $this->table5 .' c ON b.prodi_id = c.prodi_id INNER JOIN '. $this->table4 .' d 
+                        FROM ' . $this->table3 . ' a INNER JOIN ' . $this->table2 . ' b ON a.nim = b.nim INNER JOIN 
+                        ' . $this->table5 . ' c ON b.prodi_id = c.prodi_id INNER JOIN ' . $this->table4 . ' d 
                         ON a.pelanggaran_id = d.pelanggaran_id');
         return $this->db->resultSet();
     }
     public function getPengaduanByNip($username)
     {
-        $this->db->query('SELECT * FROM '. $this->table3 .' a INNER JOIN '. $this->table4 .' b
+        $this->db->query('SELECT * FROM ' . $this->table3 . ' a INNER JOIN ' . $this->table4 . ' b
                         ON a.pelanggaran_id = b.pelanggaran_id WHERE a.nip = :nip');
-        $this->db->bind('nip',$username);
+        $this->db->bind('nip', $username);
         return $this->db->resultSet();
     }
     public function setPengaduan($data)
@@ -51,10 +51,11 @@ class Pengaduan_model
         $this->db->bind('bukti_pelanggaran', $uploadedFileName);
         $this->db->bind('tanggal_pengaduan', $data['tglPengaduan']);
         $this->db->bind('status_pengaduan', 'proses');
-        
+
         $this->db->execute();
         return $this->db->rowCount();
     }
+
     private function handleFileUpload()
     {
         $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/bukti_pengaduan/';

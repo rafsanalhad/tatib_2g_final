@@ -57,8 +57,13 @@
                                                                 ?></td>
                     <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
                     <td class="py-2 px-4 border-r flex p-2 gap-2 ">
-                      <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-pen-to-square"></i></a>
+                      <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
+                      <?php if($row['status_pengaduan'] ==  'valid') {?>
                       <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
+                      <?php }else if($row['status_pengaduan'] ==  'tidak valid'){?>
+                        <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
+</a>
+                      <?php }?>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
                   </tr>
@@ -182,58 +187,41 @@
               <td class="py-2 px-4 border-b jenisPelanggaran"></td>
               <td class="py-2 px-4 border-b tingktPelanggaran"></td>
               <td class="py-2 px-4 border-b">
-                <a href="#" class="text-blue-500 hover:underline downloadBuktiPelanggaran">Download</a>
+                <a href="#" class="text-blue-500 hover:underline downloadBuktiPelanggaran" download="buktipelanggaran">Download</a>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div>
-        <div class="form flex mt-3">
-          <div class="block">
-            <label for="sanksi">
-              <h3 class="font-bold text-base">Sanksi</h3>
-            </label>
-            <select name="jenisSanksi" id="jenisSanksi" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
-              <?php
-              // include "koneksi.php";
-              // $nip = $_SESSION['username'];
-              // $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.pelanggaran
-              // FROM mahasiswa m 
-              // join pengaduan p on m.nim = p.nim
-              // join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
-              // JOIN dosen d on p.nip = d.nip
-              // WHERE d.nip = '$nip'";
-              // $result = mysqli_query($koneksi, $query);
-              // $row = mysqli_fetch_assoc($result)
-              ?>
-              <? //php while ($row = mysqli_fetch_assoc($result)) {
-              ?>
-              <option value="<? //=$row['pelanggaran'];
-                              ?>"><? //php echo $row['pelanggaran'];
-                                                          ?></option>
-              <? //php }
-              ?>
-            </select>
+        <form action="" id="formPelanggaran">
+          <input type="hidden" name="pengaduan_id" class="idLaporan">
+          <div class="form flex mt-3">
+            <div class="block">
+              <label for="sanksi">
+                <h3 class="font-bold text-base">Sanksi</h3>
+              </label>
+              <p class="jenisSanksi"></p>
 
-          </div>
-          <div class="block ml-5">
-            <label for="sanksi">
-              <h3 class="font-bold text-base">Catatan</h3>
-            </label>
-            <textarea class="w-full h-14 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+            <div class="block ml-5">
+              <label for="sanksi">
+                <h3 class="font-bold text-base">Catatan</h3>
+              </label>
+              <textarea name="catatan" class="w-full h-14 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"></textarea>
 
+            </div>
           </div>
-        </div>
       </div>
       <div class="flex w-full">
         <div class="ml-auto">
-          <button id="tutupModalKompen2" type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button id="tolakPelanggaran" type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Tolak
           </button>
-          <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          <button id="terimaPelanggaran" type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             Simpan
           </button>
+          </form>
         </div>
       </div>
     </div>
@@ -253,6 +241,73 @@
   </div>
 </div>
 <script>
+  $("#tolakPelanggaran").on("click", function(event) {
+    // Mencegah tindakan bawaan tombol
+    event.preventDefault();
+
+    // Mengarahkan formulir ke URL tolak
+    var url = "<?= BASEURL; ?>/admin/hasilLaporanPelanggaran/tolak";
+
+    // Mengambil data formulir
+    var formData = $("#formPelanggaran").serialize();
+
+    // Melakukan permintaan Ajax
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: formData,
+      success: function(response) {
+        Swal.fire({
+          title: "Berhasil!",
+          text: "Berhasil Menolak Laporan Pelanggaran",
+          icon: "success"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+      },
+      error: function(xhr, status, error) {
+        // Handle error jika diperlukan
+        console.error(xhr.responseText);
+      }
+    });
+  });
+
+  // Menangani klik tombol "Terima"
+  $("#terimaPelanggaran").on("click", function(event) {
+    // Mencegah tindakan bawaan tombol
+    event.preventDefault();
+
+    // Mengarahkan formulir ke URL terima
+    var url = "<?= BASEURL; ?>/admin/hasilLaporanPelanggaran/terima";
+
+    // Mengambil data formulir
+    var formData = $("#formPelanggaran").serialize();
+
+    // Melakukan permintaan Ajax
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: formData,
+      success: function(response) {
+        Swal.fire({
+                title: "Berhasil!",
+                text: "Berhasil Menerima Laporan Pelanggaran",
+                icon: "success"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+      },
+      error: function(xhr, status, error) {
+        // Handle error jika diperlukan
+        console.error(xhr.responseText);
+      }
+    });
+  });
+
   const modalKompen1 = document.getElementById('modalTolak');
   const showModalDitolak = () => {
     $('.sidebar').addClass('sidebar-backdrop');
@@ -272,6 +327,7 @@
       dataType: "json",
       header: 'Content-Type: application/json',
       success: function(data) {
+        $('.idLaporan').val(data.pengaduan_id);
         $('.namaLaporan').html(data.nama);
         $('.nimLaporan').html(data.nim);
         $('.jenkelLaporan').html(data.jenis_kelamin);
@@ -281,7 +337,8 @@
         $('.tanggalPelanggaran').html(data.tanggal_pengaduan);
         $('.jenisPelanggaran').html(data.pelanggaran);
         $('.tingktPelanggaran').html(data.tingkat);
-        $('.downloadBuktiPelanggaran').attr('href', '<?= BASEURL; ?>/img/bukti/' + data.bukti);
+        $('.jenisSanksi').html(data.tingkat);
+        $('.downloadBuktiPelanggaran').attr('href', '<?= BASEURL; ?>/img/bukti_pengaduan/' + data.bukti_pelanggaran);
       },
       error: function(xhr, ajaxOptions, thrownError) {
         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
