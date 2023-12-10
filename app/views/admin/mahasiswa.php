@@ -313,6 +313,6 @@
         ]
       }
     });
-    $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" onclick="showModal();" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+    $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" onclick="showModal();" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tambah</a></div>');
   });
 </script>
