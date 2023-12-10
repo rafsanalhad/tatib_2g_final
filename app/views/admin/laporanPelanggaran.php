@@ -58,12 +58,15 @@
                     <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
                     <td class="py-2 px-4 border-r flex p-2 gap-2 ">
                       <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
-                      <?php if($row['status_pengaduan'] ==  'valid') {?>
-                      <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
-                      <?php }else if($row['status_pengaduan'] ==  'tidak valid'){?>
+                      <?php if ($row['status_pengaduan'] ==  'valid') { ?>
+                        <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
+                      <?php } else if ($row['status_pengaduan'] ==  'tidak valid') { ?>
                         <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
-</a>
-                      <?php }?>
+                        </a>
+                      <?php } else if ($row['status_pengaduan'] ==  'proses') { ?>
+                        <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner fa-spin"></i>
+                        </a>
+                      <?php } ?>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
                   </tr>
@@ -208,7 +211,7 @@
               <label for="sanksi">
                 <h3 class="font-bold text-base">Catatan</h3>
               </label>
-              <textarea name="catatan" class="w-full h-14 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"></textarea>
+              <textarea name="catatan" class="w-full h-14 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500 catatanLaporan"></textarea>
 
             </div>
           </div>
@@ -292,14 +295,14 @@
       data: formData,
       success: function(response) {
         Swal.fire({
-                title: "Berhasil!",
-                text: "Berhasil Menerima Laporan Pelanggaran",
-                icon: "success"
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  window.location.reload();
-                }
-              });
+          title: "Berhasil!",
+          text: "Berhasil Menerima Laporan Pelanggaran",
+          icon: "success"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
       },
       error: function(xhr, status, error) {
         // Handle error jika diperlukan
@@ -339,6 +342,7 @@
         $('.tingktPelanggaran').html(data.tingkat);
         $('.jenisSanksi').html(data.tingkat);
         $('.downloadBuktiPelanggaran').attr('href', '<?= BASEURL; ?>/img/bukti_pengaduan/' + data.bukti_pelanggaran);
+        $('.catatanLaporan').html(data.catatan);
       },
       error: function(xhr, ajaxOptions, thrownError) {
         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
