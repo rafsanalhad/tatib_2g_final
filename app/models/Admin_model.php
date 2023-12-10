@@ -51,7 +51,7 @@ class Admin_model
     }
     public function getLaporanKompenById($id)
     {
-        $this->db->query('SELECT r.riwayat_id, p.pengaduan_id, p.tanggal_pengaduan, p.bukti_pelanggaran, p.catatan, d.nama as nama_dosen, m.nama, m.nim, m.jenis_kelamin, m.no_phone, pr.prodi_nama, m.phone_ortu, pe.tingkat, pe.pelanggaran
+        $this->db->query('SELECT r.riwayat_id, r.bukti_kompen, r.catatan_kompen, p.pengaduan_id, p.tanggal_pengaduan, p.bukti_pelanggaran, p.catatan, d.nama as nama_dosen, m.nama, m.nim, m.jenis_kelamin, m.no_phone, pr.prodi_nama, m.phone_ortu, pe.tingkat, pe.pelanggaran
         FROM ' . $this->table3 . ' AS p 
         JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
         JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim

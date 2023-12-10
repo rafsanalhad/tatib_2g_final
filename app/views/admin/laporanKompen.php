@@ -394,8 +394,8 @@
         $('.jenisPelanggaran').html(data.pelanggaran);
         $('.tingktPelanggaran').html(data.tingkat);
         $('.jenisSanksi').html(data.tingkat);
-        $('.downloadBuktiPelanggaran').attr('href', '<?= BASEURL; ?>/img/bukti_pengaduan/' + data.bukti_pelanggaran);
-        $('.catatanLaporan').html(data.catatan);
+        $('.downloadBuktiPelanggaran').attr('href', '<?= BASEURL; ?>/img/bukti_kompen/' + data.bukti_kompen);
+        $('.catatanLaporan').html(data.catatan_kompen);
       },
       error: function(xhr, ajaxOptions, thrownError) {
         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
