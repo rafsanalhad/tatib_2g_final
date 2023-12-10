@@ -95,6 +95,13 @@ class Dosen_model
         }
     }
 
+    public function getDosenByNip($nip)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nip=:nip');
+        $this->db->bind('nip', $nip);
+        return $this->db->single();
+    }
+
 
 
 

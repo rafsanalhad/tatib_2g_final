@@ -61,7 +61,7 @@
                     <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                     <td class="py-2 px-4 border-r">
                       <div class="inline-flex">
-                        <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="#" onclick="showModalById(<?= $row['nip'] ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="<?= BASEURL; ?>/Admin/hapusDosen/<?= $row['nip']; ?>" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
                       </div>
                     </td>
@@ -324,6 +324,32 @@
 
     })
   })
+
+  const showModalById = (nip) => {
+    const modal = document.getElementById('static-modal');
+    $('.sidebar').addClass('sidebar-backdrop');
+    modal.classList.remove('hidden');
+    $.ajax({
+      url: '<?= BASEURL; ?>/Admin/getDosenByNip/' + nip,
+      type: 'GET',
+      dataType: 'json',
+      success: function(response) {
+        $('#nama').val(response.nama);
+        $('#nip').val(response.nip);
+        $('#ttl').val(response.TTL);
+        $('#jabatan').val(response.jabatan);
+        $('#email').val(response.email);
+        $('#no_phone').val(response.no_phone);
+        $('#alamat').val(response.alamat);
+        $('#imgInputDosen').val('');
+        $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.dosen_img + '" alt="">');
+        $('#noImgDosen').addClass('hidden');
+      },
+      error: function(error) {
+        alert("Error: " + xhr.status + "\n" + xhr.responseText);
+      }
+    });
+  }
   const dropArea = $('#dropAreaImgDosen');
   const fileInput = $('#imgInputDosen');
   const preview = $('#preview');
@@ -381,7 +407,21 @@
     }
   }
 
+  const resetFormModal = () => {
+    $('#nama').val('');
+    $('#nip').val('');
+    $('#ttl').val('');
+    $('#jabatan').val('');
+    $('#email').val('');
+    $('#no_phone').val('');
+    $('#alamat').val('');
+    $('#imgInputDosen').val('');
+    $('#preview').empty();
+    $('#noImgDosen').removeClass('hidden');
+  }
+
   const showModal = () => {
+    resetFormModal();
     const modal = document.getElementById('static-modal');
     $('.sidebar').addClass('sidebar-backdrop');
     modal.classList.remove('hidden');

@@ -38,6 +38,10 @@ class Admin extends Controller{
             exit;
         }
     }
+    public function getDosenByNip($nip){
+        $data['dosen'] = $this->model('Dosen_model')->getDosenByNip($nip);
+        echo json_encode($data['dosen']);
+    }
     public function hapusDosen($nip){
         if ($this->model('Dosen_model')->hapusDataDosen($nip) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
