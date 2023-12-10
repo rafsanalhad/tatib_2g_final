@@ -147,9 +147,9 @@
                 <div class="w-2 h-2 my-2 ml-2 bg-yellow-500 rounded-full"></div>
                 <p class="text-yellow-800 text-xs pl-2">Berat</p>
               </div>
-              <div class="flex w-25 h-7 bg-yellow-500 rounded-lg items-center border border-yellow-200">
+              <div class="flex w-25 h-7 bg-yellow-50 rounded-lg items-center border border-yellow-200">
                 <div class="w-2 h-2 my-2 ml-2 bg-yellow-200 rounded-full"></div>
-                <p class="text-yellow-200 text-xs pl-2">Sedang</p>
+                <p class="text-yellow-700 text-xs pl-2">Sedang</p>
               </div>
               <div class="flex w-25 h-7 bg-green-100 rounded-lg items-center border border-green-500">
                 <div class="w-2 h-2 my-2 ml-2 bg-green-500 rounded-full"></div>
