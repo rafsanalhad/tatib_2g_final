@@ -66,7 +66,10 @@
                       <?php } else if ($row['status_pengaduan'] ==  'proses') { ?>
                         <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner fa-spin"></i>
                         </a>
-                      <?php } ?>
+                      <?php } else if ($row['status_kompen'] == 'baru') { ?>
+                        <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
+                        </a>
+                        <?php } ?>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
                   </tr>
@@ -244,56 +247,56 @@
   </div>
 </div>
 <script>
-    $(document).ready(function() {
+  $(document).ready(function() {
 
 
-$('#tableLaporan').DataTable({
-  rowReorder: {
-    selector: 'td:nth-child(2)'
-  },
-  lengthChange: false,
-  responsive: {
-    breakpoints: [{
-        name: 'bigdesktop',
-        width: Infinity
+    $('#tableLaporan').DataTable({
+      rowReorder: {
+        selector: 'td:nth-child(2)'
       },
-      {
-        name: 'meddesktop',
-        width: 1480
-      },
-      {
-        name: 'smalldesktop',
-        width: 1280
-      },
-      {
-        name: 'medium',
-        width: 1188
-      },
-      {
-        name: 'tabletl',
-        width: 1024
-      },
-      {
-        name: 'btwtabllandp',
-        width: 848
-      },
-      {
-        name: 'tabletp',
-        width: 768
-      },
-      {
-        name: 'mobilel',
-        width: 480
-      },
-      {
-        name: 'mobilep',
-        width: 320
+      lengthChange: false,
+      responsive: {
+        breakpoints: [{
+            name: 'bigdesktop',
+            width: Infinity
+          },
+          {
+            name: 'meddesktop',
+            width: 1480
+          },
+          {
+            name: 'smalldesktop',
+            width: 1280
+          },
+          {
+            name: 'medium',
+            width: 1188
+          },
+          {
+            name: 'tabletl',
+            width: 1024
+          },
+          {
+            name: 'btwtabllandp',
+            width: 848
+          },
+          {
+            name: 'tabletp',
+            width: 768
+          },
+          {
+            name: 'mobilel',
+            width: 480
+          },
+          {
+            name: 'mobilep',
+            width: 320
+          }
+        ]
       }
-    ]
-  }
-});
-// $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
-});
+    });
+    // $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+  });
   $("#tolakPelanggaran").on("click", function(event) {
     // Mencegah tindakan bawaan tombol
     event.preventDefault();

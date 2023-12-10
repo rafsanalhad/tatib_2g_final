@@ -106,8 +106,19 @@ class Admin extends Controller{
         $data['Pelanggaran'] = $this->model('Admin_model')->getLaporanPelanggaranById($id);
         echo json_encode($data['Pelanggaran']);
     }
+    public function getLaporanKompenById($id){
+        $data['Kompen'] = $this->model('Admin_model')->getLaporanKompenById($id);
+        echo json_encode($data['Kompen']);
+    }
     public function hasilLaporanPelanggaran($param){
         if ($this->model('Admin_model')->hasilLaporanPelanggaran($param, $_POST) > 0) {
+            echo json_encode('berhasil memvalidasi');
+        }else{
+           echo json_encode('gagal memvalidasi');
+        }
+    }
+    public function hasilLaporanKompen($param){
+        if ($this->model('Admin_model')->hasilLaporanKompen($param, $_POST) > 0) {
             echo json_encode('berhasil memvalidasi');
         }else{
            echo json_encode('gagal memvalidasi');

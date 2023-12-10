@@ -7,6 +7,7 @@ class Admin_model
     private $table3 = 'pengaduan';
     private $table4 = 'pelanggaran';
     private $table5 = 'prodi';
+    private $table6 = 'riwayat';
     private $db;
 
 
@@ -48,6 +49,19 @@ class Admin_model
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+    public function getLaporanKompenById($id)
+    {
+        $this->db->query('SELECT r.riwayat_id, p.pengaduan_id, p.tanggal_pengaduan, p.bukti_pelanggaran, p.catatan, d.nama as nama_dosen, m.nama, m.nim, m.jenis_kelamin, m.no_phone, pr.prodi_nama, m.phone_ortu, pe.tingkat, pe.pelanggaran
+        FROM ' . $this->table3 . ' AS p 
+        JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
+        JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
+        JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id
+        JOIN ' . $this->table5 . ' AS pr ON m.prodi_id = pr.prodi_id
+        JOIN ' . $this->table6 . ' AS r ON p.pengaduan_id = r.pengaduan_id
+        WHERE r.riwayat_id = :id');
+        $this->db->bind('id', $id);
+        return $this->db->single();
+    }
     public function hasilLaporanPelanggaran($param, $data)
     {
         if($param == 'terima'){
@@ -64,13 +78,30 @@ class Admin_model
         $this->db->execute();
         return $this->db->rowCount();
     }
+    public function hasilLaporanKompen($param, $data)
+    {
+        if($param == 'terima'){
+            $paramResult = 'valid';
+        }else if($param == 'tolak'){
+            $paramResult = 'tidak valid';
+        }
+        $query = "UPDATE riwayat SET status_kompen = :status_kompen, catatan = :catatan WHERE riwayat_id = :riwayat_id";
+        $this->db->query($query);
+        $this->db->bind('catatan', $data['catatan']);
+        $this->db->bind('status_kompen', $paramResult);
+        $this->db->bind('riwayat_id', $data['riwayat_id']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
     public function getLaporanKompen()
     {
-        $this->db->query('SELECT p.pengaduan_id, p.status_pengaduan, p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
+        $this->db->query('SELECT r.riwayat_id, r.status_kompen, p.pengaduan_id, p.status_pengaduan, p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
         FROM ' . $this->table3 . ' AS p 
         JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
         JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
-        JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id');
+        JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id
+        JOIN '. $this->table6 . ' AS r ON p.pengaduan_id = r.pengaduan_id');
         return $this->db->resultSet();
     }
     public function hitungDosen()

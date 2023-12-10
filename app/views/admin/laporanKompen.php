@@ -14,7 +14,7 @@
         <!-- <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div> -->
         <div class="grid grid-cols-1 gap-4 mt-5">
           <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
-            <table id="tableLaporan" class="min-w-full border ">
+            <table id="tableLaporanKompen" class="min-w-full border ">
               <!-- Tambahkan header tabel di sini -->
               <thead>
                 <tr class="border-b">
@@ -57,14 +57,16 @@
                                                                 ?></td>
                     <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
                     <td class="py-2 px-4 border-r flex p-2 gap-2 ">
-                      <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
-                      <?php if($row['status_pengaduan'] ==  'valid') {?>
-                      <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
-                    <a href="#" class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-bell"></i></a>
-                      <?php }else if($row['status_pengaduan'] ==  'tidak valid'){?>
-                        <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
-</a>
-                      <?php }?>
+                      <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
+                      <?php if ($row['status_kompen'] ==  'valid') { ?>
+                        <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
+                      <?php } else if ($row['status_kompen'] ==  'tidak valid') { ?>
+                        <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
+                        </a>
+                      <?php } else if ($row['status_kompen'] == 'baru') { ?>
+                        <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
+                        </a>
+                      <?php } ?>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
                   </tr>
@@ -196,7 +198,7 @@
       </div>
       <div>
         <form action="" id="formPelanggaran">
-          <input type="hidden" name="pengaduan_id" class="idLaporan">
+          <input type="hidden" name="riwayat_id" class="idLaporan">
           <div class="form flex mt-3">
             <div class="block">
               <label for="sanksi">
@@ -242,12 +244,62 @@
   </div>
 </div>
 <script>
+  $(document).ready(function() {
+
+
+    $('#tableLaporanKompen').DataTable({
+      rowReorder: {
+        selector: 'td:nth-child(2)'
+      },
+      lengthChange: false,
+      responsive: {
+        breakpoints: [{
+            name: 'bigdesktop',
+            width: Infinity
+          },
+          {
+            name: 'meddesktop',
+            width: 1480
+          },
+          {
+            name: 'smalldesktop',
+            width: 1280
+          },
+          {
+            name: 'medium',
+            width: 1188
+          },
+          {
+            name: 'tabletl',
+            width: 1024
+          },
+          {
+            name: 'btwtabllandp',
+            width: 848
+          },
+          {
+            name: 'tabletp',
+            width: 768
+          },
+          {
+            name: 'mobilel',
+            width: 480
+          },
+          {
+            name: 'mobilep',
+            width: 320
+          }
+        ]
+      }
+    });
+    // $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
+  });
   $("#tolakPelanggaran").on("click", function(event) {
     // Mencegah tindakan bawaan tombol
     event.preventDefault();
 
     // Mengarahkan formulir ke URL tolak
-    var url = "<?= BASEURL; ?>/admin/hasilLaporanPelanggaran/tolak";
+    var url = "<?= BASEURL; ?>/admin/hasilLaporanKompen/tolak";
 
     // Mengambil data formulir
     var formData = $("#formPelanggaran").serialize();
@@ -258,9 +310,10 @@
       url: url,
       data: formData,
       success: function(response) {
+        console.log(response);
         Swal.fire({
           title: "Berhasil!",
-          text: "Berhasil Menolak Laporan Pelanggaran",
+          text: "Berhasil Menolak Laporan Kompen",
           icon: "success"
         }).then((result) => {
           if (result.isConfirmed) {
@@ -281,7 +334,7 @@
     event.preventDefault();
 
     // Mengarahkan formulir ke URL terima
-    var url = "<?= BASEURL; ?>/admin/hasilLaporanPelanggaran/terima";
+    var url = "<?= BASEURL; ?>/admin/hasilLaporanKompen/terima";
 
     // Mengambil data formulir
     var formData = $("#formPelanggaran").serialize();
@@ -292,9 +345,10 @@
       url: url,
       data: formData,
       success: function(response) {
+        console.log(response);
         Swal.fire({
           title: "Berhasil!",
-          text: "Berhasil Menerima Laporan Pelanggaran",
+          text: "Berhasil Menerima Laporan Kompen",
           icon: "success"
         }).then((result) => {
           if (result.isConfirmed) {
@@ -323,12 +377,13 @@
   const modalKompen = document.getElementById('static-modal-kompen');
   const showModalKompen = (id) => {
     $.ajax({
-      url: "<?= BASEURL; ?>/admin/getLaporanPelanggaranById/" + id,
+      url: "<?= BASEURL; ?>/admin/getLaporanKompenById/" + id,
       method: "GET",
       dataType: "json",
       header: 'Content-Type: application/json',
       success: function(data) {
-        $('.idLaporan').val(data.pengaduan_id);
+        console.log(data);
+        $('.idLaporan').val(data.riwayat_id);
         $('.namaLaporan').html(data.nama);
         $('.nimLaporan').html(data.nim);
         $('.jenkelLaporan').html(data.jenis_kelamin);
@@ -384,54 +439,4 @@
   //   $('.sidebar').removeClass('sidebar-backdrop');
   //   staticModal.classList.add('hidden');
   // });
-  $(document).ready(function() {
-
-
-    $('#tableLaporan').DataTable({
-      rowReorder: {
-        selector: 'td:nth-child(2)'
-      },
-      lengthChange: false,
-      responsive: {
-        breakpoints: [{
-            name: 'bigdesktop',
-            width: Infinity
-          },
-          {
-            name: 'meddesktop',
-            width: 1480
-          },
-          {
-            name: 'smalldesktop',
-            width: 1280
-          },
-          {
-            name: 'medium',
-            width: 1188
-          },
-          {
-            name: 'tabletl',
-            width: 1024
-          },
-          {
-            name: 'btwtabllandp',
-            width: 848
-          },
-          {
-            name: 'tabletp',
-            width: 768
-          },
-          {
-            name: 'mobilel',
-            width: 480
-          },
-          {
-            name: 'mobilep',
-            width: 320
-          }
-        ]
-      }
-    });
-    // $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tombol Link</a></div>');
-  });
 </script>
