@@ -66,9 +66,10 @@ class Admin_model
     }
     public function getLaporanKompen()
     {
-        $this->db->query('SELECT p.tanggal_pengaduan, m.nama, m.nim, pe.tingkat, pe.pelanggaran
-        FROM ' . $this->table3 . ' AS p
-        JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim 
+        $this->db->query('SELECT p.pengaduan_id, p.status_pengaduan, p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
+        FROM ' . $this->table3 . ' AS p 
+        JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
+        JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
         JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id');
         return $this->db->resultSet();
     }
