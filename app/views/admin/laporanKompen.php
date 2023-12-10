@@ -61,6 +61,7 @@
                   <td class="py-2 px-4 border-r flex p-2 gap-2 ">
                     <a href="#" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline" onclick="showModalKompen();"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
+                    <a href="#" class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-bell"></i></a>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
