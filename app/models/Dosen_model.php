@@ -101,6 +101,21 @@ class Dosen_model
         $this->db->bind('nip', $nip);
         return $this->db->single();
     }
+    public function editDataDosen($data)
+    {
+        $query = "UPDATE dosen SET nama = :nama, TTL = :TTL, jenis_kelamin = :jenis_kelamin, jabatan = :jabatan, email = :email, no_phone = :no_phone, alamat = :alamat WHERE nip = :nip";
+        $this->db->query($query);
+        $this->db->bind('nip', $data['nip']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('TTL', $data['ttl']);
+        $this->db->bind('jenis_kelamin', $data['jenkel']);
+        $this->db->bind('jabatan', $data['jabatan']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('no_phone', $data['no_phone']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 
 
 

@@ -42,6 +42,17 @@ class Admin extends Controller{
         $data['dosen'] = $this->model('Dosen_model')->getDosenByNip($nip);
         echo json_encode($data['dosen']);
     }
+    public function editDosen(){
+        if ($this->model('Dosen_model')->editDataDosen($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/admin/dosen');
+            exit;
+        }else{
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/admin/dosen');
+            exit;
+        }
+    }
     public function hapusDosen($nip){
         if ($this->model('Dosen_model')->hapusDataDosen($nip) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');

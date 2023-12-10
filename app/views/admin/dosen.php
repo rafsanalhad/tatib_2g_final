@@ -100,7 +100,7 @@
 
       <!-- Konten Modal -->
       <!-- <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1> -->
-      <h3 class="text-2xl mb-7 font-bold">Tambah Data Dosen</h3>
+      <h3 class="text-2xl mb-7 font-bold headerModal">Tambah Data Dosen</h3>
       <form class="mb-3" id="formTambahDosen" action="<?= BASEURL; ?>/Admin/tambahDosen" method="POST" enctype="multipart/form-data">
         <div class="flex flex-col md:flex-row">
           <div class="containerGroupImg md:w-2/6" id="dropAreaImgDosen" class="drop-area">
@@ -253,6 +253,7 @@
 </div>
 </div>
 <script>
+  let checkTypeSubmit= null;
   $(document).ready(function() {
     $('#formTambahDosen').on("submit", function(e) {
       e.preventDefault();
@@ -292,28 +293,57 @@
       handleCondition('#email', '.error_msg_email', '.titikDuaEmail');
 
       if (semuaKondisiTerpenuhi) {
-        let formData = new FormData($('#formTambahDosen')[0]);
-        $.ajax({
-          url: '<?= BASEURL; ?>/Admin/tambahDosen',
-          type: 'POST',
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function(response) {
-            Swal.fire({
-              title: "Berhasil!",
-              text: "Data dosen berhasil ditambahkan!",
-              icon: "success"
-            }).then((result) => {
-              if (result.isConfirmed) {
-                window.location.reload();
-              }
-            });
-          },
-          error: function(error) {
-            alert("Error: " + xhr.status + "\n" + xhr.responseText);
-          }
-        });
+        if($('.headerModal').html() == 'Tambah Data Dosen'){
+          let formData = new FormData($('#formTambahDosen')[0]);
+          $.ajax({
+            url: '<?= BASEURL; ?>/Admin/tambahDosen',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+              console.log('anjay tambah');
+              console.log(response);
+              Swal.fire({
+                title: "Berhasil!",
+                text: "Data dosen berhasil ditambahkan!",
+                icon: "success"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+            },
+            error: function(error) {
+              alert("Error: " + xhr.status + "\n" + xhr.responseText);
+            }
+          });
+        }else if($('.headerModal').html() == 'Edit Data Dosen'){
+          let formData = new FormData($('#formTambahDosen')[0]);
+          $.ajax({
+            url: '<?= BASEURL; ?>/Admin/editDosen',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+              console.log('anjay ubah');
+              console.log(response);
+              Swal.fire({
+                title: "Berhasil!",
+                text: "Data dosen berhasil diubah!",
+                icon: "success"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+            },
+            error: function(error) {
+              alert("Error: " + xhr.status + "\n" + xhr.responseText);
+            }
+          });
+        }
       } else {
         Swal.fire({
           title: "Gagal!",
@@ -326,6 +356,7 @@
   })
 
   const showModalById = (nip) => {
+    $('.headerModal').html('Edit Data Dosen');
     const modal = document.getElementById('static-modal');
     $('.sidebar').addClass('sidebar-backdrop');
     modal.classList.remove('hidden');
@@ -341,6 +372,7 @@
         $('#email').val(response.email);
         $('#no_phone').val(response.no_phone);
         $('#alamat').val(response.alamat);
+        $("#jenisPelanggaran").val(response.jenis_kelamin);
         $('#imgInputDosen').val('');
         $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.dosen_img + '" alt="">');
         $('#noImgDosen').addClass('hidden');
@@ -422,6 +454,7 @@
 
   const showModal = () => {
     resetFormModal();
+    $('.headerModal').html('Tambah Data Dosen');
     const modal = document.getElementById('static-modal');
     $('.sidebar').addClass('sidebar-backdrop');
     modal.classList.remove('hidden');
