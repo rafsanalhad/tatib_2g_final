@@ -85,9 +85,9 @@ class Admin_model
         }else if($param == 'tolak'){
             $paramResult = 'tidak valid';
         }
-        $query = "UPDATE riwayat SET status_kompen = :status_kompen, catatan = :catatan WHERE riwayat_id = :riwayat_id";
+        $query = "UPDATE riwayat SET status_kompen = :status_kompen, catatan_kompen = :catatan_kompen WHERE riwayat_id = :riwayat_id";
         $this->db->query($query);
-        $this->db->bind('catatan', $data['catatan']);
+        $this->db->bind('catatan_kompen', $data['catatan_kompen']);
         $this->db->bind('status_kompen', $paramResult);
         $this->db->bind('riwayat_id', $data['riwayat_id']);
 
