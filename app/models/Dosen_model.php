@@ -58,12 +58,12 @@ class Dosen_model
         $this->db->bind('email', $data['email']);
         $this->db->bind('no_phone', $data['no_phone']);
         $this->db->bind('alamat', $data['alamat']);
-        
+
         // Handling file upload
         $uploadedFileName = $this->handleFileUpload();
         echo $uploadedFileName;
-        
-        
+
+
         //Bind the uploaded file name to the query
         $this->db->bind('dosen_img', $uploadedFileName);
         $this->db->bind('user_id', $res['user_id']);
@@ -103,7 +103,10 @@ class Dosen_model
     }
     public function editDataDosen($data)
     {
-        $query = "UPDATE dosen SET nama = :nama, TTL = :TTL, jenis_kelamin = :jenis_kelamin, jabatan = :jabatan, email = :email, no_phone = :no_phone, alamat = :alamat WHERE nip = :nip";
+        $checkData = $this->getDosenByNip($data['nip']);
+        $dataUploaded= $_FILES['imgDosen']['name'];
+        $uploadedFileNameEdit = $this->handleFileUploadEdit($dataUploaded, $checkData['dosen_img']);
+        $query = "UPDATE dosen SET nama = :nama, TTL = :TTL, jenis_kelamin = :jenis_kelamin, jabatan = :jabatan, email = :email, no_phone = :no_phone, alamat = :alamat, dosen_img= :dosen_img WHERE nip = :nip";
         $this->db->query($query);
         $this->db->bind('nip', $data['nip']);
         $this->db->bind('nama', $data['nama']);
@@ -113,8 +116,54 @@ class Dosen_model
         $this->db->bind('email', $data['email']);
         $this->db->bind('no_phone', $data['no_phone']);
         $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('dosen_img', $uploadedFileNameEdit);
         $this->db->execute();
         return $this->db->rowCount();
+    }
+    private function handleFileUploadEdit($dataOld, $dataTemp)
+    {
+        $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/profil/';
+
+        // Memeriksa apakah parameter $dataOld sudah diatur dan tidak kosong
+        if ($dataOld != null) {
+
+            // Menghapus file lama sebelum menyimpan file baru
+            $oldFilePath = $targetDir . $dataOld;
+
+            // Periksa apakah file lama ada sebelum menghapusnya
+            if (file_exists($oldFilePath) && $dataTemp != null) {
+                unlink($oldFilePath); // Hapus file lama
+            }
+
+            $uploadedFile = $_FILES['imgDosen']; // Nama input file pada formulir
+
+            // Menggunakan timestamp detik UNIX untuk membuat nama file unik
+            $uniqueFileName = time() . '_' . substr(pathinfo($uploadedFile['name'], PATHINFO_FILENAME), 0, 3) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+            $targetFilePath = $targetDir . $uniqueFileName;
+            $fileType = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+
+            // Memeriksa apakah file tersebut adalah file gambar
+            $allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
+
+            if (in_array(strtolower($fileType), $allowedTypes)) {
+                if (move_uploaded_file($uploadedFile['tmp_name'], $targetFilePath)) {
+                    return $uniqueFileName;
+                } else {
+                    echo "Maaf, terjadi kesalahan saat mengunggah file.";
+                }
+            } else {
+                echo "File yang diunggah bukan gambar atau format file tidak diizinkan.";
+            }
+        }
+    }
+
+
+    // Metode untuk mendapatkan nama file lama (gantilah dengan metode yang sesuai)
+    private function getOldFileName()
+    {
+        // Implementasikan logika untuk mendapatkan nama file lama
+        // Misalnya, dapatkan nama file lama dari basis data atau dari variabel lain
+        return "nama_file_lama.jpg"; // Gantilah dengan nama file lama yang sebenarnya
     }
 
 
