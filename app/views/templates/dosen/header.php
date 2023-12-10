@@ -17,7 +17,7 @@
 
 <body class="font-sans main">
   <!-- Navbar -->
-  <nav class="navbar p-4 h-16 fixed top-0 w-full bg-gray-800">
+  <nav class="navbar p-4 h-16 fixed top-0 w-full bg-gray-800 z-50">
     <div class="container-fluid mx-auto flex justify-between items-center">
         <div class="text-white font-bold text-xl">Sistem Tata Tertib</div>
         <div class="containerBarsMobile toggle_bars_mobile">
