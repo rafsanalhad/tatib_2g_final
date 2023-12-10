@@ -29,12 +29,24 @@ class Admin_model
     }
     public function getLaporanPelanggaran()
     {
-        $this->db->query('SELECT p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
+        $this->db->query('SELECT p.pengaduan_id, p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, pe.tingkat, pe.pelanggaran
         FROM ' . $this->table3 . ' AS p 
         JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
         JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
         JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id');
         return $this->db->resultSet();
+    }
+    public function getLaporanPelanggaranById($id)
+    {
+        $this->db->query('SELECT p.pengaduan_id, p.tanggal_pengaduan, d.nama as nama_dosen, m.nama, m.nim, m.jenis_kelamin, m.no_phone, pr.prodi_nama, m.phone_ortu, pe.tingkat, pe.pelanggaran
+        FROM ' . $this->table3 . ' AS p 
+        JOIN ' . $this->table1 . ' AS d ON p.nip = d.nip  
+        JOIN ' . $this->table2 . ' AS m ON p.nim = m.nim
+        JOIN ' . $this->table4 . ' AS pe ON p.pelanggaran_id = pe.pelanggaran_id
+        JOIN ' . $this->table5 . ' AS pr ON m.prodi_id = pr.prodi_id
+        WHERE p.pengaduan_id = :id');
+        $this->db->bind('id', $id);
+        return $this->db->single();
     }
     public function getLaporanKompen()
     {

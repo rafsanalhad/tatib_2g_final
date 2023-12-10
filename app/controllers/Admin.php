@@ -102,6 +102,10 @@ class Admin extends Controller{
         $this->view('admin/laporanPelanggaran', $data);
         $this->view('templates/admin/footer');
     }
+    public function getLaporanPelanggaranById($id){
+        $data['Pelanggaran'] = $this->model('Admin_model')->getLaporanPelanggaranById($id);
+        echo json_encode($data['Pelanggaran']);
+    }
     public function laporanKompen(){
         $data['judul'] = 'Admin Page';
         $data['laporanKompen'] = $this->model('Admin_model')->getLaporanKompen();

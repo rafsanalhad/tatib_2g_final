@@ -1,81 +1,81 @@
 <div class="flex-1 pl-8 pb-8 pt-6 pr-8 shadow-sm main_content">
-<div id="laporan_pelanggaran">
-  <div class="containerBars_toggled">
-    <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
-  </div>
-  <h1 class="text-2xl font-bold mb-2">Laporan Pelanggaran</h1>
+  <div id="laporan_pelanggaran">
+    <div class="containerBars_toggled">
+      <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
+    </div>
+    <h1 class="text-2xl font-bold mb-2">Laporan Pelanggaran</h1>
 
-  <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-    <div class="flex-1 ml-4">Kelola Data Mahasiswa</div>
-  </div>
-  <hr class="hr_db">
-  <div class="flex bg-white">
-    <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
-      <!-- <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div> -->
-      <div class="grid grid-cols-1 gap-4 mt-5">
-        <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
-          <table id="tableLaporan" class="min-w-full border ">
-            <!-- Tambahkan header tabel di sini -->
-            <thead>
-              <tr class="border-b">
-              <th class="py-2 px-4 border-r">Tanggal</th>
-              <th class="py-2 px-4 border-r">Pelapor</th>
-                <th class="py-2 px-4 border-r">Nama Mahasiswa</th>
-                <th class="py-2 px-4 border-r">NIM</th>
-                <th class="py-2 px-4 border-r">Tingkat</th>
-                <th class="py-2 px-4 border-r">Jen. Pelanggaran</th>
-                <th class="py-2 px-4 border-r">Aksi</th>
-                <!-- Tambahkan header lainnya sesuai kebutuhan -->
-              </tr>
-            </thead>
-            <?php
-            foreach ($data['Pelanggaran'] as $row):
-            ?>
-              <tbody>
-                <!-- Tambahkan baris-baris data di sini -->
+    <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
+      <div class="flex-1 ml-4">Kelola Data Mahasiswa</div>
+    </div>
+    <hr class="hr_db">
+    <div class="flex bg-white">
+      <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
+        <!-- <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div> -->
+        <div class="grid grid-cols-1 gap-4 mt-5">
+          <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
+            <table id="tableLaporan" class="min-w-full border ">
+              <!-- Tambahkan header tabel di sini -->
+              <thead>
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
-                  <td class="py-2 px-4 border-r"><?= $row['nama_dosen']; ?></td>              
-                  <td class="py-2 px-4 border-r">
-                    <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
-                  </td>
-                  <td class="py-2 px-4 border-r">
-                    <p class="nama_dosen_table inline"><?= $row['nim']; ?></p>
-                  </td>
-                  <td class="py-2 px-4 border-r text-center"><?php
-                      if ($row['tingkat'] == '1') {
-                        echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
-                      } elseif ($row['tingkat'] == '2') {
-                        echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
-                      }elseif ($row['tingkat'] == '3'){
-                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
-                      }elseif ($row['tingkat'] == '4'){
-                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
-                      }elseif ($row['tingkat'] == '5'){
-                        echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
-                      }
-                      ?></td>
-                  <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>                                    
-                  <td class="py-2 px-4 border-r flex p-2 gap-2 ">
-                    <a href="#" onclick="showModalKompen();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
-                  </td>
-                  <!-- Tambahkan data lainnya sesuai kebutuhan -->
+                  <th class="py-2 px-4 border-r">Tanggal</th>
+                  <th class="py-2 px-4 border-r">Pelapor</th>
+                  <th class="py-2 px-4 border-r">Nama Mahasiswa</th>
+                  <th class="py-2 px-4 border-r">NIM</th>
+                  <th class="py-2 px-4 border-r">Tingkat</th>
+                  <th class="py-2 px-4 border-r">Jen. Pelanggaran</th>
+                  <th class="py-2 px-4 border-r">Aksi</th>
+                  <!-- Tambahkan header lainnya sesuai kebutuhan -->
                 </tr>
+              </thead>
               <?php
-                endforeach;
+              foreach ($data['Pelanggaran'] as $row) :
               ?>
-              </tbody>
-          </table>
+                <tbody>
+                  <!-- Tambahkan baris-baris data di sini -->
+                  <tr class="border-b">
+                    <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
+                    <td class="py-2 px-4 border-r"><?= $row['nama_dosen']; ?></td>
+                    <td class="py-2 px-4 border-r">
+                      <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
+                    </td>
+                    <td class="py-2 px-4 border-r">
+                      <p class="nama_dosen_table inline"><?= $row['nim']; ?></p>
+                    </td>
+                    <td class="py-2 px-4 border-r text-center"><?php
+                                                                if ($row['tingkat'] == '1') {
+                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
+                                                                } elseif ($row['tingkat'] == '2') {
+                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
+                                                                } elseif ($row['tingkat'] == '3') {
+                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
+                                                                } elseif ($row['tingkat'] == '4') {
+                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
+                                                                } elseif ($row['tingkat'] == '5') {
+                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
+                                                                }
+                                                                ?></td>
+                    <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
+                    <td class="py-2 px-4 border-r flex p-2 gap-2 ">
+                      <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-pen-to-square"></i></a>
+                      <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
+                    </td>
+                    <!-- Tambahkan data lainnya sesuai kebutuhan -->
+                  </tr>
+                <?php
+              endforeach;
+                ?>
+                </tbody>
+            </table>
+          </div>
+          <!-- Tambahkan elemen sesuai kebutuhan Anda -->
         </div>
-        <!-- Tambahkan elemen sesuai kebutuhan Anda -->
+
       </div>
 
+      <!-- Tambahkan elemen sesuai kebutuhan Anda -->
     </div>
-
-    <!-- Tambahkan elemen sesuai kebutuhan Anda -->
   </div>
-</div>
 </div>
 <div id="static-modal-kompen" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
   <!-- Backdrop -->
@@ -104,7 +104,7 @@
               </div>
               <div class="w-2/4 inline-flex items-center">
                 <div class="mr-2">: </div>
-                <p class="mt 1 p-2 w-full">Freya</p>
+                <p class="mt 1 p-2 w-full namaLaporan"></p>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@
               </div>
               <div class="w-2/4 inline-flex items-center">
                 <div class="mr-2">: </div>
-                <p class="mt 1 p-2 w-full">2241720040</p>
+                <p class="mt 1 p-2 w-full nimLaporan"></p>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@
               </div>
               <div class="w-2/4 inline-flex items-center">
                 <div class="mr-2">: </div>
-                <p class="mt 1 p-2 w-full">Perempuan</p>
+                <p class="mt 1 p-2 w-full jenkelLaporan"></p>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@
               </div>
               <div class="w-2/4 inline-flex items-center">
                 <div class="mr-2">: </div>
-                <p class="mt 1 p-2 w-full">085767456876</p>
+                <p class="mt 1 p-2 w-full noTelpLaporan"></p>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@
               </div>
               <div class="w-2/4 inline-flex items-center">
                 <div class="mr-2">: </div>
-                <p class="mt 1 p-2 w-full">Teknik Informatika</p>
+                <p class="mt 1 p-2 w-full jurusanLaporan"></p>
               </div>
             </div>
           </div>
@@ -159,7 +159,7 @@
               </div>
               <div class="w-2/4 inline-flex items-center">
                 <div class="mr-2">: </div>
-                <p class="mt 1 p-2 w-full">085767456876</p>
+                <p class="mt 1 p-2 w-full noTelpOrtuLaporan"></p>
               </div>
             </div>
           </div>
@@ -178,11 +178,11 @@
           </thead>
           <tbody>
             <tr class="hover:bg-gray-50">
-              <td class="py-2 px-4 border-b">12 November 2023</td>
-              <td class="py-2 px-4 border-b">Tidak menjaga kebersihan di seluruh area Polinema</td>
-              <td class="py-2 px-4 border-b">Cukup berat</td>
+              <td class="py-2 px-4 border-b tanggalPelanggaran"></td>
+              <td class="py-2 px-4 border-b jenisPelanggaran"></td>
+              <td class="py-2 px-4 border-b tingktPelanggaran"></td>
               <td class="py-2 px-4 border-b">
-                <a href="#" class="text-blue-500 hover:underline">Download</a>
+                <a href="#" class="text-blue-500 hover:underline downloadBuktiPelanggaran">Download</a>
               </td>
             </tr>
           </tbody>
@@ -195,22 +195,26 @@
               <h3 class="font-bold text-base">Sanksi</h3>
             </label>
             <select name="jenisSanksi" id="jenisSanksi" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
-          <?php
-            // include "koneksi.php";
-            // $nip = $_SESSION['username'];
-            // $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.pelanggaran
-            // FROM mahasiswa m 
-            // join pengaduan p on m.nim = p.nim
-            // join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
-            // JOIN dosen d on p.nip = d.nip
-            // WHERE d.nip = '$nip'";
-            // $result = mysqli_query($koneksi, $query);
-            // $row = mysqli_fetch_assoc($result)
-            ?>
-            <?//php while ($row = mysqli_fetch_assoc($result)) {?>
-          <option value="<?//=$row['pelanggaran'];?>"><?//php echo $row['pelanggaran'];?></option>  
-            <?//php }?>
-          </select>
+              <?php
+              // include "koneksi.php";
+              // $nip = $_SESSION['username'];
+              // $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.pelanggaran
+              // FROM mahasiswa m 
+              // join pengaduan p on m.nim = p.nim
+              // join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
+              // JOIN dosen d on p.nip = d.nip
+              // WHERE d.nip = '$nip'";
+              // $result = mysqli_query($koneksi, $query);
+              // $row = mysqli_fetch_assoc($result)
+              ?>
+              <? //php while ($row = mysqli_fetch_assoc($result)) {
+              ?>
+              <option value="<? //=$row['pelanggaran'];
+                              ?>"><? //php echo $row['pelanggaran'];
+                                                          ?></option>
+              <? //php }
+              ?>
+            </select>
 
           </div>
           <div class="block ml-5">
@@ -224,7 +228,7 @@
       </div>
       <div class="flex w-full">
         <div class="ml-auto">
-          <button id="tutupModalKompen2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button id="tutupModalKompen2" type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Tolak
           </button>
           <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
@@ -236,70 +240,91 @@
   </div>
 </div>
 <div id="modalTolak" class="fixed inset-0 hidden overflow-y-auto overflow-x-hidden z-50">
-    <!-- Backdrop -->
-    <div class="fixed inset-0 bg-black opacity-50 "></div>
-    <div class="flex items-center justify-center min-h-screen p-4">
-      <div class="bg-white w-full max-w-3xl p-8 rounded-lg shadow-md relative">
-        <!-- Tombol untuk menutup modal -->
-        <button id="tutupModal" class="absolute top-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-          <i class="fa-solid fa-times"></i>
-        </button>
-        <h3 class="text-2xl mb-7 font-bold text center">Alasan</h3>
-      </div>
+  <!-- Backdrop -->
+  <div class="fixed inset-0 bg-black opacity-50 "></div>
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white w-full max-w-3xl p-8 rounded-lg shadow-md relative">
+      <!-- Tombol untuk menutup modal -->
+      <button id="tutupModal" class="absolute top-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+        <i class="fa-solid fa-times"></i>
+      </button>
+      <h3 class="text-2xl mb-7 font-bold text center">Alasan</h3>
     </div>
   </div>
+</div>
 <script>
   const modalKompen1 = document.getElementById('modalTolak');
-        const showModalDitolak = () => {
-          $('.sidebar').addClass('sidebar-backdrop');
-          modalKompen1.classList.remove('hidden');
-        }
-        const tutupModalKompen1 = document.getElementById('tutupModal');
+  const showModalDitolak = () => {
+    $('.sidebar').addClass('sidebar-backdrop');
+    modalKompen1.classList.remove('hidden');
+  }
+  const tutupModalKompen1 = document.getElementById('tutupModal');
 
-        tutupModalKompen1.addEventListener('click', function() {
-          $('.sidebar').removeClass('sidebar-backdrop');
-          modalKompen1.classList.add('hidden');
-        });
+  tutupModalKompen1.addEventListener('click', function() {
+    $('.sidebar').removeClass('sidebar-backdrop');
+    modalKompen1.classList.add('hidden');
+  });
   const modalKompen = document.getElementById('static-modal-kompen');
-        const showModalKompen = () => {
-          $('.sidebar').addClass('sidebar-backdrop');
-          modalKompen.classList.remove('hidden');
-        }
-        const tutupModalKompen = document.getElementById('tutupModalKompen');
-        const tutupModalKompen2 = document.getElementById('tutupModalKompen2');
+  const showModalKompen = (id) => {
+    $.ajax({
+      url: "<?= BASEURL; ?>/admin/getLaporanPelanggaranById/" + id,
+      method: "GET",
+      dataType: "json",
+      header: 'Content-Type: application/json',
+      success: function(data) {
+        $('.namaLaporan').html(data.nama);
+        $('.nimLaporan').html(data.nim);
+        $('.jenkelLaporan').html(data.jenis_kelamin);
+        $('.noTelpLaporan').html(data.phone_ortu);
+        $('.jurusanLaporan').html(data.prodi_nama);
+        $('.noTelpOrtuLaporan').html(data.phone_ortu);
+        $('.tanggalPelanggaran').html(data.tanggal_pengaduan);
+        $('.jenisPelanggaran').html(data.pelanggaran);
+        $('.tingktPelanggaran').html(data.tingkat);
+        $('.downloadBuktiPelanggaran').attr('href', '<?= BASEURL; ?>/img/bukti/' + data.bukti);
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+      }
+    });
+    $('.sidebar').addClass('sidebar-backdrop');
+    modalKompen.classList.remove('hidden');
+  }
+  const tutupModalKompen = document.getElementById('tutupModalKompen');
+  const tutupModalKompen2 = document.getElementById('tutupModalKompen2');
 
 
-        tutupModalKompen.addEventListener('click', function() {
-          $('.sidebar').removeClass('sidebar-backdrop');
-          modalKompen.classList.add('hidden');
-        });
-        tutupModalKompen2.addEventListener('click', function() {
-          $('.sidebar').removeClass('sidebar-backdrop');
-          modalKompen.classList.add('hidden');
-        });
+  tutupModalKompen.addEventListener('click', function() {
+    $('.sidebar').removeClass('sidebar-backdrop');
+    modalKompen.classList.add('hidden');
+  });
+  tutupModalKompen2.addEventListener('click', function() {
+    $('.sidebar').removeClass('sidebar-backdrop');
+    modalKompen.classList.add('hidden');
+  });
 
-        // const showModal = () => {
-        //   const modal = document.getElementById('static-modal');
-        //   $('.sidebar').addClass('sidebar-backdrop');
-        //   modal.classList.remove('hidden');
-        // }
-
-
-        // const buttonTambahDosen = document.getElementById('buttonTambahDosen');
-        // const staticModal = document.getElementById('static-modal');
-        // const tutupModal = document.getElementById('tutupModal');
-        // const tutupModa2 = document.getElementById('tutupModal2');
+  // const showModal = () => {
+  //   const modal = document.getElementById('static-modal');
+  //   $('.sidebar').addClass('sidebar-backdrop');
+  //   modal.classList.remove('hidden');
+  // }
 
 
+  // const buttonTambahDosen = document.getElementById('buttonTambahDosen');
+  // const staticModal = document.getElementById('static-modal');
+  // const tutupModal = document.getElementById('tutupModal');
+  // const tutupModa2 = document.getElementById('tutupModal2');
 
-        // tutupModal.addEventListener('click', function() {
-        //   $('.sidebar').removeClass('sidebar-backdrop');
-        //   staticModal.classList.add('hidden');
-        // });
-        // tutupModal2.addEventListener('click', function() {
-        //   $('.sidebar').removeClass('sidebar-backdrop');
-        //   staticModal.classList.add('hidden');
-        // });
+
+
+  // tutupModal.addEventListener('click', function() {
+  //   $('.sidebar').removeClass('sidebar-backdrop');
+  //   staticModal.classList.add('hidden');
+  // });
+  // tutupModal2.addEventListener('click', function() {
+  //   $('.sidebar').removeClass('sidebar-backdrop');
+  //   staticModal.classList.add('hidden');
+  // });
   $(document).ready(function() {
 
 
