@@ -131,9 +131,6 @@ class Dosen_model
             $oldFilePath = $targetDir . $dataOld;
 
             // Periksa apakah file lama ada sebelum menghapusnya
-            if (file_exists($oldFilePath) && $dataTemp != null) {
-                unlink($oldFilePath); // Hapus file lama
-            }
 
             $uploadedFile = $_FILES['imgDosen']; // Nama input file pada formulir
 
@@ -147,6 +144,9 @@ class Dosen_model
 
             if (in_array(strtolower($fileType), $allowedTypes)) {
                 if (move_uploaded_file($uploadedFile['tmp_name'], $targetFilePath)) {
+                    // if (file_exists($oldFilePath) && $dataTemp != null) {
+                    //     unlink($oldFilePath);
+                    // }
                     return $uniqueFileName;
                 } else {
                     echo "Maaf, terjadi kesalahan saat mengunggah file.";
@@ -154,6 +154,8 @@ class Dosen_model
             } else {
                 echo "File yang diunggah bukan gambar atau format file tidak diizinkan.";
             }
+        }else{
+            return $dataTemp;
         }
     }
 
