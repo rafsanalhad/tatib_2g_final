@@ -68,7 +68,7 @@
                     }elseif ($row['status_pengaduan'] == 'valid') {
                       echo '<a href="#"><button class="w-[130px] h-[30px] rounded-md bg-green-400 text-lg font-medium text-white">Diterima</button></a>';
                     }else{
-                      echo '  <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-red-500 text-lg font-medium text-white hover:bg-red-700" onclick="showModalDitolak()">Ditolak</button></a>';
+                      echo '  <a href="#"><button class="w-[130px] h-[30px] rounded-md bg-red-500 text-lg font-medium text-white hover:bg-red-700" onclick="showModalDitolak('. $row['pengaduan_id'] .')">Ditolak</button></a>';
                     }
                     ?>
                   </td>
@@ -95,7 +95,7 @@
         </button>
         <h3 class="text-2xl mb-7 font-bold text center">Alasan</h3>
         <div class="flex border border-grey-400">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quam quia sit fuga corporis repudiandae rerum odit rem, dicta minima error nisi et modi cupiditate molestias porro? Ipsum, eum laudantium.</p>
+          <p id="catatan"></p>
         </div>
       </div>
     </div>
@@ -103,8 +103,22 @@
 
     <script>
       const modalKompen = document.getElementById('modalTolakLapor');
-        const showModalDitolak = () => {
+        const showModalDitolak = (id) => {
+          console.log(id);
           $('.sidebar').addClass('sidebar-backdrop');
+          $.ajax({
+            url: '<?= BASEURL; ?>/Dosen/getPengaduanById/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+              console.log(response.catatan);
+              $('#catatan').html(response.catatan);
+            },
+            error: function(error) {
+              console.log(error);
+              alert("Error: " + xhr.status + "\n" + xhr.responseText);
+            }
+          });
           modalKompen.classList.remove('hidden');
         }
         const tutupModalKompen = document.getElementById('tutupModal');

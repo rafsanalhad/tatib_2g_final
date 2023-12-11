@@ -19,6 +19,10 @@ class Dosen extends Controller{
         $this->view('dosen/riwayatPengaduan', $data);
         $this->view('templates/dosen/footer');
     }
+    public function getPengaduanById($id){
+        $data['pengaduan'] = $this->model('Pengaduan_model')->getPengaduanById($id);
+        echo json_encode($data['pengaduan']);
+    }
     public function formPengaduan(){
         $data['mahasiswa'] = $this->model('Mahasiswa_model')->getAllMahasiswa();
         $data['pelanggaran'] = $this->model('Pelanggaran_model')->getAllPelanggaran();
