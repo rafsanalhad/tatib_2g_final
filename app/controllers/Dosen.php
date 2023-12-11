@@ -14,7 +14,7 @@ class Dosen extends Controller{
         $this->view('templates/dosen/footer');
     }
     public function riwayatPengaduan(){
-        $data['pengaduan'] = $this->model('Pengaduan_model')->getPengaduan();
+        $data['pengaduan'] = $this->model('Pengaduan_model')->getPengaduanByNip($_SESSION['username']);
         $this->view('templates/dosen/header');
         $this->view('dosen/riwayatPengaduan', $data);
         $this->view('templates/dosen/footer');
