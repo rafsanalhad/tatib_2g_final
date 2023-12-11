@@ -28,4 +28,21 @@ class Mahasiswa extends Controller{
         $this->view('mahasiswa/ubahPassword');
         $this->view('templates/mahasiswa/footer');
     }
+    public function ubahPw(){
+        if ($_POST['newPass'] == $_POST['confPass']){
+            if ($this->model('User_model')->updatePassword($_POST) > 0) {
+                Flasher::setFlash('Mahasiswa berupa password berhasil', 'diubah', 'success');
+                header('Location: ' . BASEURL . '/mahasiswa/ubahPassword');
+                exit;
+            }else{
+                Flasher::setFlash('password gagal', 'diubah', 'danger');
+                header('Location: ' . BASEURL . '/mahasiswa/ubahPassword');
+                exit;
+            }
+        }else{
+            Flasher::setFlash('Password dan Konfirmasi Pasword', 'tidak sesuai', 'danger');
+            header('Location: ' . BASEURL . '/mahasiswa/ubahPassword');
+            exit;
+        }
+    }
 }
