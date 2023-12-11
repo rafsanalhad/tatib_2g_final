@@ -18,6 +18,21 @@ class Mahasiswa extends Controller{
         $this->view('mahasiswa/riwayatPelanggaran', $data);
         $this->view('templates/mahasiswa/footer');
     }
+    public function getKompenById($id){
+        $data['kompen'] = $this->model('Kompen_model')->getKompenById($id);
+        echo json_encode($data['kompen']);
+    }
+    public function updateStatusKompen(){
+        if ($this->model('Kompen_model')->updateStatusKompen($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/mahasiswa/riwayatPelanggaran');
+            exit;
+        }else{
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/mahasiswa/riwayatPelanggaran');
+            exit;
+        }
+    }
     public function uploadBuktiKompen(){
         $this->view('templates/mahasiswa/header');
         $this->view('mahasiswa/uploadBuktiKompen');
