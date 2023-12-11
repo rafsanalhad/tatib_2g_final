@@ -105,7 +105,7 @@
 
       <div class="flex flex-col md:flex-row">
         <div class="w-1/4">
-          <img src="<?= BASEURL; ?>/img/profil/freya.png" alt="" style="border: none; height: 230px !important;">
+          <img src="" id="imgMahasiswaKompen" alt="" style="border: none; height: 230px !important;">
         </div>
         <div class="containerFormModal w-3/4 ml-3">
           <div class="">
@@ -398,6 +398,7 @@
         $('.tingktPelanggaran').html(data.tingkat);
         $('.jenisSanksi').html(data.tingkat);
         $('.downloadBuktiPelanggaran').attr('href', '<?= BASEURL; ?>/img/bukti_kompen/' + data.bukti_kompen);
+        $('#imgMahasiswaKompen').attr('src', '<?= BASEURL; ?>/img/profil/' + data.mahasiswa_img);
         $('.catatanLaporan').html(data.catatan_kompen);
       },
       error: function(xhr, ajaxOptions, thrownError) {

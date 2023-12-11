@@ -66,7 +66,7 @@
                       <?php } else if ($row['status_pengaduan'] ==  'proses') { ?>
                         <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner"></i>
                         </a>
-                      <?php } else if ($row['status_kompen'] == 'baru') { ?>
+                      <?php } else if ($row['status_pengaduan'] == 'baru') { ?>
                         <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
                         </button>
                         <?php } ?>
@@ -105,7 +105,7 @@
 
       <div class="flex flex-col md:flex-row">
         <div class="w-1/4">
-          <img src="<?= BASEURL; ?>/img/profil/freya.png" alt="" style="border: none; height: 230px !important;">
+          <img id="imgMahasiswa" src="" alt="" style="border: none; height: 230px !important;">
         </div>
         <div class="containerFormModal w-3/4 ml-3">
           <div class="">
@@ -394,6 +394,7 @@
         $('.tingktPelanggaran').html(data.tingkat);
         $('.jenisSanksi').html(data.tingkat);
         $('.downloadBuktiPelanggaran').attr('href', '<?= BASEURL; ?>/img/bukti_pengaduan/' + data.bukti_pelanggaran);
+        $('#imgMahasiswa').attr('src', '<?= BASEURL; ?>/img/profil/' + data.mahasiswa_img)
         $('.catatanLaporan').html(data.catatan);
       },
       error: function(xhr, ajaxOptions, thrownError) {
