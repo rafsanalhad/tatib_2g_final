@@ -22,7 +22,8 @@ class Mahasiswa_model
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' a
                         INNER JOIN '. $this->table3 .' b
-                        ON a.prodi_id = b.prodi_id WHERE nim=:nim');
+                        ON a.prodi_id = b.prodi_id 
+                        WHERE nim=:nim');
         $this->db->bind('nim', $nim);
         return $this->db->single();
     }

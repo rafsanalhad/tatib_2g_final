@@ -166,12 +166,12 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="notelp" class="block text-sm font-medium text-gray-900">Email</label>
+                  <label for="email" id="emailLabel" class="block text-sm font-medium text-gray-900">Email</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                 <div class="mr-2 flex-shrink-0 flex titikDua">:</div>
                   <div class="flex-grow flex_error_msg">
-                    <input type="text" name="email" id="email" class="mt-1 p-2 w-full border rounded-md">
+                    <input type="email" name="email" id="email" class="mt-1 p-2 w-full border rounded-md">
                     <div class="error_msg_email hidden">
                       <p class="mt-2 text-sm text-red-600 dark:text-red-500 block email_err_msg"><span class="font-medium">Maaf!</span> Email tidak boleh kosong!</p>
                     </div>
@@ -182,7 +182,7 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="prodi" id="prodi" class="block text-sm font-medium text-gray-900">Prodi</label>
+                  <label for="prodi" id="prodiLabel" class="block text-sm font-medium text-gray-900">Prodi</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center titikDua">
                   <div class="mr-2">: </div>
@@ -200,13 +200,13 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="notelp" class="block text-sm font-medium text-gray-900">No Telp</label>
+                  <label for="notelp" id="notelpLabel" class="block text-sm font-medium text-gray-900">No Telp</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                 <div class="mr-2 flex-shrink-0 titikDua">:</div>
                   <div class="flex-grow flex_error_msg">            
                   <input type="text" name="notelp" id="notelp" class="mt-1 p-2 w-full border rounded-md">
-                  <div class="error_msg_ttl hidden">
+                  <div class="error_msg_notelp hidden">
                       <p class="text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> No Telepon tidak boleh kosong!</p>                    
                   </div>
                   </div>
@@ -216,7 +216,7 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="notelp_ortu" class="block text-sm font-medium text-gray-900">No Telp Ortu</label>
+                  <label for="name" id="notelp_ortuLabel" class="block text-sm font-medium text-gray-900">No Telp Ortu</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                 <div class="mr-2 flex-shrink-0 titikDua">:</div>
@@ -232,7 +232,7 @@
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="name" id="notelp_ortu" class="block text-sm font-medium text-gray-900">Alamat</label>
+                  <label for="name" id="alamatLabel" class="block text-sm font-medium text-gray-900">Alamat</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2 flex-shrink-0 flex titikDuaAlamat">:</div>
@@ -289,6 +289,7 @@ const hapusMahasiswa = (nim) => {
           $(errorSelector).removeClass('hidden');
           $(titikDuaSelector).addClass('mb-3');
           semuaKondisiTerpenuhi = false;
+          console.log(semuaKondisiTerpenuhi);
         } else {
           if (inputSelector === '#email' && !isValidEmail(inputValue)) {
             $(errorSelector).removeClass('hidden');
@@ -302,7 +303,7 @@ const hapusMahasiswa = (nim) => {
         }
       }
 
-      function isValidEmail(email) {
+      function isValidEmail(email) { 
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
       }
@@ -312,7 +313,7 @@ const hapusMahasiswa = (nim) => {
       handleCondition('#ttl', '.error_msg_ttl', '.titikDuaTtl');
       handleCondition('#email', '.error_msg_email', '.titikDuaEmail');
       handleCondition('#notelp', '.error_msg_notelp', '.titikDuaNoTelp');
-      handleCondition('#notelp_ortu', '.error_msg_notelp_ortu', '.titikDuaNoTelpOrtu');
+      handleCondition('#notelp_ortu', '.error_msg_notelportu', '.titikDuaNoTelpOrtu');
       handleCondition('#alamat', '.error_msg_alamat', '.titikDuaAlamat');
 
       if (semuaKondisiTerpenuhi) {
@@ -391,16 +392,16 @@ const hapusMahasiswa = (nim) => {
       success: function(response) {
         $('#nama').val(response.nama);
         $('#nim').val(response.nim);
-        $('#ttl').val(response.TTL);
-        $('#jabatan').val(response.jabatan);
+        $('#ttl').val(response.TTL);        
         $('#email').val(response.email);
         $('#notelp').val(response.no_phone);
         $('#notelp_ortu').val(response.phone_ortu);
         $('#alamat').val(response.alamat);
         $("#jenisKelamin").val(response.jenis_kelamin);
-        $('#imgInputMahasiswa').val('');
-        $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.mahasiswa_img + '" alt="">');
-        $('#noImgMahasiswa').addClass('hidden');
+        $("#prodi").val(response.prodi_id);
+        // $('#imgInputMahasiswa').val('');
+        // $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.mahasiswa_img + '" alt="">');
+        // $('#noImgMahasiswa').addClass('hidden');
       },
       error: function(error) {
         alert("Error: " + xhr.status + "\n" + xhr.responseText);
@@ -470,7 +471,8 @@ const hapusMahasiswa = (nim) => {
     $('#ttl').val('');
     $('#jabatan').val('');
     $('#email').val('');
-    $('#no_phone').val('');
+    $('#notelp').val('');
+    $('#notelp_ortu').val('');
     $('#alamat').val('');
     $('#imgInputDosen').val('');
     $('#preview').empty();

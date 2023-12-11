@@ -317,7 +317,6 @@
             processData: false,
             contentType: false,
             success: function(response) {
-              console.log('anjay tambah');
               console.log(response);
               Swal.fire({
                 title: "Berhasil!",
