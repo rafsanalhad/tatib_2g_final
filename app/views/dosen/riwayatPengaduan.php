@@ -94,6 +94,9 @@
           <i class="fa-solid fa-times"></i>
         </button>
         <h3 class="text-2xl mb-7 font-bold text center">Alasan</h3>
+        <div class="flex border border-grey-400">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quam quia sit fuga corporis repudiandae rerum odit rem, dicta minima error nisi et modi cupiditate molestias porro? Ipsum, eum laudantium.</p>
+        </div>
       </div>
     </div>
   </div>
