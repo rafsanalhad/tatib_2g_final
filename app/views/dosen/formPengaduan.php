@@ -9,7 +9,7 @@
         <div class=" flex-1 bg-white mt-3">
           <label for="nimPengaduan">NIM:</label>
           <br>
-          <select name="nimPengaduan" id="nimPengaduan" class="border border-neutral-400 w-[250px] h-[40px] rounded-lg">
+          <select name="nimPengaduan" id="nimPengaduan" class="border border-neutral-400 w-[250px] h-[50px] rounded-lg">
             <option value="" selected>Pilih Mahasiswa</option>
             <?php
             $mhs = [];
@@ -69,9 +69,9 @@
     </div>
     
     <script>
+      $('#nimPengaduan').select2();
       $(document).ready(function() {
-        // console.log('a');
-        $('#nimPengaduan').on("click", function(e) {
+        $('#nimPengaduan').on("change", function(e) {
           let nim = $('#nimPengaduan').val();
 
           $.ajax({

@@ -11,20 +11,22 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body class="font-sans main">
   <!-- Navbar -->
   <nav class="navbar p-4 h-16 fixed top-0 w-full bg-gray-800 z-50">
     <div class="container-fluid mx-auto flex justify-between items-center">
-        <div class="text-white font-bold text-xl">Sistem Tata Tertib</div>
-        <div class="containerBarsMobile toggle_bars_mobile">
-            <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
-        </div>
+      <div class="text-white font-bold text-xl">Sistem Tata Tertib</div>
+      <div class="containerBarsMobile toggle_bars_mobile">
+        <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
+      </div>
     </div>
-</nav>
+  </nav>
 
   <!-- Sidebar -->
   <div class="flex">
@@ -40,6 +42,6 @@
         <li class="mb-2 sidebar_item"><a href="<?= BASEURL; ?>/dosen" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
         <li class="mb-2 sidebar_item"><a href="<?= BASEURL; ?>/dosen/riwayatPengaduan" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Riwayat Pengaduan</span></a></li>
         <li class="mb-2 sidebar_item"><a href="<?= BASEURL; ?>/dosen/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
-        <li class="mb-2 sidebar_item"><a  onclick="confirmLogin()" href="#" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
+        <li class="mb-2 sidebar_item"><a onclick="confirmLogin()" href="#" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
       </ul>
     </aside>
