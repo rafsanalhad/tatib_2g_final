@@ -57,16 +57,19 @@
                                                                 ?></td>
                     <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
                     <td class="py-2 px-4 border-r flex p-2 gap-2 ">
-                      <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
-                      <?php if ($row['status_kompen'] ==  'valid') { ?>
-                        <a href="#" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></a>
-                      <?php } else if ($row['status_kompen'] ==  'tidak valid') { ?>
-                        <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
+                    <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
+                      <?php if ($row['status_pengaduan'] ==  'valid') { ?>
+                        <button class="bg-green-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></button>
+                      <?php } else if ($row['status_pengaduan'] ==  'tidak valid') { ?>
+                        <button class="bg-red-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
+                        </button>
+                      <?php } else if ($row['status_pengaduan'] ==  'proses') { ?>
+                        <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner"></i>
                         </a>
                       <?php } else if ($row['status_kompen'] == 'baru') { ?>
-                        <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-blue-500 hover:bg-blue-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
-                        </a>
-                      <?php } ?>
+                        <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
+                        </button>
+                        <?php } ?>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
                   </tr>

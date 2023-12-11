@@ -19,18 +19,24 @@ class Dosen extends Controller{
         $this->view('dosen/riwayatPengaduan', $data);
         $this->view('templates/dosen/footer');
     }
+    public function getPengaduanById($id){
+        $data['pengaduan'] = $this->model('Pengaduan_model')->getPengaduanById($id);
+        echo json_encode($data['pengaduan']);
+    }
     public function formPengaduan(){
         $data['mahasiswa'] = $this->model('Mahasiswa_model')->getAllMahasiswa();
         $data['pelanggaran'] = $this->model('Pelanggaran_model')->getAllPelanggaran();
-        $data['prodi'] = $this->model('Prodi_model')->getAllProdi();
         $this->view('templates/dosen/header');
         $this->view('dosen/formPengaduan', $data);
         $this->view('templates/dosen/footer');
     }
     public function getMahasiswaByNim($nim){
         $data['mahasiswa'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($nim);
-        $data['prodi'] = $this->model('Prodi_model')->getAllProdi();
         echo json_encode($data['mahasiswa']);
+    }
+    public function getPelanggaranById($id_pel){
+        $data['pelanggaran'] = $this->model('Pelanggaran_model')->getPelanggaranById($id_pel);
+        echo json_encode($data['pelanggaran']);
     }
     public function ajukanPengaduan(){
         if ($this->model('Pengaduan_model')->setPengaduan($_POST) > 0) {
