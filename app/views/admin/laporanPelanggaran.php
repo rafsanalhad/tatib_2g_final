@@ -214,8 +214,7 @@
               <label for="sanksi">
                 <h3 class="font-bold text-base">Catatan</h3>
               </label>
-              <textarea name="catatan" class="w-full h-14 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500 catatanLaporan"></textarea>
-
+              <textarea name="catatan" class="w-full h-20 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500 catatanLaporan" placeholder="Isi form jika ingin melakukan penolakan"></textarea>
             </div>
           </div>
       </div>
