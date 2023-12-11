@@ -401,9 +401,9 @@
           $('#alamat').val(response.alamat);
           $("#jenisKelamin").val(response.jenis_kelamin);
           $("#prodi").val(response.prodi_id);
-          // $('#imgInputMahasiswa').val('');
-          // $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.mahasiswa_img + '" alt="">');
-          // $('#noImgMahasiswa').addClass('hidden');
+          $('#imgInputMahasiswa').val('');
+          $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.mahasiswa_img + '" alt="">');
+          $('#noImgMahasiswa').addClass('hidden');
         },
         error: function(error) {
           alert("Error: " + xhr.status + "\n" + xhr.responseText);
