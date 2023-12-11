@@ -3,6 +3,7 @@
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
+      <?php Flasher::flash();?>
       <h1 class="text-2xl font-bold mb-2">Riwayat Pelanggaran</h1>
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
         <div class="flex-1 ml-4"><?php ?></div>
@@ -50,13 +51,13 @@
                   <td class="py-2 px-4 border-r">
                   <?php
                     if ($dt['status_kompen'] == 'baru') {
-                      echo '<a href="#"><button id="baru" class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" onclick="showModalProses()">Baru</button></a>';
+                      echo '<a href="#"><button id="baru" class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" onclick="showModalProses('.$dt['riwayat_id'].')">Baru</button></a>';
                     } elseif ($dt['status_kompen'] == 'sedang dikerjakan') {
                       echo '<a href="'. BASEURL .'/mahasiswa/uploadBuktiKompen"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center">Upload</button></a>';
                     } elseif ($dt['status_kompen'] == 'proses') {
                       echo '<a href="#"><button id="proses" class="bg-orange-400 py-2 px-5 rounded text-white text-center">Proses</button></a>';
                     } elseif ($dt['status_kompen'] == 'ditolak') {
-                      echo '<a href="#"><button id="diTolak" class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak()">Ditolak</button></a>';
+                      echo '<a href="#"><button id="diTolak" class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak('.$dt['riwayat_id'].')">Ditolak</button></a>';
                     } else{
                       echo '<a href="#"><button class="bg-green-500 py-2 px-4 rounded text-white text-center">Selesai</button></a>';
                     }
@@ -87,9 +88,13 @@
           <p id="catatan"></p>
         </div>
         <div class="text-right">
-        <button class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="kerjakan" onclick="showElement()">
-          kerjakan
-        </button>
+        <form action="<?= BASEURL;?>/Mahasiswa/updateStatusKompen/" method="post">
+          <input type="hidden" name="id" id="iniIdUpdate" value="">
+          <input type="hidden" name="aksi" value="kerjakan">
+          <button type="submit" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="kerjakan" onclick="showElement()">
+            kerjakan
+          </button>
+        </form>
         </div>
       </div>
     </div>
@@ -126,8 +131,22 @@
         // }
 
 const modalKompen = document.getElementById('modalProses');
-        const showModalProses = () => {
+        const showModalProses = (id) => {
           $('.sidebar').addClass('sidebar-backdrop');
+          $.ajax({
+            url: '<?= BASEURL; ?>/Mahasiswa/getKompenById/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+              console.log(response.sanksi_pelanggaran);
+              $('#iniIdUpdate').val(response.riwayat_id);
+              $('#catatan').html(response.sanksi_pelanggaran);
+            },
+            error: function(error) {
+              console.log(error);
+              alert("Error: " + xhr.status + "\n" + xhr.responseText);
+            }
+          });
           modalKompen.classList.remove('hidden');
         }
         const tutupModalKompen = document.getElementById('tutupModal');
@@ -138,8 +157,21 @@ const modalKompen = document.getElementById('modalProses');
         });
 
 const modalKompen1 = document.getElementById('modalTolak');
-        const showModalDitolak = () => {
+        const showModalDitolak = (id) => {
           $('.sidebar').addClass('sidebar-backdrop');
+          $.ajax({
+            url: '<?= BASEURL; ?>/Mahasiswa/getKompenById/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+              console.log(response.alasan);
+              $('#catatan').html(response.alasan);
+            },
+            error: function(error) {
+              console.log(error);
+              alert("Error: " + xhr.status + "\n" + xhr.responseText);
+            }
+          });
           modalKompen1.classList.remove('hidden');
         }
         const tutupModalKompen1 = document.getElementById('tutupModal1');
