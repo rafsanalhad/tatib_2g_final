@@ -83,6 +83,9 @@
           <i class="fa-solid fa-times"></i>
         </button>
         <h3 class="text-2xl mb-7 font-bold">Sanksi</h3>
+        <div class="flex border border-grey-400">
+          <p id="catatan"></p>
+        </div>
         <div class="text-right">
         <button class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="kerjakan" onclick="showElement()">
           kerjakan
@@ -101,6 +104,9 @@
           <i class="fa-solid fa-times"></i>
         </button>
         <h3 class="text-2xl mb-7 font-bold">Tolak</h3>
+        <div class="flex border border-grey-400">
+          <p id="catatan"></p>
+        </div>
         <div class="text-right">
         <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen"><button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
           Upload Ulang
