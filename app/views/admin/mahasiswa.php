@@ -58,7 +58,7 @@
                   <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                   <td class="py-2 px-4 border-r flex">
                     <a href="#" onclick="editMahasiswa(<?= $row['nim'] ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" onclick="hapusMahasiswa(<?= $row['nim']?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                    <a href="#" onclick="hapusMahasiswa(<?= $row['nim']?>, <?= $row['user_id']?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
@@ -262,7 +262,7 @@
 </div>
 <script>
 let checkTypeSubmit= null;
-const hapusMahasiswa = (nim) => {
+const hapusMahasiswa = (nim, userid) => {
           Swal.fire({
             title: 'Apakah anda yakin ingin menghapus data?',
             showDenyButton: true,
@@ -273,7 +273,7 @@ const hapusMahasiswa = (nim) => {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                window.location.href = "<?= BASEURL; ?>/Admin/hapusMahasiswa/" + nim;
+                window.location.href = "<?= BASEURL; ?>/Admin/hapusMahasiswa/" + nim + "/" + userid;
             }
           })
         }

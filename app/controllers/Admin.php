@@ -101,11 +101,13 @@ class Admin extends Controller{
             exit;
         }
     }
-    public function hapusMahasiswa($id){
+    public function hapusMahasiswa($id, $userID){
         if ($this->model('Mahasiswa_model')->hapusDataMahasiswa($id) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            if($this->model('User_model')->hapusDataUser($userID) > 0){
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
             header('Location: ' . BASEURL . '/admin/mahasiswa');
             exit;
+            }
         }else{
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/admin/mahasiswa');

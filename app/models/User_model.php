@@ -26,4 +26,12 @@ class User_model
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function hapusDataUser($data){
+        $query ="DELETE FROM " . $this->table . " WHERE user_id = :user_id";
+        $this->db->query($query);
+        $this->db->bind('user_id', $data);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }
