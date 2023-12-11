@@ -47,7 +47,7 @@
           <br><br>
           <label for="tingkat">Tingkat:</label>
           <br>
-          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="prodi" disabled>
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="tingkat" id="tingkat" disabled>
           <br><br>
           <label for="prodi">Prodi:</label>
           <br>
@@ -70,11 +70,9 @@
     
     <script>
       $(document).ready(function() {
-        console.log('a');
+        // console.log('a');
         $('#nimPengaduan').on("click", function(e) {
           let nim = $('#nimPengaduan').val();
-          console.log(nim);
-          let nama;
 
           $.ajax({
             url: '<?= BASEURL; ?>/Dosen/getMahasiswaByNim/' + nim,
@@ -89,6 +87,24 @@
               $('#namaMhsPengaduan').val(response.nama);
               $('#noHpMhsPengaduan').val(response.no_phone);
               $('#prodi').val(response.prodi_nama);
+            }
+          })
+        })
+
+        $('#jenisPelanggaran').on("click", function(e) {
+          let id_pel = $('#jenisPelanggaran').val();
+
+          $.ajax({
+            url: '<?= BASEURL; ?>/Dosen/getPelanggaranById/' + id_pel,
+            type: 'POST',
+            data: id_pel,
+            processData: false,
+            contentType: false, //harusnya contentType: "application/json",
+            dataType: "json",
+            success: function(response) {
+              console.log(response.tingkat);
+              
+              $('#tingkat').val(response.tingkat);
             }
           })
         })
