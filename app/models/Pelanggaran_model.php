@@ -20,4 +20,10 @@ class Pelanggaran_model
         $this->db->query('SELECT * FROM ' . $this->table4);
         return $this->db->resultSet();
     }
+    public function getPelanggaranById($id)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table4 . ' WHERE pelanggaran_id=:id');
+        $this->db->bind('id', $id);
+        return $this->db->single();
+    }
 }
