@@ -45,6 +45,10 @@
             ?>
           </select>
           <br><br>
+          <label for="tingkat">Tingkat:</label>
+          <br>
+          <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="prodi" disabled>
+          <br><br>
           <label for="prodi">Prodi:</label>
           <br>
           <input class="pl-2 w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-1" type="text" name="noHpMhsPengaduan" id="prodi" disabled>  
