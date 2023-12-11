@@ -387,19 +387,19 @@
         $('#no_phone').val(response.no_phone);
         $('#alamat').val(response.alamat);
         $("#jenisPelanggaran").val(response.jenis_kelamin);
-        // $('#imgInputDosen').val('');
-        // $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.dosen_img + '" alt="">');
-        // $('#noImgDosen').addClass('hidden');
+        $('#imgInputDosen').val('');
+        $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.dosen_img + '" alt="">');
+        $('#noImgDosen').addClass('hidden');
       },
       error: function(error) {
         alert("Error: " + xhr.status + "\n" + xhr.responseText);
       }
     });
   }
-  // const dropArea = $('#dropAreaImgDosen');
-  // const fileInput = $('#imgInputDosen');
-  // const preview = $('#preview');
-  // const noImgDosen = $('#noImgDosen');
+  const dropArea = $('#dropAreaImgDosen');
+  const fileInput = $('#imgInputDosen');
+  const preview = $('#preview');
+  const noImgDosen = $('#noImgDosen');
 
   dropArea.on('dragover', function(event) {
     event.preventDefault();
