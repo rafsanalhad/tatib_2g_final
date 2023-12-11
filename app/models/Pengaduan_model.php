@@ -30,8 +30,9 @@ class Pengaduan_model
     }
     public function getPengaduanByNip($username)
     {
-        $this->db->query('SELECT * FROM ' . $this->table3 . ' a INNER JOIN ' . $this->table4 . ' b
-                        ON a.pelanggaran_id = b.pelanggaran_id WHERE a.nip = :nip');
+        $this->db->query('SELECT * FROM ' . $this->table3 . ' a INNER JOIN ' . $this->table2 . ' b ON a.nim = b.nim INNER JOIN 
+                        ' . $this->table5 . ' c ON b.prodi_id = c.prodi_id INNER JOIN ' . $this->table4 . ' d 
+                        ON a.pelanggaran_id = d.pelanggaran_id WHERE a.nip = :nip');
         $this->db->bind('nip', $username);
         return $this->db->resultSet();
     }

@@ -23,53 +23,49 @@
                 <!-- Tambahkan header lainnya sesuai kebutuhan -->
               </tr>
             </thead>
-            <?php
-            // include "koneksi.php";
-            // $nim = $_SESSION['username'];
-            // $query = "SELECT m.nim, m.nama, p.tanggal_pengaduan, pe.tingkat, pe.sanksi_pelanggaran, pe.pelanggaran
-            //   FROM mahasiswa m 
-            //   join pengaduan p on m.nim = p.nim
-            //   join pelanggaran pe on p.pelanggaran_id = pe.pelanggaran_id
-            //   WHERE m.nim = '$nim'";
-            // $result = mysqli_query($koneksi, $query);
-            
-            ?>
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
-                <?//php while ($row = mysqli_fetch_assoc($result)) {?>
+                <?php
+                foreach ($data['kompen'] as $dt) 
+                {  
+                ?>
                 <tr class="border-b">
-                  <td class="py-2 px-4 border-r"><?//= $row['tanggal_pengaduan']; ?></td>
-                  <td class="py-2 px-4 border-r"><?//= $row['pelanggaran']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $dt['tanggal_pengaduan']; ?></td>
+                  <td class="py-2 px-4 border-r"><?= $dt['pelanggaran']; ?></td>
                   <td class="py-2 px-4 border-r text-center">
                     <?php
-                      // if ($row['tingkat'] == '1') {
-                      //   echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
-                      // } elseif ($row['tingkat'] == '2') {
-                      //   echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
-                      // }elseif ($row['tingkat'] == '3'){
-                      //   echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
-                      // }elseif ($row['tingkat'] == '4'){
-                      //   echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
-                      // }elseif ($row['tingkat'] == '5'){
-                      //   echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
-                      // }
+                      if ($dt['tingkat'] == '1') {
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
+                      } elseif ($dt['tingkat'] == '2') {
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
+                      }elseif ($dt['tingkat'] == '3'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
+                      }elseif ($dt['tingkat'] == '4'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
+                      }elseif ($dt['tingkat'] == '5'){
+                        echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
+                      }
                       ?>
                   </td>
                   <td class="py-2 px-4 border-r">
-                  <a href="#"><button id="baru" class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" onclick="showModalProses()">Baru</button></a>
-                  
-                  <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center">Upload</button></a>
-                  
-                  <a href="#"><button id="proses" class="bg-orange-400 py-2 px-5 rounded text-white text-center">Proses</button></a>
-                  
-                  <a href="#"><button id="diTolak" class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak()">Ditolak</button></a>
-                  
-                  <a href="#"><button class="bg-green-500 py-2 px-4 rounded text-white text-center">Selesai</button></a>
+                  <?php
+                    if ($dt['status_kompen'] == 'baru') {
+                      echo '<a href="#"><button id="baru" class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" onclick="showModalProses()">Baru</button></a>';
+                    } elseif ($dt['status_kompen'] == 'sedang dikerjakan') {
+                      echo '<a href="'. BASEURL .'/mahasiswa/uploadBuktiKompen"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center">Upload</button></a>';
+                    } elseif ($dt['status_kompen'] == 'proses') {
+                      echo '<a href="#"><button id="proses" class="bg-orange-400 py-2 px-5 rounded text-white text-center">Proses</button></a>';
+                    } elseif ($dt['status_kompen'] == 'ditolak') {
+                      echo '<a href="#"><button id="diTolak" class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak()">Ditolak</button></a>';
+                    } else{
+                      echo '<a href="#"><button class="bg-green-500 py-2 px-4 rounded text-white text-center">Selesai</button></a>';
+                    }
+                  ?>                            
                   </td>
                 </tr>
-              <?php
-            // }
-              ?>
+                <?php
+                }
+                ?>
               </tbody>
           </table>
         </div>
@@ -87,6 +83,9 @@
           <i class="fa-solid fa-times"></i>
         </button>
         <h3 class="text-2xl mb-7 font-bold">Sanksi</h3>
+        <div class="flex border border-grey-400">
+          <p id="catatan"></p>
+        </div>
         <div class="text-right">
         <button class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="kerjakan" onclick="showElement()">
           kerjakan
@@ -105,6 +104,9 @@
           <i class="fa-solid fa-times"></i>
         </button>
         <h3 class="text-2xl mb-7 font-bold">Tolak</h3>
+        <div class="flex border border-grey-400">
+          <p id="catatan"></p>
+        </div>
         <div class="text-right">
         <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen"><button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
           Upload Ulang
