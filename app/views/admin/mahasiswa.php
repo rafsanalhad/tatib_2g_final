@@ -57,8 +57,8 @@
                   <td class="py-2 px-4 border-r"><?= $row['phone_ortu']; ?></td>
                   <td class="py-2 px-4 border-r"><?= $row['alamat']; ?></td>
                   <td class="py-2 px-4 border-r flex">
-                    <a href="#" onclick="showModal();" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="<?= BASEURL?>/Admin/hapusMahasiswa/<?= $row['nim'] ?>" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                    <a href="#" onclick="editMahasiswa(<?= $row['nim'] ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="#" onclick="hapusMahasiswa(<?= $row['nim']?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
                   </td>
                   <!-- Tambahkan data lainnya sesuai kebutuhan -->
                 </tr>
@@ -92,54 +92,70 @@
 
       <!-- Konten Modal -->
       <!-- <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1> -->
-      <h3 class="text-2xl mb-7 font-bold">Tambah Data Mahasiswa</h3>
+      <h3 class="text-2xl mb-7 font-bold headerModal">Tambah Data Mahasiswa</h3>
       <div class="flex flex-col md:flex-row">
         <div class="containerGroupImg md:w-2/6">
           <img src="<?= BASEURL;?>/img/icon/Group.png" alt="" style="padding: 50px;">
         </div>
         <div class="containerFormModal md:w-4/6 ml-3">
-          <form class="mb-3" action="<?= BASEURL;?>/Admin/tambahMahasiswa" method="POST">
+          <form class="mb-3" id="formTambahMahasiswa" action="<?= BASEURL;?>/Admin/tambahMahasiswa" method="POST">
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="nama" id="nama" class="block text-sm font-medium text-gray-900">Nama</label>
+                  <label for="nama" id="namaLabel" class="block text-sm font-medium text-gray-900">Nama</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <input type="text" name="nama" id="nama" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="mr-2 flex-shrink-0 titikDuaNama">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="nama" id="nama" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_nama hidden">
+                      <p class="text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> Nama tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="nim" id="nim" class="block text-sm font-medium text-gray-900">NIM</label>
+                  <label for="nim" id="nimLabel" class="block text-sm font-medium text-gray-900">NIM</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
+                <div class="mr-2 flex-shrink-0 titikDuaNim">:</div>
+                  <div class="flex-grow flex_error_msg">
+                 
                   <input type="text" name="nim" id="nim" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="error_msg_nim hidden">
+                      <p class="text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> NIM tidak boleh kosong!</p>                    
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="ttl" id="ttl" class="block text-sm font-medium text-gray-900">TTL</label>
+                  <label for="ttl" id="ttlLabel" class="block text-sm font-medium text-gray-900">TTL</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
+                <div class="mr-2 flex-shrink-0 titikDuaTtl">:</div>
+                  <div class="flex-grow flex_error_msg">            
                   <input type="text" name="ttl" id="ttl" class="mt-1 p-2 w-full border rounded-md">
+                  <div class="error_msg_ttl hidden">
+                      <p class="text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> TTL tidak boleh kosong!</p>                    
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="mb-2">
               <div class="flex items-center">
                 <div class="w-2/4">
-                  <label for="jenkel" id="jenkel" class="block text-sm font-medium text-gray-900">Jenis Kelamin
+                  <label for="jenkel" id="jenkelLabel" class="block text-sm font-medium text-gray-900">Jenis Kelamin
                 </div>
-                <div class="w-3/4 inline-flex items-center">
+                <div class="w-3/4 inline-flex items-center titikDua">
                   <div class="mr-2">: </div>
-                  <select name="jenkel" id="jenisPelanggaran" class="mt-1 p-2 w-full border rounded-md">  
+                  <select name="jenkel" id="jenisKelamin" class="mt-1 p-2 w-full border rounded-md">  
                     <option name="jenkel" value="L">Laki-laki</option>
                     <option name="jenkel" value="P">Perempuan</option>
                     <option value="L" selected>Pilih Jenis Kelamin Anda</option>
@@ -153,8 +169,13 @@
                   <label for="name" id="notelp" class="block text-sm font-medium text-gray-900">Email</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <input type="email" name="email" id="email" class="mt-1 p-2 w-full border rounded-md">
+                <div class="mr-2 flex-shrink-0 flex titikDua">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="email" id="email" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_email hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block email_err_msg"><span class="font-medium">Maaf!</span> Email tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -163,7 +184,7 @@
                 <div class="w-2/4">
                   <label for="prodi" id="prodi" class="block text-sm font-medium text-gray-900">Prodi</label>
                 </div>
-                <div class="w-3/4 inline-flex items-center">
+                <div class="w-3/4 inline-flex items-center titikDua">
                   <div class="mr-2">: </div>
                   <select name="prodi_id" id="prodi" class="mt-1 p-2 w-full border rounded-md">
                     <?php
@@ -182,9 +203,14 @@
                   <label for="name" id="notelp" class="block text-sm font-medium text-gray-900">No Telp</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
+                <div class="mr-2 flex-shrink-0 titikDua">:</div>
+                  <div class="flex-grow flex_error_msg">            
                   <input type="text" name="notelp" id="notelp" class="mt-1 p-2 w-full border rounded-md">
-                </div>
+                  <div class="error_msg_ttl hidden">
+                      <p class="text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> No Telepon tidak boleh kosong!</p>                    
+                  </div>
+                  </div>
+                  </div>
               </div>
             </div>
             <div class="mb-2">
@@ -193,9 +219,14 @@
                   <label for="name" id="notelp_ortu" class="block text-sm font-medium text-gray-900">No Telp Ortu</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
+                <div class="mr-2 flex-shrink-0 titikDua">:</div>
+                  <div class="flex-grow flex_error_msg">            
                   <input type="text" name="notelp_ortu" id="notelp_ortu" class="mt-1 p-2 w-full border rounded-md">
-                </div>
+                  <div class="error_msg_ttl hidden">
+                      <p class="text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> No Telepon tidak boleh kosong!</p>                    
+                  </div>
+                  </div>
+                  </div>
               </div>
             </div>
             <div class="mb-2">
@@ -204,9 +235,12 @@
                   <label for="name" id="notelp_ortu" class="block text-sm font-medium text-gray-900">Alamat</label>
                 </div>
                 <div class="w-3/4 inline-flex items-center">
-                  <div class="mr-2">: </div>
-                  <textarea name="alamat" id="alamat" class="mt-1 p-2 w-full border rounded-md"></textarea>
-                </div>
+                  <div class="mr-2 flex-shrink-0 flex titikDuaAlamat">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <input type="text" name="alamat" id="alamat" class="mt-1 p-2 w-full border rounded-md">
+                    <div class="error_msg_alamat hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf!</span> Alamat tidak boleh kosong!</p>
+                    </div>
               </div>
             </div>
           
@@ -227,7 +261,224 @@
   </div>
 </div>
 <script>
+let checkTypeSubmit= null;
+const hapusMahasiswa = (nim) => {
+          Swal.fire({
+            title: 'Apakah anda yakin ingin menghapus data?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonColor: '#28a745',
+            confirmButtonText: `Hapus`,
+            denyButtonText: `Batal`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                window.location.href = "<?= BASEURL; ?>/Admin/hapusMahasiswa/" + nim;
+            }
+          })
+        }
+        $(document).ready(function() {
+    $('#formTambahMahasiswa').on("submit", function(e) {
+      e.preventDefault();
+      var semuaKondisiTerpenuhi = true;
+
+      function handleCondition(inputSelector, errorSelector, titikDuaSelector) {
+        var inputValue = $(inputSelector).val().trim();
+
+        if (inputValue === "") {
+          $(errorSelector).removeClass('hidden');
+          $(titikDuaSelector).addClass('mb-3');
+          semuaKondisiTerpenuhi = false;
+        } else {
+          if (inputSelector === '#email' && !isValidEmail(inputValue)) {
+            $(errorSelector).removeClass('hidden');
+            $(titikDuaSelector).addClass('mb-3');
+            semuaKondisiTerpenuhi = false;
+          } else {
+            $('.email_err_msg').html('<span class="font-medium">Maaf!</span> Email tidak valid!');
+            $(errorSelector).addClass('hidden');
+            $(titikDuaSelector).removeClass('mb-3');
+          }
+        }
+      }
+
+      function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      handleCondition('#nama', '.error_msg_nama', '.titikDuaNama');
+      handleCondition('#nim', '.error_msg_nim', '.titikDuaNim');
+      handleCondition('#ttl', '.error_msg_ttl', '.titikDuaTtl');
+      handleCondition('#email', '.error_msg_email', '.titikDuaEmail');
+      handleCondition('#notelp', '.error_msg_notelp', '.titikDuaNoTelp');
+      handleCondition('#notelp_ortu', '.error_msg_notelp_ortu', '.titikDuaNoTelpOrtu');
+      handleCondition('#alamat', '.error_msg_alamat', '.titikDuaAlamat');
+
+      if (semuaKondisiTerpenuhi) {
+        if($('.headerModal').html() == 'Tambah Data Mahasiswa'){
+          let formData = new FormData($('#formTambahMahasiswa')[0]);
+          $.ajax({
+            url: '<?= BASEURL; ?>/Admin/tambahMahasiswa',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+              console.log('anjay tambah');
+              console.log(response);
+              Swal.fire({
+                title: "Berhasil!",
+                text: "Data Mahasiswa berhasil ditambahkan!",
+                icon: "success"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+            },
+            error: function(error) {
+              alert("Error: " + xhr.status + "\n" + xhr.responseText);
+            }
+          });
+
+        }else if($('.headerModal').html() == 'Edit Data Mahasiswa'){
+          let formData = new FormData($('#formTambahMahasiswa')[0]);
+          $.ajax({
+            url: '<?= BASEURL; ?>/Admin/editMahasiswa',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+              console.log('anjay ubah');
+              console.log(response);
+              Swal.fire({
+                title: "Berhasil!",
+                text: "Data mahasiswa berhasil diubah!",
+                icon: "success"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+            },
+            error: function(error) {
+              alert("Error: " + xhr.status + "\n" + xhr.responseText);
+            }
+          });
+        }
+      } else {
+        Swal.fire({
+          title: "Gagal!",
+          text: "Data mahasiswa gagal ditambahkan!",
+          icon: "error"
+        });
+      }
+
+    })
+  })
+
+  const editMahasiswa = (nim) => {
+    $('.headerModal').html('Edit Data Mahasiswa');
+    const modal = document.getElementById('static-modal');
+    $('.sidebar').addClass('sidebar-backdrop');
+    modal.classList.remove('hidden');
+    $.ajax({
+      url: '<?= BASEURL; ?>/Admin/getMahasiswaByNim/' + nim,
+      type: 'GET',
+      dataType: 'json',
+      success: function(response) {
+        $('#nama').val(response.nama);
+        $('#nim').val(response.nim);
+        $('#ttl').val(response.TTL);
+        $('#jabatan').val(response.jabatan);
+        $('#email').val(response.email);
+        $('#notelp').val(response.no_phone);
+        $('#notelp_ortu').val(response.phone_ortu);
+        $('#alamat').val(response.alamat);
+        $("#jenisKelamin").val(response.jenis_kelamin);
+        $('#imgInputMahasiswa').val('');
+        $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.mahasiswa_img + '" alt="">');
+        $('#noImgMahasiswa').addClass('hidden');
+      },
+      error: function(error) {
+        alert("Error: " + xhr.status + "\n" + xhr.responseText);
+      }
+    });
+  }
+  const dropArea = $('#dropAreaImgMahasiswa');
+  const fileInput = $('#imgInputMahasiswa');
+  const preview = $('#preview');
+  const noImgDosen = $('#noImgMahasiswa');
+
+  dropArea.on('dragover', function(event) {
+    event.preventDefault();
+    dropArea.addClass('hover');
+  });
+
+  dropArea.on('dragleave', function() {
+    dropArea.removeClass('hover');
+  });
+
+  dropArea.on('drop', function(event) {
+    event.preventDefault();
+    dropArea.removeClass('hover');
+
+    const files = event.originalEvent.dataTransfer.files;
+
+    if (files.length > 0) {
+      handleFiles(files);
+    }
+  });
+
+  dropArea.on('click', function() {
+    // Pengecekan agar tidak terjadi pemanggilan berulang
+    if (!fileInput.data('clickTriggered')) {
+      fileInput.data('clickTriggered', true);
+      fileInput.click();
+    } else {
+      fileInput.data('clickTriggered', false);
+    }
+  });
+
+  fileInput.on('change', function() {
+    const files = fileInput[0].files;
+    handleFiles(files);
+    fileInput.data('clickTriggered', false); // Reset nilai setelah perubahan
+  });
+
+  function handleFiles(files) {
+    if (files.length > 0) {
+      const file = files[0];
+      noImgMahasiswa.addClass('hidden');
+
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const img = $('<img>').attr('src', e.target.result);
+        preview.empty().append(img);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  const resetFormModal = () => {
+    $('#nama').val('');
+    $('#nim').val('');
+    $('#ttl').val('');
+    $('#jabatan').val('');
+    $('#email').val('');
+    $('#no_phone').val('');
+    $('#alamat').val('');
+    $('#imgInputDosen').val('');
+    $('#preview').empty();
+    $('#noImgDosen').removeClass('hidden');
+  }
+
   const showModal = () => {
+    resetFormModal();
     const modal = document.getElementById('static-modal');
     $('.sidebar').addClass('sidebar-backdrop');
     modal.classList.remove('hidden');
@@ -313,6 +564,6 @@
         ]
       }
     });
-    $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" onclick="showModal();" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tambah</a></div>');
+    $('#tableMahasiswa_filter').append('<div id="buttonTambahDosen"><a href="#" onclick="showModal();" class="bg-green-500 hover:bg-green-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-plus"></i> Tambah Mahasiswa</a></div>');
   });
 </script>
