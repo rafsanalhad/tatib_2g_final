@@ -14,71 +14,53 @@
         <p><b>Info! </b>Berikut adalah Biodata diri anda</p>
       </div>
       <table class="items-center w-full  mt-3">
-        <?php
-        // include "koneksi.php";
-        // $nim = $_SESSION['username'];
-        // $query = "SELECT * FROM mahasiswa where nim='$nim'";
-        // $result = mysqli_query($koneksi, $query);          
-        // while ($row = mysqli_fetch_assoc($result)){
-        ?>
         <tbody>
           <tr>
             <td rowspan="10"><img src="<?= BASEURL; ?>/img/profil/mhs1.png" class="m-auto" alt="profil"></td>
           </tr>
           <tr>
             <td>Nama</td>
-            <td><? //= $row['nama'];  
-                ?></td>
+            <td><?= $data['biodata']['nama'];?></td>
           </tr>
           <tr>
             <td>NIM</td>
-            <td><? //= $row['nim'];  
-                ?></td>
+            <td><?= $data['biodata']['nim'];?></td>
           </tr>
           <tr>
             <td>TTL</td>
-            <td><? //= $row['TTL'];  
-                ?></td>
+            <td><?= $data['biodata']['TTL'];  ?></td>
           </tr>
           <tr>
             <td>Jen. Kelamin</td>
             <td><?php
-                // if ($row['jenis_kelamin'] == 'L') {
-                //     echo 'Laki-laki';
-                //   }else{
-                //     echo 'Perempuan';
-                //   }  
+                if ($data['biodata']['jenis_kelamin'] == 'L') {
+                     echo 'Laki-laki';
+                }else{
+                  echo 'Perempuan';
+                }  
                 ?>
             </td>
           </tr>
           <tr>
-            <td>Jurusan</td>
-            <td><? //= $row['jurusan'];  
-                ?></td>
+            <td>Prodi</td>
+            <td><?= $data['biodata']['prodi_nama'];?></td>
           </tr>
           <tr>
             <td>Alamat</td>
-            <td><? //= $row['alamat'];  
-                ?></td>
+            <td><?= $data['biodata']['alamat'];  ?></td>
           </tr>
           <tr>
             <td>Email</td>
-            <td><? //= $row['email'];  
-                ?></td>
+            <td><?= $data['biodata']['email'];?></td>
           </tr>
           <tr>
             <td>Phone</td>
-            <td><? //= $row['phone_ortu'];  
-                ?></td>
+            <td><?= $data['biodata']['phone_ortu'];  ?></td>
           </tr>
           <tr>
             <td>Phone Ortu</td>
-            <td><? //  = $row['phone_ortu'];  
-                ?></td>
+            <td><?= $data['biodata']['no_phone'];?></td>
           </tr>
-          <?php
-          // }
-          ?>
         </tbody>
       </table>
       <div class="text-center mt-10">
@@ -86,6 +68,13 @@
         </div>
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
         <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
+        <?php
+        //Menghitung jumlah pengaduan yang keluar
+          $tingkat = [0,0,0,0,0];
+          foreach ($data['pengaduan'] as $dt) {
+            $tingkat[$dt['tingkat']-1] += 1;
+          }
+        ?>
         <hr class="hr_db">
         <div class="flex gap-3">
             <div class="flex-col p-3">

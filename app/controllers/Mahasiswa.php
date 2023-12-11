@@ -7,8 +7,9 @@ class Mahasiswa extends Controller{
         }
     }
     public function index(){
+        $data['biodata'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($_SESSION['username']);
         $this->view('templates/mahasiswa/header');
-        $this->view('mahasiswa/index');
+        $this->view('mahasiswa/index', $data);
         $this->view('templates/mahasiswa/footer');
     }
     public function riwayatPelanggaran(){
