@@ -82,25 +82,25 @@ class Mahasiswa_model
     //     $this->db->execute();
     //     return $this->db->rowCount();
     // }
-    // public function editDataMahasiswa($data)
-    // {
-    //     $checkData = $this->getMahasiswaByNim($data['nim']);
-    //     $dataUploaded= $_FILES['imgMahasiswa']['name'];
-    //     $uploadedFileName = $this->handleFileUpload();
-    //     $query = "UPDATE mahasiswa SET nama = :nama, TTL = :TTL, jenis_kelamin = :jenis_kelamin, jabatan = :jabatan, email = :email, no_phone = :no_phone, alamat = :alamat, mahasiswa_img= :mahasiswa_img WHERE nim = :nim";
-    //     $this->db->query($query);
-    //     $this->db->bind('nim', $data['nim']);
-    //     $this->db->bind('nama', $data['nama']);
-    //     $this->db->bind('TTL', $data['ttl']);
-    //     $this->db->bind('jenis_kelamin', $data['jenkel']);
-    //     $this->db->bind('jabatan', $data['jabatan']);
-    //     $this->db->bind('email', $data['email']);
-    //     $this->db->bind('no_phone', $data['no_phone']);
-    //     $this->db->bind('alamat', $data['alamat']);
-    //     $this->db->bind('mahasiswa_img', $uploadedFileName);
-    //     $this->db->execute();
-    //     return $this->db->rowCount();
-    // }
+    public function editDataMahasiswa($data)
+    {
+        $checkData = $this->getMahasiswaByNim($data['nim']);
+        $dataUploaded= $_FILES['imgMahasiswa']['name'];
+        $uploadedFileName = $this->handleFileUploadEdit($dataUploaded, $checkData['mahasiswa_img']);
+        $query = "UPDATE mahasiswa SET nama = :nama, TTL = :TTL, jenis_kelamin = :jenis_kelamin, alamat = :alamat, email = :email, no_phone= :no_phone, phone_ortu = :phone_ortu, mahasiswa_img= :mahasiswa_img WHERE nim = :nim";
+        $this->db->query($query);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('TTL', $data['ttl']);
+        $this->db->bind('jenis_kelamin', $data['jenkel']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('no_phone', $data['notelp']);
+        $this->db->bind('phone_ortu', $data['notelp_ortu']);
+        $this->db->bind('mahasiswa_img', $uploadedFileName);
+        $this->db->bind('nim', $data['nim']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 
     private function handleFileUpload()
     {
@@ -138,7 +138,7 @@ class Mahasiswa_model
 
             // Periksa apakah file lama ada sebelum menghapusnya
 
-            $uploadedFile = $_FILES['imgDosen']; // Nama input file pada formulir
+            $uploadedFile = $_FILES['imgMahasiswa']; // Nama input file pada formulir
 
             // Menggunakan timestamp detik UNIX untuk membuat nama file unik
             $uniqueFileName = time() . '_' . substr(pathinfo($uploadedFile['name'], PATHINFO_FILENAME), 0, 3) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
