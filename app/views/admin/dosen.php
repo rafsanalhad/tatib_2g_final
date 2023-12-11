@@ -62,7 +62,7 @@
                     <td class="py-2 px-4 border-r">
                       <div class="inline-flex">
                         <a href="#" onclick="showModalById(<?= $row['nip'] ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="#" onclick="hapusDataDosen(<?= $row['nip']?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                        <a href="#" onclick="hapusDataDosen(<?= $row['nip']?>, <?= $row['user_id'] ?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
                       </div>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
@@ -254,7 +254,7 @@
 </div>
 <script>
   let checkTypeSubmit= null;
-  const hapusDataDosen = (nip) => {
+  const hapusDataDosen = (nip, userid) => {
           Swal.fire({
             title: 'Apakah anda yakin ingin menghapus data?',
             showDenyButton: true,
@@ -265,7 +265,7 @@
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                window.location.href = "<?= BASEURL; ?>/Admin/hapusDosen/" + nip;
+                window.location.href = "<?= BASEURL; ?>/Admin/hapusDosen/" + nip + "/" + userid;
             }
           })
         }

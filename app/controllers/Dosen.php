@@ -30,7 +30,7 @@ class Dosen extends Controller{
         $this->view('dosen/formPengaduan', $data);
         $this->view('templates/dosen/footer');
     }
-    public function getDosenByNim($nim){
+    public function getMahasiswaByNim($nim){
         $data['mahasiswa'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($nim);
         echo json_encode($data['mahasiswa']);
     }

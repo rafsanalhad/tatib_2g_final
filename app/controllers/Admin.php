@@ -53,11 +53,13 @@ class Admin extends Controller{
             exit;
         }
     }
-    public function hapusDosen($nip){
+    public function hapusDosen($nip, $userId){
         if ($this->model('Dosen_model')->hapusDataDosen($nip) > 0) {
+            if($this->model('User_model')->hapusDataUser($userId)>0){
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/admin/dosen');
             exit;
+            }
         }else{
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/admin/dosen');
