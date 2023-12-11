@@ -84,6 +84,23 @@ class Admin extends Controller{
             exit;
         }
     }
+
+    public function getMahasiswaByNim($nim){
+        $data['mahasiswa'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($nim);
+        echo json_encode($data['mahasiswa']);
+    }
+
+    public function editMahasiswa(){
+        if ($this->model('Mahasiswa_model')->editDataMahasiswa($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/admin/mahasiswa');
+            exit;
+        }else{
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/admin/mahasiswa');
+            exit;
+        }
+    }
     public function hapusMahasiswa($id){
         if ($this->model('Mahasiswa_model')->hapusDataMahasiswa($id) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
