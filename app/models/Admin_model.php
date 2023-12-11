@@ -23,7 +23,7 @@ class Admin_model
     }
     public function getMahasiswa()
     {
-        $this->db->query('SELECT  m.nama, m.nim, p.prodi_nama, m.TTL, m.jenis_kelamin, m.phone_ortu, m.alamat, m.user_id 
+        $this->db->query('SELECT  m.nama, m.nim, p.prodi_nama, m.TTL, m.jenis_kelamin, m.phone_ortu, m.alamat, m.user_id, m.mahasiswa_img 
         FROM ' . $this->table2 . ' as m
         JOIN ' . $this->table5 . ' as p ON m.prodi_id = p.prodi_id');
         return $this->db->resultSet();
