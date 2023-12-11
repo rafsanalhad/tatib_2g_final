@@ -13,8 +13,9 @@ class Mahasiswa extends Controller{
         $this->view('templates/mahasiswa/footer');
     }
     public function riwayatPelanggaran(){
+        $data['kompen'] = $this->model('Kompen_model')->getKompenByNim($_SESSION['username']);
         $this->view('templates/mahasiswa/header');
-        $this->view('mahasiswa/riwayatPelanggaran');
+        $this->view('mahasiswa/riwayatPelanggaran', $data);
         $this->view('templates/mahasiswa/footer');
     }
     public function uploadBuktiKompen(){

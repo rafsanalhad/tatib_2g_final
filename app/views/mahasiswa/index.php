@@ -70,10 +70,10 @@
         <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
         <?php
         //Menghitung jumlah pengaduan yang keluar
-          $tingkat = [0,0,0,0,0];
-          foreach ($data['pengaduan'] as $dt) {
-            $tingkat[$dt['tingkat']-1] += 1;
-          }
+          // $tingkat = [0,0,0,0,0];
+          // foreach ($data['pengaduan'] as $dt) {
+          //   $tingkat[$dt['tingkat']-1] += 1;
+          // }
         ?>
         <hr class="hr_db">
         <div class="flex gap-3">
