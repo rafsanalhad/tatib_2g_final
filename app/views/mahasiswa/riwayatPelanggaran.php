@@ -113,7 +113,7 @@
           <p id="catatan"></p>
         </div>
         <div class="text-right">
-        <a href="<?= BASEURL; ?>/mahasiswa/uploadBuktiKompen"><button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+        <a href="<?= BASEURL;?>/mahasiswa/uploadBuktiKompen/<?= $dt['riwayat_id'];?>"><button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
           Upload Ulang
         </button></a>
         
