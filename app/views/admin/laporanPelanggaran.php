@@ -6,13 +6,13 @@
     <h1 class="text-2xl font-bold mb-2">Laporan Pelanggaran</h1>
 
     <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-      <div class="flex-1 ml-4">Kelola Data Mahasiswa</div>
+      <div class="flex-1 ml-4">Kelola Laporan Pelanggaran</div>
     </div>
     <hr class="hr_db">
     <div class="flex bg-white">
       <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
         <!-- <div class="flex-1 notif_db h-10 flex items-center pl-2">Ini adalah data system</div> -->
-        <div class="grid grid-cols-1 gap-4 mt-5">
+        <div class="grid grid-cols-1 gap-4">
           <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
             <table id="tableLaporan" class="min-w-full border ">
               <!-- Tambahkan header tabel di sini -->
