@@ -50,6 +50,5 @@ class Kompen_model
         $this->db->bind('id', $data['id']);
         $this->db->execute();
         return $this->db->rowCount();
-    
     }
 }
