@@ -56,21 +56,23 @@
                                                                 }
                                                                 ?></td>
                     <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
-                    <td class="py-2 px-4 border-r flex p-2 gap-2 ">
-                    <a href="#" onclick="showModalKompen(<?= $row['pengaduan_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
-                      <?php if ($row['status_pengaduan'] ==  'valid') { ?>
+                    <!-- <td class="py-2 px-4 border-r flex p-2 gap-2 ">
+                    <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
+                      <?php if ($row['status_kompen'] ==  'valid') { ?>
                         <button class="bg-green-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></button>
-                      <?php } else if ($row['status_pengaduan'] ==  'tidak valid') { ?>
+                      <?php } else if ($row['status_kompen'] ==  'sedang dikerjakan') { ?>
                         <button class="bg-red-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
                         </button>
-                      <?php } else if ($row['status_pengaduan'] ==  'proses') { ?>
+                      <?php } else if ($row['status_kompen'] ==  'proses') { ?>
                         <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner"></i>
                         </a>
                       <?php } else if ($row['status_kompen'] == 'baru') { ?>
                         <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
                         </button>
-                        <?php } ?>
-                    </td>
+                      <?php } ?>
+                    </td> -->
+                    <!-- Info simbol gae admin -->
+
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
                   </tr>
                 <?php
@@ -380,14 +382,14 @@
   const modalKompen = document.getElementById('static-modal-kompen');
   const showModalKompen = (id) => {
     $.ajax({
-      url: "<?= BASEURL; ?>/admin/getLaporanKompenById/" + id,
+      url: "<?= BASEURL; ?>/Admin/getLaporanKompenById/" + id,
       method: "GET",
       dataType: "json",
       header: 'Content-Type: application/json',
       success: function(data) {
         console.log(data);
         $('.idLaporan').val(data.riwayat_id);
-        $('.namaLaporan').html(data.nama);
+        $('.namaLaporan').html(data.nama_mhs);
         $('.nimLaporan').html(data.nim);
         $('.jenkelLaporan').html(data.jenis_kelamin);
         $('.noTelpLaporan').html(data.phone_ortu);

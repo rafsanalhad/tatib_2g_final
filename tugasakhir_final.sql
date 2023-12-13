@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 05:57 AM
+-- Generation Time: Dec 13, 2023 at 07:12 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -78,6 +78,7 @@ CREATE TABLE `mahasiswa` (
   `no_phone` varchar(11) NOT NULL,
   `phone_ortu` varchar(20) NOT NULL,
   `jumlah_pelanggaran` int(11) NOT NULL,
+  `mahasiswa_img` varchar(200) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -85,12 +86,12 @@ CREATE TABLE `mahasiswa` (
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`nim`, `prodi_id`, `nama`, `TTL`, `jenis_kelamin`, `alamat`, `email`, `no_phone`, `phone_ortu`, `jumlah_pelanggaran`, `user_id`) VALUES
-('2241720040', 1, 'Rizky Arifiansyah', 'Jombang, 12 April 2003', 'L', 'Jl. Kembang Turi, Malang', 'email@email.com', '0812121212', '0812121212', 0, 24),
-('2241720058', 1, 'Harafsan Alhad', 'Malang, 30 Mei 2004', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, 25),
-('2241720127', 1, 'Hanifah Amany', 'Malang, 30 Agustus 2004', 'P', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, 26),
-('2241720148', 1, 'Irshandy Aditya', 'Malang, 02 Januari 2003', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, 27),
-('2241720228', 1, 'Arya Chandra', 'sorong, 30 juni 2004', 'L', 'Jl. Semanggi Barat, Malang', 'email@gmail.com', '0821212121', '0812345678', 0, 3);
+INSERT INTO `mahasiswa` (`nim`, `prodi_id`, `nama`, `TTL`, `jenis_kelamin`, `alamat`, `email`, `no_phone`, `phone_ortu`, `jumlah_pelanggaran`, `mahasiswa_img`, `user_id`) VALUES
+('2241720040', 1, 'Rizky Arifiansyah', 'Jombang, 12 April 2003', 'L', 'Jl. Kembang Turi, Malang', 'email@email.com', '0812121212', '0812121212', 0, '', 24),
+('2241720058', 1, 'Harafsan Alhad', 'Malang, 30 Mei 2004', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, '', 25),
+('2241720127', 1, 'Hanifah Amany', 'Malang, 30 Agustus 2004', 'P', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, '', 26),
+('2241720148', 1, 'Irshandy Aditya', 'Malang, 02 Januari 2003', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, '', 27),
+('2241720228', 1, 'Arya Chandra', 'sorong, 30 juni 2004', 'L', 'Jl. Semanggi Barat, Malang', 'email@gmail.com', '0821212121', '0812345678', 0, '', 3);
 
 -- --------------------------------------------------------
 
@@ -181,7 +182,7 @@ CREATE TABLE `riwayat` (
 --
 
 INSERT INTO `riwayat` (`riwayat_id`, `nim`, `pengaduan_id`, `status_kompen`, `catatan_kompen`, `bukti_kompen`) VALUES
-(1, '2241720040', 3, 'sedang dikerjakan', '', '');
+(1, '2241720040', 3, 'proses', '', '1702445463_170.jpg');
 
 -- --------------------------------------------------------
 
