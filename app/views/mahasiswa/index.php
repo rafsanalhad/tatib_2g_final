@@ -83,10 +83,10 @@
                         <div class="w-16 h-10 bg-red-700 rounded-lg grid justify-center items-center text-white">
                             <p class="text-lg font-bold">I</p>
                         </div>
-                    </div>
+                    </div>                                        
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 1</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?= $data['tingkat']['tingkat1']?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -97,7 +97,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 2</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?= $data['tingkat']['tingkat2']?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -108,7 +108,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 3</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?= $data['tingkat']['tingkat3']?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -120,7 +120,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 4</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?= $data['tingkat']['tingkat4']?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -131,7 +131,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 5</p>
-                        <p class="font-bold">2</p>
+                        <p class="font-bold"><?= $data['tingkat']['tingkat5']?></p>
                     </div>
                 </div>
             </div>
