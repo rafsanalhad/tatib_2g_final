@@ -27,7 +27,7 @@
               <tbody>
                 <!-- Tambahkan baris-baris data di sini -->
                 <?php
-                foreach ($data['pengaduan'] as $dt) 
+                foreach ($data['kompen'] as $dt) 
                 {  
                 ?>
                 <tr class="border-b">
@@ -50,13 +50,13 @@
                   </td>
                   <td class="py-2 px-4 border-r">
                   <?php
-                    if ($dt['status_pengaduan'] == 'baru') {
+                    if ($dt['status_kompen'] == 'baru') {
                       echo '<a href="#"><button id="baru" class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" onclick="showModalProses('.$dt['riwayat_id'].')">Baru</button></a>';
-                    } elseif ($dt['status_pengaduan'] == 'sedang dikerjakan') {
+                    } elseif ($dt['status_kompen'] == 'sedang dikerjakan') {
                       echo '<a href="'. BASEURL .'/mahasiswa/uploadBuktiKompen"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center">Upload</button></a>';
-                    } elseif ($dt['status_pengaduan'] == 'proses') {
+                    } elseif ($dt['status_kompen'] == 'proses') {
                       echo '<a href="#"><button id="proses" class="bg-orange-400 py-2 px-5 rounded text-white text-center">Proses</button></a>';
-                    } elseif ($dt['status_pengaduan'] == 'ditolak') {
+                    } elseif ($dt['status_kompen'] == 'ditolak') {
                       echo '<a href="#"><button id="diTolak" class="bg-red-500 hover:bg-red-700 py-2 px-4 rounded text-white text-center" href="#" onclick="showModalDitolak('.$dt['riwayat_id'].')">Ditolak</button></a>';
                     } else{
                       echo '<a href="#"><button class="bg-green-500 py-2 px-4 rounded text-white text-center">Selesai</button></a>';
