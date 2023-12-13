@@ -36,9 +36,9 @@ class Pelanggaran_model
         COUNT(CASE WHEN pe.tingkat = 4 THEN 1 END) AS tingkat4,
         COUNT(CASE WHEN pe.tingkat = 5 THEN 1 END) AS tingkat5
         FROM ' . $this->table2 . ' AS m 
-        JOIN ' . $this->table3 . ' AS p ON m.nim = p.nim
-        JOIN ' . $this->table4 . ' pe ON p.pelanggaran_id = pe.pelanggaran_id
-        WHERE m.nim=:id
+        LEFT JOIN ' . $this->table3 . ' AS p ON m.nim = p.nim and p.status_pengaduan = "valid"
+        LEFT JOIN ' . $this->table4 . ' pe ON p.pelanggaran_id = pe.pelanggaran_id
+        WHERE m.nim=:id 
         GROUP BY m.nim');
         $this->db->bind('id', $id);
         return $this->db->single();
