@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 10:06 AM
+-- Generation Time: Dec 13, 2023 at 05:46 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -171,7 +171,7 @@ CREATE TABLE `riwayat` (
   `riwayat_id` int(11) NOT NULL,
   `nim` varchar(20) NOT NULL,
   `pengaduan_id` int(11) NOT NULL,
-  `status_kompen` varchar(50) NOT NULL,
+  `status_kompen` enum('baru','sedang dikerjakan','proses','ditolak','selesai') NOT NULL,
   `catatan_kompen` text NOT NULL,
   `bukti_kompen` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -181,7 +181,7 @@ CREATE TABLE `riwayat` (
 --
 
 INSERT INTO `riwayat` (`riwayat_id`, `nim`, `pengaduan_id`, `status_kompen`, `catatan_kompen`, `bukti_kompen`) VALUES
-(1, '2241720040', 3, 'valid', 'Miku', '');
+(1, '2241720040', 3, '', 'Miku', '');
 
 -- --------------------------------------------------------
 
