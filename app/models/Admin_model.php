@@ -81,9 +81,9 @@ class Admin_model
     public function hasilLaporanKompen($param, $data)
     {
         if($param == 'terima'){
-            $paramResult = 'valid';
+            $paramResult = 'selesai';
         }else if($param == 'tolak'){
-            $paramResult = 'tidak valid';
+            $paramResult = 'ditolak';
         }
         $query = "UPDATE riwayat SET status_kompen = :status_kompen, catatan_kompen = :catatan_kompen WHERE riwayat_id = :riwayat_id";
         $this->db->query($query);

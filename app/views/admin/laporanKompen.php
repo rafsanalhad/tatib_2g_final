@@ -30,6 +30,8 @@
               </thead>
               <?php
               foreach ($data['laporanKompen'] as $row) :
+                if ($row['status_kompen'] != 'baru' && ($row['status_kompen'] != 'sedang dikerjakan')) 
+                {
               ?>
                 <tbody>
                   <!-- Tambahkan baris-baris data di sini -->
@@ -56,26 +58,25 @@
                                                                 }
                                                                 ?></td>
                     <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
-                    <!-- <td class="py-2 px-4 border-r flex p-2 gap-2 ">
+                    <td class="py-2 px-4 border-r flex p-2 gap-2 ">
                     <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
-                      <?php if ($row['status_kompen'] ==  'valid') { ?>
+                      <?php if ($row['status_kompen'] ==  'selesai') { ?>
                         <button class="bg-green-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></button>
-                      <?php } else if ($row['status_kompen'] ==  'sedang dikerjakan') { ?>
+                      <?php } else if ($row['status_kompen'] ==  'ditolak'){?>
                         <button class="bg-red-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
                         </button>
-                      <?php } else if ($row['status_kompen'] ==  'proses') { ?>
+                      <?php } else if ($row['status_kompen'] == 'proses') { ?>
                         <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner"></i>
                         </a>
-                      <?php } else if ($row['status_kompen'] == 'baru') { ?>
-                        <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
-                        </button>
+                        <!-- biru ceklist -->
+                        <!-- <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i> -->
                       <?php } ?>
-                    </td> -->
-                    <!-- Info simbol gae admin -->
-
+                    </td>
+                    
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
                   </tr>
                 <?php
+                }
               endforeach;
                 ?>
                 </tbody>
