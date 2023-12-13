@@ -26,8 +26,8 @@ class Mahasiswa extends Controller{
         $data['kompen'] = $this->model('Kompen_model')->getKompenById($id);
         echo json_encode($data['kompen']);
     }
-    public function updateStatusKompen(){
-        if ($this->model('Kompen_model')->updateStatusKompen($_POST) > 0) {
+    public function updateKompen(){
+        if ($this->model('Kompen_model')->updateKompen($_POST) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/mahasiswa/riwayatPelanggaran');
             exit;
@@ -37,9 +37,9 @@ class Mahasiswa extends Controller{
             exit;
         }
     }
-    public function uploadBuktiKompen(){
+    public function uploadBuktiKompen($data){
         $this->view('templates/mahasiswa/header');
-        $this->view('mahasiswa/uploadBuktiKompen');
+        $this->view('mahasiswa/uploadBuktiKompen', $data);
         $this->view('templates/mahasiswa/footer');
     }
     public function ubahPassword(){

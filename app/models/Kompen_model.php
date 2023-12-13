@@ -32,7 +32,7 @@ class Kompen_model
         $this->db->bind('id', $id);
         return $this->db->single();
     }
-    public function updateStatusKompen($data)
+    public function updateKompen($data)
     {
         $aksi = $data['aksi'];
         $status = '';
@@ -45,10 +45,47 @@ class Kompen_model
         }elseif ($aksi == 'selesai') {
             $status = 'selesai';
         }
-        $this->db->query('UPDATE ' . $this->table6 . ' SET status_kompen = :status_kompen WHERE riwayat_id = :id');
-        $this->db->bind('status_kompen', $status);
-        $this->db->bind('id', $data['id']);
-        $this->db->execute();
+        if (isset($_FILES['buktiKompen'])) {
+            $this->db->query('UPDATE ' . $this->table6 . ' SET status_kompen = :status_kompen, bukti_kompen = :bukti WHERE riwayat_id = :id');
+
+            // Handling file upload
+            $uploadedFileName = $this->handleFileUpload();
+            echo $uploadedFileName;
+
+            $this->db->bind('status_kompen', $status);
+            $this->db->bind('bukti', $uploadedFileName);
+            $this->db->bind('id', $data['id']);
+            $this->db->execute();
+        }else {
+            $this->db->query('UPDATE ' . $this->table6 . ' SET status_kompen = :status_kompen WHERE riwayat_id = :id');
+            $this->db->bind('status_kompen', $status);
+            $this->db->bind('id', $data['id']);
+            $this->db->execute();
+        }
         return $this->db->rowCount();
+    }
+
+    private function handleFileUpload()
+    {
+        $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/bukti_kompen/';
+        $uploadedFile = $_FILES['buktiKompen']; // Nama input file pada formulir
+
+        // Menggunakan timestamp detik UNIX untuk membuat nama file unik
+        $uniqueFileName = time() . '_' . substr(pathinfo($uploadedFile['name'], PATHINFO_FILENAME), 0, 3) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+        $targetFilePath = $targetDir . $uniqueFileName;
+        $fileType = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+
+        // Memeriksa apakah file tersebut adalah file gambar
+        $allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
+
+        if (in_array(strtolower($fileType), $allowedTypes)) {
+            if (move_uploaded_file($uploadedFile['tmp_name'], $targetFilePath)) {
+                return $uniqueFileName;
+            } else {
+                echo "Maaf, terjadi kesalahan saat mengunggah file.";
+            }
+        } else {
+            echo "File yang diunggah bukan gambar atau format file tidak diizinkan.";
+        }
     }
 }

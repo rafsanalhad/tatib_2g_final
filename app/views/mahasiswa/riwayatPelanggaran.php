@@ -53,7 +53,7 @@
                     if ($dt['status_kompen'] == 'baru') {
                       echo '<a href="#"><button id="baru" class="bg-blue-500 hover:bg-blue-700 py-2 px-7 rounded text-white text-center" onclick="showModalProses('.$dt['riwayat_id'].')">Baru</button></a>';
                     } elseif ($dt['status_kompen'] == 'sedang dikerjakan') {
-                      echo '<a href="'. BASEURL .'/mahasiswa/uploadBuktiKompen"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center">Upload</button></a>';
+                      echo '<a href="'. BASEURL .'/mahasiswa/uploadBuktiKompen/'. $dt['riwayat_id'] .'"><button id="upload" class="bg-indigo-400 hover:bg-indigo-500 py-2 px-5 rounded text-white text-center">Upload</button></a>';
                     } elseif ($dt['status_kompen'] == 'proses') {
                       echo '<a href="#"><button id="proses" class="bg-orange-400 py-2 px-5 rounded text-white text-center">Proses</button></a>';
                     } elseif ($dt['status_kompen'] == 'ditolak') {
@@ -88,7 +88,7 @@
           <p id="catatan"></p>
         </div>
         <div class="text-right">
-        <form action="<?= BASEURL;?>/Mahasiswa/updateStatusKompen/" method="post">
+        <form action="<?= BASEURL;?>/Mahasiswa/updateKompen/" method="post">
           <input type="hidden" name="id" id="iniIdUpdate" value="">
           <input type="hidden" name="aksi" value="kerjakan">
           <button type="submit" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="kerjakan" onclick="showElement()">
