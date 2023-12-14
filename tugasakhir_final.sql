@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 09:20 AM
+-- Generation Time: Dec 14, 2023 at 10:04 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -46,20 +46,10 @@ CREATE TABLE `dosen` (
 
 INSERT INTO `dosen` (`nip`, `nama`, `TTL`, `jenis_kelamin`, `jabatan`, `email`, `no_phone`, `alamat`, `dosen_img`, `user_id`) VALUES
 ('12345', 'Unggul Pamenang', 'Malang, 12 desember 1980', 'L', 'Dosen TI', 'unggul@gmail.com', 821212121, 'Jl. Soehat no 1 Malang', '1702083146_asu.jpg', 2),
-('12346', 'Imam ', 'Malang, 12 desember 1980', 'L', 'Dosen TI', 'email@gmail.com', 821212121, 'Jl. Semanggi Barat', '', 28),
-('12347', 'Dodit', 'Malang, 19 Desember 1976', 'L', 'Dosen TI', 'email@email.com', 812121212, 'Jl. Soehat, Malang', '', 29),
-('12348', 'Khairy', 'Malang, 13 Mei 1990', 'L', 'Dosen TI', 'email@email.com', 812121212, 'Jl. Soehat, Malang', '', 30),
-('12349', 'Annisa Puspa', 'Malang, 30 Agustus 1988', 'P', 'Dosen SIB', 'email@email.com', 812121212, 'Jl. Soehat, Malang', '', 31),
-('123789', 'Anjay Tes', 'Blitar', 'L', 'Dosen', '131@gmail.com', 3442, '342', '1702083146_asu.jpg', 74),
-('2324223', '2Anjayy', '2', 'L', '2', '22@gmail.com', 2, '2', '1701997944_Picture1.png', 69),
-('23244234', 'Mikuuuu', '34223', 'L', '2', '0480@gmail.com', 324, '324', '1701998422_myw.jpg', 70),
-('31', 'MIKUUUUU WIBUUU', '2', 'L', '2', '22@gmail.com', 2, '2', '1702190452_Pic.png', 87),
-('31513', 'wrwerw jawir', '2', 'L', '2', '22@gmail.com', 2, '2', '1702085494_Pic.png', 76),
-('323242', '2', '432232', 'L', '342', '0480@gmail.com', 32, '324', '1701998524_Pic.png', 71),
-('324', 'fjalj', '3', 'L', '3', '3@gmail.com', 2, '3', '1702176521_Pic.png', 68),
-('34224', 'Rafsan Wibuu', '342', 'L', '3', '131@gmail.com', 33, '3', '1701961701_asus.jpg', 66),
-('3442934829', 'flajafljkjl', '3', 'L', '3', '3@gmail.com', 3, '3', '1702004754_Pic.jpg', 73),
-('379972', 'zzzz', '3', 'L', '23', 'fajl@gmail.com', 313, '3', '1702083981_Pic.png', 75);
+('12346', 'Imam ', 'Malang, 12 desember 1980', 'L', 'Dosen TI', 'email@gmail.com', 821212121, 'Jl. Semanggi Barat', '1701998422_myw.jpg', 28),
+('12347', 'Dodit', 'Malang, 19 Desember 1976', 'L', 'Dosen TI', 'email@email.com', 812121212, 'Jl. Soehat, Malang', '1701998422_myw.jpg', 29),
+('12348', 'Khairy', 'Malang, 13 Mei 1990', 'L', 'Dosen TI', 'email@email.com', 812121212, 'Jl. Soehat, Malang', '1701998524_Pic.png', 30),
+('12349', 'Annisa Puspa', 'Malang, 30 Agustus 1988', 'P', 'Dosen SIB', 'email@email.com', 812121212, 'Jl. Soehat, Malang', '1701998524_Pic.png', 31);
 
 -- --------------------------------------------------------
 
@@ -138,12 +128,7 @@ CREATE TABLE `pengaduan` (
 --
 
 INSERT INTO `pengaduan` (`pengaduan_id`, `nip`, `nim`, `pelanggaran_id`, `bukti_pelanggaran`, `tanggal_pengaduan`, `status_pengaduan`, `catatan`) VALUES
-(2, '12345', '2241720058', 3, '', '2023-12-04', 'valid', 'Mikuuuufajjfdaljdjkfjladjfldajfldajfldajflajdljfladkjflkadjflkdjflkajfldakjfldakjfldajfljfdkajfda'),
 (3, '12345', '2241720040', 4, '', '2023-12-04', 'valid', ''),
-(4, '12345', '2241720148', 1, '1702180490_Pic.jpg', '2023-12-10', 'tidak valid', 'Wibu'),
-(8, '12345', '2241720228', 1, '1702190876_Pic.png', '2023-12-10', 'tidak valid', ''),
-(9, '12345', '2241720058', 3, '', '2023-12-08', 'valid', ''),
-(10, '12345', '2241720058', 3, '', '2023-12-08', 'valid', ''),
 (11, '12345', '2241720228', 4, '1702538401_170.jpg', '2023-12-14', 'valid', ''),
 (12, '12345', '2241720228', 3, '1702541135_buk.jpeg', '2023-12-14', 'proses', ''),
 (13, '12345', '2241720228', 4, '1702541197_buk.jpeg', '2023-12-14', 'valid', ''),
@@ -189,9 +174,9 @@ CREATE TABLE `riwayat` (
 
 INSERT INTO `riwayat` (`riwayat_id`, `nim`, `pengaduan_id`, `status_kompen`, `catatan_kompen`, `bukti_kompen`) VALUES
 (1, '2241720040', 3, 'ditolak', 'salah', '1702523261_170.png'),
-(2, '2241720228', 11, 'baru', NULL, NULL),
-(6, '2241720228', 13, 'baru', NULL, NULL),
-(8, '2241720228', 14, 'baru', NULL, NULL);
+(2, '2241720228', 11, 'proses', '', '1702544068_170.jpg'),
+(6, '2241720228', 13, 'ditolak', 'salah', '1702543583_170.jpg'),
+(8, '2241720228', 14, 'selesai', '', '1702543588_170.png');
 
 -- --------------------------------------------------------
 
@@ -237,53 +222,10 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `level`) VALUES
 (25, '2241720058', 'd9203392b9db5681d1a7111085bc8843', 3),
 (26, '2241720127', '78a79fcce51625ece4270bda329eed77', 3),
 (27, '2241720148', '1937f9832b38ea2b59e97d3391b6bc20', 3),
-(28, '12346', '12346', 2),
-(29, '12347', '12347', 2),
-(30, '12348', '12348', 2),
-(31, '12349', '12349', 2),
-(32, '39482', '39482', 2),
-(33, '', '', 2),
-(34, '934', '934', 2),
-(35, '4823', '4823', 2),
-(36, '24', '24', 2),
-(37, '2', '2', 2),
-(38, '2', '2', 2),
-(39, '2', '2', 2),
-(40, '2', '2', 2),
-(41, '2', '2', 2),
-(42, '2', '2', 2),
-(43, '2', '2', 2),
-(44, '23231132', '23231132', 2),
-(45, '223', '223', 2),
-(46, '2311412', '2311412', 2),
-(47, '324432', '324432', 2),
-(48, '2034980', '2034980', 2),
-(49, '3', '3', 2),
-(50, '3', '3', 2),
-(51, '3', '3', 2),
-(52, '3', '3', 2),
-(53, '3', '3', 2),
-(54, '3', '3', 2),
-(55, '3332', '3332', 2),
-(56, '3342341424321', '3342341424321', 2),
-(57, '3342341424321', '3342341424321', 2),
-(58, '43234', '43234', 2),
-(59, '43234', '43234', 2),
-(60, '3432235', '3432235', 2),
-(61, '3432235', '3432235', 2),
-(62, '4252342', '4252342', 2),
-(63, '3422532', '3422532', 2),
-(64, '233243', '233243', 2),
-(65, '43242', '43242', 2),
-(66, '34224', '34224', 2),
-(67, '39482', '39482', 2),
-(68, '324', '324', 2),
-(69, '2324223', '2324223', 2),
-(70, '23244234', '23244234', 2),
-(71, '323242', '323242', 2),
-(72, '34252', '34252', 2),
-(73, '3442934829', '3442934829', 2),
-(74, '123789', '55587a910882016321201e6ebbc9f595', 2),
+(28, '12346', 'a3590023df66ac92ae35e3316026d17d', 2),
+(29, '12347', '8a13dab3f5ec9e22d0d1495c8c85e436', 2),
+(30, '12348', 'ee25f924b7df4d4fb93b3da96ee342b1', 2),
+(31, '12349', '55d491cf951b1b920900684d71419282', 2),
 (75, '379972', '0dd72d32634fa44c7b3e1b093fe9a2db', 2),
 (76, '31513', '8a9707913ae744d57924ed5450567889', 2),
 (77, '2324223', '15f6af49f7580a1cd257b10a3bf27a44', 2),
@@ -343,7 +285,8 @@ ALTER TABLE `prodi`
 --
 ALTER TABLE `riwayat`
   ADD PRIMARY KEY (`riwayat_id`),
-  ADD UNIQUE KEY `f_pengaduan` (`pengaduan_id`);
+  ADD UNIQUE KEY `f_pengaduan` (`pengaduan_id`),
+  ADD KEY `riwayat_ibfk_3` (`nim`);
 
 --
 -- Indexes for table `staff`
