@@ -100,7 +100,7 @@
             data: id_pel,
             processData: false,
             contentType: false, //harusnya contentType: "application/json",
-            dataType: "json",
+            dataType:"json",
             success: function(response) {
               console.log(response.tingkat);
               
