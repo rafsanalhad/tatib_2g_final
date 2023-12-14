@@ -89,7 +89,7 @@
         </div>
         <div class="text-right">
         <form action="<?= BASEURL;?>/Mahasiswa/updateKompen/" method="post">
-          <input type="hidden" name="id" id="iniIdUpdate" value="">
+          <input type="hidden" name="id" id="iniIdUpdate">
           <input type="hidden" name="aksi" value="kerjakan">
           <button type="submit" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="kerjakan" onclick="showElement()">
             kerjakan
@@ -113,7 +113,7 @@
           <p id="catatan2"></p>
         </div>
         <div class="text-right">
-        <a href="<?= BASEURL;?>/mahasiswa/uploadBuktiKompen/<?= $dt['riwayat_id'];?>"><button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+        <a class="hrefUpUlang" href="<?= BASEURL;?>/mahasiswa/uploadBuktiKompen/<?= $dt['riwayat_id'];?>"><button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
           Upload Ulang
         </button></a>
         
@@ -166,6 +166,7 @@ const modalKompen1 = document.getElementById('modalTolak');
             success: function(response) {
               console.log(response.catatan_kompen);
               $('#catatan2').html(response.catatan_kompen);
+              $('.hrefUpUlang').attr('href', '<?= BASEURL;?>/mahasiswa/uploadBuktiKompen/' + response.riwayat_id);
             },
             error: function(error) {
               console.log(error);
