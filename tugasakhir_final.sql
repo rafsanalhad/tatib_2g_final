@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 04:16 AM
+-- Generation Time: Dec 14, 2023 at 09:20 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -143,7 +143,11 @@ INSERT INTO `pengaduan` (`pengaduan_id`, `nip`, `nim`, `pelanggaran_id`, `bukti_
 (4, '12345', '2241720148', 1, '1702180490_Pic.jpg', '2023-12-10', 'tidak valid', 'Wibu'),
 (8, '12345', '2241720228', 1, '1702190876_Pic.png', '2023-12-10', 'tidak valid', ''),
 (9, '12345', '2241720058', 3, '', '2023-12-08', 'valid', ''),
-(10, '12345', '2241720058', 3, '', '2023-12-08', 'valid', '');
+(10, '12345', '2241720058', 3, '', '2023-12-08', 'valid', ''),
+(11, '12345', '2241720228', 4, '1702538401_170.jpg', '2023-12-14', 'valid', ''),
+(12, '12345', '2241720228', 3, '1702541135_buk.jpeg', '2023-12-14', 'proses', ''),
+(13, '12345', '2241720228', 4, '1702541197_buk.jpeg', '2023-12-14', 'valid', ''),
+(14, '12345', '2241720228', 4, '1702541215_buk.jpeg', '2023-12-14', 'valid', '');
 
 -- --------------------------------------------------------
 
@@ -184,7 +188,10 @@ CREATE TABLE `riwayat` (
 --
 
 INSERT INTO `riwayat` (`riwayat_id`, `nim`, `pengaduan_id`, `status_kompen`, `catatan_kompen`, `bukti_kompen`) VALUES
-(1, '2241720040', 3, 'ditolak', 'salah', '1702523261_170.png');
+(1, '2241720040', 3, 'ditolak', 'salah', '1702523261_170.png'),
+(2, '2241720228', 11, 'baru', NULL, NULL),
+(6, '2241720228', 13, 'baru', NULL, NULL),
+(8, '2241720228', 14, 'baru', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -336,7 +343,6 @@ ALTER TABLE `prodi`
 --
 ALTER TABLE `riwayat`
   ADD PRIMARY KEY (`riwayat_id`),
-  ADD UNIQUE KEY `f_mahasiswa` (`nim`),
   ADD UNIQUE KEY `f_pengaduan` (`pengaduan_id`);
 
 --
@@ -366,7 +372,7 @@ ALTER TABLE `pelanggaran`
 -- AUTO_INCREMENT for table `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `pengaduan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `pengaduan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `prodi`
@@ -378,7 +384,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `riwayat`
 --
 ALTER TABLE `riwayat`
-  MODIFY `riwayat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `riwayat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `staff`
