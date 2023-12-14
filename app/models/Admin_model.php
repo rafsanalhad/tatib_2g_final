@@ -66,6 +66,12 @@ class Admin_model
     {
         if($param == 'terima'){
             $paramResult = 'valid';
+            $query1 = "INSERT INTO riwayat(nim, pengaduan_id, status_kompen) VALUES (:nim, :pengaduan_id, :status_kompen)";
+            $this->db->query($query1);
+            $this->db->bind('nim', $data['nim']);
+            $this->db->bind('pengaduan_id', $data['pengaduan_id']);
+            $this->db->bind('status_kompen', 'baru');
+            $this->db->execute();
         }else if($param == 'tolak'){
             $paramResult = 'tidak valid';
         }
@@ -74,7 +80,7 @@ class Admin_model
         $this->db->bind('catatan', $data['catatan']);
         $this->db->bind('status_pengaduan', $paramResult);
         $this->db->bind('pengaduan_id', $data['pengaduan_id']);
-
+        
         $this->db->execute();
         return $this->db->rowCount();
     }

@@ -202,6 +202,7 @@
       <div>
         <form action="" id="formPelanggaran">
           <input type="hidden" name="pengaduan_id" class="idLaporan">
+          <input type="hidden" name="nim" class="nimInput">
           <div class="form flex mt-3">
             <div class="block">
               <label for="sanksi">
@@ -383,6 +384,7 @@
       header: 'Content-Type: application/json',
       success: function(data) {
         $('.idLaporan').val(data.pengaduan_id);
+        $('.nimInput').val(data.nim);
         $('.namaLaporan').html(data.nama);
         $('.nimLaporan').html(data.nim);
         $('.jenkelLaporan').html(data.jenis_kelamin);
