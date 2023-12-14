@@ -16,7 +16,7 @@
       <table class="items-center w-full  mt-3">
         <tbody>
           <tr>
-            <td rowspan="10"><img src="<?= BASEURL; ?>/img/profil/mhs1.png" class="m-auto" alt="profil"></td>
+            <td rowspan="10"><img src="<?= BASEURL; ?>/img/profil/<?= $data['biodata']['mahasiswa_img']?>" class="m-auto" alt="profil"></td>
           </tr>
           <tr>
             <td>Nama</td>
@@ -69,11 +69,20 @@
         <div class="flex-1 bg-white jumlah_pelanggaran shadow-lg">
         <h3 class="pelanggaran_tbr_title">Jumlah Pelanggaran</h3>
         <?php
-        //Menghitung jumlah pengaduan yang keluar
-          // $tingkat = [0,0,0,0,0];
-          // foreach ($data['pengaduan'] as $dt) {
-          //   $tingkat[$dt['tingkat']-1] += 1;
+        // Menghitung jumlah pengaduan yang keluar
+          $tingkat = [0,0,0,0,0];
+          // foreach ($data['tingkat'] as $dt) {
+          //   $tingkat[$dt['tingkat1']] = $dt['tingkat1'];
           // }
+          for ($i = 0; $i < count($data['tingkat'])-2; $i++){
+            $tingkat[$i] = $data['tingkat']['tingkat'.($i+1)];
+            if ($tingkat[$i] != 3 || $i == 0){
+              continue;
+            }else{
+              $tingkat[$i-1] += 1;
+              $tingkat[$i] = 0; 
+            }
+          }
         ?>
         <hr class="hr_db">
         <div class="flex gap-3">
@@ -86,7 +95,7 @@
                     </div>                                        
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 1</p>
-                        <p class="font-bold"><?= $data['tingkat']['tingkat1']?></p>
+                        <p class="font-bold"><?= $tingkat[0];?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -97,7 +106,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 2</p>
-                        <p class="font-bold"><?= $data['tingkat']['tingkat2']?></p>
+                        <p class="font-bold"><?= $tingkat[1];?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -108,7 +117,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 3</p>
-                        <p class="font-bold"><?= $data['tingkat']['tingkat3']?></p>
+                        <p class="font-bold"><?= $tingkat[2]?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -120,7 +129,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 4</p>
-                        <p class="font-bold"><?= $data['tingkat']['tingkat4']?></p>
+                        <p class="font-bold"><?= $tingkat[3];?></p>
                     </div>
                 </div>
                 <div class="flex w-60 h-16 bg-white shadow-lg p-4 mb-1">
@@ -131,7 +140,7 @@
                     </div>
                     <div class="flex-auto ml-2">
                         <p class="text-xs">Pelanggaran Tingkat 5</p>
-                        <p class="font-bold"><?= $data['tingkat']['tingkat5']?></p>
+                        <p class="font-bold"><?= $tingkat[4];?></p>
                     </div>
                 </div>
             </div>
