@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 07:12 AM
+-- Generation Time: Dec 14, 2023 at 04:16 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -87,11 +87,11 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`nim`, `prodi_id`, `nama`, `TTL`, `jenis_kelamin`, `alamat`, `email`, `no_phone`, `phone_ortu`, `jumlah_pelanggaran`, `mahasiswa_img`, `user_id`) VALUES
-('2241720040', 1, 'Rizky Arifiansyah', 'Jombang, 12 April 2003', 'L', 'Jl. Kembang Turi, Malang', 'email@email.com', '0812121212', '0812121212', 0, '', 24),
-('2241720058', 1, 'Harafsan Alhad', 'Malang, 30 Mei 2004', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, '', 25),
+('2241720040', 1, 'Rizky Arifiansyah', 'Jombang, 12 April 2003', 'L', 'Jl. Kembang Turi, Malang', 'email@email.com', '0812121212', '0812121212', 0, '1702520677_170.jpg', 24),
+('2241720058', 1, 'Harafsan Alhad', 'Malang, 30 Mei 2004', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, '1702520710_har.jpeg', 25),
 ('2241720127', 1, 'Hanifah Amany', 'Malang, 30 Agustus 2004', 'P', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, '', 26),
 ('2241720148', 1, 'Irshandy Aditya', 'Malang, 02 Januari 2003', 'L', 'Jl. Soehat, Malang', 'email@email.com', '0812121212', '0812121212', 0, '', 27),
-('2241720228', 1, 'Arya Chandra', 'sorong, 30 juni 2004', 'L', 'Jl. Semanggi Barat, Malang', 'email@gmail.com', '0821212121', '0812345678', 0, '', 3);
+('2241720228', 1, 'Arya Chandra', 'sorong, 30 juni 2004', 'L', 'Jl. Semanggi Barat, Malang', 'email@gmail.com', '0821212121', '0812345678', 0, '1702520739_170.png', 3);
 
 -- --------------------------------------------------------
 
@@ -139,9 +139,11 @@ CREATE TABLE `pengaduan` (
 
 INSERT INTO `pengaduan` (`pengaduan_id`, `nip`, `nim`, `pelanggaran_id`, `bukti_pelanggaran`, `tanggal_pengaduan`, `status_pengaduan`, `catatan`) VALUES
 (2, '12345', '2241720058', 3, '', '2023-12-04', 'valid', 'Mikuuuufajjfdaljdjkfjladjfldajfldajfldajflajdljfladkjflkadjflkdjflkajfldakjfldakjfldajfljfdkajfda'),
-(3, '12345', '2241720148', 4, '', '2023-12-04', 'tidak valid', 'Miku'),
+(3, '12345', '2241720040', 4, '', '2023-12-04', 'valid', ''),
 (4, '12345', '2241720148', 1, '1702180490_Pic.jpg', '2023-12-10', 'tidak valid', 'Wibu'),
-(8, '12345', '2241720228', 1, '1702190876_Pic.png', '2023-12-10', 'tidak valid', '');
+(8, '12345', '2241720228', 1, '1702190876_Pic.png', '2023-12-10', 'tidak valid', ''),
+(9, '12345', '2241720058', 3, '', '2023-12-08', 'valid', ''),
+(10, '12345', '2241720058', 3, '', '2023-12-08', 'valid', '');
 
 -- --------------------------------------------------------
 
@@ -182,7 +184,7 @@ CREATE TABLE `riwayat` (
 --
 
 INSERT INTO `riwayat` (`riwayat_id`, `nim`, `pengaduan_id`, `status_kompen`, `catatan_kompen`, `bukti_kompen`) VALUES
-(1, '2241720040', 3, 'proses', '', '1702445463_170.jpg');
+(1, '2241720040', 3, 'ditolak', 'salah', '1702523261_170.png');
 
 -- --------------------------------------------------------
 
@@ -364,7 +366,7 @@ ALTER TABLE `pelanggaran`
 -- AUTO_INCREMENT for table `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `pengaduan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `pengaduan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `prodi`

@@ -110,7 +110,7 @@
         </button>
         <h3 class="text-2xl mb-7 font-bold">Tolak</h3>
         <div class="flex border border-grey-400">
-          <p id="catatan"></p>
+          <p id="catatan2"></p>
         </div>
         <div class="text-right">
         <a href="<?= BASEURL;?>/mahasiswa/uploadBuktiKompen/<?= $dt['riwayat_id'];?>"><button id="tutupModalKompen2" class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
@@ -164,8 +164,8 @@ const modalKompen1 = document.getElementById('modalTolak');
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-              console.log(response.alasan);
-              $('#catatan').html(response.alasan);
+              console.log(response.catatan_kompen);
+              $('#catatan2').html(response.catatan_kompen);
             },
             error: function(error) {
               console.log(error);
