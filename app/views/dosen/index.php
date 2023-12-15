@@ -17,7 +17,7 @@
           <table class="items-center w-full  mt-3">
             <tbody>
               <tr>
-                <td rowspan="9"><img class="w-40 h-60 m-auto" src="<?= BASEURL; ?>\img\profil\<?= $data['biodata']['dosen_img']; ?>" alt="profil"></td>
+                <td rowspan="9"><img class="w-40 h-60" src="<?= BASEURL; ?>\img\profil\<?= $data['biodata']['dosen_img']; ?>" alt="profil"></td>
               </tr>
               <tr>
                 <td>Nama</td>

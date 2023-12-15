@@ -34,7 +34,7 @@
             <td>Jen. Kelamin</td>
             <td><?php
                 if ($data['biodata']['jenis_kelamin'] == 'L') {
-                     echo 'Laki-laki';
+                    echo 'Laki-laki';
                 }else{
                   echo 'Perempuan';
                 }  
