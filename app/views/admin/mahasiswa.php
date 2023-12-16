@@ -158,9 +158,8 @@
                 <div class="w-3/4 inline-flex items-center titikDua">
                   <div class="mr-2">: </div>
                   <select name="jenkel" id="jenisKelamin" class="mt-1 p-2 w-full border rounded-md">
-                    <option name="jenkel" value="L">Laki-laki</option>
+                    <option name="jenkel" value="L" selected>Laki-laki</option>
                     <option name="jenkel" value="P">Perempuan</option>
-                    <option value="L" selected>Pilih Jenis Kelamin Anda</option>
                   </select>
                 </div>
               </div>
