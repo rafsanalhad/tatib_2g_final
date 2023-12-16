@@ -181,6 +181,12 @@ class Dosen_model
 
     public function hapusDataDosen($nip)
     {
+        $querySelect = "SELECT * FROM dosen WHERE nip = :nip";
+        $this->db->query($querySelect);
+        $this->db->bind('nip', $nip);
+        $res = $this->db->single();
+        $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/profil/' . $res['dosen_img'];
+        unlink($targetDir);
         $query = "DELETE FROM dosen WHERE nip = :nip";
         $this->db->query($query);
         $this->db->bind('nip', $nip);

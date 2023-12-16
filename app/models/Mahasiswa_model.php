@@ -74,6 +74,12 @@ class Mahasiswa_model
     }
     public function hapusDataMahasiswa($nim)
     {
+        $querySelect = "SELECT * FROM mahasiswa WHERE nim = :nim";
+        $this->db->query($querySelect);
+        $this->db->bind('nim', $nim);
+        $res = $this->db->single();
+        $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/profil/' . $res['mahasiswa_img'];
+        unlink($targetDir);
         $query = "DELETE FROM mahasiswa WHERE nim = :nim";
         $this->db->query($query);
         $this->db->bind('nim', $nim);
