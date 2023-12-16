@@ -20,7 +20,7 @@
               </div>
               <div class="grid grid-cols-2 gap-4 mt-5">
                 <div class="bg-white p-4 shadow-lg">
-                  <div class="inline-flex">
+                  <div class="inline-flex cardDb">
                     <img src="<?= BASEURL; ?>/img/dashboard_icon/dosen.png" alt="">
                     <div class="block ml-2">
                       <div class="text-2xl inline">Dosen</div>
@@ -29,7 +29,7 @@
                   </div>
                 </div>
                 <div class="bg-white p-4 shadow-lg">
-                  <div class="inline-flex">
+                  <div class="inline-flex cardDb">
                     <img src="<?= BASEURL; ?>/img/dashboard_icon/jurusan.png" alt="">
                     <div class="block ml-2">
                       <div class="text-2xl inline">Mahasiswa</div>
@@ -38,7 +38,7 @@
                   </div>
                 </div>
                 <div class="bg-white p-4 shadow-lg">
-                  <div class="inline-flex">
+                  <div class="inline-flex cardDb">
                     <img src="<?= BASEURL; ?>/img/dashboard_icon/pelanggaran.png" alt="">
                     <div class="block ml-2">
                       <div class="text-2xl inline">Prodi</div>
@@ -47,7 +47,7 @@
                   </div>
                 </div>
                 <div class="bg-white p-4 shadow-lg">
-                  <div class="inline-flex">
+                  <div class="inline-flex cardDb">
                     <img src="<?= BASEURL; ?>/img/dashboard_icon/user.png" alt="">
                     <div class="block ml-2">
                       <div class="text-2xl inline">Pelanggaran</div>
@@ -104,3 +104,17 @@
         
         <!-- end data dosen  -->
       </div>
+      <script>
+        $(window).on('load resize', function () {
+                // Memeriksa apakah lebar layar kurang dari atau sama dengan 900px
+                if ($(window).width() <= 900) {
+                    // Menghapus kelas 'cardDb'
+                    $('.cardDb').removeClass('inline-flex');
+                    $('.cardDb').addClass('inline-block');
+                } else {
+                    // Menambahkan kembali kelas 'cardDb' jika lebar layar lebih besar dari 900px
+                    $('.cardDb').removeClass('inline-block');
+                    $('.cardDb').addClass('inline-flex');
+                }
+            });
+      </script>

@@ -12,6 +12,7 @@
         <form action="<?= BASEURL; ?>/login/prosesLogin" method="post">
             <div class="max-w-screen-sm bg-white rounded-[62px] border-4 border-sky-600 flex justify-center items-center">
                 <div class="flex flex-col p-10">
+                    <?php Flasher::flash(); ?>
                     <label for="username" class="text-neutral-400 text-2xl font-normal font-['Inter'] m-auto">Username:</label>
                     <input type="text" id="username" name="username" class="w-[250px] h-[40px] border border-neutral-400 rounded-[10px] pl-1"/>
                     <label for="password" class="text-neutral-400 text-2xl font-normal font-['Inter'] m-auto mt-[10px]">Password:</label>
