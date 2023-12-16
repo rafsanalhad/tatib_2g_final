@@ -46,6 +46,15 @@ class Dosen_model
         $this->db->bind('username', $data['nip']);
         $res = $this->db->single();
 
+        $queryCheck = "SELECT * FROM " . $this->table . " WHERE nip=:nip";
+        $this->db->query($queryCheck);
+        $this->db->bind('nip', $data['nip']);
+        $queryCheckNip = $this->db->single();
+
+        if($queryCheckNip != null){
+            return 0;
+        }
+
         $query3 = "INSERT INTO " . $this->table . "
                 VALUES
                 (:nip, :nama, :TTL, :jenis_kelamin, :jabatan, :email, :no_phone, :alamat, :dosen_img, :user_id)";
@@ -61,7 +70,6 @@ class Dosen_model
 
         // Handling file upload
         $uploadedFileName = $this->handleFileUpload();
-        echo $uploadedFileName;
 
 
         //Bind the uploaded file name to the query

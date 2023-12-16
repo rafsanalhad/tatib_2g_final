@@ -43,6 +43,15 @@ class Mahasiswa_model
         $this->db->query($query2);
         $this->db->bind('username', $data['nim']);
         $res = $this->db->single();
+
+        $queryCheck = "SELECT * FROM " . $this->table . " WHERE nim=:nim";
+        $this->db->query($queryCheck);
+        $this->db->bind('nim', $data['nim']);
+        $queryCheckNim = $this->db->single();
+
+        if ($queryCheckNim != null) {
+            return 0;
+        }
         $uploadedFileName = $this->handleFileUpload();
         $query3 = "INSERT INTO " . $this->table . "
                 VALUES
@@ -85,7 +94,7 @@ class Mahasiswa_model
     public function editDataMahasiswa($data)
     {
         $checkData = $this->getMahasiswaByNim($data['nim']);
-        $dataUploaded= $_FILES['imgMahasiswa']['name'];
+        $dataUploaded = $_FILES['imgMahasiswa']['name'];
         $uploadedFileName = $this->handleFileUploadEdit($dataUploaded, $checkData['mahasiswa_img']);
         $query = "UPDATE mahasiswa SET nama = :nama, TTL = :TTL, jenis_kelamin = :jenis_kelamin, alamat = :alamat, email = :email, no_phone= :no_phone, phone_ortu = :phone_ortu, mahasiswa_img= :mahasiswa_img WHERE nim = :nim";
         $this->db->query($query);

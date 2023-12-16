@@ -62,7 +62,7 @@
                     <td class="py-2 px-4 border-r">
                       <div class="inline-flex">
                         <a href="#" onclick="showModalById(<?= $row['nip'] ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="#" onclick="hapusDataDosen(<?= $row['nip']?>, <?= $row['user_id'] ?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
+                        <a href="#" onclick="hapusDataDosen(<?= $row['nip'] ?>, <?= $row['user_id'] ?>);" class="bg-red-500 hover:bg-red-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></a>
                       </div>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
@@ -107,6 +107,9 @@
             <img src="<?= BASEURL; ?>/img/icon/Group.png" alt="" style="padding: 50px;" id="noImgDosen">
             <input type="file" id="imgInputDosen" name="imgDosen" accept="image/*" style="display: none;">
             <div id="preview"></div>
+          </div>
+          <div class="error_msg_gambar hidden block" style="position: absolute; top: 460px; left: 30px;">
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500 block"><span class="font-medium">Maaf,</span> Gambar tidak boleh kosong!</p>
           </div>
           <div class="containerFormModal md:w-4/6 ml-3">
             <div class="mb-2">
@@ -162,12 +165,18 @@
                 <div class="w-2/4">
                   <label for="jenkel" id="jenkelLabel" class="block text-sm font-medium text-gray-900">Jenis Kelamin
                 </div>
-                <div class="w-3/4 inline-flex titikDua">
-                  <div class="mr-2">: </div>
-                  <select name="jenkel" id="jenisPelanggaran" class="mt-1 p-2 w-full border rounded-md">
-                    <option name="jenkel" value="L" selected>Laki-laki</option>
-                    <option name="jenkel" value="P">Perempuan</option>
-                  </select>
+                <div class="w-3/4 inline-flex items-center">
+                  <div class="mr-2 flex-shrink-0 flex titikDua">:</div>
+                  <div class="flex-grow flex_error_msg">
+                    <select name="jenkel" id="jenisPelanggaran" class="mt-1 p-2 w-full border rounded-md">
+                      <option name="jenkel" value="null">Pilih Jenis Kelamin</option>
+                      <option name="jenkel" value="L">Laki-laki</option>
+                      <option name="jenkel" value="P">Perempuan</option>
+                    </select>
+                    <div class="error_msg_jenkel hidden">
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500 block email_err_msg"><span class="font-medium">Maaf!</span> Jenis kelamin tidak boleh kosong!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -252,22 +261,22 @@
 </div>
 </div>
 <script>
-  let checkTypeSubmit= null;
+  let checkTypeSubmit = null;
   const hapusDataDosen = (nip, userid) => {
-          Swal.fire({
-            title: 'Apakah anda yakin ingin menghapus data?',
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonColor: '#28a745',
-            confirmButtonText: `Hapus`,
-            denyButtonText: `Batal`,
-          }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                window.location.href = "<?= BASEURL; ?>/Admin/hapusDosen/" + nip + "/" + userid;
-            }
-          })
-        }
+    Swal.fire({
+      title: 'Apakah anda yakin ingin menghapus data?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonColor: '#28a745',
+      confirmButtonText: `Hapus`,
+      denyButtonText: `Batal`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        window.location.href = "<?= BASEURL; ?>/Admin/hapusDosen/" + nip + "/" + userid;
+      }
+    })
+  }
   $(document).ready(function() {
     $('#formTambahDosen').on("submit", function(e) {
       e.preventDefault();
@@ -305,9 +314,31 @@
       handleCondition('#no_phone', '.error_msg_no_phone', '.titikDuaNoPhone');
       handleCondition('#alamat', '.error_msg_alamat', '.titikDuaAlamat');
       handleCondition('#email', '.error_msg_email', '.titikDuaEmail');
+      var imgInputValue = $("#imgInputDosen").val();
+      var previewContent = $("#preview").html();
+      let jenkel = $('#jenisPelanggaran').val();
+
+      // Melakukan validasi
+      if (imgInputValue === "" && previewContent === "") {
+        // Menampilkan pesan error jika input gambar dan preview kosong
+        $('.error_msg_gambar').removeClass('hidden');
+        $('.error_msg_gambar').addClass('block');
+        semuaKondisiTerpenuhi = false;
+      } else {
+        $('.error_msg_gambar').addClass('hidden');
+        $('.error_msg_gambar').removeClass('block');
+      }
+      if (jenkel === "null") {
+        $('.error_msg_jenkel').removeClass('hidden');
+        $('.error_msg_jenkel').addClass('block');
+        semuaKondisiTerpenuhi = false;
+      } else {
+        $('.error_msg_jenkel').addClass('hidden');
+        $('.error_msg_jenkel').removeClass('block');
+      }
 
       if (semuaKondisiTerpenuhi) {
-        if($('.headerModal').html() == 'Tambah Data Dosen'){
+        if ($('.headerModal').html() == 'Tambah Data Dosen') {
           let formData = new FormData($('#formTambahDosen')[0]);
           $.ajax({
             url: '<?= BASEURL; ?>/Admin/tambahDosen',
@@ -317,21 +348,29 @@
             contentType: false,
             success: function(response) {
               console.log(response);
-              Swal.fire({
-                title: "Berhasil!",
-                text: "Data dosen berhasil ditambahkan!",
-                icon: "success"
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  window.location.reload();
-                }
-              });
+              if (response == 'berhasil') {
+                Swal.fire({
+                  title: "Berhasil!",
+                  text: "Data dosen berhasil ditambahkan!",
+                  icon: "success"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
+                });
+              } else {
+                Swal.fire({
+                  title: "Gagal!",
+                  text: response,
+                  icon: "error"
+                });
+              }
             },
             error: function(error) {
               alert("Error: " + xhr.status + "\n" + xhr.responseText);
             }
           });
-        }else if($('.headerModal').html() == 'Edit Data Dosen'){
+        } else if ($('.headerModal').html() == 'Edit Data Dosen') {
           let formData = new FormData($('#formTambahDosen')[0]);
           $.ajax({
             url: '<?= BASEURL; ?>/Admin/editDosen',

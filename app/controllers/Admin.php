@@ -27,15 +27,17 @@ class Admin extends Controller{
     }
     public function tambahDosen(){
         if ($this->model('Dosen_model')->tambahDataDosen($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/admin/dosen');
-            echo "dosen berhasil ditambah";
-            exit;
+            // Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            // header('Location: ' . BASEURL . '/admin/dosen');
+            // echo "dosen berhasil ditambah";
+            // exit;
+            echo "berhasil";
         }else{
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/admin/dosen');
-            echo "dosen gagal ditambah";
-            exit;
+            // Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            // header('Location: ' . BASEURL . '/admin/dosen');
+            // echo "dosen gagal ditambah";
+            // exit;
+            echo "gagal karena nip sudah ada";
         }
     }
     public function getDosenByNip($nip){
@@ -77,12 +79,11 @@ class Admin extends Controller{
     }
     public function tambahMahasiswa(){
         if ($this->model('Mahasiswa_model')->tambahDataMahasiswa($_POST) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/admin/mahasiswa');
-            exit;
+            echo "berhasil";
         }else{
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
-            header('Location: ' . BASEURL . '/admin/mahasiswa');
+            // Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            // header('Location: ' . BASEURL . '/admin/mahasiswa');
+            echo "gagal karena nim sudah ada";
             exit;
         }
     }
