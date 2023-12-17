@@ -6,7 +6,7 @@
     <h1 class="text-2xl font-bold mb-2">Laporan Kompen</h1>
 
     <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
-      <div class="flex-1 ml-4">Kelola Data Mahasiswa</div>
+      <div class="flex-1 ml-4">Kelola Laporan Kompen</div>
     </div>
     <hr class="hr_db">
     <div class="flex bg-white">
