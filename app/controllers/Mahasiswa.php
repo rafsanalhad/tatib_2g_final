@@ -14,12 +14,13 @@ class Mahasiswa extends Controller{
         $this->view('templates/mahasiswa/footer');
     }
     public function riwayatPelanggaran(){
+        $data['biodata'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($_SESSION['username']);
         $data['kompen'] = $this->model('Kompen_model')->getKompenByNim($_SESSION['username']);
         // $data['pelanggaran'] = $this->model('Pelanggaran_model')->getPelanggaranByNim($_SESSION['username']);
         // var_dump($data['kompen']);
         // die();
         // $data['pengaduan'] = $this->model('Pengaduan_model')->getPengaduanByNim($_SESSION['username']);
-        $this->view('templates/mahasiswa/header');
+        $this->view('templates/mahasiswa/header', $data);
         $this->view('mahasiswa/riwayatPelanggaran', $data);
         $this->view('templates/mahasiswa/footer');
     }
@@ -40,12 +41,14 @@ class Mahasiswa extends Controller{
         }
     }
     public function uploadBuktiKompen($data){
-        $this->view('templates/mahasiswa/header');
+        $data['biodata'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($_SESSION['username']);
+        $this->view('templates/mahasiswa/header', $data);
         $this->view('mahasiswa/uploadBuktiKompen', $data);
         $this->view('templates/mahasiswa/footer');
     }
     public function ubahPassword(){
-        $this->view('templates/mahasiswa/header');
+        $data['biodata'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($_SESSION['username']);
+        $this->view('templates/mahasiswa/header', $data);
         $this->view('mahasiswa/ubahPassword');
         $this->view('templates/mahasiswa/footer');
     }

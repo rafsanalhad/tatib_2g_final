@@ -14,8 +14,9 @@ class Dosen extends Controller{
         $this->view('templates/dosen/footer');
     }
     public function riwayatPengaduan(){
+        $data['biodata'] = $this->model('Dosen_model')->getDosenBySessionLogin($_SESSION['username']);
         $data['pengaduan'] = $this->model('Pengaduan_model')->getPengaduanByNip($_SESSION['username']);
-        $this->view('templates/dosen/header');
+        $this->view('templates/dosen/header', $data);
         $this->view('dosen/riwayatPengaduan', $data);
         $this->view('templates/dosen/footer');
     }
@@ -50,7 +51,8 @@ class Dosen extends Controller{
         }
     }
     public function ubahPassword(){
-        $this->view('templates/dosen/header');
+        $data['biodata'] = $this->model('Dosen_model')->getDosenBySessionLogin($_SESSION['username']);
+        $this->view('templates/dosen/header', $data);
         $this->view('dosen/ubahPassword');
         $this->view('templates/dosen/footer');
     }
