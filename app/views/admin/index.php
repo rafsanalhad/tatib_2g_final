@@ -105,6 +105,7 @@
         <!-- end data dosen  -->
       </div>
       <script>
+        $('#dashboard_nav').addClass('bg-blue-400');
         $(window).on('load resize', function () {
                 // Memeriksa apakah lebar layar kurang dari atau sama dengan 900px
                 if ($(window).width() <= 900) {

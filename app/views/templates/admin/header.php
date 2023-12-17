@@ -42,37 +42,42 @@
           </div>
         </div>
         <ul>
-          <li class="mb-2 sidebar_item" id="dashboard_nav"><a href="<?= BASEURL; ?>/admin" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
-          <li class="mb-2 sidebar_item" id="data_dosen_nav"><a href="<?= BASEURL; ?>/admin/dosen" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_dosen.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
-          <li class="mb-2 sidebar_item" id="data_mahasiswa_nav"><a href="<?= BASEURL; ?>/admin/mahasiswa" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_mahasiswa.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
-          <li class="mb-2 sidebar_item relative" id="laporan_nav">
+          <li class="sidebar_item hover:bg-blue-100 h-8 flex items-center" id="dashboard_nav"><a href="<?= BASEURL; ?>/admin" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/dashboard.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Dashboard</span></a></li>
+          <li class="sidebar_item h-8 flex items-center" id="data_dosen_nav"><a href="<?= BASEURL; ?>/admin/dosen" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_dosen.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
+          <li class="sidebar_item h-8 flex items-center" id="data_mahasiswa_nav"><a href="<?= BASEURL; ?>/admin/mahasiswa" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_mahasiswa.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
+          <li class="sidebar_item h-8 flex items-center z-50" id="ubahpassword_nav"><a href="<?= BASEURL; ?>/admin/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/ubahPassword.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
+          <li class="sidebar_item relative h-8 pt-1" id="laporan_nav">
             <a href="#" class="text_sidebar flex items-center">
-              <img src="<?= BASEURL; ?>/img/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt="">
+              <img src="<?= BASEURL; ?>/img/icon/laporan_penggunaan.png" class="inline icon_sidebar w-5 h-5" alt="">
               <span class="sidebar_text">Data Laporan</span>
             </a>
-            <ul class="left-0 top-full hidden mt-2 bg-white submenu_laporan">
-              <li id="laporan_pelanggaran_nav"><a href="<?= BASEURL; ?>/admin/laporanPelanggaran" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/warning.png" class="inline icon_sidebar" alt="">Laporan Pelanggaran</a></li>
-              <li id="laporan_kompen_nav"><a href="<?= BASEURL; ?>/admin/laporanKompen" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/centangKotak.png" class="inline icon_sidebar" alt="">Laporan Kompen</a></li>
+            <ul class="absolute left-0 hidden mt-2 bg-white submenu_laporan h-16">
+              <li id="laporan_pelanggaran_nav" class="h-8"><a href="<?= BASEURL; ?>/admin/laporanPelanggaran" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/warning.png" class="inline icon_sidebar w-5 h-5" alt="">Laporan Pelanggaran</a></li>
+              <li id="laporan_kompen_nav" class="h-8"><a href="<?= BASEURL; ?>/admin/laporanKompen" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/centangKotak.png" class="inline icon_sidebar w-5 h-5" alt="">Laporan Kompen</a></li>
             </ul>
           </li>
-          <li class="mb-2 sidebar_item" id="ubahpassword_nav"><a href="<?= BASEURL; ?>/admin/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/ubahPassword.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
-          <li class="mb-2 sidebar_item"><a href="#" onclick="confirmLogin()" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
+          <li id="logout_nav" class="sidebar_item h-8 flex items-center z-50"><a href="#" onclick="confirmLogin()" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/logout.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">LogOut</span></a></li>
         </ul>
       </aside>
       <script>
-        // Script untuk menangani keadaan aktif pada elemen
-        document.addEventListener('DOMContentLoaded', function() {
-          const sidebarItems = document.querySelectorAll('.sidebar_item');
+        document.addEventListener("DOMContentLoaded", function() {
+          var submenuLaporan = document.querySelector('.submenu_laporan');
+          var logoutNav = document.getElementById('logout_nav');
+          var sidebarItems = document.querySelectorAll('.sidebar_item');
 
-          sidebarItems.forEach(item => {
+          sidebarItems.forEach(function(item) {
             item.addEventListener('click', function() {
-              sidebarItems.forEach(item => item.classList.remove('sidebar_item_aktif'));
-              this.classList.add('sidebar_item_aktif');
+              // Ambil elemen <a> di dalam <li>
+              var linkElement = this.querySelector('a');
+
+              // Ambil nilai atribut href dari elemen <a>
+              var url = linkElement.getAttribute('href');
+
+              // Arahkan pengguna ke URL yang sesuai
+              window.location.href = url;
             });
           });
         });
-      </script>
-      <script>
         const confirmLogin = () => {
           Swal.fire({
             title: 'Apakah anda yakin ingin keluar?',
@@ -93,8 +98,15 @@
           var dropdown = laporanNav.querySelector('ul');
 
           laporanNav.addEventListener('click', function() {
-            laporanNav.classList.add('active_dropdown_laporan');
-            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+            if (dropdown.classList.contains('hidden')) {
+              dropdown.classList.remove('hidden');
+              var logoutNav = document.getElementById('logout_nav');
+              logoutNav.classList.add('mt-16');
+            } else {
+              dropdown.classList.add('hidden');
+              var logoutNav = document.getElementById('logout_nav');
+              logoutNav.classList.remove('mt-16');
+            }
           });
         });
       </script>

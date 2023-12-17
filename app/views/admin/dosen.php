@@ -261,6 +261,7 @@
 </div>
 </div>
 <script>
+  $('#data_dosen_nav').addClass('bg-blue-400');
   let checkTypeSubmit = null;
   const hapusDataDosen = (nip, userid) => {
     Swal.fire({

@@ -276,6 +276,7 @@
 </div>
 </div>
 <script>
+  $('#data_mahasiswa_nav').addClass('bg-blue-400');
   let checkTypeSubmit = null;
   const hapusMahasiswa = (nim, userid) => {
     Swal.fire({
