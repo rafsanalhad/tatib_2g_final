@@ -41,7 +41,7 @@
             <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
           </div>
         </div>
-        <ul>  
+        <ul>
           <li class="sidebar_item h-8 flex items-center" id="dashboard_nav"><a href="<?= BASEURL; ?>/admin" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/dashboard.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Dashboard</span></a></li>
           <li class="sidebar_item h-8 flex items-center" id="data_dosen_nav"><a href="<?= BASEURL; ?>/admin/dosen" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_dosen.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
           <li class="sidebar_item h-8 flex items-center" id="data_mahasiswa_nav"><a href="<?= BASEURL; ?>/admin/mahasiswa" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_mahasiswa.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
@@ -51,11 +51,11 @@
               <img src="<?= BASEURL; ?>/img/icon/laporan_penggunaan.png" class="inline icon_sidebar w-5 h-5" alt="">
               <span class="sidebar_text">Data Laporan</span>
             </a>
-            <ul class="absolute left-0 hidden mt-2 bg-white submenu_laporan h-16">
-              <li id="laporan_pelanggaran_nav" class="h-8"><a href="<?= BASEURL; ?>/admin/laporanPelanggaran" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/warning.png" class="inline icon_sidebar w-5 h-5" alt="">Laporan Pelanggaran</a></li>
-              <li id="laporan_kompen_nav" class="h-8"><a href="<?= BASEURL; ?>/admin/laporanKompen" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/centangKotak.png" class="inline icon_sidebar w-5 h-5" alt="">Laporan Kompen</a></li>
-            </ul>
           </li>
+          <ul class="absolute left-5 hidden bg-white submenu_laporan h-16">
+            <li id="laporan_pelanggaran_nav" class="h-8 sidebar_item"><a href="<?= BASEURL; ?>/admin/laporanPelanggaran" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/warning.png" class="inline icon_sidebar w-5 h-5" alt="">Laporan Pelanggaran</a></li>
+            <li id="laporan_kompen_nav" class="h-8 sidebar_item"><a href="<?= BASEURL; ?>/admin/laporanKompen" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/centangKotak.png" class="inline icon_sidebar w-5 h-5" alt="">Laporan Kompen</a></li>
+          </ul>
           <li id="logout_nav" class="sidebar_item h-8 flex items-center z-50"><a href="#" onclick="confirmLogin()" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/logout.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">LogOut</span></a></li>
         </ul>
       </aside>
@@ -95,16 +95,16 @@
         }
         document.addEventListener('DOMContentLoaded', function() {
           var laporanNav = document.getElementById('laporan_nav');
-          var dropdown = laporanNav.querySelector('ul');
+          var dropdown = document.querySelector('.submenu_laporan');
           let sidebar = document.querySelector('.sidebar');
 
           laporanNav.addEventListener('click', function() {
             if (dropdown.classList.contains('hidden')) {
               dropdown.classList.remove('hidden');
-              if(sidebar.classList.contains('sidebar_toggled')){
+              if (sidebar.classList.contains('sidebar_toggled')) {
                 // var logoutNav = document.getElementById('logout_nav');
                 // logoutNav.classList.add('mt-16');
-              }else{
+              } else {
                 var logoutNav = document.getElementById('logout_nav');
                 logoutNav.classList.add('mt-16');
               }

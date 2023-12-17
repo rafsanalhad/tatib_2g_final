@@ -250,7 +250,9 @@
   </div>
 </div>
 <script>
-    $('#laporan_nav').addClass('bg-blue-400');
+    $('.submenu_laporan').removeClass('hidden');
+    $('#logout_nav').addClass('mt-16');
+    $('#laporan_kompen_nav').addClass('bg-blue-400');
   $(document).ready(function() {
 
 
