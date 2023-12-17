@@ -3,7 +3,7 @@
   <div class="containerBars_toggled">
     <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
   </div>
-  <h1 class="text-2xl font-bold mb-2">Dashboard</h1>
+  <h1 class="text-2xl font-bold mb-2">Dashboard Mahasiswa</h1>
   <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
     <div class="flex-1 ml-4">Ringkasan System</div>
   </div>
