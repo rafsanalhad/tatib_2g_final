@@ -65,10 +65,10 @@
                         </button>
                       <?php } else if ($row['status_pengaduan'] ==  'proses') { ?>
                         <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner"></i>
-                        </a>
-                      <?php } else if ($row['status_pengaduan'] == 'baru') { ?>
-                        <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
-                        </button>
+                          </a>
+                        <?php } else if ($row['status_pengaduan'] == 'baru') { ?>
+                          <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i>
+                          </button>
                         <?php } ?>
                     </td>
                     <!-- Tambahkan data lainnya sesuai kebutuhan -->
@@ -247,7 +247,9 @@
   </div>
 </div>
 <script>
-    $('#laporan_nav').addClass('bg-blue-400');
+  $('#laporan_pelanggaran_nav').addClass('bg-blue-400');
+  $('.submenu_laporan').removeClass('hidden');
+  $('#logout_nav').addClass('mt-16');
   $(document).ready(function() {
 
 
