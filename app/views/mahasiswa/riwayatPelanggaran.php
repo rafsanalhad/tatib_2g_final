@@ -3,7 +3,6 @@
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
-      <?php Flasher::flash();?>
       <h1 class="text-2xl font-bold mb-2">Riwayat Pelanggaran</h1>
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
         <div class="flex-1 ml-4"><?php ?></div>
@@ -11,7 +10,6 @@
       <hr class="hr_db">
       <div class="flex bg-white flex-col xl:flex-row">
         <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
-        <?php Flasher::flash(); ?>
         <div class="grid grid-cols-1 gap-4 mt-5">
         <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
           <table id="tableMahasiswa" class="min-w-full border ">
