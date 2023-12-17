@@ -273,7 +273,23 @@
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        window.location.href = "<?= BASEURL; ?>/Admin/hapusDosen/" + nip + "/" + userid;
+        $.ajax({
+          url: '<?= BASEURL; ?>/Admin/hapusDosen/' + nip + '/' + userid,
+          type: 'GET',
+          success: function(response) {
+            console.log(response);
+            Swal.fire({
+              title: 'Berhasil!',
+              text: 'Data dosen berhasil dihapus!',
+              icon: 'success',
+              confirmButtonColor: '#28a745',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
+          }
+        });
       }
     })
   }
