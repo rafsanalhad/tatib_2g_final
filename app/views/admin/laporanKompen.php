@@ -30,56 +30,55 @@
               </thead>
               <?php
               foreach ($data['laporanKompen'] as $row) :
-                if ($row['status_kompen'] != 'baru' && ($row['status_kompen'] != 'sedang dikerjakan')) 
-                {
+                if ($row['status_kompen'] != 'baru' && ($row['status_kompen'] != 'sedang dikerjakan')) {
               ?>
-                <tbody>
-                  <!-- Tambahkan baris-baris data di sini -->
-                  <tr class="border-b">
-                    <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
-                    <td class="py-2 px-4 border-r"><?= $row['nama_dosen']; ?></td>
-                    <td class="py-2 px-4 border-r">
-                      <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
-                    </td>
-                    <td class="py-2 px-4 border-r">
-                      <p class="nama_dosen_table inline"><?= $row['nim']; ?></p>
-                    </td>
-                    <td class="py-2 px-4 border-r text-center"><?php
-                                                                if ($row['tingkat'] == '1') {
-                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
-                                                                } elseif ($row['tingkat'] == '2') {
-                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
-                                                                } elseif ($row['tingkat'] == '3') {
-                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
-                                                                } elseif ($row['tingkat'] == '4') {
-                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
-                                                                } elseif ($row['tingkat'] == '5') {
-                                                                  echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
-                                                                }
-                                                                ?></td>
-                    <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
-                    <td class="py-2 px-4 border-r flex p-2 gap-2 ">
-                    <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
-                      <?php if ($row['status_kompen'] ==  'selesai') { ?>
-                        <button class="bg-green-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></button>
-                      <?php } else if ($row['status_kompen'] ==  'ditolak'){?>
-                        <button class="bg-red-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
-                        </button>
-                      <?php } else if ($row['status_kompen'] == 'proses') { ?>
-                        <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner"></i>
-                        </a>
-                        <!-- biru ceklist -->
-                        <!-- <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i> -->
-                      <?php } ?>
-                    </td>
-                    
-                    <!-- Tambahkan data lainnya sesuai kebutuhan -->
-                  </tr>
+                  <tbody>
+                    <!-- Tambahkan baris-baris data di sini -->
+                    <tr class="border-b">
+                      <td class="py-2 px-4 border-r"><?= $row['tanggal_pengaduan']; ?></td>
+                      <td class="py-2 px-4 border-r"><?= $row['nama_dosen']; ?></td>
+                      <td class="py-2 px-4 border-r">
+                        <p class="nama_dosen_table inline"><?= $row['nama']; ?></p>
+                      </td>
+                      <td class="py-2 px-4 border-r">
+                        <p class="nama_dosen_table inline"><?= $row['nim']; ?></p>
+                      </td>
+                      <td class="py-2 px-4 border-r text-center"><?php
+                                                                  if ($row['tingkat'] == '1') {
+                                                                    echo '<div class="w-[130px] h-[30px] rounded-md bg-red-700 px-1 text-lg font-medium text-white">Sangat Berat</div>';
+                                                                  } elseif ($row['tingkat'] == '2') {
+                                                                    echo '<div class="w-[130px] h-[30px] rounded-md bg-orange-600 px-1 text-lg font-medium text-white">Berat</div>';
+                                                                  } elseif ($row['tingkat'] == '3') {
+                                                                    echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-500 px-1 text-lg font-medium text-white">Cukup Berat</div>';
+                                                                  } elseif ($row['tingkat'] == '4') {
+                                                                    echo '<div class="w-[130px] h-[30px] rounded-md bg-yellow-200 px-1 text-lg font-medium text-yellow-600">Sedang</div>';
+                                                                  } elseif ($row['tingkat'] == '5') {
+                                                                    echo '<div class="w-[130px] h-[30px] rounded-md bg-green-200 px-1 text-lg font-medium text-green-700">Ringan</div>';
+                                                                  }
+                                                                  ?></td>
+                      <td class="py-2 px-4 border-r"><?= $row['pelanggaran']; ?></td>
+                      <td class="py-2 px-4 border-r flex p-2 gap-2 ">
+                        <a href="#" onclick="showModalKompen(<?= $row['riwayat_id']; ?>);" class="bg-yellow-500 hover:bg-yellow-700 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-info-circle"></i></a>
+                        <?php if ($row['status_kompen'] ==  'selesai') { ?>
+                          <button class="bg-green-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fa-solid fa-check"></i></button>
+                        <?php } else if ($row['status_kompen'] ==  'ditolak') { ?>
+                          <button class="bg-red-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-times"></i>
+                          </button>
+                        <?php } else if ($row['status_kompen'] == 'proses') { ?>
+                          <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-spinner"></i>
+                            </a>
+                            <!-- biru ceklist -->
+                            <!-- <button class="bg-blue-500 sm:right-[-100px] text-white font-bold py-2 px-4 rounded inline"><i class="fas fa-check"></i> -->
+                          <?php } ?>
+                      </td>
+
+                      <!-- Tambahkan data lainnya sesuai kebutuhan -->
+                    </tr>
                 <?php
                 }
               endforeach;
                 ?>
-                </tbody>
+                  </tbody>
             </table>
           </div>
           <!-- Tambahkan elemen sesuai kebutuhan Anda -->
@@ -250,9 +249,15 @@
   </div>
 </div>
 <script>
-    $('.submenu_laporan').removeClass('hidden');
+  $('#laporan_kompen_nav').addClass('bg-blue-400');
+  $('.submenu_laporan').removeClass('hidden');
+  let sidebar = document.querySelector('.sidebar');
+  if (sidebar.classList.contains('sidebar_toggled')) {
+    $('#logout_nav').removeClass('mt-16');
+  } else {
     $('#logout_nav').addClass('mt-16');
-    $('#laporan_kompen_nav').addClass('bg-blue-400');
+  }
+  $('#logout_nav').addClass('mt-16');
   $(document).ready(function() {
 
 
