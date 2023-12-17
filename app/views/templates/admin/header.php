@@ -41,7 +41,7 @@
             <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
           </div>
         </div>
-        <ul>
+        <ul>  
           <li class="sidebar_item hover:bg-blue-100 h-8 flex items-center" id="dashboard_nav"><a href="<?= BASEURL; ?>/admin" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/dashboard.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Dashboard</span></a></li>
           <li class="sidebar_item h-8 flex items-center" id="data_dosen_nav"><a href="<?= BASEURL; ?>/admin/dosen" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_dosen.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
           <li class="sidebar_item h-8 flex items-center" id="data_mahasiswa_nav"><a href="<?= BASEURL; ?>/admin/mahasiswa" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_mahasiswa.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
