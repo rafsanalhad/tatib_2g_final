@@ -91,18 +91,4 @@ class Pengaduan_model
             echo "File yang diunggah bukan gambar atau format file tidak diizinkan.";
         }
     }
-    public function tolakPengaduan($data)
-    {
-        $query = "UPDATE pengaduan SET status_pengaduan = 'tidak valid', catatan = :catatan WHERE pengaduan_id = :id";
-        $this->db->query($query);
-        $this->db->bind('id', $data['id']);
-        $this->db->bind('catatan', $data['catatan']);
-        $this->db->execute();
-        $queryEditRiwayat = "UPDATE riwayat SET status_kompen = 'tidak valid' WHERE riwayat_id = :idRiwayat";
-        $this->db->query($queryEditRiwayat);
-        $this->db->bind('idRiwayat', $data['idRiwayat']);
-        $this->db->execute();
-        return $this->db->rowCount();
-    }
-
 }

@@ -69,11 +69,4 @@ class Mahasiswa extends Controller{
             exit;
         }
     }
-    public function tolakPengaduan(){
-        if ($this->model('Pengaduan_model')->tolakPengaduan($_POST) > 0) {
-            echo "sukses";
-        }else{
-            echo "gagal";
-        }
-    }
 }
