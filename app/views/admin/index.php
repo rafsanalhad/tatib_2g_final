@@ -23,7 +23,7 @@
                   <div class="inline-flex cardDb">
                     <img src="<?= BASEURL; ?>/img/dashboard_icon/dosen.png" alt="">
                     <div class="block ml-2">
-                      <div class="text-2xl inline">Dosen</div>
+                      <div class="text-base inline">Dosen</div>
                       <div class="text-xl block"><?php echo $data['dosen']['jumlah_dosen'] ?></div>
                     </div>
                   </div>
@@ -32,7 +32,7 @@
                   <div class="inline-flex cardDb">
                     <img src="<?= BASEURL; ?>/img/dashboard_icon/jurusan.png" alt="">
                     <div class="block ml-2">
-                      <div class="text-2xl inline">Mahasiswa</div>
+                      <div class="text-base inline">Mahasiswa</div>
                       <div class="text-xl block"><?php echo $data['mahasiswa']['jumlah_mahasiswa']?></div>
                     </div>
                   </div>
@@ -41,7 +41,7 @@
                   <div class="inline-flex cardDb">
                     <img src="<?= BASEURL; ?>/img/dashboard_icon/pelanggaran.png" alt="">
                     <div class="block ml-2">
-                      <div class="text-2xl inline">Prodi</div>
+                      <div class="text-base inline">Prodi</div>
                       <div class="text-xl block"><?php echo $data['prodi']['jumlah_prodi']  ?></div>
                     </div>
                   </div>
@@ -50,7 +50,7 @@
                   <div class="inline-flex cardDb">
                     <img src="<?= BASEURL; ?>/img/dashboard_icon/user.png" alt="">
                     <div class="block ml-2">
-                      <div class="text-2xl inline">Pelanggaran</div>
+                      <div class="text-base inline">Pelanggaran</div>
                       <div class="text-xl block"><?php echo $data['pelanggaran']['jumlah_pelanggaran']?></div>
                     </div>
                   </div>
