@@ -30,11 +30,6 @@ class Mahasiswa extends Controller{
         echo json_encode($data['kompen']);
     }
     public function updateKompen(){
-        if($_FILES['buktiKompen']['name'] == ''){
-            Flasher::setFlash('gagal', 'Gambar tidak boleh kosong', 'danger');
-            header('Location: ' . BASEURL . '/mahasiswa/riwayatPelanggaran');
-            exit;
-        }else{
         if ($this->model('Kompen_model')->updateKompen($_POST) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/mahasiswa/riwayatPelanggaran');
@@ -44,7 +39,6 @@ class Mahasiswa extends Controller{
             header('Location: ' . BASEURL . '/mahasiswa/riwayatPelanggaran');
             exit;
         }
-    }
     }
     public function uploadBuktiKompen($dataValue){
         $data['biodata'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($_SESSION['username']);
