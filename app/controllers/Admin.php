@@ -158,4 +158,26 @@ class Admin extends Controller{
         $this->view('admin/logout');
         $this->view('templates/admin/footer');
     }
+    public function ubahPassword(){
+        $this->view('templates/admin/header');
+        $this->view('admin/ubahPassword');
+        $this->view('templates/admin/footer');
+    }
+    public function ubahPwAksi(){
+        if ($_POST['newPass'] == $_POST['confPass']){
+            if ($this->model('Admin_model')->updatePassword($_POST) > 0) {
+                Flasher::setFlash('dosen berupa password berhasil', 'diubah', 'success');
+                header('Location: ' . BASEURL . '/admin/ubahPassword');
+                exit;
+            }else{
+                Flasher::setFlash('password gagal', 'diubah', 'danger');
+                header('Location: ' . BASEURL . '/admin/ubahPassword');
+                exit;
+            }
+        }else{
+            Flasher::setFlash('Password dan Konfirmasi Pasword', 'tidak sesuai', 'danger');
+            header('Location: ' . BASEURL . '/dosen/ubahPassword');
+            exit;
+        }
+    }
 }

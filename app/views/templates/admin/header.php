@@ -48,14 +48,14 @@
           <li class="mb-2 sidebar_item relative" id="laporan_nav">
             <a href="#" class="text_sidebar flex items-center">
               <img src="<?= BASEURL; ?>/img/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt="">
-              <span class="sidebar_text">Laporan</span>
+              <span class="sidebar_text">Data Laporan</span>
             </a>
             <ul class="left-0 top-full hidden mt-2 bg-white submenu_laporan">
               <li id="laporan_pelanggaran_nav"><a href="<?= BASEURL; ?>/admin/laporanPelanggaran" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/warning.png" class="inline icon_sidebar" alt="">Laporan Pelanggaran</a></li>
               <li id="laporan_kompen_nav"><a href="<?= BASEURL; ?>/admin/laporanKompen" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/centangKotak.png" class="inline icon_sidebar" alt="">Laporan Kompen</a></li>
             </ul>
           </li>
-
+          <li class="mb-2 sidebar_item" id="data_mahasiswa_nav"><a href="<?= BASEURL; ?>/admin/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/ubahPassword.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
           <li class="mb-2 sidebar_item"><a href="#" onclick="confirmLogin()" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
         </ul>
       </aside>

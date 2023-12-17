@@ -8,6 +8,7 @@ class Admin_model
     private $table4 = 'pelanggaran';
     private $table5 = 'prodi';
     private $table6 = 'riwayat';
+    private $table = 'user';
     private $db;
 
 
@@ -140,5 +141,15 @@ class Admin_model
         ORDER BY p.pengaduan_id DESC
         LIMIT 10');
         return $this->db->resultSet();
+    }
+    public function updatePassword($data)
+    {
+        $query = 'UPDATE '. $this->table .' SET password = :password WHERE username = :username';
+        $pass = (md5($data['newPass']));
+        $this->db->query($query);
+        $this->db->bind('password', $pass);
+        $this->db->bind('username', $data['username']);
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 }
