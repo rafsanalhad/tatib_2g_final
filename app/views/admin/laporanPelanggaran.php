@@ -247,6 +247,7 @@
   </div>
 </div>
 <script>
+    $('#laporan_nav').addClass('bg-blue-400');
   $(document).ready(function() {
 
 

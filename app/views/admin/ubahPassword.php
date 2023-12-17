@@ -26,3 +26,6 @@
       </form>
       </div>
     </div>
+    <script>
+        $('#ubahpassword_nav').addClass('bg-blue-400');
+    </script>
