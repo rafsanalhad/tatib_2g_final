@@ -41,14 +41,28 @@ class Dosen extends Controller{
         echo json_encode($data['pelanggaran']);
     }
     public function ajukanPengaduan(){
-        if ($this->model('Pengaduan_model')->setPengaduan($_POST) > 0) {
-            Flasher::setFlash('Pengaduan berhasil', 'dilakukan', 'success');
-            header('Location: ' . BASEURL . '/dosen/riwayatPengaduan');
-            exit;
-        }else{
-            Flasher::setFlash('Pengaduan gagal', 'dilakukan', 'danger');
+        if($_FILES['fotoPengaduan']['name'] == ''){
+            Flasher::setFlash('gagal', 'Gambar tidak boleh kosong', 'danger');
             header('Location: ' . BASEURL . '/dosen/formPengaduan');
             exit;
+        }else if($_POST['nimPengaduan'] == ''){
+            Flasher::setFlash('gagal', 'NIM tidak boleh kosong', 'danger');
+            header('Location: ' . BASEURL . '/dosen/formPengaduan');
+            exit;
+        }else if($_POST['jenisPelanggaran'] == ''){
+            Flasher::setFlash('gagal', 'Jenis Pelanggaran tidak boleh kosong', 'danger');
+            header('Location: ' . BASEURL . '/dosen/formPengaduan');
+            exit;
+        }else{
+            if ($this->model('Pengaduan_model')->setPengaduan($_POST) > 0) {
+                Flasher::setFlash('Pengaduan berhasil', 'dilakukan', 'success');
+                header('Location: ' . BASEURL . '/dosen/riwayatPengaduan');
+                exit;
+            }else{
+                Flasher::setFlash('Pengaduan gagal', 'dilakukan', 'danger');
+                header('Location: ' . BASEURL . '/dosen/formPengaduan');
+                exit;
+            }
         }
     }
     public function ubahPassword(){

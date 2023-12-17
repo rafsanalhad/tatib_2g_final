@@ -12,7 +12,7 @@
             <input class="w-[250px] h-[40px] border border-neutral-400 rounded-lg mt-3 pl-2" type="hidden" name="aksi" id="aksi" value="upload">
             <input class="pl-2 w-[250px] h-[40px] mt-1" type="file" name="buktiKompen" id="buktiKompen" class="mt-5">
             <br>
-            <button type="submit" class="w-[170px] h-[50px] items-center bg-sky-600 rounded-3xl text-white text-2xl font-normal font-['Inter'] mt-5 mb-5 hover:bg-sky-700">Simpan</button>  
+            <button type="submit" class="w-[170px] h-[50px] items-center bg-sky-600 rounded-3xl text-white text-2xl font-normal font-['Inter'] mt-5 mb-5 hover:bg-sky-700">Simpan</button>
         </div>
     </form>
-    </div>
+</div>

@@ -11,6 +11,7 @@
       <hr class="hr_db">
       <div class="flex bg-white flex-col xl:flex-row">
         <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->
+        <?php Flasher::flash(); ?>
         <div class="grid grid-cols-1 gap-4 mt-5">
         <div class="container mx-auto mt-8 containerTableDosen overflow-x-auto">
           <table id="tableMahasiswa" class="min-w-full border ">

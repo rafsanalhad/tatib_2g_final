@@ -5,7 +5,8 @@
       </div>
       <h1 class="text-4xl font-bold mb-5 text-center">Ajukan Pengaduan</h1>
       <form action="<?= BASEURL; ?>/Dosen/ajukanPengaduan/" method="POST" enctype="multipart/form-data">
-      <div class="flex-col bg-white shadow-lg subtitle_dashboard mx-80 text-center shadow-neutral-800">
+        <div class="flex-col bg-white shadow-lg subtitle_dashboard mx-80 text-center shadow-neutral-800">
+        <?php Flasher::flash(); ?>
         <div class=" flex-1 bg-white mt-3">
           <label for="nimPengaduan">NIM:</label>
           <br>
