@@ -26,3 +26,6 @@
       </form>
       </div>
     </div>
+    <script>
+        $('#ubahPassword_mahasiswa').addClass('bg-blue-400');
+    </script>

@@ -159,6 +159,9 @@
         </div>
     </div>
       </div>
+      <script>
+        $('#dashboard_dosen').addClass('bg-blue-400');
+      </script>
 
 
 

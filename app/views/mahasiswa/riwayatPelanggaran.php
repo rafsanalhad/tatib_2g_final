@@ -121,7 +121,9 @@
       </div>
     </div>
   </div>
-
+<script>
+  $('#riwayatPelanggaran_mahasiswa').addClass('bg-blue-400');
+</script>
     <script>
         // function hideElement() {
         //     document.getElementById('baru').classList.add('hidden');

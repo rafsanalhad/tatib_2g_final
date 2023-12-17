@@ -170,3 +170,6 @@
         </div>
     </div>
     </div>
+    <script>
+        $('#dashboard_mahasiswa').addClass('bg-blue-400');
+    </script>

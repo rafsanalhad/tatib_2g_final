@@ -102,6 +102,7 @@
   </div>
 
     <script>
+        $('#riwayat_pengaduan_dosen').addClass('bg-blue-400');
       const modalKompen = document.getElementById('modalTolakLapor');
         const showModalDitolak = (id) => {
           console.log(id);

@@ -25,3 +25,6 @@
         </div>
       </form>
     </div>
+    <script>
+        $('#ubahPassword_dosen').addClass('bg-blue-400');
+    </script>

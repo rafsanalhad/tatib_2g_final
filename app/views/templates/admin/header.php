@@ -42,7 +42,7 @@
           </div>
         </div>
         <ul>  
-          <li class="sidebar_item hover:bg-blue-100 h-8 flex items-center" id="dashboard_nav"><a href="<?= BASEURL; ?>/admin" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/dashboard.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Dashboard</span></a></li>
+          <li class="sidebar_item h-8 flex items-center" id="dashboard_nav"><a href="<?= BASEURL; ?>/admin" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/dashboard.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Dashboard</span></a></li>
           <li class="sidebar_item h-8 flex items-center" id="data_dosen_nav"><a href="<?= BASEURL; ?>/admin/dosen" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_dosen.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Data Dosen</span></a></li>
           <li class="sidebar_item h-8 flex items-center" id="data_mahasiswa_nav"><a href="<?= BASEURL; ?>/admin/mahasiswa" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/data_mahasiswa.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Data Mahasiswa</span></a></li>
           <li class="sidebar_item h-8 flex items-center z-50" id="ubahpassword_nav"><a href="<?= BASEURL; ?>/admin/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/ubahPassword.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
@@ -96,12 +96,18 @@
         document.addEventListener('DOMContentLoaded', function() {
           var laporanNav = document.getElementById('laporan_nav');
           var dropdown = laporanNav.querySelector('ul');
+          let sidebar = document.querySelector('.sidebar');
 
           laporanNav.addEventListener('click', function() {
             if (dropdown.classList.contains('hidden')) {
               dropdown.classList.remove('hidden');
-              var logoutNav = document.getElementById('logout_nav');
-              logoutNav.classList.add('mt-16');
+              if(sidebar.classList.contains('sidebar_toggled')){
+                // var logoutNav = document.getElementById('logout_nav');
+                // logoutNav.classList.add('mt-16');
+              }else{
+                var logoutNav = document.getElementById('logout_nav');
+                logoutNav.classList.add('mt-16');
+              }
             } else {
               dropdown.classList.add('hidden');
               var logoutNav = document.getElementById('logout_nav');

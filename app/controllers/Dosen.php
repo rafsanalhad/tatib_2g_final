@@ -25,9 +25,10 @@ class Dosen extends Controller{
         echo json_encode($data['pengaduan']);
     }
     public function formPengaduan(){
+        $data['biodata'] = $this->model('Dosen_model')->getDosenBySessionLogin($_SESSION['username']);
         $data['mahasiswa'] = $this->model('Mahasiswa_model')->getAllMahasiswa();
         $data['pelanggaran'] = $this->model('Pelanggaran_model')->getAllPelanggaran();
-        $this->view('templates/dosen/header');
+        $this->view('templates/dosen/header', $data);
         $this->view('dosen/formPengaduan', $data);
         $this->view('templates/dosen/footer');
     }
