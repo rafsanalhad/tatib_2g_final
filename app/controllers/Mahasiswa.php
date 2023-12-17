@@ -40,10 +40,10 @@ class Mahasiswa extends Controller{
             exit;
         }
     }
-    public function uploadBuktiKompen($data){
+    public function uploadBuktiKompen($dataValue){
         $data['biodata'] = $this->model('Mahasiswa_model')->getMahasiswaByNim($_SESSION['username']);
         $this->view('templates/mahasiswa/header', $data);
-        $this->view('mahasiswa/uploadBuktiKompen', $data);
+        $this->view('mahasiswa/uploadBuktiKompen', $dataValue);
         $this->view('templates/mahasiswa/footer');
     }
     public function ubahPassword(){
