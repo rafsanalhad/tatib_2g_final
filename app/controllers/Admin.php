@@ -166,11 +166,11 @@ class Admin extends Controller{
     public function ubahPwAksi(){
         if ($_POST['newPass'] == $_POST['confPass']){
             if ($this->model('Admin_model')->updatePassword($_POST) > 0) {
-                Flasher::setFlash('dosen berupa password berhasil', 'diubah', 'success');
+                Flasher::setFlash('diubah', 'ubah password berhasil', 'success');
                 header('Location: ' . BASEURL . '/admin/ubahPassword');
                 exit;
             }else{
-                Flasher::setFlash('password gagal', 'diubah', 'danger');
+                Flasher::setFlash('diubah', 'password gagal', 'danger');
                 header('Location: ' . BASEURL . '/admin/ubahPassword');
                 exit;
             }

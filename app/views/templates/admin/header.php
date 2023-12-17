@@ -55,7 +55,7 @@
               <li id="laporan_kompen_nav"><a href="<?= BASEURL; ?>/admin/laporanKompen" class="text_sidebar ml-2"><img src="<?= BASEURL; ?>/img/icon/centangKotak.png" class="inline icon_sidebar" alt="">Laporan Kompen</a></li>
             </ul>
           </li>
-          <li class="mb-2 sidebar_item" id="data_mahasiswa_nav"><a href="<?= BASEURL; ?>/admin/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/ubahPassword.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
+          <li class="mb-2 sidebar_item" id="ubahpassword_nav"><a href="<?= BASEURL; ?>/admin/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/ubahPassword.png" class="inline icon_sidebar w-5 h-5" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
           <li class="mb-2 sidebar_item"><a href="#" onclick="confirmLogin()" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
         </ul>
       </aside>
