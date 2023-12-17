@@ -249,12 +249,9 @@
 <script>
   $('#laporan_pelanggaran_nav').addClass('bg-blue-400');
   $('.submenu_laporan').removeClass('hidden');
-  let sidebar = document.querySelector('.sidebar');
-    if (sidebar.classList.contains('sidebar_toggled')) {
-      $('#logout_nav').removeClass('mt-16');
-    } else {
-      $('#logout_nav').addClass('mt-16');
-    }
+  if($('.submenu_laporan').hasClass('hidden')){
+    $('#logout_nav').removeClass('mt-16');
+  }
   $('#logout_nav').addClass('mt-16');
   $(document).ready(function() {
 
