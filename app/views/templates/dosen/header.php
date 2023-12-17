@@ -41,7 +41,7 @@
       <ul>
         <li class="h-8 flex items-center sidebar_item" id="dashboard_dosen"><a href="<?= BASEURL; ?>/dosen" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/dashboard.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Dashboard</span></a></li>
         <li class="h-8 flex items-center sidebar_item" id="riwayat_pengaduan_dosen"><a href="<?= BASEURL; ?>/dosen/riwayatPengaduan" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/laporan_penggunaan.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Riwayat Pengaduan</span></a></li>
-        <li class="h-8 flex items-center sidebar_item"id="ubahPassword_dosen"><a href="<?= BASEURL; ?>/dosen/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/password.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
+        <li class="h-8 flex items-center sidebar_item"id="ubahPassword_dosen"><a href="<?= BASEURL; ?>/dosen/ubahPassword" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/ubahPassword.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">Ubah Password</span></a></li>
         <li class="h-8 flex items-center sidebar_item" id="logout_dosen"><a onclick="confirmLogin()" href="#" class="text_sidebar"><img src="<?= BASEURL; ?>/img/icon/logout.png" class="inline icon_sidebar" alt=""><span class="sidebar_text">LogOut</span></a></li>
       </ul>
     </aside>
