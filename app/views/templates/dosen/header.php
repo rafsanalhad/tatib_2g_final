@@ -32,8 +32,8 @@
   <div class="flex">
     <aside class="p-4 sidebar">
       <div class="profil_db">
-        <img src="<?= BASEURL; ?>/img/profil/profil.png" alt="" class="foto_profil">
-        <h3 class="nama_profil">Rizky Arifiansyah</h3>
+        <img src="<?= BASEURL; ?>/img/profil/<?= $data['biodata']['dosen_img']?>" alt="" class="foto_profil">
+        <h3 class="nama_profil"><?= $data['biodata']['nama']?></h3>
         <div class="containerBars containerBarsDefault">
           <i class="fa-solid fa-bars icon_bars toggle_bars"></i>
         </div>

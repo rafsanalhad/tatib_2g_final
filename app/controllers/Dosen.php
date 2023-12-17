@@ -9,7 +9,7 @@ class Dosen extends Controller{
     public function index(){
         $data['biodata'] = $this->model('Dosen_model')->getDosenBySessionLogin($_SESSION['username']);
         $data['pengaduan'] = $this->model('Pengaduan_model')->getPengaduanByNip($_SESSION['username']);
-        $this->view('templates/dosen/header');
+        $this->view('templates/dosen/header', $data);
         $this->view('dosen/index', $data);
         $this->view('templates/dosen/footer');
     }

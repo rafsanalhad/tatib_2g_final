@@ -187,6 +187,10 @@ class Dosen_model
         $res = $this->db->single();
         $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/profil/' . $res['dosen_img'];
         unlink($targetDir);
+        $queryUser = "DELETE FROM user WHERE user_id = :user_id";
+        $this->db->query($queryUser);
+        $this->db->bind('user_id', $res['user_id']);
+        $this->db->execute();
         $query = "DELETE FROM dosen WHERE nip = :nip";
         $this->db->query($query);
         $this->db->bind('nip', $nip);

@@ -14,14 +14,14 @@ class Admin extends Controller{
         $data['prodi'] = $this->model('Admin_model')->hitungProdi();
         $data['laporanTerbaru'] = $this->model('Admin_model')->laporanTerbaru();
         
-        $this->view('templates/admin/header', $data);
+        $this->view('templates/admin/header');
         $this->view('admin/index', $data);
         $this->view('templates/admin/footer');
     }
     public function dosen(){
         $data['judul'] = 'Admin Page';
         $data['dosen'] = $this->model('Admin_model')->getDosen();
-        $this->view('templates/admin/header', $data);
+        $this->view('templates/admin/header');
         $this->view('admin/dosen', $data);
         $this->view('templates/admin/footer');
     }

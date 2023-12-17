@@ -80,6 +80,10 @@ class Mahasiswa_model
         $res = $this->db->single();
         $targetDir = str_replace('/public', '', $_SERVER['DOCUMENT_ROOT']) . '/tatib_2g/public/img/profil/' . $res['mahasiswa_img'];
         unlink($targetDir);
+        $query2 = "DELETE FROM user WHERE username = :username";
+        $this->db->query($query2);
+        $this->db->bind('username', $nim);
+        $this->db->execute();
         $query = "DELETE FROM mahasiswa WHERE nim = :nim";
         $this->db->query($query);
         $this->db->bind('nim', $nim);
