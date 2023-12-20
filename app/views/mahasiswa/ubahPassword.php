@@ -3,7 +3,7 @@
       <div class="containerBars_toggled">
         <i class="fa-solid fa-bars icon_bars toggle_bars toggle_bars_toggled"></i>
       </div>
-      <h1 class="text-2xl font-bold mb-2">Ubah Password</h1>
+      <h1 class="text-2xl font-bold mb-2">Ubah Passworrrrrrd</h1>
       <div class=" bg-white h-10 items-center subtitle_dashboard">
         <div class="ml-4 mt-1">Masukkan Password Baru</div>
       </div>
