@@ -6,6 +6,11 @@
       <div class="flex bg-white h-10 items-center shadow-sm subtitle_dashboard">
         <div class="flex-1 ml-4">Riwayat Pengaduan</div>
       </div>
+      <?php
+      if (isset($_SESSION['flash'])) {
+        Flasher::flash();
+      }
+      ?>
       <hr class="hr_db">
       <div class="flex bg-white flex-col xl:flex-row">
         <div class="flex-1 bg-white p-4"> <!-- Tambahkan "flex" class di sini -->

@@ -161,7 +161,7 @@
                 <div class="w-3/4 inline-flex items-center">
                   <div class="mr-2 flex-shrink-0 flex titikDua">:</div>
                   <div class="flex-grow flex_error_msg">
-                    <select name="jenkel" id="jenisPelanggaran" class="mt-1 p-2 w-full border rounded-md">
+                    <select name="jenkel" id="jenis_kelamin" class="mt-1 p-2 w-full border rounded-md">
                       <option name="jenkel" value="null">Pilih Jenis Kelamin</option>
                       <option name="jenkel" value="L">Laki-laki</option>
                       <option name="jenkel" value="P">Perempuan</option>
@@ -473,7 +473,7 @@
         $('#notelp').val(response.no_phone);
         $('#notelp_ortu').val(response.phone_ortu);
         $('#alamat').val(response.alamat);
-        $("#jenisKelamin").val(response.jenis_kelamin);
+        $("#jenis_kelamin").val(response.jenis_kelamin);
         $("#prodi").val(response.prodi_id);
         $('#imgInputMahasiswa').val('');
         $('#preview').html('<img src="<?= BASEURL; ?>/img/profil/' + response.mahasiswa_img + '" alt="">');

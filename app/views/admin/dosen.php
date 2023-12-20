@@ -273,6 +273,7 @@
       denyButtonText: `Batal`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
+      console.log(nip);
       if (result.isConfirmed) {
         $.ajax({
           url: '<?= BASEURL; ?>/Admin/hapusDosen/' + nip + '/' + userid,
